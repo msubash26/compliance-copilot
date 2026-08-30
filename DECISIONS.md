@@ -147,3 +147,41 @@ checked with `--unsafe` (syntax only, unknown tags tolerated), everything else n
 **Consequence.** Never run `docker compose -f docker/docker-compose.yml up` directly; the
 override is not auto-discovered from a non-default filename. `scripts/stack.sh` is the entry
 point and refuses to run without a `.env`.
+
+---
+
+## ADR-008 — Credentials that upstream embeds in defaults must be set explicitly
+**Date:** 2026-08-30 · **Status:** Accepted
+
+**Context.** Rotating the compose passwords off their shipped defaults broke the stack.
+LangFuse came up but `langfuse-web` exited during migration with Prisma `P1000:
+Authentication failed`.
+
+**Cause.** Upstream does not compose its connection strings from the `*_PASSWORD` variables —
+it embeds the default credential a second time, in a different variable:
+
+```
+POSTGRES_PASSWORD:   ${POSTGRES_PASSWORD:-postgres}
+DATABASE_URL:        ${DATABASE_URL:-postgresql://postgres:postgres@postgres:5432/postgres}
+                                                        ^^^^^^^^ not derived
+```
+
+So setting `POSTGRES_PASSWORD` alone initialises Postgres with the new password while LangFuse
+keeps authenticating with the literal `postgres`. MinIO has the same shape:
+`MINIO_ROOT_PASSWORD` against three separate `LANGFUSE_S3_*_SECRET_ACCESS_KEY` defaults.
+
+**Decision.** `.env` sets all four derived variables explicitly, next to the passwords they
+must track: `DATABASE_URL`, and the event / media / batch-export S3 secret keys.
+`.env.example` carries them as `<POSTGRES_PASSWORD>` / `<MINIO_ROOT_PASSWORD>` placeholders
+with the reason written out.
+
+**Not affected.** `CLICKHOUSE_PASSWORD` and `REDIS_AUTH` are referenced by name on both the
+server and client side, so they stay consistent under rotation. Audited the full compose:
+those four are the only offenders.
+
+**Note.** The hostnames in `DATABASE_URL` and the S3 endpoints are compose-network internal
+(`postgres:5432`, `minio:9000`) — *not* the remapped host ports from ADR-003. Substituting
+5434 there is a natural mistake and fails only at runtime.
+
+**Consequence.** Passwords must stay URL-safe or be percent-encoded, since one of them is
+carried inside a URL. The generator uses hex, which sidesteps this.
