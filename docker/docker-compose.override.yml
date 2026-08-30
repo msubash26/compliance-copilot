@@ -1,0 +1,52 @@
+# Local deltas to the vendored upstream LangFuse stack (docker-compose.yml).
+#
+# Two jobs:
+#   1. Remap the host ports upstream publishes that this workstation already owns.
+#   2. Add the LangGraph checkpointer Postgres, which is *ours*, not LangFuse's.
+#
+# NOTE ON `!override`: Compose *concatenates* multi-value keys like `ports` when
+# merging files — it does not replace them. Without the `!override` tag below,
+# upstream's `127.0.0.1:5432:5432` would still be published alongside our remap
+# and the bind would still fail. Requires Compose >= 2.24. See ADR-007.
+
+name: regops
+
+services:
+  # Host has PostgreSQL 16 on 127.0.0.1:5432 (system service). Remap to 5434.
+  # This DB is LangFuse's own and is managed by LangFuse's migrations — nothing
+  # of ours goes in it. 5434 is published only so it can be inspected by hand.
+  postgres:
+    ports: !override
+      - 127.0.0.1:5434:5432
+
+  # Host has redis-server on 127.0.0.1:6379 (system service). Remap to 6380.
+  redis:
+    ports: !override
+      - 127.0.0.1:6380:6379
+
+  # ── Ours, not upstream's ────────────────────────────────────────────────────
+  # Separate container rather than a second logical DB inside LangFuse's
+  # Postgres: that instance's schema is owned by LangFuse's migration runner,
+  # and Day 7 needs to drop and re-inspect checkpoint state freely. See ADR-004.
+  checkpointer-postgres:
+    image: docker.io/postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: ${CHECKPOINTER_POSTGRES_USER:-regops}
+      POSTGRES_PASSWORD: ${CHECKPOINTER_POSTGRES_PASSWORD:-regops}
+      POSTGRES_DB: ${CHECKPOINTER_POSTGRES_DB:-checkpointer}
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - 127.0.0.1:5433:5432
+    volumes:
+      - regops_checkpointer_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${CHECKPOINTER_POSTGRES_USER:-regops} -d ${CHECKPOINTER_POSTGRES_DB:-checkpointer}"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  regops_checkpointer_data:
+    driver: local

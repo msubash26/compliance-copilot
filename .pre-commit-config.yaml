@@ -11,6 +11,14 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
+        exclude: ^docker/docker-compose\.override\.yml$
+      # The override carries Compose's `!override` tag, which a generic YAML parser
+      # cannot construct. --unsafe validates syntax only and tolerates unknown tags.
+      # `docker compose config` is the real validator for these files — see ADR-007.
+      - id: check-yaml
+        name: check-yaml (compose — unknown tags allowed)
+        args: [--unsafe]
+        files: ^docker/docker-compose\.override\.yml$
       - id: check-toml
       - id: check-added-large-files
         args: [--maxkb=1024]
