@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # regdocs-mcp is consumed as an editable sibling path dependency (../regdocs-mcp),
+      # so CI must reproduce that layout rather than checking out this repo alone.
+      - uses: actions/checkout@v4
+        with:
+          path: compliance-copilot
+      - uses: actions/checkout@v4
+        with:
+          repository: msubash26/regdocs-mcp
+          path: regdocs-mcp
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv python install 3.12
+      - name: Sync
+        working-directory: compliance-copilot
+        run: uv sync --all-extras --dev
+      - name: Lint
+        working-directory: compliance-copilot
+        run: uv run ruff check .
+      - name: Format check
+        working-directory: compliance-copilot
+        run: uv run ruff format --check .
+      - name: Tests
+        working-directory: compliance-copilot
+        run: uv run pytest -q

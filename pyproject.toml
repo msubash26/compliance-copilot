@@ -1,0 +1,51 @@
+[project]
+name = "compliance-copilot"
+version = "0.1.0"
+description = "Regulatory Compliance Copilot — RAG + multi-agent over MAS/SGX regulatory corpora"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "regops-ingest",
+    "regops-retrieval",
+    "regops-agents",
+    "regops-evals",
+    "regops-serving",
+    "regops-api",
+    "regdocs-mcp",
+    # Day 0: observability only. Heavy deps (docling, langgraph, vllm) land on their own day.
+    "langfuse>=4,<5",   # SDK major must match the self-hosted server major — verify on B2
+    "openai>=1.0",          # used against Ollama's OpenAI-compatible endpoint
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+    "pre-commit>=4",
+]
+
+[tool.uv.workspace]
+members = ["ingest", "retrieval", "agents", "evals", "serving", "api"]
+
+[tool.uv.sources]
+regops-ingest = { workspace = true }
+regops-retrieval = { workspace = true }
+regops-agents = { workspace = true }
+regops-evals = { workspace = true }
+regops-serving = { workspace = true }
+regops-api = { workspace = true }
+regdocs-mcp = { path = "../regdocs-mcp", editable = true }
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "ingest", "retrieval", "agents", "evals", "serving", "api"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto"
