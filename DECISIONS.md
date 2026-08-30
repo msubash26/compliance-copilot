@@ -256,3 +256,61 @@ already returns what the results tables need — verified:
 
 Note `/api/public/v2/observations` returns a slim projection — no `model` or `usageDetails`.
 Per-observation token counts come from `/api/public/v2/metrics`, or from ClickHouse directly.
+
+---
+
+## ADR-011 — Corpus is MAS-only; document *type* is the variety axis
+**Date:** 2026-08-30 · **Status:** Accepted
+
+**Context.** The plan called for a MAS-heavy corpus with a ~20% SGX slice, so that Day 5 could
+show "retrieval behaves differently by document type".
+
+**Decision.** MAS only. Variety comes from MAS's own document types rather than from a second
+issuer.
+
+**Why SGX was dropped.** `sgx.com` is client-side rendered — `curl` on
+`/regulation/public-consultations` returns **0 bytes** — and the rulebooks live on a separate
+JS application at `rulebook.sgx.com`. Extracting them needs a headless browser, which is a
+disproportionate cost for a fifth of the corpus. The plan already earmarks the ~140 42 Macro
+reports as the deliberately contrasting corpus (narrative prose vs. legal text), so the
+"different document shapes" finding does not depend on SGX.
+
+**Where the variety comes from instead.** Four MAS sections, genuinely different in shape:
+`notices` (prescriptive, clause-numbered), `guidelines` (advisory prose), `circulars` (short,
+operational), `consultations` (long, discursive). The sitemap yields 338 / 126 / 179 / 426
+landing pages respectively. Day 0 fetches notices + guidelines; the rest are one flag away.
+
+**Revisit if** an interview pipeline skews hard to SGX, in which case a headless-browser
+fetcher for the rulebook is a half-day, not a Day 0 task.
+
+---
+
+## ADR-012 — Corpus fetch: URL-derived IDs, committed manifest, enforced politeness
+**Date:** 2026-08-30 · **Status:** Accepted
+
+**`doc_id` is `sha256(canonical_url)[:16]`, never derived from file bytes.** MAS reissues PDFs
+in place under the same URL. A byte-derived ID would mint a second document on every amendment
+and break Day 3's idempotent re-ingestion; a URL-derived one updates the same logical document.
+`canonical()` strips query and fragment and lowercases the host, so the cache-busting `?v=`
+suffixes MAS emits do not fork the ID.
+
+**The manifest is committed; the PDFs are not.** `corpus/manifest.jsonl` carries
+`{doc_id, url, source_page, issuer, doc_type, title, filename, sha256, bytes, fetched_at}`.
+The PDFs are third-party documents and bulky — `sha256` is what makes a re-fetch verifiable.
+
+**`.gitignore` bug fixed.** The Day 0 rules were `corpus/` followed by `!corpus/manifest.jsonl`.
+Git cannot re-include a file whose *parent directory* is excluded, so the negation never fired
+and the one artifact B5 exists to produce was silently unstageable. Now `corpus/*` +
+`!corpus/manifest.jsonl`.
+
+**Politeness is enforced, not assumed.** `robots.txt` is parsed with
+`urllib.robotparser` and consulted per URL; MAS publishes `Crawl-delay: 2`, which is the
+default and the script warns if overridden. Re-runs skip anything already fetched, so an
+interrupted crawl re-requests only what it missed.
+
+**User-Agent must keep its `Mozilla/5.0 (compatible; ...)` prefix.** MAS's WAF answers any
+other UA with an HTML "Maintenance" page at **HTTP 200** — which parses as a sitemap with zero
+entries, so it looks like an empty result rather than a refusal. This cost real debugging time.
+The `Mozilla/5.0 (compatible; <product>; +<url>)` form is the standard well-behaved-crawler
+convention (Googlebot, bingbot) and keeps the crawler identifiable via product token and
+contact URL. `tests/test_fetch_corpus.py` guards it.

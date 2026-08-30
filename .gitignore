@@ -4,7 +4,9 @@ __pycache__/
 .env
 .env.*
 !.env.example
-corpus/
+# `corpus/` alone would win: git cannot re-include a file whose parent directory is
+# excluded, so the negation below would never fire. Exclude the *contents* instead.
+corpus/*
 !corpus/manifest.jsonl
 outputs/
 .tmp/

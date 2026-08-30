@@ -1,13 +1,16 @@
 [project]
 name = "regops-ingest"
 version = "0.1.0"
-description = "Add your description here"
+description = "Corpus fetch, parsing and chunking for the compliance copilot"
 readme = "README.md"
 authors = [
     { name = "Subash M", email = "msubash26@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "httpx>=0.27",
+    "selectolax>=0.3",   # fast, dependency-light HTML parsing
+]
 
 [build-system]
 requires = ["uv_build>=0.11.2,<0.12.0"]
