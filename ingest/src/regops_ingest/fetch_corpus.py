@@ -95,8 +95,15 @@ def make_doc_id(url: str) -> str:
 
 
 def slugify(url: str) -> str:
-    name = Path(urlparse(url).path).name or "document"
-    return re.sub(r"[^A-Za-z0-9._-]", "-", name)[:120]
+    """Filesystem-safe basename, truncated but keeping the extension.
+
+    MAS uses very long descriptive filenames; a naive truncation drops the `.pdf` suffix, and
+    Day 3's parser dispatches on it.
+    """
+    path = Path(urlparse(url).path)
+    suffix = path.suffix if len(path.suffix) <= 8 else ""
+    stem = re.sub(r"[^A-Za-z0-9._-]", "-", path.stem or "document")
+    return stem[: 120 - len(suffix)] + suffix
 
 
 class Crawler:

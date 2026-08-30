@@ -70,6 +70,13 @@ def test_slugify_is_filesystem_safe():
     assert slugify("https://x/a b/c%20d.pdf") == "c-20d.pdf"
 
 
+def test_slugify_keeps_the_extension_when_truncating():
+    """MAS uses very long descriptive filenames; Day 3's parser dispatches on the suffix."""
+    name = slugify("https://www.mas.gov.sg/-/media/" + "a" * 200 + ".pdf")
+    assert name.endswith(".pdf")
+    assert len(name) <= 120
+
+
 def test_user_agent_keeps_the_mozilla_prefix():
     """MAS's WAF serves an HTML 'Maintenance' page to any UA without this prefix.
 
