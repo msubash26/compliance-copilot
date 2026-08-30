@@ -185,3 +185,74 @@ those four are the only offenders.
 
 **Consequence.** Passwords must stay URL-safe or be percent-encoded, since one of them is
 carried inside a URL. The generator uses hex, which sidesteps this.
+
+---
+
+## ADR-009 — Reasoning tokens are billed to the completion budget on qwen3.5
+**Date:** 2026-08-30 · **Status:** Accepted
+
+**Context.** The first `hello_trace.py` run returned an empty answer with 160 completion tokens
+consumed. `qwen3.5:9b` is a reasoning model: it emits thinking into a separate `reasoning`
+field, and those tokens are billed against `max_tokens`. A limit sized for the visible answer
+alone silently yields empty `content` with `finish_reason="length"` — no error, just nothing.
+
+**Measured**, same one-sentence question, `qwen3.5:9b`:
+
+| Path | Completion tokens | Latency |
+|---|---|---|
+| OpenAI-compat endpoint (thinking on) | 1140 | 13.1 s |
+| Native `/api/chat`, `think: false` | **52** | **0.8 s** |
+
+22x the tokens, 16x the latency, for the same answer.
+
+**Decision.** `MAX_TOKENS = 2048` in `hello_trace.py`, and it fails loudly rather than
+returning an empty string when `finish_reason == "length"` with no content.
+
+**Finding for Day 9.** Thinking cannot be disabled over the OpenAI-compatible endpoint —
+neither `extra_body={"think": False}` nor `reasoning_effort` is honoured; only Ollama's native
+`/api/chat` respects `think: false`. This directly threatens the plan's "small model handles
+classification, extraction and lookup" routing: a small *reasoning* model is not cheap, and on
+a lookup task it is ~20x more expensive than its parameter count suggests. Day 9 must either
+route through the native API for those tasks, pick a non-reasoning small model, or measure
+vLLM's own controls. Benchmark thinking-on and thinking-off as separate arms.
+
+---
+
+## ADR-010 — LangFuse v4 `events_only` mode: read traces via the v2 API, not v1
+**Date:** 2026-08-30 · **Status:** Accepted
+
+**Context.** The B3 trace ingested correctly but `GET /api/public/traces/{id}` returned 404:
+*"This endpoint is not available on deployments running in Langfuse v4 events_only mode."*
+
+**Cause.** Not a misconfiguration. `events_only` is the **default write mode for new v4
+deployments** — v3's `legacy`/`dual` modes exist only as migration waypoints. Data lands in
+ClickHouse `events_core` / `events_full`, and the legacy `traces` / `observations` tables stay
+empty by design. Confirmed: `SELECT count() FROM traces` = 0 while `events_core` = 6.
+
+**Audited endpoint availability on this deployment:**
+
+| Endpoint | Status |
+|---|---|
+| `/api/public/traces`, `/api/public/observations` | 404 — removed in `events_only` |
+| `/api/public/metrics` (v1) | 404 — removed |
+| `/api/public/v2/observations` | ✅ list + cursor pagination |
+| `/api/public/v2/metrics` | ✅ aggregates |
+| `/api/public/projects` | ✅ |
+
+**Decision.** Stay on `events_only` — it is the forward path, and reverting to `legacy` on a
+new deployment would mean adopting a mode that exists solely to be migrated off. Everything
+that reads traces programmatically targets the v2 API.
+
+**Consequence for Days 5, 8 and 9.** The eval harness and benchmark reporting must not use the
+v1 endpoints that most tutorials and older blog posts still show. `/api/public/v2/metrics`
+already returns what the results tables need — verified:
+
+```
+{"view":"observations","metrics":[{"measure":"totalTokens","aggregation":"sum"},
+                                  {"measure":"latency","aggregation":"p95"}],
+ "dimensions":[{"field":"providedModelName"}], ...}
+→ {"providedModelName":"qwen3.5:9b","sum_totalTokens":4972,"p95_latency":13671.5}
+```
+
+Note `/api/public/v2/observations` returns a slim projection — no `model` or `usageDetails`.
+Per-observation token counts come from `/api/public/v2/metrics`, or from ClickHouse directly.
