@@ -447,6 +447,13 @@ text that is not a compromise: a clause's position in the numbering *is* its con
 tokens per call against ~140 in the original probe, landing at 0.63 s — under the 2 s/item
 threshold at which the plan said to descope to a golden-set subset. Full scope was kept.
 
+**Delivered:** 11,171 clauses, **0 failures**, 7,177s (2.0h) at 0.64 s/clause, 3.60M prompt and
+0.45M completion tokens, applied to all 22,090 chunks. Traced to LangFuse at 1% sampling plus
+every failure plus one job-summary span — verified landing in ClickHouse as 25 `locator`
+generations and 1 `contextual-retrieval` span from a fully-sampled batch. Note that LangFuse
+4.24 writes to its newer `events_core`/`events_full` tables; the legacy `traces`/`observations`
+tables stay empty and reading them is what makes a working trace look broken.
+
 ---
 
 ## ADR-016 — Vectors live in DuckDB VSS, not in an eighth container
@@ -467,6 +474,19 @@ two systems.
 prepended. Day 5 sweeps contextual retrieval on against off, and that comparison is only clean
 if the arms differ in *one* thing — otherwise they differ in what was chunked as well as in
 what was embedded.
+
+**Measured:** 44,180 vectors (22,090 chunks x 2 arms) embedded at 57-71 chunks/s, HNSW built
+in 14.4s, whole index 433 MB. A vector query over either arm returns in 0.2-0.5s and puts
+Notice 626 clause 6.14 top-1 for "what must a bank do to identify the beneficial owner of a
+corporate customer".
+
+**The file must be compacted after a re-run.** DuckDB does not return freed pages to the OS,
+and both `context` and `embed` delete-then-reinsert. A second embedding pass took the index
+from 651 MB to **2,926 MB holding identical data** — 4.5x for nothing. `COPY FROM DATABASE`
+into a fresh file brings it to **433 MB in 57s**, carrying the HNSW *and* BM25 indexes intact
+(verified by running a BM25 query against the compacted file). This ships as
+`regops-ingest compact`, because a 2.9 GB artifact that should be 433 MB is the kind of thing
+that is discovered much later and blamed on the wrong thing.
 
 **The honest limit.** Single-node, no replication, one writer at a time. `vss` still flags
 persistent HNSW as experimental, so the index is rebuilt rather than incrementally maintained.

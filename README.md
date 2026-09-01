@@ -43,7 +43,11 @@ uv run regops-ingest build   --corpus corpus --out index/regdocs.duckdb   # PDFs
 uv run regops-ingest chunk   --index index/regdocs.duckdb                 # sections -> child chunks
 uv run regops-ingest context --index index/regdocs.duckdb                 # clause  -> locator sentence
 uv run regops-ingest embed   --index index/regdocs.duckdb                 # chunks  -> vectors + HNSW
+uv run regops-ingest compact --index index/regdocs.duckdb --replace       # reclaim space after a re-run
 ```
+
+Run them **one at a time**. Ollama serialises against one loaded model, so an `embed` call
+issued while `context` is running queues past its timeout rather than sharing the GPU.
 
 The result is one DuckDB file holding documents, clauses, chunks, tables, vectors and the BM25
 index. Point the MCP server at it and the Day 1 tools serve it unchanged:
@@ -68,6 +72,11 @@ scanned notice hits 2.6 s/page.
 
 Chunking gives **22,090 chunks**, 1.98 per clause, median 928 characters — most clauses are a
 single chunk, because the parent is a real unit rather than an invented window (ADR-014).
+
+Contextual retrieval: **11,171 locators, 0 failures, 2.0h at 0.64 s/clause**, traced to
+LangFuse at 1% sampling. Embedding both arms: **44,180 vectors** at 57–71 chunks/s, HNSW in
+14.4s. The finished index is **433 MB** — after `compact`, which matters, because a re-run
+inflates the same data to 2.9 GB (ADR-016).
 
 ### Traceability
 

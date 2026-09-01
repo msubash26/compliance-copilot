@@ -10,6 +10,8 @@ import sys
 import time
 from pathlib import Path
 
+import duckdb
+
 from regops_ingest import load
 from regops_ingest import parse as parse_mod
 
@@ -396,7 +398,50 @@ def cmd_embed(a: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_compact(a: argparse.Namespace) -> int:
+    """Rewrite the index into a fresh file, reclaiming space DuckDB does not.
+
+    DuckDB does not return freed pages to the OS, and every re-run of `embed`
+    or `context` deletes and reinserts. Measured: a second embed pass took the
+    index from 651 MB to 2,926 MB holding identical data. `COPY FROM DATABASE`
+    into a new file brought it to 433 MB in 55s, carrying the HNSW and BM25
+    indexes with it.
+    """
+    import os
+
+    dest = a.out or a.index.with_suffix(".compact.duckdb")
+    if dest.exists():
+        sys.exit(f"error: {dest} exists; move it aside or pass --out")
+    before = a.index.stat().st_size
+    t0 = time.perf_counter()
+    conn = duckdb.connect()
+    conn.execute("INSTALL vss; LOAD vss; INSTALL fts; LOAD fts;")
+    conn.execute("SET hnsw_enable_experimental_persistence = true;")
+    # ATTACH takes no bound parameters, so the paths are escaped literals.
+    src = str(a.index).replace("'", "''")
+    dst = str(dest).replace("'", "''")
+    conn.execute(f"ATTACH '{src}' AS src (READ_ONLY);")
+    conn.execute(f"ATTACH '{dst}' AS dst;")
+    conn.execute("COPY FROM DATABASE src TO dst;")
+    conn.close()
+    after = dest.stat().st_size
+    print(
+        f"{a.index} {before / 1e6:.1f} MB -> {dest} {after / 1e6:.1f} MB "
+        f"({before / max(after, 1):.1f}x) in {time.perf_counter() - t0:.0f}s"
+    )
+    if a.replace:
+        os.replace(dest, a.index)
+        print(f"replaced {a.index}")
+    return 0
+
+
 def main() -> None:
+    # LangFuse credentials and OLLAMA_BASE_URL live in the workspace .env, the same
+    # place scripts/hello_trace.py reads them from.
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
     ap = argparse.ArgumentParser(prog="regops-ingest", description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
 
@@ -442,6 +487,12 @@ def main() -> None:
     e.add_argument("--model", default="nomic-embed-text:latest")
     e.add_argument("--no-context", action="store_true", help="skip the context-prepended arm")
     e.set_defaults(fn=cmd_embed)
+
+    k = sub.add_parser("compact", help="reclaim space after a re-run")
+    k.add_argument("--index", type=Path, required=True)
+    k.add_argument("--out", type=Path, default=None)
+    k.add_argument("--replace", action="store_true", help="move the compacted file over --index")
+    k.set_defaults(fn=cmd_compact)
 
     a = ap.parse_args()
     sys.exit(a.fn(a))

@@ -270,3 +270,90 @@ surface did not move · 4 ADRs · green CI on both repos.
 OCR → leave the two scanned notices out and name them. **Never cut** the contract test or the
 `trace` command: one carries ADR-003's claim and the other is the day's "done when". Day 4's
 golden set depends on this index existing, so nothing here may slip into Day 4's budget.
+
+---
+
+## Outcome
+
+All six phases complete. 33 ingest tests green, `regdocs-mcp` still green at 90, ruff clean.
+The index is 463 documents / 9,043 pages → 11,171 clauses → 22,090 chunks → 44,180 vectors
+in a single 651 MB DuckDB file.
+
+### What the plan got right
+
+The measure-first phases paid for themselves twice. The Phase 1 gate settled whether Docling
+earned a 121-package install before any pipeline code existed, and the Phase 2 throughput gate
+turned a feared overnight run into a 25-minute one — which is why Phases 3–5 could develop
+against a finished index rather than a sample.
+
+### Where the plan was wrong, and what replaced it
+
+- **The 1,110-page notice was never the risk.** The plan gave Notice 637 its own risk entry and
+  its own timing budget. Measured: **166.8s, 0.15 s/page** — one of the *cheapest* documents
+  per page in the corpus. Per-page cost tracks table density, not length; the actual worst case
+  was a 42-page scanned notice at **2.6 s/page**, 17× worse. Page count was the wrong proxy and
+  the gate is what said so.
+- **The chunk count was 2.7× the estimate.** Phase 4 was budgeted against Day 1's 8,055
+  sections. Parent-child chunking over a better parse produces **22,090 chunks**, so the plan's
+  "71 minutes" was really 3.9 hours before anything went wrong.
+- **Concurrency is not a lever.** The plan said "start at 4, measure". Measured on a free GPU:
+  1 → 12 concurrent moves 0.65 → 0.62 s/item, **5% for a 12× increase**. Ollama serialises
+  against one loaded model. The saving came from changing the *unit* instead — one locator per
+  clause rather than per chunk (ADR-015), which is 2× and loses nothing, because the sentence
+  situating chunk 2 of clause 6.14 is the sentence situating clause 6.14.
+- **Pipeline stages cannot overlap.** The plan assumed the long parse could run in the
+  background while later phases proceeded. True for Docling, false for Ollama: an embed call
+  issued during the `context` run queued past its 300s timeout, because a second model cannot
+  load while a continuous stream keeps the first one busy. `build`, `chunk`, `context`, `embed`
+  run one at a time.
+- **`think: false` forces the native API.** Day 0 had already recorded that Ollama's
+  OpenAI-compatible endpoint ignores it. Since that flag is a 15× difference, contextual
+  retrieval gives up `langfuse.openai`'s free instrumentation and traces by hand — sampled at
+  1%, with every failure traced regardless.
+- **The plan's three open decisions resolved as recommended**, all three on measured grounds:
+  `nomic-embed-text` as the baseline with the model as a config knob; contextual retrieval over
+  the full corpus (affordable once the unit changed); and `regdocs_mcp.build` retained, still
+  marked provisional, because it is what keeps the server repo cloneable without CUDA.
+
+### Findings worth carrying forward
+
+- **`section_path` needed a disambiguation rule the plan did not anticipate.** MAS Notice 129
+  restarts clause numbering inside roughly forty forms — 188 of its 221 paths collided. A
+  positional suffix (`1#38`) would have destroyed the citation, so a repeat is qualified by its
+  enclosing header (`Notes to Form A1/1`) while the first occurrence keeps the bare number.
+  Corpus-wide this leaves 237 opaque paths of 11,171 (**2.1%**).
+- **The trace command earned itself immediately.** Running it on one real clause exposed that
+  locators were being generated from `min(text)` — lexicographic, not ordinal — so 23% of
+  multi-chunk clauses were described from an arbitrary middle chunk, and clause 6.14 came back
+  named "6.14A". Fixed and re-run. A summary statistic would not have shown this; reading one
+  record end to end did.
+- **Letter-suffixed clauses are a known, measured gap.** MAS amendments insert `6.14A`, and
+  Docling does not treat those as enumerations, so they stay inline inside the parent clause:
+  **190 of 11,171 sections (1.7%)** contain such a marker. No text is lost and it is still
+  retrievable under the parent, but it is not separately citable. Recovering it means an inline
+  regex over text items — the approach Docling replaced — so it waits until Day 4's golden set
+  says whether it matters.
+- **`effective_date` improved with the extractor held constant.** 73.6% → **88.3%**, using the
+  same function imported from `regdocs_mcp.build`. That makes the delta attributable to input
+  quality rather than a better regex, which is the only reason the number means anything.
+- **Contextual retrieval cost, in full:** 11,171 clauses, 0 failures, 7,177s (2.0h) at 0.64
+  s/clause, 3.60M prompt and 0.45M completion tokens. Embedding both arms is comparatively
+  free: 44,180 vectors at 57–71 chunks/s, HNSW in 14.4s.
+- **DuckDB does not reclaim space, and re-runs are the normal case.** A second `embed` pass
+  inflated the index from 651 MB to **2,926 MB holding identical data**. `COPY FROM DATABASE`
+  into a fresh file returns it to **433 MB in 57s**, carrying HNSW and BM25 intact. Shipped as
+  `regops-ingest compact` rather than left as folklore.
+- **LangFuse 4.24 writes to `events_core`/`events_full`,** not the legacy `traces`/`observations`
+  tables, and the public `/api/public/traces` endpoint 404s on this deployment. Both legacy
+  tables read 0 rows while tracing works perfectly — which is exactly how a working trace comes
+  to look broken. Verified instead by counting in ClickHouse: 25 `locator` generations and 1
+  `contextual-retrieval` summary span from a fully-sampled batch.
+
+### End-to-end proof
+
+The four Day 1 tools, unmodified, driven over JSON-RPC against the real Docling-built index:
+`search_notices("identify the beneficial owner")` returns **1,432 hits** led by three genuine
+beneficial-ownership clauses (`6.14`, `6.13`, `6.16`) across three different notices;
+`get_document_section` returns the clause; `list_obligations` extracts all three modalities.
+Vector search over both arms puts Notice 626 clause 6.14 top-1 for a natural-language question
+in 0.2–0.5s. That is ADR-003's claim, discharged on real data.
