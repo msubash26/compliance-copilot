@@ -314,3 +314,162 @@ entries, so it looks like an empty result rather than a refusal. This cost real 
 The `Mozilla/5.0 (compatible; <product>; +<url>)` form is the standard well-behaved-crawler
 convention (Googlebot, bingbot) and keeps the crawler identifiable via product token and
 contact URL. `tests/test_fetch_corpus.py` guards it.
+
+---
+
+## ADR-013 — Docling replaces the provisional parser behind an unchanged schema
+**Date:** 2026-09-03 · **Status:** Accepted
+
+**Context.** ADR-003 in `regdocs-mcp` committed to a swap: the index schema is the contract,
+the Day 1 PyMuPDF parser is provisional, and Day 3's pipeline would replace it without the four
+MCP tools moving. This is that swap.
+
+**Decision.** `regops_ingest.parse` uses Docling 2.124.0 (CUDA) and writes the same three
+tables `regdocs_mcp.index` defines. `regdocs_mcp.build` is retained, still marked provisional.
+
+**Docling had to earn a 121-package install**, including torch 2.13.0 and 15 `nvidia-*` CUDA
+wheels. Measured against the Day 1 splitter on three deliberately chosen documents — a 6-page
+notice, a 25-page prose guideline, a 131-page forms notice:
+
+| | Day 1 splitter | Docling |
+|---|---|---|
+| short notice | 11 sections, paths jump `3.2 → 5` | 14 sections, `1.1`–`6.2` unbroken |
+| prose guideline | 26 sections, paths jump `9 → 12` | 70 sections, full `3.1.1` hierarchy |
+| forms notice (131p) | 23 sections | 221 sections |
+| headings recovered | **0 of 3 documents** | 13/14, 57/70, 140 headers |
+| tables | none — flattened into text | 1, 65 |
+
+**The mechanism, not just the score.** The regex recovered clause numbers by matching
+line-leading digits, which forced two heuristics that are structure questions in disguise:
+telling a footnote marker from a clause number, and telling a page number from a section
+marker. Docling answers both by *label* — `footnote`, `page_header`, `page_footer` arrive
+tagged — and hands back MAS's own clause number in `ListItem.marker`, with lettered limbs
+`(a)`/`(b)` arriving as `enumerated=False` and staying attached to their parent clause. The
+Day 1 splitter did not lose clause 4's *text*; it merged it into 3.2, which is worse than
+losing it, because a citation then points at the wrong clause.
+
+**OCR is routed by detection, not applied globally.** Parse without OCR, and re-run only
+documents that yield under 200 characters. Exactly 2 documents of 463 are scans; global OCR
+would bill 9,043 pages to serve two. On the full run it fired on exactly those two — Notices
+817 and 818, the Day 1 carried-forward debt — and both now have text.
+
+**Measured over the full corpus:** 463 documents, 9,043 pages, **11,171 sections in 1,484s**
+(0.164 s/page; median 0.085, max 16.9). Day 1 produced 8,055 sections, so this is +39%.
+`effective_date` resolved for **409/463 (88.3%)** against Day 1's 341/463 (73.6%) — using the
+*same* extractor, imported from `regdocs_mcp.build`, so the +14.7 points are attributable to
+input quality alone rather than to a better regex. 2,173 tables carrying 17,538 rows were
+recovered where Day 1 had none.
+
+**The consequence that justifies ADR-001's two-repo split.** Docling lands in the
+`compliance-copilot` workspace only. `regdocs-mcp` keeps its own venv, stays a `uv sync` from
+green CI, and needs no multi-GB CUDA download to be cloneable. Verified after the install:
+`regdocs-mcp` still passes 90 tests and `import docling` fails in its venv. Day 3 is the first
+day that split pays for itself.
+
+---
+
+## ADR-014 — Parent-child chunking where the clause is the parent
+**Date:** 2026-09-03 · **Status:** Accepted
+
+**Decision.** `sections` is the parent, `chunks` the embedded child. Retrieval matches a child;
+citation and display use the parent.
+
+**Rationale.** Most corpora have to invent a parent window — N neighbouring chunks, or a
+sliding page — because the document has no unit of its own. MAS numbering hands us a real one.
+The clause is what the document declares, what a compliance officer cites, and what survives
+re-parsing (ADR-003's point about `section_path` being a clause number and not a chunk index).
+It is also, already, exactly what `get_document_section(doc_id, section_path)` returns, so the
+retrieval design and the Day 1 tool surface agree by construction rather than by coincidence.
+
+**Children exist only because embedding models have a context limit.** At 1,200 characters,
+measured over the full corpus: 11,171 sections → **22,090 chunks**, 1.98 chunks per section,
+median 928 characters. Most clauses are one chunk; the split is the exception.
+
+**A repeated clause number is qualified by its enclosing header, not by a counter.** MAS Notice
+129 restarts numbering at 1 inside roughly forty forms — 188 of its 221 clause paths collided
+on a first pass. The first occurrence in document order keeps the bare number, so
+"Notice 129, paragraph 17" still cites what a reader means by it; a repeat becomes
+`Notes to Form A1/1`. That is still a citation, where `1#38` is not. Over the full corpus this
+leaves **237 opaque paths of 11,171 (2.1%)**, against 85% on that document before the rule.
+
+---
+
+## ADR-015 — Contextual retrieval: reasoning off, per clause, outline not document
+**Date:** 2026-09-03 · **Status:** Accepted
+
+**Decision.** Each clause gets one LLM-written locator sentence, generated on `qwen3.5:9b` with
+thinking disabled, from a structural outline rather than document text, and applied to every
+chunk of that clause.
+
+**Three measurements shaped this, and each overturned an assumption in the day's plan.**
+
+**1. Reasoning has to be off — 15×.** Timed on this corpus:
+
+| | per item | over the corpus |
+|---|---|---|
+| `think=True` (default) | 7.98 s | 17.9 h |
+| `think=False` | 0.53 s | 71 min |
+
+The slow call was also *worse*: thinking tokens exhausted the 120-token cap, so it returned a
+truncated answer for its eight seconds. Writing a locator is the least reasoning-shaped task
+imaginable. This is ADR-009 collecting.
+
+**2. That forces the native API, and hand-written tracing.** Day 0 established that
+`think: false` is not honoured on Ollama's OpenAI-compatible endpoint — neither `extra_body`
+nor `reasoning_effort` reaches it. So this module posts to `/api/chat` directly and gives up
+the free instrumentation `langfuse.openai` provides. The 15× is worth writing the span by hand.
+
+**3. Concurrency is not a lever.** The plan said "start at 4, measure". Measured, on a free
+GPU, over 60 items:
+
+| concurrency | 1 | 4 | 12 |
+|---|---|---|---|
+| s/item | 0.65 | 0.63 | 0.62 |
+
+5% from a 12× increase. Ollama serialises against one loaded model and a single stream already
+saturates the 3090, so throughput is a property of the server's `OLLAMA_NUM_PARALLEL`, not of
+the client. Raising it means restarting a shared service, which is left as a deliberate
+non-change.
+
+**The unit is the clause, not the chunk.** Anthropic's method contextualises each chunk. Here
+the parent is a real unit (ADR-014), so the sentence situating chunk 2 of clause 6.14 *is* the
+sentence situating clause 6.14. Generating it once per clause and applying it to that clause's
+chunks costs 11,171 calls instead of 22,090 — **2.0 hours against 3.9** — for a locator that is
+identical either way. The plan assumed 8,055 chunks; the real pipeline produces 2.7× that, and
+this is what keeps the technique affordable at the new scale.
+
+**The prompt carries an outline, not the document.** A 1,110-page notice cannot be situated by
+stuffing it into a 9B context, and doing so would invalidate the timing above. The prompt
+carries title, issuer, type, effective date, and the clause spine around the target. For legal
+text that is not a compromise: a clause's position in the numbering *is* its context.
+
+**Cost of the real prompt, re-timed before committing** (the plan required this): 281 prompt
+tokens per call against ~140 in the original probe, landing at 0.63 s — under the 2 s/item
+threshold at which the plan said to descope to a golden-set subset. Full scope was kept.
+
+---
+
+## ADR-016 — Vectors live in DuckDB VSS, not in an eighth container
+**Date:** 2026-09-03 · **Status:** Accepted
+
+**Decision.** Embeddings sit in an `embeddings` table in the same DuckDB file as the clauses,
+searched by an HNSW index from the `vss` extension. No Qdrant, no new service.
+
+**Rationale.** Day 0 left this open ("Qdrant or DuckDB volume"). DuckDB 1.5.5 loads `vss` and
+builds HNSW, so the whole index — documents, clauses, chunks, tables, vectors, and the BM25
+index — stays one copyable file. The stack already runs seven containers; an eighth needs to
+earn itself, and a single-node corpus of 22,090 vectors does not make that case. Keeping BM25
+and vectors in one engine also makes Day 5's hybrid retrieval a join rather than a merge across
+two systems.
+
+**Both arms are embedded over the same chunks.** Every chunk is embedded twice, under distinct
+`model` labels: `nomic-embed-text:latest` on its own text, and `…+ctx` with the locator
+prepended. Day 5 sweeps contextual retrieval on against off, and that comparison is only clean
+if the arms differ in *one* thing — otherwise they differ in what was chunked as well as in
+what was embedded.
+
+**The honest limit.** Single-node, no replication, one writer at a time. `vss` still flags
+persistent HNSW as experimental, so the index is rebuilt rather than incrementally maintained.
+If Day 12 goes multi-node or the corpus grows past a single machine, this is the decision to
+revisit — and it is cheap to revisit, because nothing above the `embeddings` table knows where
+the vectors live.
