@@ -265,7 +265,7 @@ def cmd_context(a: argparse.Namespace) -> int:
     # sent to the model is the clause's first chunk, which is what the locator is
     # about. See ADR-015.
     rows = conn.execute(
-        f"""SELECT c.section_uid, min(c.text), any_value(s.section_path),
+        f"""SELECT c.section_uid, arg_min(c.text, c.ordinal), any_value(s.section_path),
                    any_value(s.heading), any_value(d.doc_id), any_value(d.title),
                    any_value(d.doc_type), any_value(d.issuer), any_value(d.effective_date)
             FROM chunks c
