@@ -320,7 +320,13 @@ def cmd_context(a: argparse.Namespace) -> int:
             )
 
     out = asyncio.run(
-        contextualise(items, model=a.model, concurrency=a.concurrency, on_done=progress)
+        contextualise(
+            items,
+            model=a.model,
+            concurrency=a.concurrency,
+            on_done=progress,
+            trace_sample=a.trace_sample,
+        )
     )
     wall = time.perf_counter() - t0
     n_chunks = 0
@@ -423,6 +429,12 @@ def main() -> None:
     x.add_argument("--limit", type=int, default=None)
     x.add_argument("--doc-id", default=None)
     x.add_argument("--redo", action="store_true", help="overwrite existing context sentences")
+    x.add_argument(
+        "--trace-sample",
+        type=float,
+        default=0.01,
+        help="fraction of calls traced to LangFuse; failures are always traced",
+    )
     x.set_defaults(fn=cmd_context)
 
     e = sub.add_parser("embed", help="embed chunks and build the HNSW index")

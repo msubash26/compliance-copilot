@@ -26,6 +26,8 @@ from __future__ import annotations
 
 import asyncio
 import os
+import random
+import time
 from dataclasses import dataclass
 
 import httpx
@@ -134,31 +136,108 @@ async def _one(
     return (text or None), usage
 
 
+def _client(sample: float):
+    """A LangFuse client, or None when tracing is off or unconfigured.
+
+    Never fatal: an ingest run that cannot reach the trace store still has to
+    produce an index.
+    """
+    if sample <= 0:
+        return None
+    try:
+        from langfuse import get_client
+
+        client = get_client()
+        return client if client.auth_check() else None
+    except Exception:  # noqa: BLE001 - observability must not break ingestion
+        return None
+
+
 async def contextualise(
     items: list[tuple[str, Outline, str]],
     *,
     model: str = DEFAULT_MODEL,
     concurrency: int = DEFAULT_CONCURRENCY,
     on_done=None,
+    trace_sample: float = 0.0,
 ) -> dict[str, str | None]:
-    """Write a locator for each (chunk_id, outline, text). Failures map to None.
+    """Write a locator for each (key, outline, text). Failures map to None.
 
     A failed locator is not fatal: the chunk still embeds on its own text, which
     is exactly the control arm of Day 5's contextual on/off comparison.
+
+    Tracing is **sampled**. 11,171 traced generations would drown the project and
+    tell you nothing 20 of them would not, so `trace_sample` of them are recorded
+    individually, every failure is recorded regardless, and the job as a whole
+    gets one summary span carrying wall clock and token totals.
     """
     sem = asyncio.Semaphore(concurrency)
     out: dict[str, str | None] = {}
+    lf = _client(trace_sample)
+    rng = random.Random(0)  # sampling is reproducible, so a rerun traces the same items
+    totals = {"n": 0, "failed": 0, "prompt": 0, "completion": 0}
+    started = time.time()
+
+    job = None
+    if lf is not None:
+        job = lf.start_observation(
+            name="contextual-retrieval",
+            as_type="span",
+            input={"items": len(items), "model": model, "concurrency": concurrency},
+            metadata={"day": "3", "task": "contextual-retrieval", "think": False},
+        )
+
     async with httpx.AsyncClient() as client:
 
-        async def run(chunk_id: str, outline: Outline, text: str) -> None:
+        async def run(key: str, outline: Outline, text: str) -> None:
             async with sem:
+                sampled = lf is not None and rng.random() < trace_sample
+                t0 = time.time()
                 try:
                     ctx, usage = await _one(client, model, outline, text)
                 except (httpx.HTTPError, ValueError) as exc:
                     ctx, usage = None, {"error": str(exc)[:120]}
-                out[chunk_id] = ctx
+                out[key] = ctx
+
+                totals["n"] += 1
+                totals["failed"] += ctx is None
+                totals["prompt"] += usage.get("prompt_tokens") or 0
+                totals["completion"] += usage.get("completion_tokens") or 0
+
+                # Every failure is traced whether or not it was sampled.
+                if lf is not None and (sampled or ctx is None):
+                    gen = lf.start_observation(
+                        name="locator",
+                        as_type="generation",
+                        model=model,
+                        input=outline.render(),
+                        metadata={"key": key, "latency_s": round(time.time() - t0, 3)},
+                    )
+                    gen.update(
+                        output=ctx,
+                        usage_details={
+                            "input": usage.get("prompt_tokens") or 0,
+                            "output": usage.get("completion_tokens") or 0,
+                        },
+                        level="ERROR" if ctx is None else "DEFAULT",
+                        status_message=usage.get("error"),
+                    )
+                    gen.end()
+
                 if on_done is not None:
-                    on_done(chunk_id, ctx, usage)
+                    on_done(key, ctx, usage)
 
         await asyncio.gather(*(run(*it) for it in items))
+
+    if job is not None:
+        wall = time.time() - started
+        job.update(
+            output={
+                **totals,
+                "wall_s": round(wall, 1),
+                "s_per_item": round(wall / max(len(items), 1), 3),
+            }
+        )
+        job.end()
+        lf.flush()
     return out

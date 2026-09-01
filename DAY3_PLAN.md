@@ -113,22 +113,22 @@ index. ADR-004 turned down better-looking data than this for the same reason.
 
 ## Phase 0 — Housekeeping · 15 min
 
-- [ ] `gh auth status` — drifts back to `99Tungsten99`; switch to `msubash26` if needed
-- [ ] `./scripts/stack.sh ps` — 7 services; LangFuse is needed today for the first time since Day 0
-- [ ] `ollama ps` / warm `qwen3.5:9b`, confirm the 3090 is idle before timing anything
-- [ ] Re-read ADR-003 (the contract), ADR-004 (why no fake versions), ADR-012 (doc_id rules)
+- [x] `gh auth status` — drifts back to `99Tungsten99`; switch to `msubash26` if needed
+- [x] `./scripts/stack.sh ps` — 7 services; LangFuse is needed today for the first time since Day 0
+- [x] `ollama ps` / warm `qwen3.5:9b`, confirm the 3090 is idle before timing anything
+- [x] Re-read ADR-003 (the contract), ADR-004 (why no fake versions), ADR-012 (doc_id rules)
 
 ## Phase 1 — Install Docling and gate it on quality · 45 min
 
-- [ ] `uv add --package regops-ingest "docling>=2.124,<3"`. **Into the member, not the root**,
+- [x] `uv add --package regops-ingest "docling>=2.124,<3"`. **Into the member, not the root**,
       and never into `regdocs-mcp`. Then `uv run --directory ../regdocs-mcp pytest -q` to
       confirm the server's venv is untouched and still green at 90.
-- [ ] Confirm Docling actually uses the GPU (watch `nvidia-smi` during a parse). CPU-only
+- [x] Confirm Docling actually uses the GPU (watch `nvidia-smi` during a parse). CPU-only
       would change every number in Phase 2.
-- [ ] Parse **three** deliberately chosen documents and read the output by hand:
+- [x] Parse **three** deliberately chosen documents and read the output by hand:
       a short notice (~7 pages), a prose guideline (~30 pages), and a table-dense capital
       notice (~130 pages).
-- [ ] **Gate — Docling has to earn its install.** Against the Day 1 splitter on the same three
+- [x] **Gate — Docling has to earn its install.** Against the Day 1 splitter on the same three
       documents, it must show at least one of: tables preserved as structured rows rather than
       flattened text, a heading hierarchy the regex could not recover, or materially better
       clause boundaries. If it shows none, the honest outcome is a **hybrid**: PyMuPDF for
@@ -136,14 +136,14 @@ index. ADR-004 turned down better-looking data than this for the same reason.
 
 ## Phase 2 — Throughput gate, then start the long run · 30 min
 
-- [ ] Time Docling over **20 stratified documents** (sampled across the page buckets above),
+- [x] Time Docling over **20 stratified documents** (sampled across the page buckets above),
       record seconds/page, extrapolate to 9,043 pages.
-- [ ] Time **Notice 637 alone**. If it exceeds ~30 minutes or exhausts VRAM, it gets its own
+- [x] Time **Notice 637 alone**. If it exceeds ~30 minutes or exhausts VRAM, it gets its own
       handling (page-range batching) rather than blocking the corpus.
-- [ ] Route OCR **by detection, not globally**: extract text first, and only send the
+- [x] Route OCR **by detection, not globally**: extract text first, and only send the
       documents under a character threshold through Docling's OCR path. Two documents earn it;
       applying it to 9,043 pages would not survive the budget.
-- [ ] **Start the full parse in the background here**, and do Phases 3–5 while it runs. If the
+- [x] **Start the full parse in the background here**, and do Phases 3–5 while it runs. If the
       extrapolation says the run exceeds ~3 hours, it runs overnight and Phase 4 develops
       against the 20-document sample — say so in the plan rather than discovering it at 22:00.
 
@@ -152,10 +152,10 @@ index. ADR-004 turned down better-looking data than this for the same reason.
 `regops_ingest.parse` → `regops_ingest.chunk` → `regops_ingest.load`, writing the schema
 `regdocs_mcp.index` owns plus new tables beside it.
 
-- [ ] **Same three tables, unchanged.** `documents`, `sections`, `document_versions`.
+- [x] **Same three tables, unchanged.** `documents`, `sections`, `document_versions`.
       `sections.section_path` stays the document's own clause number — it is what a compliance
       officer cites and what the MCP tools return.
-- [ ] **New tables, additive only:**
+- [x] **New tables, additive only:**
 
 ```sql
 chunks(chunk_id PK, doc_id, section_uid, ordinal, text,
@@ -165,29 +165,29 @@ tables(table_id PK, doc_id, section_uid, page, caption, rows_json)
 embeddings(chunk_id PK, model, dim, vec FLOAT[768])
 ```
 
-- [ ] **Parent-child chunking, and the parent is the clause.** `sections` is the parent,
+- [x] **Parent-child chunking, and the parent is the clause.** `sections` is the parent,
       `chunks` the embedded child. Most corpora need an arbitrary parent window; MAS numbering
       hands us a real one. `get_document_section(doc_id, section_path)` already returns exactly
       that parent, so the retrieval design and the Day 1 tool surface agree by construction
       rather than by coincidence.
-- [ ] Deterministic IDs throughout: `doc_id` from the canonical URL (ADR-012, unchanged),
+- [x] Deterministic IDs throughout: `doc_id` from the canonical URL (ADR-012, unchanged),
       `section_uid = doc_id:section_path`, `chunk_id = section_uid#ordinal`. Re-ingestion
       overwrites by key.
-- [ ] **Richer metadata**: notice number parsed from the title (`MAS Notice 626`), issuer,
+- [x] **Richer metadata**: notice number parsed from the title (`MAS Notice 626`), issuer,
       doc_type, clause path, and `effective_date` from Docling's front matter — **measure the
       new coverage against Day 1's 74%** and report the delta either way.
-- [ ] **Idempotent upsert.** Re-ingesting an unchanged corpus is a no-op; a changed `sha256`
+- [x] **Idempotent upsert.** Re-ingesting an unchanged corpus is a no-op; a changed `sha256`
       for a known `doc_id` inserts a `document_versions` row. That is the mechanism ADR-004
       said history depends on.
 
 ## Phase 4 — Contextual retrieval and embeddings · 60 min
 
-- [ ] Context prompt carries the **structural outline**, not document text (problem 3 above).
+- [x] Context prompt carries the **structural outline**, not document text (problem 3 above).
       **Re-time it on real prompts before committing to the full run** — the 0.53 s/chunk
       figure was measured at ~140 prompt tokens and only holds if the outline stays small.
-- [ ] `think=False` on every call, explicitly, with a comment pointing at ADR-009 and the
+- [x] `think=False` on every call, explicitly, with a comment pointing at ADR-009 and the
       15× measurement. This is the single line that makes the technique affordable.
-- [ ] Bounded concurrency against Ollama (start at 4, measure — the 3090 has 24 GB and the
+- [x] Bounded concurrency against Ollama (start at 4, measure — the 3090 has 24 GB and the
       model is 6.6 GB, so there is headroom, but tokens/s per stream will fall).
 - [ ] **Trace to LangFuse, sampled.** 8,055 traced generations would drown the project; sample
       ~1% plus every failure, and record total wall-clock and token counts as one summary
@@ -199,30 +199,30 @@ embeddings(chunk_id PK, model, dim, vec FLOAT[768])
 
 ## Phase 5 — Traceability and tests · 40 min
 
-- [ ] **`regops-ingest trace <doc_id> <section_path>`** — prints the source PDF and page, the
+- [x] **`regops-ingest trace <doc_id> <section_path>`** — prints the source PDF and page, the
       section text, its chunks, the context sentence, the embedding's model/dim/norm, and the
       metadata row. This *is* the prep plan's "done when", so it ships as a command rather
       than a screenshot.
-- [ ] **The contract test (ADR-003's claim, as a test).** Build a small index with the Docling
+- [x] **The contract test (ADR-003's claim, as a test).** Build a small index with the Docling
       pipeline, point `REGDOCS_INDEX` at it, and run `regdocs-mcp`'s tool assertions against
       it. Same tools, same shapes, no server edits. **This is the test not to cut.**
-- [ ] Idempotency test: ingest twice → identical row counts and IDs; ingest with mutated bytes
+- [x] Idempotency test: ingest twice → identical row counts and IDs; ingest with mutated bytes
       → exactly one new `document_versions` row, and `diff_versions` stops returning its empty
       state.
-- [ ] OCR test: the two scanned notices yield non-empty sections.
-- [ ] A table test on a capital notice: rows survive as rows.
+- [x] OCR test: the two scanned notices yield non-empty sections.
+- [x] A table test on a capital notice: rows survive as rows.
 
 ## Phase 6 — Write-up · 50 min
 
-- [ ] **ADR-013** — Docling replaces the provisional parser behind an unchanged schema; what
+- [x] **ADR-013** — Docling replaces the provisional parser behind an unchanged schema; what
       the gate measured; OCR routed by detection rather than applied globally.
-- [ ] **ADR-014** — Parent-child chunking where the clause is the parent, and why this corpus
+- [x] **ADR-014** — Parent-child chunking where the clause is the parent, and why this corpus
       hands us that for free.
-- [ ] **ADR-015** — Contextual retrieval costs 0.53 s/chunk with reasoning off and 7.98 s with
+- [x] **ADR-015** — Contextual retrieval costs 0.53 s/chunk with reasoning off and 7.98 s with
       it on; the outline-not-full-text prompt that keeps it there.
-- [ ] **ADR-016** — Vectors in DuckDB VSS rather than a Qdrant container: one file, no eighth
+- [x] **ADR-016** — Vectors in DuckDB VSS rather than a Qdrant container: one file, no eighth
       service, and the honest limit (single-node, no replication — revisit if Day 12 goes cloud).
-- [ ] README (copilot): the ingest pipeline, the throughput table, the coverage deltas.
+- [x] README (copilot): the ingest pipeline, the throughput table, the coverage deltas.
 - [ ] Update `initial-setup.md` — Day 3 status, new numbers, any new gotchas.
 - [ ] Note in `regdocs-mcp` that `build.py` is retained deliberately (see decision 3 below).
 - [ ] Commit, push both repos, confirm CI green on both.
