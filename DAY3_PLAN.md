@@ -189,13 +189,13 @@ embeddings(chunk_id PK, model, dim, vec FLOAT[768])
       15× measurement. This is the single line that makes the technique affordable.
 - [x] Bounded concurrency against Ollama (start at 4, measure — the 3090 has 24 GB and the
       model is 6.6 GB, so there is headroom, but tokens/s per stream will fall).
-- [ ] **Trace to LangFuse, sampled.** 8,055 traced generations would drown the project; sample
+- [x] **Trace to LangFuse, sampled.** 8,055 traced generations would drown the project; sample
       ~1% plus every failure, and record total wall-clock and token counts as one summary
       trace. First real LLM workload since Day 0's hello-world.
-- [ ] Embed **both** variants — raw chunk and context-prepended chunk — into `embeddings`
+- [x] Embed **both** variants — raw chunk and context-prepended chunk — into `embeddings`
       under distinct `model` labels. Day 5 sweeps `contextual on/off`; that A/B is only clean
       if both vectors exist over the *same* chunks.
-- [ ] HNSW index via DuckDB `vss`. Record build time and file size.
+- [x] HNSW index via DuckDB `vss`. Record build time and file size.
 
 ## Phase 5 — Traceability and tests · 40 min
 
@@ -223,9 +223,9 @@ embeddings(chunk_id PK, model, dim, vec FLOAT[768])
 - [x] **ADR-016** — Vectors in DuckDB VSS rather than a Qdrant container: one file, no eighth
       service, and the honest limit (single-node, no replication — revisit if Day 12 goes cloud).
 - [x] README (copilot): the ingest pipeline, the throughput table, the coverage deltas.
-- [ ] Update `initial-setup.md` — Day 3 status, new numbers, any new gotchas.
-- [ ] Note in `regdocs-mcp` that `build.py` is retained deliberately (see decision 3 below).
-- [ ] Commit, push both repos, confirm CI green on both.
+- [x] Update `initial-setup.md` — Day 3 status, new numbers, any new gotchas.
+- [x] Note in `regdocs-mcp` that `build.py` is retained deliberately (see decision 3 below).
+- [x] Commit, push both repos, confirm CI green on both.
 
 ---
 
