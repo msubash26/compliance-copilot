@@ -1032,3 +1032,85 @@ It is off by default and `--repair` retains it so the number can be reproduced. 
 constrained decoding cannot emit `[]` — since constrained decoding is the one mechanism that has
 worked perfectly here. It cannot express "unless this is an abstention", so it needs two schemas
 and a routing decision. Not attempted, named so it is not mistaken for done.
+
+---
+
+## ADR-027 — LangGraph and Pydantic AI on the same task, and why the comparison is not a winner
+**Date:** 2026-09-06 · **Status:** Accepted
+
+**Method.** The same six golden questions, the same `qwen3.5:9b`, the same measured system
+prompt, the same `Answer` schema, the same `regdocs-mcp` over stdio. A test asserts both agents
+carry the identical prompt and output type, because a comparison whose arms drift measures the
+drift. `regops_agents.compare`, raw rows in `results/day6/frameworks.json`.
+
+| | LangGraph 1.2.11 | Pydantic AI 2.37.0 |
+|---|---|---|
+| completed | **6/6** | **1/6** |
+| tool calls (6 questions) | 11 | 19 |
+| tool errors | 1 | 3 |
+| p50 wall-clock | **5.61s** | 27.23s |
+| lines to stand the agent up | ~140 | ~25 |
+
+**The completion columns do not measure the same thing, and the difference is the finding.**
+LangGraph's 6/6 means "returned prose". Pydantic AI's 1/6 means "returned a *schema-valid*
+`Answer`" — it refuses to return anything else, and five of six runs died on
+`UnexpectedModelBehavior: Exceeded maximum output retries`. Reading that as "LangGraph is six
+times better" would be reading a stricter bar as a worse result. The like-for-like number is
+this repo's own: LangGraph plus a separate validation pass produced schema-valid output on
+**30/30** and citations that resolve on **19/30** (ADR-026). Pydantic AI enforces the first
+inline and, on this model, that enforcement is what fails.
+
+**Retries were tested and are not the explanation.** `retries=1` is Pydantic AI's default and
+was the first measurement. At `retries=3`: still **1/6**, with p50 27.2s → **77.2s**, and one
+run newly dying on the provider's token limit because the retry loop grew the conversation past
+the context window. **Tripling the retry budget bought zero additional completions and tripled
+the latency.** That is the third independent measurement today of "hand it back and ask again" —
+after F11's 0-of-11 hand-rolled repair loop and Pydantic AI's own internal output retry — and all
+three recovered nothing.
+
+**Where each framework is genuinely better, on evidence rather than taste.**
+
+*Pydantic AI, on the axis the prep plan cares about most.* Its MCP support is in-tree
+(`MCPToolset` + `StdioTransport`) and works against `mcp>=2.1` unchanged. LangGraph's route is
+`langchain-mcp-adapters`, which **cannot talk to this server at any published version** — 0.3.1
+declares `mcp>=1.24.0` with no upper bound, resolves against 2.1 and dies at import; 0.3.2 pins
+`<2.0.0`, which excludes spec `2026-07-28`. That cost this repo a 60-line bridge it now maintains
+(F12). On MCP, the framework the plan treats as secondary wins outright.
+
+*Pydantic AI, on failing loudly.* Every failure above is an exception with a name. LangGraph's
+`recursion_limit` raises nothing on either `stream` or `invoke`, returns a run that looks
+complete, and appends *"Sorry, need more steps to process this request."* as though the model had
+said it (F9, F10). For a compliance tool, an exception beats a plausible sentence.
+
+*LangGraph, on the endpoint.* `ChatOllama` posts to Ollama's native `/api/chat` and can set
+`reasoning=False`. Pydantic AI's Ollama provider speaks the OpenAI-compatible `/v1`, which
+ignores it — the 15× that ADR-009 measured. **So the wall-clock column is substantially a
+comparison of which endpoint each framework chose to speak, not of either one's design.** Stated
+here rather than in a footnote, because 5.6s against 27.2s invites the wrong conclusion.
+
+*LangGraph, on control.* Pydantic AI has no step ceiling: it loops until the model emits a valid
+`final_result`, and one question consumed **24 tool calls** against LangGraph's one or two. A
+ceiling had to be built by hand for LangGraph, but it exists and it returns a partial result;
+Pydantic AI's equivalent is a retry counter on output validation, which is a different control
+and does not bound tool use.
+
+**Lines of code, reported and explicitly not treated as a quality signal.** ~25 against ~140.
+Almost all of the difference is the MCP bridge LangGraph needed and the exhaustion detection
+LangGraph needed — that is, LangGraph's line count is inflated by two of its own defects, which
+makes the metric a restatement of the findings above rather than independent evidence.
+
+**Recommendation, with the parts that are preference marked as such.** Keep **LangGraph** for
+Days 7–8: the supervisor, the Postgres checkpointer and the human-in-the-loop interrupt are
+first-class there, this codebase already carries the bridge and the ceiling, and a 5× latency
+difference matters when Day 8 runs thirty tasks. Keep the **Pydantic AI** agent as a maintained
+second implementation rather than a demo — it is the honest counter-example to "we chose
+LangGraph", and its MCP support is the better one. *Preference, not evidence:* Pydantic AI's
+declarative agent reads better and its failures are easier to diagnose; if this project were
+starting today against a hosted model with a native provider, the endpoint objection would
+disappear and the recommendation could go the other way.
+
+**What this comparison cannot say.** n=6, one local 9B model, one prompt, on a machine where one
+framework reaches the model through a lossier endpoint than the other. It is enough to support
+the qualitative claims — MCP compatibility, failure loudness, control surfaces, retry futility —
+and not enough to rank the frameworks on answer quality. The completion columns in particular
+should not be quoted without the sentence explaining that they measure different bars.

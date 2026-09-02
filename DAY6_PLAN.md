@@ -171,63 +171,63 @@ reported and explicitly *not* treated as quality. The output is a tradeoff, not 
 
 ## Phase 0 — Housekeeping · 15 min
 
-- [ ] `gh auth status` — drifts back to `99Tungsten99`; both repos are touched today
-- [ ] `./scripts/stack.sh ps` — 7 services; LangFuse is needed for agent traces
-- [ ] `nvidia-smi` idle, and `ollama ps` empty — the reranker wants 1.33 GB alongside a 9B model
-- [ ] Re-read ADR-001 (why the server repo stays CUDA-free), ADR-003 (the schema is the contract),
+- [x] `gh auth status` — drifts back to `99Tungsten99`; both repos are touched today
+- [x] `./scripts/stack.sh ps` — 7 services; LangFuse is needed for agent traces
+- [x] `nvidia-smi` idle, and `ollama ps` empty — the reranker wants 1.33 GB alongside a 9B model
+- [x] Re-read ADR-001 (why the server repo stays CUDA-free), ADR-003 (the schema is the contract),
       ADR-020 (the config ladder), ADR-022 (the determinism fix that has to travel)
 
 ## Phase 1 — Clear Day 5's debt · 45 min
 
 Neither of these is agent work. Both are load-bearing for it, and both were promised.
 
-- [ ] **Re-verify the golden set** with `NEGATIVE_EXCERPT_CHARS = 6000` (ADR-024). Expect the
+- [x] **Re-verify the golden set** with `NEGATIVE_EXCERPT_CHARS = 6000` (ADR-024). Expect the
       flagged count to move off 28 and `gs-0118` to flag itself. Republish
       `verification.json`, `review_queue.md`, and the flagged count in `golden/v1/README.md`.
-- [ ] **Re-run `regops-evals bench --configs all`** afterwards. The 122/28 split is what the Day 5
+- [x] **Re-run `regops-evals bench --configs all`** afterwards. The 122/28 split is what the Day 5
       sensitivity run and the abstention split are keyed to, so the table has to be regenerated
       against the new split rather than left describing an instrument that has changed. Re-check
       the Phase 3 baseline gate: C1 must still reproduce `saturation.json`.
-- [ ] Update `results/day5/retrieval.md` and the README's numbers from the regenerated JSON.
+- [x] Update `results/day5/retrieval.md` and the README's numbers from the regenerated JSON.
       **Nothing here is hand-edited** — the renderer reads the data or the data is wrong.
-- [ ] **Port ADR-022's rounding fix to `regdocs-mcp`** (research 4): `ORDER BY round(score, 9) DESC`
+- [x] **Port ADR-022's rounding fix to `regdocs-mcp`** (research 4): `ORDER BY round(score, 9) DESC`
       in `search_sections`, its own ADR in that repo's `DECISIONS.md`, and a test that runs one
       query four times against a fixture and asserts one ordering. Green CI on both repos before
       any agent code is written.
 
 ## Phase 2 — The LangGraph agent over `regdocs-mcp` · 90 min
 
-- [ ] `uv add --package regops-agents langgraph langchain-mcp-adapters langchain-ollama`. **Into
+- [x] `uv add --package regops-agents langgraph langchain-mcp-adapters langchain-ollama`. **Into
       the member, not the root**, and never into `regdocs-mcp`.
-- [ ] A ReAct agent over the four MCP tools, loaded through `langchain-mcp-adapters` against the
+- [x] A ReAct agent over the four MCP tools, loaded through `langchain-mcp-adapters` against the
       server over **stdio**. The adapter is the point of the exercise: the tool schemas the model
       sees must come from the server's own definitions, not from a hand-written copy that can
       drift from them.
-- [ ] Add `search_local` as a second tool backed by `regops_retrieval.configs.C4` (problem 1).
+- [x] Add `search_local` as a second tool backed by `regops_retrieval.configs.C4` (problem 1).
       Both tools are declared in one place with their descriptions, because a tool description is
       prompt real estate and Day 6 is going to measure what a change to one does.
-- [ ] **A hard step ceiling and a hard wall-clock ceiling**, both returning a partial result rather
+- [x] **A hard step ceiling and a hard wall-clock ceiling**, both returning a partial result rather
       than raising. An agent that cannot answer must say so with what it has, not disappear into a
       retry loop — and "hard-fail at N steps with a partial result" is the shape Day 7's cost
       ceiling will extend.
-- [ ] Trace every run to LangFuse: one span per tool call with its arguments and result size, so
+- [x] Trace every run to LangFuse: one span per tool call with its arguments and result size, so
       the failure work in Phase 4 has something to read afterwards.
-- [ ] Done when: one compliance question is answered end to end, and the trace shows the model
+- [x] Done when: one compliance question is answered end to end, and the trace shows the model
       calling `search_notices` and then `get_document_section` with a `doc_id` it got from the
       first call rather than one it invented.
 
 ## Phase 3 — Structured output, and citations that resolve · 60 min
 
-- [ ] A Pydantic `Answer` model — answer text, citations as `(doc_id, section_path)`, and an
+- [x] A Pydantic `Answer` model — answer text, citations as `(doc_id, section_path)`, and an
       explicit `sufficient: bool` so abstention stays a first-class output rather than a phrase to
       regex for. Day 5's abstention machinery already reads that field.
-- [ ] **Layer 2, the one research 2 says is missing:** every citation is resolved against the index
+- [x] **Layer 2, the one research 2 says is missing:** every citation is resolved against the index
       before the answer is returned. An unresolvable citation is a *failed validation*, not a
       cosmetic issue.
-- [ ] A repair loop: on schema or reference failure, hand the model its own output and the specific
+- [x] A repair loop: on schema or reference failure, hand the model its own output and the specific
       violation, and retry once. **Measure the repair rate** — how often one retry fixes it, how
       often it fails the same way twice.
-- [ ] Report all three layers as separate rates over the golden subset, with the research-2 numbers
+- [x] Report all three layers as separate rates over the golden subset, with the research-2 numbers
       (18/20 and 12/20) as the before.
 
 ## Phase 4 — Break it deliberately · 90 min
@@ -235,51 +235,51 @@ Neither of these is agent work. Both are load-bearing for it, and both were prom
 `FAILURE_MODES.md`. Every entry: **trigger · measured symptom · mitigation · cost of mitigation.**
 Three are already measured; five have to be provoked.
 
-- [ ] **F1 Hallucinated tool arguments** — measured: 9/29 filtered the gold document away.
+- [x] **F1 Hallucinated tool arguments** — measured: 9/29 filtered the gold document away.
       Mitigation candidates: drop the filters from the description, or make them opt-in via the
       system prompt. Measure the tool-description change (the prep plan's *"tool descriptions are
       prompt real estate — measure how tool-call accuracy changes when you rewrite a description"*).
-- [ ] **F2 Unresolvable citations** — measured: 6/18 validated answers cite something absent.
-- [ ] **F3 Context overflow, silent and front-first** — measured: needle at prompt start gone at
+- [x] **F2 Unresolvable citations** — measured: 6/18 validated answers cite something absent.
+- [x] **F3 Context overflow, silent and front-first** — measured: needle at prompt start gone at
       `num_ctx` 2048/4096 with no error. Provoke it in the agent with a `list_obligations` page.
-- [ ] **F4 Tool-call loops** — provoke with a question whose answer is not in the corpus and watch
+- [x] **F4 Tool-call loops** — provoke with a question whose answer is not in the corpus and watch
       whether the agent re-searches with permuted queries until the ceiling. Report steps to
       give-up with and without the ceiling.
-- [ ] **F5 Silent failure when a tool errors** — `regdocs-mcp` raises `ToolError` on a bad
+- [x] **F5 Silent failure when a tool errors** — `regdocs-mcp` raises `ToolError` on a bad
       `doc_id`. Does the model see it, retry sensibly, or fabricate around it? Provoke by feeding
       a `doc_id` that does not exist.
-- [ ] **F6 Pagination ignored** — `search_notices` and `list_obligations` return `next_cursor`.
+- [x] **F6 Pagination ignored** — `search_notices` and `list_obligations` return `next_cursor`.
       Does the agent ever use it, or does it answer from page 1 and call that complete?
-- [ ] **F7 The wrong tool for the question** — a `temporal` question answered from
+- [x] **F7 The wrong tool for the question** — a `temporal` question answered from
       `search_notices` instead of `diff_versions`. Day 5 measured `temporal` as the type reranking
       helps most, so it is the type most likely to be under-served by a lexical tool.
-- [ ] **F8 Non-reproducible tool output** — research 4, before the Phase 1 fix. Worth keeping as an
+- [x] **F8 Non-reproducible tool output** — research 4, before the Phase 1 fix. Worth keeping as an
       entry precisely because it is *fixed*: it shows the document is a log of things that were
       found and closed, not a list of complaints.
-- [ ] Two more if provoking turns them up. Eight is the floor, not the target.
+- [x] Two more if provoking turns them up. Eight is the floor, not the target.
 
 ## Phase 5 — The same agent in Pydantic AI · 60 min
 
-- [ ] `uv add --package regops-agents pydantic-ai`. The same two tools, the same model, the same
+- [x] `uv add --package regops-agents pydantic-ai`. The same two tools, the same model, the same
       `Answer` model, the same question set.
-- [ ] Four measured columns (problem 4): tool-call accuracy, steps to answer, wall-clock p50, and
+- [x] Four measured columns (problem 4): tool-call accuracy, steps to answer, wall-clock p50, and
       **behaviour when a tool raises** — the one that is not a matter of taste.
-- [ ] Report lines of code and explicitly decline to treat it as a quality signal.
-- [ ] The write-up is a **tradeoff with a recommendation**, and it says which parts are preference.
+- [x] Report lines of code and explicitly decline to treat it as a quality signal.
+- [x] The write-up is a **tradeoff with a recommendation**, and it says which parts are preference.
 
 ## Phase 6 — Tests and write-up · 60 min
 
-- [ ] Agent tests that call **no model and no server**: a stub chat model returning scripted tool
+- [x] Agent tests that call **no model and no server**: a stub chat model returning scripted tool
       calls, so the graph, the step ceiling, the repair loop and the citation resolver are all
       testable in CI. The suite's no-model rule has held for five days and CI has no GPU.
-- [ ] A citation-resolver test with a fabricated `doc_id`, using research 2's actual bad output
+- [x] A citation-resolver test with a fabricated `doc_id`, using research 2's actual bad output
       (`doc_id: "[1]"`) as the fixture — the failure that happened, as the test.
-- [ ] One `slow` end-to-end test: real model, real server, one question.
-- [ ] **`FAILURE_MODES.md`** — the deliverable.
-- [ ] **ADR-025** the two tool surfaces, and the measured cost of the portable one.
-- [ ] **ADR-026** three-layer validation, and why schema validity is not citation validity.
-- [ ] **ADR-027** LangGraph vs Pydantic AI on this task, with the numbers.
-- [ ] `agents/README.md`, root `README.md`, `initial-setup.md`; commit, push, CI green on both repos.
+- [x] One `slow` end-to-end test: real model, real server, one question.
+- [x] **`FAILURE_MODES.md`** — the deliverable.
+- [x] **ADR-025** the two tool surfaces, and the measured cost of the portable one.
+- [x] **ADR-026** three-layer validation, and why schema validity is not citation validity.
+- [x] **ADR-027** LangGraph vs Pydantic AI on this task, with the numbers.
+- [x] `agents/README.md`, root `README.md`, `initial-setup.md`; commit, push, CI green on both repos.
 
 ---
 
@@ -335,3 +335,118 @@ wall-clock column → the repair loop's second retry. **Never cut** Phase 1, the
 or the four-field format in `FAILURE_MODES.md`: the first is a promise already made in writing, the
 second is the only thing standing between a validated answer and a fabricated citation, and the
 third is what makes the document evidence instead of an anecdote.
+
+---
+
+## Outcome
+
+All six phases complete. 198 tests green (1 skipped, 2 `slow` deselected), ruff clean, CI green
+on both repos. `FAILURE_MODES.md` ships **12 entries** against a floor of 8, each with a trigger,
+a symptom with an `n`, a mitigation and the mitigation's cost. Three ADRs here, one in
+`regdocs-mcp`.
+
+The day's sentence, read off the evidence rather than decided in advance:
+
+> **Tool *selection* was correct in every single provocation. F1 invents filters, F5 ignores a
+> recovery path a tool handed it, F7 calls the right tool with an invented `doc_id` — routing is
+> not the hard part, argument grounding is. And four of the twelve failures belong to the
+> frameworks, where they are silent.**
+
+### What the plan got right
+
+**Blocking on Phase 1 was correct and cheap.** Re-verification moved exactly one item and the
+re-sweep produced byte-identical rankings, so the cost of doing it first was ~45 minutes and the
+cost of doing it after would have been a table describing an instrument that had moved.
+
+**The four-field format is what makes the document evidence.** Writing "trigger · symptom · n ·
+mitigation · cost" for every entry forced two of them to be downgraded honestly (F5's failure is
+milder than predicted; F6's predicted failure did not occur) and forced the mitigations to carry
+their costs — F1's prompt suppresses a capability, F3's cap creates F6, layer 2 detects without
+fixing.
+
+**Problem 1's resolution earned itself twice.** Giving the agent both tool surfaces produced the
+number ADR-025 needed *and* the finding that contradicts it: C4 context made citations resolve
+**less** often (14/30 vs 19/30). Choosing one surface silently would have produced neither.
+
+**Research 6 was right about the hazard and right about the direction.** Front-first truncation
+reproduced exactly — needle gone at `num_ctx` 2048 and 4096, no error either time.
+
+### Where the plan was wrong, and what replaced it
+
+- **`langchain-mcp-adapters` was listed as Risk 2 and is a hard blocker, not a risk.** 0.3.1's
+  `mcp>=1.24.0` has no upper bound, resolves against `mcp` 2.1 and dies at import on a name v2
+  removed; 0.3.2 pins `<2.0.0`, which excludes spec `2026-07-28`. **No version works.** The
+  plan's fallback — the SDK directly — was taken inside the first twenty minutes, as written.
+  Lesson worth more than the workaround: *do not take a framework's integration package as
+  evidence the integration is available.*
+- **Research 1 did not reproduce.** It recorded 9/29 questions losing the gold document to an
+  invented filter; a declared, deterministic 30-question sample with schemas read live from the
+  server measured **1/29**. The earlier sample and prompt cannot be reconstructed, so the new
+  table is what is quoted and `FAILURE_MODES.md` says the earlier figure did not reproduce rather
+  than using the more dramatic one.
+- **Research 2 did not reproduce either, in the direction that strengthens the argument.** It
+  measured 18/20 schema-valid; passing the full JSON Schema to Ollama's `format` gives **30/30**.
+  Constrained decoding has solved the shape problem completely — and the reference problem not at
+  all, at 19/30. And the dominant failure is *omission* (10 of 11 cite nothing), not the
+  fabrication the research predicted.
+- **Decision 3 was resolved by measurement rather than by the recommendation.** The plan proposed
+  `qwen3.5:9b` and to "measure the gap on tool-call accuracy only". Measured on both models and
+  both prompts, **one sentence of prompt bought what a 2.6× larger model bought** — 5 unasked-for
+  filters to 0, at half the latency and 6.6 GB against 17 GB. Model size was never the binding
+  constraint, which is not what the plan expected to find.
+- **The repair loop was a named deliverable and is now off by default.** The plan required its
+  success rate to be measured. Measured: **0 of 11**. Ten changed nothing; one converted omission
+  into fabrication. Keeping it would have doubled latency on the affected items for nothing.
+- **Two Phase 4 predictions were wrong in useful ways.** F6 predicted answering from page one; the
+  agent paged correctly with a cursor and died of *volume* instead. F7 predicted `diff_versions`
+  would never be called; it was called, with an invented `doc_id`. Both replacements are better
+  findings than the predictions.
+- **Phase 1 exposed a defect in the renderer, not the data.** `results/day5/retrieval.md` is
+  generated, but the generator carried `122` and `28` as literals — including a JSON key named
+  `unflagged_122` — so a re-verification silently made a *generated* document wrong. The sweep now
+  records a `counts` block at run time and the write-up reads it.
+
+### Findings worth carrying forward
+
+- **The frameworks fail quietly and the model fails loudly.** F9, F10 and F12 raise nothing at
+  all, and two of them emit output that looks like success — LangGraph appends *"Sorry, need more
+  steps to process this request."* at its ceiling, first-person and indistinguishable from a model
+  declining. A wrong filter, by contrast, still returns results you can inspect.
+- **"Hand it back and ask again" recovered nothing, three times independently.** The hand-rolled
+  repair loop: 0 of 11. Pydantic AI's internal output-validation retry: 5 of 6 runs exhausted it.
+  Tripling that retry budget: **zero** additional completions and 3× the latency.
+- **Citation compliance is not a retrieval property.** Better retrieval (C4 over BM25) made
+  citations resolve *less* often, entirely through the model declining to cite. F2's fix belongs
+  in the prompt or the schema, not the ranker.
+- **Batch by model, for the fourth day running.** The C4 measurement embeds with
+  `nomic-embed-text` and answers with `qwen3.5:9b`; unbatched that is one 17.7 GB swap per item.
+  Every question vector is computed before the generator is touched.
+- **A four-member workspace needs a fourth fixture spelling.** `agents/tests/` uses
+  `fixtures_agents.py` with `pytest_plugins`, for the reason `retrieval/tests/` does.
+- **A scripted chat model must return fresh message ids.** Returning the same `AIMessage` twice
+  does not loop a LangGraph agent, it *ends* it — `add_messages` merges by id, so the second reply
+  replaces the first and the tool call reads as answered. A test that cannot repeat itself cannot
+  exercise a step ceiling.
+
+### Deliberately deferred
+
+**Layer 3 (support) is named and not implemented.** Reference validity is mechanical and runs in
+CI; support needs a judge, and Day 5 already has that machinery pointed at `qwen3.8`. Building a
+second judge here would duplicate it. What matters is that the three layers are named separately
+so "validated" cannot silently mean "layer 1".
+
+**A schema-level fix for F2** — requiring a non-empty `citations` array so constrained decoding
+cannot emit `[]` — is the one mechanism that has worked perfectly here, and it cannot express
+"unless this is an abstention". It needs two schemas and a routing decision. Named, not done.
+
+**F5 and F7 ship open.** Making the model act on a tool's recovery path is another unmeasured
+prompt claim competing with F1's measured one; constraining it to look up an id before using it is
+Day 7's supervisor, not a prompt patch.
+
+### End-to-end proof
+
+`uv run regops-agents "What must a bank do to identify the beneficial owner of a customer?"`
+answers end to end, and the trace shows `search_notices` followed by `get_document_section` called
+with a `doc_id` taken from the first result rather than invented. Every number in
+`FAILURE_MODES.md` has a command next to it that reproduces it, and the rows those numbers average
+over are committed in `results/day6/`.

@@ -1,0 +1,216 @@
+{
+  "summary": {
+    "framework": "pydantic-ai",
+    "model": "qwen3.5:9b",
+    "tool_error_behavior": "retry",
+    "retries": 3,
+    "endpoint": "openai-compatible (/v1) \u2014 reasoning cannot be disabled, see ADR-009",
+    "n": 6,
+    "completed": 1,
+    "called_a_tool": 1,
+    "tool_calls_total": 15,
+    "tool_errors": 2,
+    "cited_nothing": 0,
+    "p50_s": 77.2,
+    "errors": [
+      "UnexpectedModelBehavior: Exceeded maximum output retries (3)",
+      "UnexpectedModelBehavior: Model token limit (provider default) exceeded before any response was generated. Increase the `max_tokens` model setting, or simplify the prompt to result in a shorter response that will fit within the limit.",
+      "UnexpectedModelBehavior: Exceeded maximum output retries (3)",
+      "UnexpectedModelBehavior: Exceeded maximum output retries (3)",
+      "UnexpectedModelBehavior: Exceeded maximum output retries (3)"
+    ]
+  },
+  "rows": [
+    {
+      "question": "What specific Probability of Default values should a Reporting Bank use when its calculated PD falls below the threshold for calculating KMort, KQRRE for transactors, and KQRRE for revolvers?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 35.512395176978316,
+      "error": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"
+    },
+    {
+      "question": "How often should an FMC monitor its managed assets to ensure it stays within specific limits?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 77.19759327097563,
+      "error": "UnexpectedModelBehavior: Model token limit (provider default) exceeded before any response was generated. Increase the `max_tokens` model setting, or simplify the prompt to result in a shorter response that will fit within the limit."
+    },
+    {
+      "question": "When does a reporting bank have to classify an exposure as defaulted?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 100.25236165703973,
+      "error": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"
+    },
+    {
+      "question": "What data sources should an insurer use to validate the reasonableness of assumptions for base rates?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 66.42132899299031,
+      "error": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"
+    },
+    {
+      "question": "When does this notice become effective and which previous notice is replaced?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 33.89002625999274,
+      "error": "UnexpectedModelBehavior: Exceeded maximum output retries (3)"
+    },
+    {
+      "question": "Which specific information sources should be used to screen customers against?",
+      "answer": {
+        "answer": "According to MAS regulations, customers should be screened against the following specific information sources:\n\n1. Lists and information provided by MAS (the Authority) or other relevant authorities in Singapore in relation to ML/TF risks - doc_id: 1b9b9f6db2876069, section_path: 6.39 (Notice 626)\n\n2. The First Schedule of the TSO (Terrorism Suppression Order) - doc_id: 1363829f117073a2, section_path: 5.1 (Insurance Guidelines)\n\n3. The FSM Sanctions Regulations - doc_id: 1363829f117073a2, section_path: 5.1\n\n4. Commercial sanctions databases (subscribed by institutions) - doc_id: 1363829f117073a2, section_path: 5.5\n\n5. Maintained internal databases containing names of designated individuals and entities - doc_id: 1363829f117073a2, section_path: 5.1\n\n6. The FINsight platform screening list (for prescribed financial institutions per MAS Notice FSM-N02) - doc_id: 4e2f23a76047e2c2, section_path: 6.3",
+        "citations": [
+          {
+            "doc_id": "1363829f117073a2",
+            "section_path": "5.1"
+          },
+          {
+            "doc_id": "1b9b9f6db2876069",
+            "section_path": "6.39"
+          },
+          {
+            "doc_id": "4e2f23a76047e2c2",
+            "section_path": "6.3"
+          },
+          {
+            "doc_id": "1363829f117073a2",
+            "section_path": "5.5"
+          }
+        ],
+        "sufficient": true
+      },
+      "tool_calls": [
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "screen customers information sources",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "1363829f117073a2",
+            "section_path": "5.1"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "1b9b9f6db2876069",
+            "section_path": "6.39"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "lists information Authority relevant authorities Singapore ML TF",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "4e2f23a76047e2c2",
+            "section_path": "6"
+          },
+          "error": true
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "FINsight Financial Institutions Information Sharing Platform lists screen",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "4e2f23a76047e2c2",
+            "section_path": "6.1"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "UN Security Council sanctions OFAC EU screening",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "commercial sanctions database subscribe maintain internal database screening",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "lists and information provided Authority relevant authorities ML TF screening customer",
+            "top_k": 15
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "First Schedule TSO Terrorism Suppression Order sanctions designated",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "a0a676334344e6eb",
+            "section_path": "6"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "a0a676334344e6eb",
+            "section_path": "6",
+            "offset": 4000
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "paragraph 4.3 or paragraph 6.39 screening sources lists databases",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "UN Security Council OFAC EU designated sanctions screen list database",
+            "top_k": 10
+          },
+          "error": true
+        }
+      ],
+      "steps": 34,
+      "seconds": 84.74315353500424,
+      "error": ""
+    }
+  ]
+}

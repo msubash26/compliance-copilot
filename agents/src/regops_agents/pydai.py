@@ -125,7 +125,9 @@ async def _main(a) -> int:
     from regops_agents.toolcall_probe import load_sample
 
     items = load_sample(a.golden)[: a.n]
-    agent, toolset = build(a.model, index=a.index, tool_error_behavior=a.tool_errors)
+    agent, toolset = build(
+        a.model, index=a.index, tool_error_behavior=a.tool_errors, retries=a.retries
+    )
     rows: list[PydRun] = []
     async with agent:
         for i, it in enumerate(items, 1):
@@ -144,6 +146,7 @@ async def _main(a) -> int:
         "framework": "pydantic-ai",
         "model": a.model,
         "tool_error_behavior": a.tool_errors,
+        "retries": a.retries,
         "endpoint": "openai-compatible (/v1) — reasoning cannot be disabled, see ADR-009",
         "n": len(rows),
         "completed": sum(r.ok for r in rows),
@@ -182,9 +185,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--n", type=int, default=10)
     ap.add_argument("--tool-errors", choices=("retry", "error", "failed"), default="retry")
+    ap.add_argument("--retries", type=int, default=1, help="pydantic-ai's own default is 1")
     ap.add_argument("--out", type=Path, default=None)
     a = ap.parse_args(argv)
-    a.out = a.out or Path(f"results/day6/pydantic_ai_{a.tool_errors}.json")
+    a.out = a.out or Path(f"results/day6/pydantic_ai_{a.tool_errors}_r{a.retries}.json")
     return asyncio.run(_main(a))
 
 

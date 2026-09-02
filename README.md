@@ -320,6 +320,26 @@ cannot talk to this server at any version: 0.3.1's `mcp>=1.24.0` resolves and th
 0.3.2 pins `<2.0.0`, and the server targets spec `2026-07-28`. **Do not take a framework's
 integration package as evidence the integration is available.**
 
+**The two frameworks fail in opposite directions.** Same six questions, same model, same prompt,
+same schema, same server:
+
+| | LangGraph 1.2.11 | Pydantic AI 2.37.0 |
+|---|---|---|
+| completed | 6/6 *(prose)* | 1/6 *(schema-valid `Answer`)* |
+| tool calls | 11 | 19 |
+| p50 | 5.61s | 27.23s |
+| MCP against `mcp>=2.1` | adapter **cannot**; 60-line bridge | **works in-tree** |
+| at the budget ceiling | returns silently, invents an apology | raises with a name |
+
+Those completion columns measure different bars — Pydantic AI refuses to return anything that is
+not a validated `Answer`, and on this model that enforcement is what fails. Tripling its retry
+budget bought **zero** additional completions and tripled the latency, which is the third
+independent measurement here that "hand it back and ask again" recovers nothing. And the latency
+gap is substantially an endpoint choice: `ChatOllama` posts to Ollama's native API and can turn
+reasoning off; Pydantic AI's provider speaks the OpenAI-compatible `/v1`, which cannot (ADR-009's
+15×). The recommendation is LangGraph for Days 7–8 and Pydantic AI kept as a maintained
+counter-example — with the parts that are preference marked as preference (ADR-027).
+
 **The portable tool surface costs 0.195 MRR, and that is not the interesting number.** Day 5
 measured `search_notices` (BM25 only) at MRR 0.486 against C4's 0.681, so the agent gets both
 tools and the tradeoff is published rather than chosen silently (ADR-025). But answering the same
