@@ -1,0 +1,133 @@
+{
+  "model": "qwen3.5:9b",
+  "f3_context_overflow": {
+    "filler_target_tokens": 8000,
+    "runs": [
+      {
+        "num_ctx": 2048,
+        "prompt_tokens_evaluated": 1026,
+        "needle_survived": false,
+        "raised_an_error": false,
+        "reply": "Based on the text you provided, there is **no authorization code** stated at the start (or anywhere else in the text). The text begins with the word **\"The\"** f"
+      },
+      {
+        "num_ctx": 4096,
+        "prompt_tokens_evaluated": 2050,
+        "needle_survived": false,
+        "raised_an_error": false,
+        "reply": "Based on the text you provided, there is **no authorization code** stated at the start (or anywhere else in the text). The entire paragraph consists of the exac"
+      },
+      {
+        "num_ctx": 16384,
+        "prompt_tokens_evaluated": 7366,
+        "needle_survived": true,
+        "raised_an_error": false,
+        "reply": "The authorization code stated at the start is **ZX-4417-QQ**."
+      }
+    ]
+  },
+  "f5_tool_error": {
+    "question": "Read clause 6.14 of document zzzzzzzzzzzzzzzz and tell me what it requires. That document id is correct; use it.",
+    "tool_calls": [
+      {
+        "tool": "get_document_section",
+        "args": {
+          "doc_id": "zzzzzzzzzzzzzzzz",
+          "section_path": "6.14"
+        },
+        "result_chars": 157,
+        "error": true
+      }
+    ],
+    "errors_seen": 1,
+    "recovered_with_search": false,
+    "steps": 4,
+    "stopped_by": "",
+    "answer": "The document ID `zzzzzzzzzzzzzzzz` is not found in the MAS notices and guidelines corpus. Please provide a valid document ID, or I can help you search for relevant documents using keywords related to your query."
+  },
+  "f6_pagination": {
+    "question": "List every obligation in MAS Notice 637. I need the complete list, not a sample \u2014 make sure you have retrieved all of them.",
+    "tool_calls": [
+      {
+        "tool": "search_notices",
+        "args": {
+          "query": "MAS Notice 637",
+          "top_k": 5
+        },
+        "result_chars": 3127,
+        "error": false
+      },
+      {
+        "tool": "search_notices",
+        "args": {
+          "query": "Notice 637",
+          "top_k": 10
+        },
+        "result_chars": 6128,
+        "error": false
+      },
+      {
+        "tool": "search_notices",
+        "args": {
+          "query": "MAS Notice 637 Supervision of Market Participants",
+          "top_k": 10
+        },
+        "result_chars": 6417,
+        "error": false
+      },
+      {
+        "tool": "search_notices",
+        "args": {
+          "query": "MAS Notice 637",
+          "top_k": 20
+        },
+        "result_chars": 12098,
+        "error": false
+      },
+      {
+        "tool": "search_notices",
+        "args": {
+          "query": "Notice 637 on",
+          "top_k": 20
+        },
+        "result_chars": 12098,
+        "error": false
+      },
+      {
+        "tool": "list_obligations",
+        "args": {
+          "doc_id": "d60d84ece1ddaefe"
+        },
+        "result_chars": 12098,
+        "error": false
+      },
+      {
+        "tool": "list_obligations",
+        "args": {
+          "doc_id": "d60d84ece1ddaefe",
+          "cursor": "bzo1"
+        },
+        "result_chars": 12098,
+        "error": false
+      }
+    ],
+    "used_a_cursor": true,
+    "list_calls": 2,
+    "steps": 16,
+    "stopped_by": "step_ceiling",
+    "answer": "[stopped by step_ceiling after 16 steps, 14.9s, 7 tool call(s)] Sorry, need more steps to process this request."
+  },
+  "f7_wrong_tool": {
+    "question": "What changed between the versions of MAS Notice 626, and when did each take effect?",
+    "tools_used": [
+      "diff_versions",
+      "search_notices"
+    ],
+    "called_diff_versions": true,
+    "n_searches": 6,
+    "repeated_search": 5,
+    "steps": 16,
+    "stopped_by": "step_ceiling",
+    "answer": "[stopped by step_ceiling after 16 steps, 8.4s, 7 tool call(s)] Sorry, need more steps to process this request."
+  }
+}

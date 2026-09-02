@@ -1,0 +1,1142 @@
+{
+  "model": "qwen3.5:9b",
+  "summary": {
+    "n": 30,
+    "shape_ok_first": 30,
+    "reference_ok_first": 19,
+    "shape_rate_first": 1.0,
+    "reference_rate_first": 0.6333,
+    "shape_ok": 30,
+    "reference_ok": 19,
+    "valid": 19,
+    "shape_rate": 1.0,
+    "reference_rate": 0.6333,
+    "repair_attempted": 11,
+    "repaired": 0,
+    "repair_rate": 0.0,
+    "abstained": 4,
+    "cited_nothing": 10,
+    "cited_unresolvable": 1,
+    "repair_changed_nothing": 10,
+    "p50_s": 3.192
+  },
+  "rows": [
+    {
+      "item_id": "gs-0001",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "d60d84ece1ddaefe",
+          "section_path": "7.4.88"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "d60d84ece1ddaefe",
+              "section_path": "7.4.88"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 3.192
+    },
+    {
+      "item_id": "gs-0002",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "bbfd16576f29b9c1",
+          "section_path": "2.3.3"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "bbfd16576f29b9c1",
+              "section_path": "2.3.3"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.963
+    },
+    {
+      "item_id": "gs-0003",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: ([1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.1 (d60d84ece1ddaefe:Section 1: Definition of Default/1.1), Section 1: Definition of Default/1.1) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+        "reference: ([1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.4 (d60d84ece1ddaefe:Section 1: Definition of Default/1.4), Section 1: Definition of Default/1.4) is not in the index \u2014 cite the doc_id and clause from an excerpt header"
+      ],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "[1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.1 (d60d84ece1ddaefe:Section 1: Definition of Default/1.1)",
+          "section_path": "Section 1: Definition of Default/1.1"
+        },
+        {
+          "doc_id": "[1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.4 (d60d84ece1ddaefe:Section 1: Definition of Default/1.4)",
+          "section_path": "Section 1: Definition of Default/1.4"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "[1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.1 (d60d84ece1ddaefe:Section 1: Definition of Default/1.1)",
+              "section_path": "Section 1: Definition of Default/1.1"
+            },
+            {
+              "doc_id": "[1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.4 (d60d84ece1ddaefe:Section 1: Definition of Default/1.4)",
+              "section_path": "Section 1: Definition of Default/1.4"
+            }
+          ],
+          "violations": [
+            "reference: ([1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.1 (d60d84ece1ddaefe:Section 1: Definition of Default/1.1), Section 1: Definition of Default/1.1) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+            "reference: ([1] Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore \u00b7 clause Section 1: Definition of Default/1.4 (d60d84ece1ddaefe:Section 1: Definition of Default/1.4), Section 1: Definition of Default/1.4) is not in the index \u2014 cite the doc_id and clause from an excerpt header"
+          ]
+        }
+      ],
+      "seconds": 13.946
+    },
+    {
+      "item_id": "gs-0004",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 3.46
+    },
+    {
+      "item_id": "gs-0005",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 0.83
+    },
+    {
+      "item_id": "gs-0006",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "1363829f117073a2",
+          "section_path": "5.9"
+        },
+        {
+          "doc_id": "1b9b9f6db2876069",
+          "section_path": "6.39"
+        },
+        {
+          "doc_id": "2b1bc1dfa4766264",
+          "section_path": "6.39"
+        },
+        {
+          "doc_id": "3bd0ff97c75d1a40",
+          "section_path": "6.34"
+        },
+        {
+          "doc_id": "604c3f4b73b0a8ad",
+          "section_path": "6.37"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "1363829f117073a2",
+              "section_path": "5.9"
+            },
+            {
+              "doc_id": "1b9b9f6db2876069",
+              "section_path": "6.39"
+            },
+            {
+              "doc_id": "2b1bc1dfa4766264",
+              "section_path": "6.39"
+            },
+            {
+              "doc_id": "3bd0ff97c75d1a40",
+              "section_path": "6.34"
+            },
+            {
+              "doc_id": "604c3f4b73b0a8ad",
+              "section_path": "6.37"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 3.524
+    },
+    {
+      "item_id": "gs-0007",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "441e2dd1bba03cbe",
+          "section_path": "6.18"
+        },
+        {
+          "doc_id": "00a6891ff9267e21",
+          "section_path": "7.18"
+        },
+        {
+          "doc_id": "53eecf17e91a9016",
+          "section_path": "6.18"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "441e2dd1bba03cbe",
+              "section_path": "6.18"
+            },
+            {
+              "doc_id": "00a6891ff9267e21",
+              "section_path": "7.18"
+            },
+            {
+              "doc_id": "53eecf17e91a9016",
+              "section_path": "6.18"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.227
+    },
+    {
+      "item_id": "gs-0008",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 7.604
+    },
+    {
+      "item_id": "gs-0009",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "cf7022fe78fb1df9",
+          "section_path": "5"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "cf7022fe78fb1df9",
+              "section_path": "5"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.35
+    },
+    {
+      "item_id": "gs-0010",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 3.943
+    },
+    {
+      "item_id": "gs-0011",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "2ce598463248de9d",
+          "section_path": "82"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "2ce598463248de9d",
+              "section_path": "82"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.418
+    },
+    {
+      "item_id": "gs-0012",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.325
+    },
+    {
+      "item_id": "gs-0046",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "7.4"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "7.4"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.787
+    },
+    {
+      "item_id": "gs-0047",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 12.775
+    },
+    {
+      "item_id": "gs-0048",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.782
+    },
+    {
+      "item_id": "gs-0049",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "8.7"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "8.7"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.858
+    },
+    {
+      "item_id": "gs-0050",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "6.42"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "6.42"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.723
+    },
+    {
+      "item_id": "gs-0051",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "86aaa2b1f7432123",
+          "section_path": "8"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "86aaa2b1f7432123",
+              "section_path": "8"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.965
+    },
+    {
+      "item_id": "gs-0052",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 2.098
+    },
+    {
+      "item_id": "gs-0053",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "7ef9e23467ef266c",
+          "section_path": "6.19"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "7ef9e23467ef266c",
+              "section_path": "6.19"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.924
+    },
+    {
+      "item_id": "gs-0076",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 1.952
+    },
+    {
+      "item_id": "gs-0077",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 7.259
+    },
+    {
+      "item_id": "gs-0078",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 10.266
+    },
+    {
+      "item_id": "gs-0079",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 2.06
+    },
+    {
+      "item_id": "gs-0080",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.508
+    },
+    {
+      "item_id": "gs-0081",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 10.444
+    },
+    {
+      "item_id": "gs-0101",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "4ea28f7b1ca9e5a3",
+          "section_path": "1.2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "4ea28f7b1ca9e5a3",
+              "section_path": "1.2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.321
+    },
+    {
+      "item_id": "gs-0102",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "fcce41779de2d178",
+          "section_path": "6"
+        },
+        {
+          "doc_id": "7af91c4a1623eff3",
+          "section_path": "1"
+        },
+        {
+          "doc_id": "572c7ae5489fdb90",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "745fe234a24ff121",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "573e686fb6d15bac",
+          "section_path": "2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "fcce41779de2d178",
+              "section_path": "6"
+            },
+            {
+              "doc_id": "7af91c4a1623eff3",
+              "section_path": "1"
+            },
+            {
+              "doc_id": "572c7ae5489fdb90",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "745fe234a24ff121",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "573e686fb6d15bac",
+              "section_path": "2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.994
+    },
+    {
+      "item_id": "gs-0103",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "08c32bfed8b449ab",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "692d6fb79eca55da",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "6df6011c55037361",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "ab77fc707c0c5318",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "dd9146fa3c5c279a",
+          "section_path": "2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "08c32bfed8b449ab",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "692d6fb79eca55da",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "6df6011c55037361",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "ab77fc707c0c5318",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "dd9146fa3c5c279a",
+              "section_path": "2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 3.298
+    },
+    {
+      "item_id": "gs-0104",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "08c32bfed8b449ab",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "692d6fb79eca55da",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "6df6011c55037361",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "ab77fc707c0c5318",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "dd9146fa3c5c279a",
+          "section_path": "2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "08c32bfed8b449ab",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "692d6fb79eca55da",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "6df6011c55037361",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "ab77fc707c0c5318",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "dd9146fa3c5c279a",
+              "section_path": "2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 3.366
+    }
+  ]
+}

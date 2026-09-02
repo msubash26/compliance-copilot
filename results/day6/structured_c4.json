@@ -1,0 +1,1101 @@
+{
+  "model": "qwen3.5:9b",
+  "summary": {
+    "n": 30,
+    "shape_ok_first": 30,
+    "reference_ok_first": 14,
+    "shape_rate_first": 1.0,
+    "reference_rate_first": 0.4667,
+    "shape_ok": 30,
+    "reference_ok": 14,
+    "valid": 14,
+    "shape_rate": 1.0,
+    "reference_rate": 0.4667,
+    "repair_attempted": 16,
+    "repaired": 0,
+    "repair_rate": 0.0,
+    "abstained": 3,
+    "cited_nothing": 15,
+    "cited_unresolvable": 1,
+    "repair_changed_nothing": 15,
+    "p50_s": 3.34
+  },
+  "rows": [
+    {
+      "item_id": "gs-0001",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "d60d84ece1ddaefe",
+          "section_path": "7.4.88"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "d60d84ece1ddaefe",
+              "section_path": "7.4.88"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 12.501
+    },
+    {
+      "item_id": "gs-0002",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "bbfd16576f29b9c1",
+          "section_path": "2.3.3"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "bbfd16576f29b9c1",
+              "section_path": "2.3.3"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.886
+    },
+    {
+      "item_id": "gs-0003",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 11.769
+    },
+    {
+      "item_id": "gs-0004",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 3.839
+    },
+    {
+      "item_id": "gs-0005",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 0.662
+    },
+    {
+      "item_id": "gs-0006",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 1.782
+    },
+    {
+      "item_id": "gs-0007",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 6.813
+    },
+    {
+      "item_id": "gs-0008",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 9.304
+    },
+    {
+      "item_id": "gs-0009",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 3.014
+    },
+    {
+      "item_id": "gs-0010",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.659
+    },
+    {
+      "item_id": "gs-0011",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "2ce598463248de9d",
+          "section_path": "82"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "2ce598463248de9d",
+              "section_path": "82"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.549
+    },
+    {
+      "item_id": "gs-0012",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "ac56b51123bf2a3e",
+          "section_path": "4.16"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "ac56b51123bf2a3e",
+              "section_path": "4.16"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.737
+    },
+    {
+      "item_id": "gs-0046",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "7.4"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "7.4"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.372
+    },
+    {
+      "item_id": "gs-0047",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 10.013
+    },
+    {
+      "item_id": "gs-0048",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.59
+    },
+    {
+      "item_id": "gs-0049",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "8.7"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "8.7"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.404
+    },
+    {
+      "item_id": "gs-0050",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "b9a0d91d0de33dc4",
+          "section_path": "6.42"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "b9a0d91d0de33dc4",
+              "section_path": "6.42"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.79
+    },
+    {
+      "item_id": "gs-0051",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "db7e7522a1b65374",
+          "section_path": "8.7"
+        },
+        {
+          "doc_id": "86aaa2b1f7432123",
+          "section_path": "8"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "db7e7522a1b65374",
+              "section_path": "8.7"
+            },
+            {
+              "doc_id": "86aaa2b1f7432123",
+              "section_path": "8"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 3.34
+    },
+    {
+      "item_id": "gs-0052",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 4.011
+    },
+    {
+      "item_id": "gs-0053",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "7ef9e23467ef266c",
+          "section_path": "6.19"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "7ef9e23467ef266c",
+              "section_path": "6.19"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.531
+    },
+    {
+      "item_id": "gs-0076",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 1.233
+    },
+    {
+      "item_id": "gs-0077",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 5.543
+    },
+    {
+      "item_id": "gs-0078",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 11.201
+    },
+    {
+      "item_id": "gs-0079",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 8.764
+    },
+    {
+      "item_id": "gs-0080",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 6.067
+    },
+    {
+      "item_id": "gs-0081",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": false,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": false,
+          "citations": [],
+          "violations": []
+        }
+      ],
+      "seconds": 0.874
+    },
+    {
+      "item_id": "gs-0101",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: answer claims to be sufficient but cites nothing"
+      ],
+      "sufficient": true,
+      "citations": [],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        }
+      ],
+      "seconds": 2.474
+    },
+    {
+      "item_id": "gs-0102",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "7af91c4a1623eff3",
+          "section_path": "1"
+        },
+        {
+          "doc_id": "745fe234a24ff121",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "fcce41779de2d178",
+          "section_path": "6"
+        },
+        {
+          "doc_id": "572c7ae5489fdb90",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "573e686fb6d15bac",
+          "section_path": "2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "7af91c4a1623eff3",
+              "section_path": "1"
+            },
+            {
+              "doc_id": "745fe234a24ff121",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "fcce41779de2d178",
+              "section_path": "6"
+            },
+            {
+              "doc_id": "572c7ae5489fdb90",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "573e686fb6d15bac",
+              "section_path": "2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 2.977
+    },
+    {
+      "item_id": "gs-0103",
+      "shape_ok_first": true,
+      "reference_ok_first": true,
+      "shape_ok": true,
+      "reference_ok": true,
+      "repaired": false,
+      "repair_attempted": false,
+      "violations": [],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "1c824778cc699482",
+          "section_path": "2"
+        },
+        {
+          "doc_id": "969ad87ff489d925",
+          "section_path": "2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": true,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "1c824778cc699482",
+              "section_path": "2"
+            },
+            {
+              "doc_id": "969ad87ff489d925",
+              "section_path": "2"
+            }
+          ],
+          "violations": []
+        }
+      ],
+      "seconds": 1.77
+    },
+    {
+      "item_id": "gs-0104",
+      "shape_ok_first": true,
+      "reference_ok_first": false,
+      "shape_ok": true,
+      "reference_ok": false,
+      "repaired": false,
+      "repair_attempted": true,
+      "violations": [
+        "reference: ([1], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+        "reference: ([2], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+        "reference: ([3], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+        "reference: ([4], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+        "reference: ([5], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header"
+      ],
+      "sufficient": true,
+      "citations": [
+        {
+          "doc_id": "[1]",
+          "section_path": "clause 2"
+        },
+        {
+          "doc_id": "[2]",
+          "section_path": "clause 2"
+        },
+        {
+          "doc_id": "[3]",
+          "section_path": "clause 2"
+        },
+        {
+          "doc_id": "[4]",
+          "section_path": "clause 2"
+        },
+        {
+          "doc_id": "[5]",
+          "section_path": "clause 2"
+        }
+      ],
+      "attempts": [
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [],
+          "violations": [
+            "reference: answer claims to be sufficient but cites nothing"
+          ]
+        },
+        {
+          "shape_ok": true,
+          "reference_ok": false,
+          "sufficient": true,
+          "citations": [
+            {
+              "doc_id": "[1]",
+              "section_path": "clause 2"
+            },
+            {
+              "doc_id": "[2]",
+              "section_path": "clause 2"
+            },
+            {
+              "doc_id": "[3]",
+              "section_path": "clause 2"
+            },
+            {
+              "doc_id": "[4]",
+              "section_path": "clause 2"
+            },
+            {
+              "doc_id": "[5]",
+              "section_path": "clause 2"
+            }
+          ],
+          "violations": [
+            "reference: ([1], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+            "reference: ([2], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+            "reference: ([3], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+            "reference: ([4], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header",
+            "reference: ([5], clause 2) is not in the index \u2014 cite the doc_id and clause from an excerpt header"
+          ]
+        }
+      ],
+      "seconds": 3.455
+    }
+  ]
+}

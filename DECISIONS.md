@@ -926,3 +926,109 @@ first work on Day 6.
 **What this does not license.** One demonstrated bad negative is not a reason to assume the other
 34 are bad. It is a reason to assume the *verification* was weaker than its confidence scores
 suggested — which is an argument about the checker, and it is now fixed.
+
+---
+
+## ADR-025 — The agent gets both tool surfaces, and the portable one's cost is a number
+**Date:** 2026-09-06 · **Status:** Accepted
+
+**Context.** The prep plan mandates a LangGraph agent consuming `regdocs-mcp`. That is the
+deliverable and the portability story: any MCP host can call those four tools. But
+`regdocs-mcp` has no vectors anywhere in it — `search_notices` is BM25 over section text —
+because the server repo must stay a `uv sync` from green CI without a multi-gigabyte CUDA
+download (ADR-001, ADR-013). Day 5 measured that arm as the **bottom rung** of its own ladder:
+
+| | hit@5 | MRR | what it is |
+|---|---|---|---|
+| C1 BM25 | 0.670 | 0.486 | what `search_notices` does |
+| C4 hybrid + cross-encoder | **0.835** | **0.681** | what `regops-retrieval` does |
+
+Routing the agent through the portable tool costs **0.165 hit@5 and 0.195 MRR** against
+retrieval this workspace already had, measured, on the same golden set.
+
+**Decision.** The agent is given **both**, as two clearly-named tools with the same shape —
+query in, ranked `(doc_id, section_path)` out, no full text — so the only variable between them
+is the retrieval behind the call. `search_notices` is the portable surface; `search_local` is
+C4. Neither repo gains a dependency it did not have: nothing is added to `regdocs-mcp`.
+
+**Why not pick one.** Only-MCP is the cleaner story and accepts 0.195 MRR of loss silently.
+Only-local abandons the deliverable the plan names and the `langchain-mcp-adapters` exercise
+that motivated it. Both costs one extra tool description — 232 characters, against a
+`tools/list` baseline of 8,454 bytes (ADR-005) — and converts an architectural preference into
+a measurement. It also hands Day 8 two trajectories to compare rather than one.
+
+**And the measurement did not go the way the retrieval numbers predict.** The same 30 golden
+questions, the same prompt, the same validator, differing only in which arm supplied the
+context:
+
+| arm | citations resolve | cited nothing | cited something unresolvable | abstained | p50 |
+|---|---|---|---|---|---|
+| BM25 (`search_notices`) | **19/30** | 10 | 1 | 4 | 3.19s |
+| C4 (`search_local`) | **14/30** | 15 | 1 | 3 | 3.34s |
+
+Better retrieval produced **worse citation compliance**, and the entire difference is the model
+declining to cite at all — fabrication is 1 in both arms. This is a measurement of citation
+compliance, not of answer correctness: Day 5 establishes that C4 retrieves better and nothing
+here contradicts it. What it says is that **citation compliance is not a retrieval property**.
+Choosing the better retriever does not buy a better-grounded answer, and the fix for F2 has to
+live in the prompt or the schema, not in the ranker. n=30, one model, one prompt; quoted as a
+caution against the obvious inference rather than as a result about C4.
+
+**What is deliberately not done.** F1 would be *durably* fixed by removing `issuer`, `doc_type`
+and `date_from` from the tool the agent sees. That is a change to `regdocs-mcp`'s public surface
+for the benefit of one consumer, and the filters are correct for every other host that might use
+the server. Rejected; the prompt mitigation and its measured limits stand instead (F1).
+
+---
+
+## ADR-026 — Validation is three layers, and only the first is free
+**Date:** 2026-09-06 · **Status:** Accepted
+
+**Decision.** A generated answer is validated at three separate layers, each reported as its own
+rate, and **no single number is quoted as "validated"**:
+
+| layer | what it proves | cost | measured, n=30 |
+|---|---|---|---|
+| 1. shape | Pydantic accepts the JSON | free | **30/30** |
+| 2. reference | every `(doc_id, section_path)` is in the index | one lookup | **19/30** |
+| 3. support | the cited clause contains the claim | a judge | Day 5's machinery |
+
+**Why this is not over-engineering.** "We use structured outputs" is a common answer to "how do
+you know the citation is real", and the two numbers above are why it is not an answer. Ollama's
+`format: <json schema>` with the full Pydantic schema produced **zero** malformed answers — the
+shape problem is solved, completely, for free. It was also never the problem. 100% of answers
+are schema-valid and 63% carry a citation that resolves.
+
+**The two ways layer 2 fails are different problems and are counted separately.**
+
+- **Omission — 10 of 11.** `sufficient: true`, `citations: []`. A list field is present and a
+  list is what it contains, so nothing about the shape is wrong. A claim with no citation is
+  unfalsifiable, which is the property this whole pipeline exists to prevent, so it is a failed
+  validation and not a style issue.
+- **Fabrication — 1 of 11.** The model writes the excerpt's *header* into the identifier field:
+  `"doc_id": "[1] Notice 637 Risk Based … (d60d84ece1ddaefe:Section 1: …/1.1)"` — with the
+  correct `doc_id` visible inside the string it got wrong.
+
+The plan's research predicted fabrication as the dominant failure. It is the rarer one. Both are
+caught by the same lookup, which is the argument for the layer.
+
+**An abstention is exempt from layer 2, and that is not a loophole.** 35 of the 150 golden items
+have no answer in the corpus; there is nothing to cite when the honest answer is "not here", and
+requiring a citation would penalise the correct behaviour. `sufficient: false` is an explicit
+field rather than a phrase to regex for, so Day 5's abstention machinery reads it directly.
+
+**Layer 3 is deliberately not implemented today.** Reference validity is mechanical and needs no
+GPU, so it runs in CI on every commit; support needs a judge, and Day 5 already has that
+machinery pointed at `qwen3.8`. Building a second judge here would duplicate it. What matters is
+that the three are *named separately*, so "validated" cannot silently mean "layer 1".
+
+**The repair loop was built, measured, and turned off.** The plan called for a retry that hands
+the model its own output and the specific violation, with **the repair's own success rate
+measured** — because an unmeasured repair loop is just a slower way to fail. Measured: **0 of 11
+repaired.** Ten changed nothing; one converted omission into fabrication at double the latency.
+It is off by default and `--repair` retains it so the number can be reproduced. See F11.
+
+**What would actually fix F2** is a schema-level constraint — a non-empty `citations` array, so
+constrained decoding cannot emit `[]` — since constrained decoding is the one mechanism that has
+worked perfectly here. It cannot express "unless this is an abstention", so it needs two schemas
+and a routing decision. Not attempted, named so it is not mistaken for done.

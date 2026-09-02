@@ -29,5 +29,6 @@ golden/*/candidates.json
 results/day5/answers/
 results/day5/decompositions/
 
-# Day 6: the tool-call probe's raw per-call rows are large and regenerable;
-# the summaries in results/day6/*.json are what the write-up reads.
+# Day 6. `results/day6/*.json` IS committed, per-call rows and all: the files are
+# tens of kilobytes and they are what makes FAILURE_MODES.md's numbers openable
+# rather than quotable. Nothing here needs a new ignore rule.
