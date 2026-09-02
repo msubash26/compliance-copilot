@@ -125,3 +125,115 @@ def test_answer_grounding_is_high_when_the_answer_is_in_the_span(index):
 def test_answer_grounding_is_low_for_an_invented_answer(index):
     it = make_item(answer="Quarterly liquidity coverage submissions require actuarial signoff.")
     assert check_answer_grounding(it, index) < 0.25
+
+
+def test_no_judge_preserves_a_judged_run_and_does_not_reset_flags(index_path, tmp_path):
+    """`--no-judge` re-runs the mechanical checks. It must not erase the rest.
+
+    This is a regression, and it was found by running Day 5's own Phase 0
+    pre-flight: `verify --index ... --no-judge` rebuilt the whole `verification`
+    block from scratch, so a check intended to confirm that 150 gold spans still
+    resolve silently reset 28 flagged items to `unverified` and wrote the file
+    back. Nothing downstream could have detected that — the benchmark would
+    simply have reported a cleaner instrument than it has.
+    """
+    from regops_evals.schema import read_jsonl, write_jsonl
+    from regops_evals.verify import run_verify
+
+    golden = tmp_path / "golden.jsonl"
+    item = make_item(
+        verification={
+            "span_exists": True,
+            "answerable_from_span": False,
+            "no_leakage": True,
+            "verifier": "qwen3.8:latest",
+            "status": "flagged",
+            "human_reviewed": False,
+            "confidence": 0.35,
+            "failures": ["judge_says_not_answerable_from_span"],
+        }
+    )
+    write_jsonl(golden, [item])
+
+    assert run_verify(golden, index_path, judge=False) == 0
+
+    after = read_jsonl(golden)[0].verification
+    assert after.status == "flagged"
+    assert "judge_says_not_answerable_from_span" in after.failures
+    assert after.verifier == "qwen3.8:latest"
+    assert after.answerable_from_span is False
+    # The mechanical fields are still refreshed -- that is what the run is for.
+    assert after.span_exists is True
+    assert after.no_leakage is True
+
+
+def test_no_judge_can_still_raise_a_new_mechanical_flag(index_path, tmp_path):
+    """Preserving prior findings must not mean ignoring new ones."""
+    from regops_evals.schema import read_jsonl, write_jsonl
+    from regops_evals.verify import run_verify
+
+    golden = tmp_path / "golden.jsonl"
+    write_jsonl(
+        golden,
+        [
+            make_item(
+                question="What does MAS Notice 626 require of a bank on beneficial ownership?",
+                verification={"status": "machine_verified", "confidence": 0.9},
+            )
+        ],
+    )
+    assert run_verify(golden, index_path, judge=False) == 0
+    after = read_jsonl(golden)[0].verification
+    assert after.status == "flagged"
+    assert any("leak" in f for f in after.failures)
+
+
+def test_a_truncated_negative_excerpt_says_that_it_is_truncated(index):
+    """The negative set's one known defect, as a test.
+
+    `gs-0118` asks whether MAS prescribes disclosure templates. The right clause
+    was retrieved at rank 3 — and cut to 700 characters, while the answer begins
+    at character 3,697. The judge was asked "does the corpus answer this?", shown
+    a window that stopped short of the answer, and said no with confidence 1.0.
+    A silent truncation is a judge being lied to about its evidence, so what is
+    cut now says so. See ADR-024.
+    """
+    from regops_evals.verify import NEGATIVE_EXCERPT_CHARS, negative_excerpts
+
+    long_clause = "d0000001:6.14"
+    doc_id, _, path = long_clause.partition(":")
+    ix = index
+    original = ix.clause(doc_id, path).text
+    assert len(original) < NEGATIVE_EXCERPT_CHARS  # the fixture clause is short
+
+    class Stub:
+        """An index whose one clause is longer than the excerpt window."""
+
+        def __init__(self, inner):
+            self.inner = inner
+
+        def clause(self, d, p):
+            cl = self.inner.clause(d, p)
+            if cl is None:
+                return None
+            return type(cl)(
+                cl.doc_id,
+                cl.section_path,
+                cl.heading,
+                "filler " * 3000 + "THE ANSWER IS HERE",
+                cl.title,
+                cl.doc_type,
+                cl.effective_date,
+            )
+
+        def search_bm25(self, q, k):
+            return [(long_clause, 1.0)]
+
+        def search_dense(self, q, k, vec=None):
+            return []
+
+    item = make_item(query_type="negative", gold_spans=[], absence_reason="unregulated_topic")
+    ex = negative_excerpts([item], Stub(ix))[item.id]
+    assert "…truncated from" in ex
+    assert "THE ANSWER IS HERE" not in ex  # still cut — but no longer silently
+    assert len(ex) < 3000 * len("filler ")

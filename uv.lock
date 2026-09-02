@@ -2608,6 +2608,7 @@ dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
     { name = "python-dotenv" },
+    { name = "regops-retrieval" },
 ]
 
 [package.metadata]
@@ -2616,6 +2617,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "pydantic", specifier = ">=2.9" },
     { name = "python-dotenv", specifier = ">=1.0" },
+    { name = "regops-retrieval", editable = "retrieval" },
 ]
 
 [[package]]
@@ -2641,6 +2643,16 @@ requires-dist = [
 name = "regops-retrieval"
 version = "0.1.0"
 source = { editable = "retrieval" }
+dependencies = [
+    { name = "duckdb" },
+    { name = "httpx" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "duckdb", specifier = ">=1.5" },
+    { name = "httpx", specifier = ">=0.27" },
+]
 
 [[package]]
 name = "regops-serving"

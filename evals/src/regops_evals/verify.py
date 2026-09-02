@@ -46,6 +46,15 @@ TIMEOUT_S = 180.0
 # come from -- usually a sign the model answered from its own knowledge.
 MIN_ANSWER_GROUNDING = 0.25
 
+# How much of a candidate clause the negative-set judge is shown. This was 700
+# characters, and 700 characters is where the negative set's one known defect
+# came from: Notice 653 is a 12,689-character clause whose disclosure-template
+# requirement begins at character 3,697, so the judge was asked whether the
+# corpus answers a question about disclosure templates while being shown a
+# window that stopped 3,000 characters short of the answer. It said no, with
+# confidence 1.0. Raised, and what is still cut is now labelled. See ADR-024.
+NEGATIVE_EXCERPT_CHARS = 6000
+
 JUDGE_ANSWERABLE = """\
 <excerpt>
 {span}
@@ -280,7 +289,17 @@ def negative_excerpts(items: list[GoldenItem], ix: Index) -> dict[str, str]:
             seen.add(u)
             doc_id, _, path = u.partition(":")
             if cl := ix.clause(doc_id, path):
-                ex.append(f"[{len(ex) + 1}] {cl.text[:700]}")
+                body = " ".join(cl.text.split())
+                if len(body) > NEGATIVE_EXCERPT_CHARS:
+                    # Say so. A judge told "this excerpt is complete" when it is
+                    # not will answer "no, the corpus does not say that" with
+                    # perfect confidence -- which is exactly what happened to
+                    # gs-0118. See ADR-024.
+                    body = (
+                        body[:NEGATIVE_EXCERPT_CHARS]
+                        + f" […truncated from {len(body):,} characters]"
+                    )
+                ex.append(f"[{len(ex) + 1}] {body}")
             if len(ex) >= 12:
                 break
         out[it.id] = "\n\n".join(ex)
@@ -431,7 +450,26 @@ def run_verify(
 
     for it in items:
         c = checks[it.id]
+        prior = it.verification
         status, fails = _status(c, it)
+        if not judge:
+            # `--no-judge` is the CI and pre-flight path: it re-runs the
+            # mechanical checks and must not silently discard a judged run's
+            # findings. Day 5's Phase 0 check did exactly that -- it reset 28
+            # flagged items to unverified -- which is a data loss a benchmark
+            # would then read as a cleaner instrument than it has.
+            it.verification = prior.model_copy(
+                update={
+                    "span_exists": c.drift != "missing",
+                    "no_leakage": not c.leaks,
+                    # A newly failing mechanical check still flags the item; a
+                    # previously judged flag is never cleared by a run that did
+                    # not re-ask the judge.
+                    "status": "flagged" if (fails or prior.status == "flagged") else prior.status,
+                    "failures": sorted(set(prior.failures) | set(fails)),
+                }
+            )
+            continue
         it.verification = Verification(
             span_exists=c.drift != "missing",
             answerable_from_span=c.judge_answerable,
@@ -439,10 +477,8 @@ def run_verify(
             not_answerable_without_span=(
                 None if c.judge_closed_book_known is None else not c.judge_closed_book_known
             ),
-            verifier=model if judge else None,
-            # A failed mechanical check is a flag whether or not the judge ran.
-            # Only a clean item is downgraded to "unverified" without one.
-            status=status if (judge or status == "flagged") else "unverified",
+            verifier=model,
+            status=status,
             human_reviewed=False,
             confidence=_confidence(c, it),
             failures=fails,

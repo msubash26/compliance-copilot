@@ -10,6 +10,13 @@ in one process would mean paying for all of it to redo any of it.
     regops-evals generate --candidates golden/v1/candidates.json --out golden/v1/golden.jsonl
     regops-evals verify   --index index/regdocs.duckdb --golden golden/v1/golden.jsonl
     regops-evals gate     --index index/regdocs.duckdb --golden golden/v1/golden.jsonl
+
+Day 5 adds the sweep, which reads that set rather than building it:
+
+    regops-evals bench    --index index/regdocs.duckdb --configs all \
+                          --report results/day5/retrieval.md
+    regops-evals generate-answers --configs ladder     # 4 x 150, ~68 min on the 3090
+    regops-evals judge            --answers results/day5/answers
 """
 
 from __future__ import annotations
@@ -102,6 +109,53 @@ def cmd_verify(a: argparse.Namespace) -> int:
     )
 
 
+def cmd_bench(a: argparse.Namespace) -> int:
+    from regops_retrieval.configs import CONFIGS, LADDER
+
+    from regops_evals.bench import run_sweep
+    from regops_evals.report import write_report
+
+    names = None
+    if a.configs and a.configs != ["all"]:
+        names = [c.name for c in LADDER] if a.configs == ["ladder"] else a.configs
+    report, _ = run_sweep(
+        a.golden,
+        a.index,
+        config_names=names,
+        raw_dir=a.raw,
+        out=a.out,
+        baseline=a.baseline,
+    )
+    if a.report:
+        write_report(report, a.report, answers_dir=a.answers)
+        print(f"write-up -> {a.report}")
+    gate = report.get("baseline_gate")
+    if gate and not gate["passed"] and (names is None or "C1_bm25" in names):
+        return 1
+    if names is None:
+        missing = [c.name for c in CONFIGS if c.name not in report["configs"]]
+        if missing:
+            print(f"warning: no rows for {missing}")
+    return 0
+
+
+def cmd_generate_answers(a: argparse.Namespace) -> int:
+    from regops_retrieval.configs import LADDER
+
+    from regops_evals.generation import generate_answers
+
+    names = [c.name for c in LADDER] if a.configs == ["ladder"] else a.configs
+    return generate_answers(
+        a.golden, a.index, config_names=names, model=a.model, out_dir=a.out, raw_dir=a.raw
+    )
+
+
+def cmd_judge(a: argparse.Namespace) -> int:
+    from regops_evals.generation import judge_answers
+
+    return judge_answers(a.golden, a.answers, model=a.model, out=a.out)
+
+
 def cmd_gate(a: argparse.Namespace) -> int:
     from regops_evals.gate import run_gate
 
@@ -149,6 +203,48 @@ def main() -> None:
     q.add_argument("--k", type=int, default=5)
     q.add_argument("--out", type=Path, default=None)
     q.set_defaults(fn=cmd_gate)
+
+    b = sub.add_parser("bench", help="sweep retrieval configurations over the golden set")
+    b.add_argument("--index", type=Path, required=True)
+    b.add_argument("--golden", type=Path, default=Path("golden/v1/golden.jsonl"))
+    b.add_argument(
+        "--configs",
+        nargs="+",
+        default=["all"],
+        help="'all', 'ladder', or explicit names (C1_bm25 ...)",
+    )
+    b.add_argument("--raw", type=Path, default=Path("results/day5/raw"))
+    b.add_argument("--out", type=Path, default=Path("results/day5/retrieval.json"))
+    b.add_argument("--report", type=Path, default=None, help="render the markdown write-up here")
+    b.add_argument(
+        "--answers",
+        type=Path,
+        default=Path("results/day5/answers"),
+        help="judged generation results, folded into the report when present",
+    )
+    b.add_argument(
+        "--baseline",
+        type=Path,
+        default=Path("golden/v1/saturation.json"),
+        help="Day 4's published numbers; C1 must reproduce them",
+    )
+    b.set_defaults(fn=cmd_bench)
+
+    ga = sub.add_parser("generate-answers", help="answer the golden set from retrieved context")
+    ga.add_argument("--index", type=Path, default=Path("index/regdocs.duckdb"))
+    ga.add_argument("--golden", type=Path, default=Path("golden/v1/golden.jsonl"))
+    ga.add_argument("--configs", nargs="+", default=["ladder"])
+    ga.add_argument("--model", default="qwen3.5:9b")
+    ga.add_argument("--raw", type=Path, default=Path("results/day5/raw"))
+    ga.add_argument("--out", type=Path, default=Path("results/day5/answers"))
+    ga.set_defaults(fn=cmd_generate_answers)
+
+    j = sub.add_parser("judge", help="score groundedness and abstention with a second model")
+    j.add_argument("--golden", type=Path, default=Path("golden/v1/golden.jsonl"))
+    j.add_argument("--answers", type=Path, default=Path("results/day5/answers"))
+    j.add_argument("--model", default="qwen3.8:latest", help="not the answering model")
+    j.add_argument("--out", type=Path, default=Path("results/day5/generation.json"))
+    j.set_defaults(fn=cmd_judge)
 
     args = ap.parse_args()
     sys.exit(args.fn(args))

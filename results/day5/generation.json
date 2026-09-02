@@ -1,0 +1,127 @@
+{
+  "judge": "qwen3.8:latest",
+  "answers_dir": "results/day5/answers",
+  "judged": 329,
+  "judgeable": 330,
+  "wall_s": 1045.6,
+  "bedrock": {
+    "comparator": "Claude Haiku 4.5 (Bedrock on-demand)",
+    "usd_per_m_input": 1.0,
+    "usd_per_m_output": 5.0
+  },
+  "configs": {
+    "C1_bm25": {
+      "negatives_n": 35,
+      "grounded_items_n": 115,
+      "false_answer_rate": 0.0571,
+      "correct_abstention_rate": 0.9429,
+      "false_abstention_rate": 0.3217,
+      "false_abstention_flagged": 0.4643,
+      "false_abstention_unflagged": 0.2759,
+      "flagged_n": 28,
+      "unflagged_n": 87,
+      "answers": 150,
+      "errors": 0,
+      "groundedness": 0.8205,
+      "citation_valid": 0.8333,
+      "judge_says_refused_anyway": 0,
+      "grounded_n": 78,
+      "p50_s": 1.839,
+      "p95_s": 2.876,
+      "p50_end_to_end_s": 1.874,
+      "truncated_queries": 47
+    },
+    "C2_dense": {
+      "negatives_n": 35,
+      "grounded_items_n": 115,
+      "false_answer_rate": 0.0571,
+      "correct_abstention_rate": 0.9429,
+      "false_abstention_rate": 0.3478,
+      "false_abstention_flagged": 0.4643,
+      "false_abstention_unflagged": 0.3103,
+      "flagged_n": 28,
+      "unflagged_n": 87,
+      "answers": 150,
+      "errors": 0,
+      "groundedness": 0.88,
+      "citation_valid": 0.8667,
+      "judge_says_refused_anyway": 0,
+      "grounded_n": 75,
+      "p50_s": 1.611,
+      "p95_s": 2.838,
+      "p50_end_to_end_s": 1.74,
+      "truncated_queries": 46
+    },
+    "C3_hybrid_rrf": {
+      "negatives_n": 35,
+      "grounded_items_n": 115,
+      "false_answer_rate": 0.0857,
+      "correct_abstention_rate": 0.9143,
+      "false_abstention_rate": 0.2696,
+      "false_abstention_flagged": 0.5,
+      "false_abstention_unflagged": 0.1954,
+      "flagged_n": 28,
+      "unflagged_n": 87,
+      "answers": 150,
+      "errors": 0,
+      "groundedness": 0.7976,
+      "citation_valid": 0.8095,
+      "judge_says_refused_anyway": 1,
+      "grounded_n": 84,
+      "p50_s": 1.845,
+      "p95_s": 2.819,
+      "p50_end_to_end_s": 2.027,
+      "truncated_queries": 57
+    },
+    "C4_hybrid_rerank": {
+      "negatives_n": 35,
+      "grounded_items_n": 115,
+      "false_answer_rate": 0.0286,
+      "correct_abstention_rate": 0.9714,
+      "false_abstention_rate": 0.1913,
+      "false_abstention_flagged": 0.3929,
+      "false_abstention_unflagged": 0.1264,
+      "flagged_n": 28,
+      "unflagged_n": 87,
+      "answers": 150,
+      "errors": 0,
+      "groundedness": 0.8696,
+      "citation_valid": 0.8913,
+      "judge_says_refused_anyway": 0,
+      "grounded_n": 92,
+      "p50_s": 1.783,
+      "p95_s": 2.776,
+      "p50_end_to_end_s": 2.376,
+      "truncated_queries": 42
+    }
+  },
+  "cost": {
+    "rate_note": "Claude Haiku 4.5 (Bedrock on-demand), $1.00/M input and $5.00/M output, applied to locally measured token counts. No AWS call was made.",
+    "per_config": {
+      "C1_bm25": {
+        "gpu_s_per_query": 1.788,
+        "prompt_tokens": 2779,
+        "completion_tokens": 87,
+        "bedrock_usd_per_1k_queries": 3.21
+      },
+      "C2_dense": {
+        "gpu_s_per_query": 1.609,
+        "prompt_tokens": 2166,
+        "completion_tokens": 86,
+        "bedrock_usd_per_1k_queries": 2.6
+      },
+      "C3_hybrid_rrf": {
+        "gpu_s_per_query": 1.768,
+        "prompt_tokens": 2677,
+        "completion_tokens": 87,
+        "bedrock_usd_per_1k_queries": 3.11
+      },
+      "C4_hybrid_rerank": {
+        "gpu_s_per_query": 1.703,
+        "prompt_tokens": 2386,
+        "completion_tokens": 89,
+        "bedrock_usd_per_1k_queries": 2.83
+      }
+    }
+  }
+}

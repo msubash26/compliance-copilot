@@ -641,3 +641,288 @@ have room to earn their place on Day 5.
 **The gate reports; it never filters.** If a future version comes back saturated, the named
 remedy is to *add* contested and multi-hop items. `regops-evals gate` deliberately returns 0 even
 when saturated, so no build ever gets a reason to reach for the fix this ADR forbids.
+
+---
+
+## ADR-020 — Seven configurations as a ladder plus ablations, not as a factorial
+**Date:** 2026-09-05 · **Status:** Accepted
+
+**Context.** The prep plan names the sweep as *"dense only · BM25 only · hybrid RRF · hybrid +
+cross-encoder rerank · contextual chunks on/off · parent-child on/off · query decomposition
+on/off"*. Read as a factorial that is 4 × 2 × 2 × 2 = **32** configurations over 115 grounded
+items — a table nobody reads, in which every cell is thin and no comparison is clean.
+
+**Decision.** Seven rows, read as a **4-rung ladder plus 3 ablations against the top rung**:
+
+```
+C1 bm25 → C2 dense(+ctx) → C3 hybrid RRF → C4 hybrid + cross-encoder
+                                              │
+                    C5 contextual off · C6 parent-child off · C7 decomposition on
+```
+
+Every rung holds contextual **on** and parent-child **on**, so the ladder varies one thing:
+what ranks the pool. Each ablation moves exactly one switch against C4, which is asserted by a
+test (`test_each_ablation_moves_exactly_one_switch_against_c4`) rather than by intent. This is
+the only reading in which an ablation means anything, because an ablation needs a fixed
+reference.
+
+**C7 reads backwards, and that is deliberate.** Decomposition is off on the whole ladder, so its
+ablation turns it *on*. It is still one switch against a fixed reference, which is the property
+that matters; calling it an "ablation" is a small abuse of the word and a smaller one than
+inventing an eighth row.
+
+**Every configuration is a declared object** in `regops_retrieval.configs`, not a flag
+combination assembled at the call site, and the report is rendered from that list. If the
+table's rows and the code's objects were not literally the same list, the table would be a claim
+about code that may not exist.
+
+**One pool for all seven.** Every configuration ranks the same 50 candidates and reports the top
+20. Without that, C3 → C4 would differ in two ways at once — reranking *and* pool depth — and
+the rerank column would be unreadable. It also makes a property of the design explicit rather
+than surprising: **reranking a pool it does not extend cannot change recall at the pool depth**,
+so C4's `hit@20` moving by zero against C3 is arithmetic, not a null result.
+
+**Constants left untuned, and admitted as such.** RRF `k = 60` is the published default from
+Cormack et al. (2009). Rerank `top_n = 50` is simply the pool. Cross-encoder pair truncation is
+the model card's 512 tokens. None was fitted, because fitting a constant on the same 115 items
+the table is read off is fitting noise and calling it a result. If a future day tunes them, it
+needs a held-out split first.
+
+**Where retrieval now lives.** The primitives moved out of `regops_evals.corpus` into
+`regops_retrieval`; `corpus.py` imports them back under their old names, and a test asserts the
+identity (`corpus.Index is regops_retrieval.index.Index`). Two reasons: an eval package must not
+own the thing it evaluates, and Day 6's agent needs these retrievers without importing an eval
+harness. Day 4's `gate` therefore calls the same code the sweep does, which is what makes its
+published baseline comparable by construction rather than by coincidence.
+
+---
+
+## ADR-021 — Retrieval metrics on all seven configurations, generation metrics on four
+**Date:** 2026-09-05 · **Status:** Accepted
+
+**Context.** Measured on this box: recall, nDCG, MRR and latency for one configuration over 150
+items cost **4–75 seconds**; the whole seven-configuration sweep is **8 minutes** including 165s
+of one-off query decomposition. Answer generation is the other order of magnitude — the Day 5
+plan budgeted **6.76s per answer** from a research probe, which put seven configurations at ~2
+hours of generation before any judging.
+
+**The estimate was wrong, and it does not change the decision.** The actual batch ran at
+**~1.9s per item** — one configuration in ~5 minutes, so seven would have been ~35 minutes, not
+two hours. The probe measured a cold model on its first calls; the batch amortises that. Had the
+decision been made on the measured figure it would have been closer, and it would still have
+gone the same way, because the binding constraint is not the clock: it is that the three
+ablations answer *retrieval* questions (does contextual retrieval still pay once a cross-encoder
+is present; does the assembly unit change the ranking) which the retrieval columns already
+answer completely. Recording this because a plan's estimate that turns out 3.5× pessimistic is
+worth catching in writing rather than quietly inheriting.
+
+**Decision.**
+
+- **Retrieval metrics: all 7 configurations × all 150 items.** Complete, no sampling.
+- **Generation metrics: the 4 ladder rungs × all 150 items.** The ladder is where the
+  architecture question lives.
+- **The 3 ablations get an explicit empty cell** in the generation columns, reading *not
+  measured*, with this ADR as the reason.
+
+The alternative offered was 7 configurations × ~75 items. It was rejected because the per-type
+cells are already thin — 15 `temporal` items means one item is 6.7 points — and halving the set
+turns every generation cell into an anecdote. Dropping the three ablations loses the least
+interesting generation comparisons; halving the set damages all of them. **An empty cell that
+says why is worth more than a cell filled from a subset and quoted as though it were the set.**
+
+**Abstention is two rates, never one.** Recall is undefined for the 35 negatives — there is no
+gold span to find — and they are 23% of the set and the reason it is interesting. So abstention
+is measured as a 2×2 over all 150 and reported as two numbers:
+
+| | system answered | system abstained |
+|---|---|---|
+| **35 negatives** (no gold span) | **false answer** — *dangerous* | correct |
+| **115 grounded** (gold span exists) | correct | **false abstention** — *useless* |
+
+A single "abstention accuracy" would let a system that abstains constantly score well, and would
+hide which of the two failures it has. In a compliance tool those failures are not
+interchangeable: confidently answering a question the corpus cannot answer is the one that
+causes harm, and refusing questions it can answer is the one that makes the tool unused.
+
+**Part of the false-abstention column belongs to the golden set, and it is split out rather than
+argued about.** Measured across all four ladder rungs, every one of them refuses *flagged* items
+at several times the rate it refuses unflagged ones (C4: 39.3% against 12.6%), and the gap widens
+as retrieval improves. Some of those items are genuinely unanswerable as written — `gs-0005` asks
+*"when does this notice become effective"* with no referent for *this notice*, and abstaining is
+the right answer to it. So the table publishes the rate three ways: overall, on flagged items, and
+on unflagged items, and says that the unflagged column is the fairer one to quote. The split is
+computed from the answers file alone, because abstention is mechanical and needs no judge.
+
+**Groundedness is measured only where a claim was made.** An abstention has no claims to
+support; counting it as grounded would reward silence, and counting it as ungrounded would
+punish the correct behaviour on the negatives. So groundedness is the rate over *answered*
+grounded items, and its `n` is printed next to it.
+
+**Cost per query: measured locally, estimated for Bedrock, and labelled in the column header.**
+There are no AWS credentials on this box (no `~/.aws`, no `AWS_*` in the environment), so a
+measured parity number would need an account and spend today. GPU-seconds and token counts are
+measured from Ollama's own `prompt_eval_duration` / `eval_duration` / token counts; the Bedrock
+figure is computed from published per-token rates against those same token counts, and the words
+*estimated from published rates* sit in the header rather than in a footnote, because that is
+where they will be read. The estimate is linear in two named constants, so a reader with current
+rates can rescale the column without re-running anything. This is consistent with ADR-005, which
+positions hosted APIs as a parity baseline rather than a dependency.
+
+**Query decomposition is evaluated on all 150 items, and reported per type.** Running it only
+where it was expected to help would assume the conclusion. The expected finding — helps the
+multi-span types, costs latency everywhere — is itself a routing result, and the measured one
+turned out to be more interesting than that (see `results/day5/retrieval.md`).
+
+---
+
+## ADR-022 — Ranking was not reproducible, twice, and the first fix hid the second bug
+**Date:** 2026-09-05 · **Status:** Accepted
+
+**What happened.** Before any Day 5 measurement, six identical dense queries were issued against
+the finished index and compared. They returned **six different orderings**, diverging at rank 18.
+The cause: there is an exact cosine-distance tie inside the top 20, and DuckDB's parallel
+aggregation does not break ties in a fixed order, so the winner of that tie depends on which
+thread finished first. BM25 was stable across the same test.
+
+**Why this was nearly invisible.** `hit@k` and `full@k` are *set* tests, and they survived it
+intact — Day 4's entire published baseline is set metrics, which is why nothing had gone wrong
+yet. **MRR and nDCG read the order and do not survive it.** Day 5 is the first day whose
+headline claims are ranking claims, and a two-point MRR movement between two configurations is
+not distinguishable from thread scheduling unless this is fixed first.
+
+**And the first fix was not enough.** `ORDER BY score DESC, section_uid` was applied, verified
+against the fixture, and shipped — and BM25 was **still** not reproducible on the real index.
+Three consecutive full sweeps returned C1 MRR of 0.490, 0.495 and 0.492, for a pure-BM25
+configuration over a fixed index that had no business moving at all.
+
+The second cause is different from the first. DuckDB sums each term's BM25 contribution in a
+parallel reduction; floating-point addition is not associative, so the same query returns the same
+score **varying in its last bit** — `7.665345794357177` against `7.665345794357176`. A tie-break
+on `section_uid` fires only on *exact* equality, and two scores differing by one ULP are not
+equal, so it never ran on precisely the pairs it existed for. Measured over 40 real questions, the
+top-20 reordered between runs on **10 of them**.
+
+The fix is to round before ordering — `round(score, 9)` — which collapses the jitter into a real
+tie that the uid then breaks. Nine decimal places is about six orders of magnitude above the
+observed jitter and far below any score difference that means anything. Verified: 10 of 40
+unstable → **0 of 40**. The same rounding goes on the dense and chunk paths, which were already
+stable (`MIN` over floats is exact) but are exposed to the same class of jitter in the distance
+computation itself.
+
+**Why the test passed anyway, which is the part worth keeping.** The determinism test ran the same
+query six times against a five-clause fixture with hand-written orthogonal vectors. There are no
+near-ties in that fixture, so there was nothing for floating-point jitter to disturb, and the test
+could not have failed however broken the ordering was. **A determinism test over clean synthetic
+data proves nothing about determinism.** The suite now also carries a `slow` test that runs 20
+real questions against the real index four times each and asserts one ordering — the only place
+the defect can be observed.
+
+**Decision.**
+
+1. **A deterministic secondary sort key on every ranked query, applied to a rounded score.**
+   `ORDER BY round(score, 9) DESC, section_uid` for BM25, `ORDER BY round(d, 9), c.section_uid`
+   for dense, `ORDER BY round(d, 9), c.chunk_id` for the chunk variant, and an explicit uid tie-break in the RRF fusion and the reranker's sort. Ties are
+   broken by something stable and arbitrary, which is the honest treatment: the tie is real, and
+   pretending to order it by relevance would be worse than ordering it by name.
+2. **Query embeddings computed once per run and cached** (`QuestionVectors`). They are
+   bit-identical across calls, so this changes no number; it removes a confound and an Ollama
+   round trip. The cache does *not* flatter the latency column — an embed it serves is added
+   back at the price the first one measured, so the reported p50 is the cold path either way.
+3. **Tests at both levels, because one level was not enough.** The fixture tests cover the
+   tie-break logic and run in CI. `test_the_real_index_ranks_the_same_way_every_time` covers the
+   float jitter, needs the real 433 MB index, and is marked `slow`.
+
+**What this invalidated.** Every ranking metric computed against this index before the *second*
+fix — the MRR and nDCG figures in the Day 5 plan's research section, **and the first two full
+sweeps run on Day 5 itself**. The published table is the third sweep. The invalidated numbers were
+close to the final ones (C1 MRR moved by 0.005 across the three runs, inside the noise floor the
+write-up already refuses to narrate) so no conclusion changed — but that is luck, not method. The
+movement was the same size as a real effect on the 15-item `temporal` cell, where one item is
+0.067, and a two-point claim on that cell would have been unsupportable.
+
+**Why this is worth an ADR.** "Our benchmark's ranking was nondeterministic" is exactly the kind
+of defect that survives into a published table: it produces plausible numbers, it moves them by
+about the size of a real effect, and nothing downstream can detect it. The first instance was
+found by deliberately running one query six times before measuring anything. The second was found
+only because three full sweeps were run and their headline numbers *compared*. **Re-running a
+benchmark and diffing its output is a test, and it is one no unit suite can perform for you.**
+
+---
+
+## ADR-023 — `verify --no-judge` must not overwrite a judged run
+**Date:** 2026-09-05 · **Status:** Accepted
+
+**What happened.** Day 5's Phase 0 pre-flight is
+`regops-evals verify --index index/regdocs.duckdb --no-judge` — a cheap check that all 150 gold
+spans still bind to the index before anything is measured against them. It passed: 150 resolved,
+0 moved, 0 missing. It also **rewrote `golden.jsonl` and reset all 28 flagged items to
+`unverified`**, discarding the verifier's findings, its confidence ranking and the failure list
+behind `review_queue.md`.
+
+**Why it was nearly invisible.** The summary that run prints is computed from the *flag* count,
+so it reported `"machine_verified": 150, "flagged": 0` and looked like a clean bill of health
+rather than a data loss. The file was restored from git, and the day's headline table is computed
+over a 122-item unflagged subset — which would silently have become a 150-item subset, reported
+as a sensitivity run, and shown no sensitivity at all.
+
+**Decision.** `--no-judge` now **merges** rather than rebuilds. Mechanical results (`span_exists`,
+`no_leakage`) refresh; judge fields, `verifier`, `confidence` and existing flags are preserved; a
+newly failing mechanical check still raises a flag. Two tests cover both directions — an existing
+flag survives a `--no-judge` run, and a newly leaked question is flagged by one.
+
+**The general rule this is an instance of.** A command whose *purpose* is to check something must
+not be able to damage what it is checking. `verify` writes because the judged run genuinely
+produces new state; the no-judge path produces almost none, and had no business taking the same
+write path. Where a check and a mutation share an entry point, the cheap read-only mode is the
+one that will be run casually — in a pre-flight, in CI, out of a plan's checklist — and it is
+therefore the one that must be safe.
+
+---
+
+## ADR-024 — The negative set was verified through a 700-character window, and `gs-0118` is wrong because of it
+**Date:** 2026-09-05 · **Status:** Accepted
+
+**How it was found.** Day 5's generation pass measures false answers on the 35 negatives. `C4`
+produced exactly one: `gs-0118`, which asks what disclosure formats or supplementary reporting
+templates MAS requires. The system answered that Notice 653 prescribes the NSFR Disclosure
+Template in Table 1 of Annex 1, published semi-annually in the Pillar 3 report. Every one of
+those phrases is in the retrieved context. **The answer is correct and the item is wrong** — its
+gold answer asserts that MAS "does not mandate specific visual disclosure formats or provide
+templates", which the corpus contradicts.
+
+**Why Day 4's verifier passed it with confidence 1.0.** Not because it failed to retrieve the
+clause — it had it at rank 3 of its candidate list. `negative_excerpts` cut each candidate to
+`cl.text[:700]`. Notice 653's clause is **12,689 characters**, and its disclosure-template
+requirement begins at character **3,697**. The judge was asked *"does anything here answer the
+question?"* and shown a window that stopped three thousand characters short of the answer. It
+answered honestly about the evidence it was given.
+
+**The general failure.** A silent truncation is a judge being lied to about its evidence. It does
+not look like a bug from either side: the retrieval was right, the judge's reasoning over what it
+saw was right, and the output is a confident, well-formed, wrong verdict. This is the same class
+of defect ADR-022 records for ranking — a mechanism that produces plausible numbers and that
+nothing downstream can detect — and it is why Day 5's own `assemble_context` records
+`truncated_excerpts` and `dropped_excerpts` per query rather than silently capping.
+
+**Decision.**
+
+1. `NEGATIVE_EXCERPT_CHARS` is raised from 700 to **6,000**, and whatever is still cut is
+   labelled inline (`[…truncated from 12,689 characters]`) so the judge knows the evidence is
+   partial and can say so.
+2. A test drives `negative_excerpts` with a clause longer than the window and asserts the label
+   appears.
+3. **`gs-0118` is not edited or deleted today.** The rule from ADR-017 stands — disagreement
+   flags, it does not delete — and the flag has to come from the checker, not from a hand edit.
+
+**What is deliberately deferred, and why.** Re-running `verify` with the wider window would
+change which items are flagged, and the entire Day 5 table is keyed to the current 122/28 split:
+the sensitivity run, the abstention split, every "n=" in the write-up. Re-verifying and then
+re-sweeping is a Day 4 change with a Day 5 cascade, and doing it in the same commit as the
+benchmark would mean publishing a table whose instrument moved underneath it. So Day 5 publishes
+the defect, names the item, and quotes the affected number **both ways**: `C4`'s false-answer
+rate is **1/35 = 0.029 as measured, 0/35 once `gs-0118` is excluded**. The re-verification is
+first work on Day 6.
+
+**What this does not license.** One demonstrated bad negative is not a reason to assume the other
+34 are bad. It is a reason to assume the *verification* was weaker than its confidence scores
+suggested — which is an argument about the checker, and it is now fixed.

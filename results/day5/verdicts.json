@@ -1,0 +1,1976 @@
+{
+ "C1_bm25|gs-0001": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the PD floors for Kmort, Koret, and Kqrre (transactor and revolver) as stated in excerpt [1]."
+ },
+ "C1_bm25|gs-0002": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement for periodic monitoring and the specific considerations mentioned in excerpt [1]."
+ },
+ "C1_bm25|gs-0003": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the definition of default and indicators of default found in excerpt [1], and the citation is correct."
+ },
+ "C1_bm25|gs-0004": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the data sources specified in excerpt [1] without adding unsupported requirements."
+ },
+ "C1_bm25|gs-0006": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the screening requirements stated in the cited excerpts without adding unsupported details."
+ },
+ "C1_bm25|gs-0008": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific experience and qualification requirements stated in excerpt [1], which is the cited source."
+ },
+ "C1_bm25|gs-0009": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the record-keeping requirements for licensees not providing paragraph (j) services as stated in excerpt [2]."
+ },
+ "C1_bm25|gs-0010": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the flexibility and operational reasons (unduly onerous consolidation) provided in excerpts [1] and [2]."
+ },
+ "C1_bm25|gs-0011": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the notification requirement and format details found in excerpt [1]."
+ },
+ "C1_bm25|gs-0012": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 4.16 of the Guidelines for Banks, which is correctly cited as excerpt [1]."
+ },
+ "C1_bm25|gs-0013": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpts [3, 4, 5] which are not provided in the context, and the specific claims about enhanced CDD for PEPs are not found in the provided excerpts [1] and [2]."
+ },
+ "C1_bm25|gs-0014": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpt [1], which explicitly states that margin or collateral calls from derivative counterparties are additional sources of liquidity demands when leverage or derivatives are used."
+ },
+ "C1_bm25|gs-0015": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 11 (excerpt [2]) regarding the modification of clause 9 (excerpt [1]) for accredited investors."
+ },
+ "C1_bm25|gs-0016": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements stated in excerpt [3] regarding the audit function's resource and independence needs."
+ },
+ "C1_bm25|gs-0017": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the timelines, communication methods, and recourse options found in the cited excerpts."
+ },
+ "C1_bm25|gs-0019": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the materiality assessment factors and the automatic materiality rule for risk management functions found in Annex 2 of excerpt [5]."
+ },
+ "C1_bm25|gs-0021": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding due diligence, governance, and the nature of risks, without adding unsupported details."
+ },
+ "C1_bm25|gs-0023": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the communication procedures described in excerpts [1], [2], and [4], specifically the regular reporting and senior management accountability requirements."
+ },
+ "C1_bm25|gs-0024": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly applies the exceptions for physical presence (found in excerpts [3] and [4]) to the notification requirement (found in excerpts [1] and [2]), which do not contain such exceptions."
+ },
+ "C1_bm25|gs-0025": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for stress scenarios and specific risk factors found in excerpts [1] and [4]."
+ },
+ "C1_bm25|gs-0026": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly summarizes the requirements in clause 7.2 and the specific terms in clause 7.1, both of which are fully supported by the cited excerpts."
+ },
+ "C1_bm25|gs-0027": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the due diligence requirements and evaluation criteria found in the cited excerpts for banks and institutions."
+ },
+ "C1_bm25|gs-0028": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly substitutes 'credit risk measurement models' for the 'multiple CRM' (credit risk mitigation) specified in the excerpt, and adds an explanatory clause about ensuring the total reflects specific treatment which is not present in the source text."
+ },
+ "C1_bm25|gs-0029": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpts [1] and [2], which state that responsibilities rest with the board and senior management despite delegation."
+ },
+ "C1_bm25|gs-0030": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements for credit bureau checks and written declarations found in excerpts [1] and [2]."
+ },
+ "C1_bm25|gs-0032": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific risk factors listed in clause 8.6 of excerpt [1], which is the cited source."
+ },
+ "C1_bm25|gs-0033": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The cited excerpt [3] applies to financial institutions dealing in precious stones and metals, not banks, and the other excerpts regarding banks do not contain the specific retention requirements mentioned in the answer."
+ },
+ "C1_bm25|gs-0034": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly states that the VCC must obtain confirmation from the distributor, a requirement found in excerpt [2] for Capital Markets Intermediaries, whereas excerpt [1] for VCCs only requires the distributor to meet specific criteria without mentioning a confirmation step."
+ },
+ "C1_bm25|gs-0035": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements for finance companies outlined in excerpt [1], including the risk assessment steps and the supervision of the third party."
+ },
+ "C1_bm25|gs-0036": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the four specific requirements listed in clause 9.2 of excerpt [1] without adding unsupported details."
+ },
+ "C1_bm25|gs-0037": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the identification and recording requirements specified in clause 11.3 of excerpt [2]."
+ },
+ "C1_bm25|gs-0038": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the common instruction found in all cited excerpts to read the guidelines in conjunction with legislation and other MAS issuances without overriding them."
+ },
+ "C1_bm25|gs-0039": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific due diligence steps outlined in clause 10.3 of Notice 824, which is the cited excerpt."
+ },
+ "C1_bm25|gs-0041": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 15.3 of Notice PSN01, which is contained within the cited excerpt [1]."
+ },
+ "C1_bm25|gs-0042": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer claims that adherence affects the Authority's assessment of board oversight and governance, which is not stated in the provided excerpts."
+ },
+ "C1_bm25|gs-0044": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the simplified CDD measures and examples provided in excerpts [1] and [3]."
+ },
+ "C1_bm25|gs-0045": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for a Depository found in excerpt [1]."
+ },
+ "C1_bm25|gs-0046": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that clause 7.4(b) of the cited excerpt prohibits simplified CDD measures for customers from FATF countermeasure jurisdictions, overriding the low-risk assessment mentioned in clause 7.1."
+ },
+ "C1_bm25|gs-0047": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [2] regarding the consideration of COSMIC information for risk assessments, new business relations, and triggering obligations under paragraphs 6.3(f) and 6.3(g)."
+ },
+ "C1_bm25|gs-0048": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions in clause 6.16(e)(ii) and the exception clause found in excerpt [5], which is cited."
+ },
+ "C1_bm25|gs-0049": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims that enhanced CDD is required for PEPs unless their risk is lower, whereas excerpt [2] states the provider may adopt a risk-based approach to determine whether to perform these measures."
+ },
+ "C1_bm25|gs-0050": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [3] regarding the appointment of an external auditor or independent qualified consultant to assess impersonation risk policies."
+ },
+ "C1_bm25|gs-0051": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions for applying ECDD to higher-risk sectors as stated in excerpt [1], clause 8-1 and 8-2(a)(i)."
+ },
+ "C1_bm25|gs-0053": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption and its specific exceptions as stated in Notice 314 clause 6.19."
+ },
+ "C1_bm25|gs-0054": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the CDD requirements for joint account holders in excerpt [2] and the information transmission obligations for ordering institutions in excerpt [4]."
+ },
+ "C1_bm25|gs-0057": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [3] which is not provided in the input, and the specific mention of 'FATF countermeasures' is not explicitly in the provided text (which lists 'inadequate AML/CFT measures' identified by FATF)."
+ },
+ "C1_bm25|gs-0058": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the policy requirements in excerpt [1] and the document prioritization guidelines in excerpt [2]."
+ },
+ "C1_bm25|gs-0059": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The cited excerpt [5] does not exist in the provided text, and the specific details regarding PEP influence are found in excerpt [3] rather than the cited source."
+ },
+ "C1_bm25|gs-0060": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the prohibition on relying on third parties for ongoing monitoring as stated in excerpt [3] and supported by the context in excerpt [1]."
+ },
+ "C1_bm25|gs-0061": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly characterizes the filing of an STR as an 'immediate' obligation, whereas the cited excerpt only states that the Depository 'shall... file an STR' without specifying immediacy."
+ },
+ "C1_bm25|gs-0062": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the prohibitions listed in clause 7.4 of excerpt [1], including the S$20,000 threshold and jurisdictional risks."
+ },
+ "C1_bm25|gs-0063": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific exception and requirement regarding primary managers and beneficial owner inquiries found in excerpt [1]."
+ },
+ "C1_bm25|gs-0064": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the specific information requirements for natural persons (effective controllers) from clause 6.14A(a) and the verification method from clause 6.14B in excerpt [1]."
+ },
+ "C1_bm25|gs-0066": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and documentation requirements specified in excerpt [1] for Credit Card Licensees."
+ },
+ "C1_bm25|gs-0067": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption conditions and scope stated in excerpt [1]."
+ },
+ "C1_bm25|gs-0068": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding the sharing of unusual transaction information and the confidentiality safeguards."
+ },
+ "C1_bm25|gs-0069": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding the review of CDD data under paragraph 6.24 of MAS Notice 626 when information is lacking or outdated."
+ },
+ "C1_bm25|gs-0070": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements stated in excerpt [1] regarding internal risk management policies for finance companies."
+ },
+ "C1_bm25|gs-0073": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the mandatory enhanced CDD measures for merchant banks from excerpt [4] and the risk-based categories from excerpt [2]."
+ },
+ "C1_bm25|gs-0074": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [5] which is not provided in the context, and the specific claim about the Authority notifying the provider is not supported by the provided excerpts [1] and [3]."
+ },
+ "C1_bm25|gs-0075": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims that the specific collateral modeling requirements found in Section 6 (cited as [2]) apply to the use of peak exposure measures, whereas the excerpts do not link these specific collateral rules to the alternative peak exposure method mentioned in [1]."
+ },
+ "C1_bm25|gs-0077": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the identical obligations found in clauses 11.10 and 11.12 of the provided excerpts for all three institution types."
+ },
+ "C1_bm25|gs-0081": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific verification requirements in clause 7.13B for VCCs and the information collection requirements in clauses 7.14A and 6.14A for payment services, correctly noting the absence of an explicit 'proof of existence' verification mandate in the latter excerpts."
+ },
+ "C1_bm25|gs-0084": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer claims the obligations are substantively identical and that PSN02 clauses mirror PSN01, but the provided excerpt for PSN02 is truncated and does not contain the specific information sharing or group policy clauses cited in the answer."
+ },
+ "C1_bm25|gs-0087": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the requirements in excerpts [2] and [4] are substantively identical regarding qualifications, resources, and access to information."
+ },
+ "C1_bm25|gs-0088": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [5] which is not provided in the input, and the provided excerpts do not contain the specific rule about passing along transfer details for intermediary institutions."
+ },
+ "C1_bm25|gs-0093": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer claims the requirements are identical and that excerpt [3] contains specific language about occupation and employer, but excerpt [3] does not contain that specific list of background information details found in excerpt [1]."
+ },
+ "C1_bm25|gs-0095": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites a non-existent excerpt [5] and incorrectly claims the obligations are identical, whereas the provided excerpts show distinct clause numbers (11.12 vs 11A.14) and specific contexts (wire transfers vs value transfers) for the different institutions."
+ },
+ "C1_bm25|gs-0096": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for Banks, Merchant Banks, and Finance Companies contain identical text regarding the five-year record-keeping obligation, fully supporting the assistant's claim."
+ },
+ "C1_bm25|gs-0097": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the specific notices for Banks, Merchant Banks, and Finance Companies contain identical clauses requiring reasonable measures consistent with straight-through processing to identify incomplete cross-border wire transfers."
+ },
+ "C1_bm25|gs-0102": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 July 2021, which is explicitly stated in all cited excerpts."
+ },
+ "C1_bm25|gs-0103": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C1_bm25|gs-0104": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024 and the specific notices, which are explicitly stated in the cited excerpts."
+ },
+ "C1_bm25|gs-0105": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 January 2025 and the notice details, both of which are explicitly stated in excerpt [3]."
+ },
+ "C1_bm25|gs-0106": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C1_bm25|gs-0107": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "Excerpt [2] explicitly states that the relevant clauses were deleted by MAS Notice 656 (Amendment) 2024, supporting the assistant's claim."
+ },
+ "C1_bm25|gs-0109": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the 2024 amendment and the specific CRE exposure criteria (100% risk weight, 60% LTV) found in clause 4.3(a)(iii) of excerpt [1]."
+ },
+ "C1_bm25|gs-0114": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective cancellation dates for the specified notices as stated in the provided excerpts."
+ },
+ "C2_dense|gs-0001": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific PD floors for KMort, QRRE transactors, and QRRE revolvers as stated in excerpt [1]."
+ },
+ "C2_dense|gs-0002": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement for periodic monitoring and the specific considerations mentioned in excerpt [2]."
+ },
+ "C2_dense|gs-0003": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes claims about overdrafts and revolving loans that are not present in the provided excerpts, and it cites excerpt [3] which is not included in the input."
+ },
+ "C2_dense|gs-0004": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the data sources specified in excerpt [1] without adding unsupported requirements."
+ },
+ "C2_dense|gs-0006": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes a claim about 'screening databases' and 'adverse information' that is not present in the provided excerpts, and it cites excerpt [4] which is not included in the input."
+ },
+ "C2_dense|gs-0008": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the experience and qualification requirements in excerpt [1] and the training requirements in excerpt [2]."
+ },
+ "C2_dense|gs-0009": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the record-keeping requirements for non-paragraph (j) licensees found in excerpts [1] and [2]."
+ },
+ "C2_dense|gs-0010": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and rationale for choosing trading desk level reporting as described in Example 8 of excerpt [2]."
+ },
+ "C2_dense|gs-0011": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the notification requirements and format specified in excerpt [1]."
+ },
+ "C2_dense|gs-0012": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for staff expertise and program review found in excerpt [1]."
+ },
+ "C2_dense|gs-0013": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.31 (excerpt 1) and clause 6.34 (excerpt 3) without adding unsupported details."
+ },
+ "C2_dense|gs-0014": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpt [3] regarding margin and collateral calls from derivative counterparties as additional liquidity demands."
+ },
+ "C2_dense|gs-0015": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly asserts that the agreement must include mark-to-market requirements, which paragraph 11(a) explicitly excludes by stating the agreement applies paragraph 9 'with the exception of paragraph 9(f)'."
+ },
+ "C2_dense|gs-0016": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements stated in excerpt [5] without adding unsupported details."
+ },
+ "C2_dense|gs-0017": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the 21/45 business day timelines, the requirement for written communication of the outcome, and the recourse options (FIDReC/IMDA) found in the cited excerpts."
+ },
+ "C2_dense|gs-0018": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the exemptions and conditions listed in clause 6.16 of excerpt [2]."
+ },
+ "C2_dense|gs-0019": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the materiality factors and the automatic materiality rule for risk management functions found in the cited excerpts."
+ },
+ "C2_dense|gs-0021": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes specific risk management details (data segregation, multi-tenancy risks) found in excerpt [5], but the assistant only cited excerpt [1]."
+ },
+ "C2_dense|gs-0022": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [3] regarding the review of CDD data for higher-risk customers without adding unsupported details."
+ },
+ "C2_dense|gs-0023": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for regular reporting and senior management responsibility found in excerpts 1, 2, and 3, and the cross-committee communication requirement found in excerpt 5."
+ },
+ "C2_dense|gs-0024": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpts [1] and [2] regarding written notification, publication, and prominent display prior to service use."
+ },
+ "C2_dense|gs-0025": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately synthesizes the requirements for stress testing scenarios and their application to contingency funding plans as explicitly stated in excerpts [2] and [5]."
+ },
+ "C2_dense|gs-0026": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific terms listed in clause 7.1 (cited as [4]) which clause 7.2 (cited as [1]) requires for intragroup outsourcing agreements."
+ },
+ "C2_dense|gs-0027": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer is factually grounded in the excerpts, but it cites excerpt [3] which applies to financial institutions other than banks, not banks as requested."
+ },
+ "C2_dense|gs-0029": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpts 1, 2, and 3, which explicitly state that responsibility remains with the institution, board, and senior management despite delegation."
+ },
+ "C2_dense|gs-0030": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements in clause 7 (excerpts [1]) and clause 12 (excerpts [2]) without adding unsupported details."
+ },
+ "C2_dense|gs-0031": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the three specific enhanced CDD measures listed in clause 8.3 of Notice PSM-N01, which is the cited excerpt."
+ },
+ "C2_dense|gs-0032": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific high-risk factors listed in clause 8.6 of excerpt [1], and the citation correctly points to the source containing this information."
+ },
+ "C2_dense|gs-0033": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.25 of Notice 626, which is cited as excerpt [1]."
+ },
+ "C2_dense|gs-0034": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions in excerpt [1] regarding reliance on distributors meeting paragraph 7.15 criteria."
+ },
+ "C2_dense|gs-0035": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific steps listed in clause 4.2 of excerpt [2], which is the cited source."
+ },
+ "C2_dense|gs-0036": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] for finance companies, and excerpt [3] contains identical text for financial institutions, supporting the cited claims."
+ },
+ "C2_dense|gs-0037": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 11.3 of excerpt [1], which is the cited source."
+ },
+ "C2_dense|gs-0038": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately synthesizes the common instruction across all cited excerpts to read the guidelines in conjunction with legislation and other regulatory issuances, without adding unsupported details."
+ },
+ "C2_dense|gs-0039": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific due diligence steps for a finance company found in excerpt [2]."
+ },
+ "C2_dense|gs-0040": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer claims the assessment must be 'enterprise-wide' and include 'qualitative and quantitative analyses', but these specific requirements are found in excerpts [3] and [4] (for Finance Companies and Digital Token Service Providers), not in the cited excerpts [1] and [2] which apply to AEs/RMOs."
+ },
+ "C2_dense|gs-0041": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for Specified Payment Services entities found in excerpt [4]."
+ },
+ "C2_dense|gs-0042": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the text in clause 1-3 and 1-13 of excerpt [1] regarding the impact of observance on risk assessment and the requirement for robust processes."
+ },
+ "C2_dense|gs-0044": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and scope of simplified CDD measures as stated in excerpt [1]."
+ },
+ "C2_dense|gs-0045": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] and the other cited excerpts, which all contain the same substantive obligations for the respondent financial institution."
+ },
+ "C2_dense|gs-0047": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the obligations found in the cited excerpts regarding the use of COSMIC information for risk assessments, transaction scrutiny, and triggering CDD measures."
+ },
+ "C2_dense|gs-0049": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes a requirement for senior management approval which is found in excerpt [1], but the assistant only cited excerpt [2]."
+ },
+ "C2_dense|gs-0050": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [3] regarding the appointment of an external auditor or consultant at the provider's own expense to assess impersonation risk policies."
+ },
+ "C2_dense|gs-0051": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement for enhanced CDD for higher-risk customers, including those from sectors identified in Singapore's NRA, as explicitly stated in excerpts [1] and [2]."
+ },
+ "C2_dense|gs-0052": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding pre-launch assessments and excerpt [2] regarding approval by senior management or the board."
+ },
+ "C2_dense|gs-0053": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the exception for FATF-supervised foreign financial institutions from excerpt [2] and the risk assessment requirement for suspicion from excerpt [3]."
+ },
+ "C2_dense|gs-0058": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the policy requirement from excerpt [2] and the document prioritization guidance from excerpt [1]."
+ },
+ "C2_dense|gs-0059": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [3] which is not provided in the context, and references specific paragraph numbers (8.3, 8.5) that are not present in the provided excerpt [1]."
+ },
+ "C2_dense|gs-0060": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer adds a claim that the restriction applies 'regardless of whether the third party is used for initial customer due diligence measures,' which is not explicitly stated in the provided excerpts."
+ },
+ "C2_dense|gs-0061": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the permissions and obligations stated in excerpt [2] without adding unsupported details."
+ },
+ "C2_dense|gs-0063": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the general requirement to inquire and the specific exceptions and overrides found in clauses 6.13 and 6.16 of the cited excerpts."
+ },
+ "C2_dense|gs-0064": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for identifying natural persons and legal entities as effective controllers found in clause 6.14A and 6.14B of excerpt [4]."
+ },
+ "C2_dense|gs-0066": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions in clause 6.29 of excerpt [1] regarding the requirement to conduct and document due diligence enquiries when acquiring a business."
+ },
+ "C2_dense|gs-0067": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption conditions and scope described in excerpt [1]."
+ },
+ "C2_dense|gs-0068": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding the sharing of customer, account, and transaction information, including unusual activities, for AML/CFT purposes with adequate safeguards."
+ },
+ "C2_dense|gs-0070": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.34 of excerpt [1] regarding internal risk management policies for finance companies."
+ },
+ "C2_dense|gs-0072": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.40 of excerpt [1], which is the cited source."
+ },
+ "C2_dense|gs-0073": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the enhanced CDD measures and risk-based approach options for merchant banks as stated in excerpts [1] and [2]."
+ },
+ "C2_dense|gs-0075": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer fails to address the required treatment of collateral credit risk mitigation and incorrectly implies that the choice of measure 'allows' the bank to estimate exposure, whereas the excerpt states it is a permitted alternative subject to approval."
+ },
+ "C2_dense|gs-0085": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for Capital Markets Intermediaries, Trust Companies, and Banks contain identical text for clause 4.2, fully supporting the claim that the steps are identical."
+ },
+ "C2_dense|gs-0087": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the specific requirements for qualification and access in excerpts [1] and [2] are substantively identical, and the citations provided directly support this comparison."
+ },
+ "C2_dense|gs-0088": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites non-existent excerpts (10-1 and 14-10-1) and fails to provide the specific clause from Excerpt [1] that establishes the obligation for Credit Card Licensees, instead relying on Guidelines [4] and [5] which apply to different regulatory notices."
+ },
+ "C2_dense|gs-0090": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpts [4] and [5] which are not provided in the input, and makes claims about Capital Markets Intermediaries and specific procedural details (like source of wealth inquiries) that are not supported by the provided excerpts [1], [2], and [3]."
+ },
+ "C2_dense|gs-0091": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific obligations for each entity type as described in the provided excerpts without adding unsupported details."
+ },
+ "C2_dense|gs-0096": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for Banks, Merchant Banks, and Finance Companies contain identical text regarding the five-year record-keeping obligation, fully supporting the assistant's claim."
+ },
+ "C2_dense|gs-0098": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the specific retention rule for Digital Payment Token Service providers in excerpts [4] and [5] and accurately notes the absence of such a rule in excerpt [1] for Credit Card Licensees."
+ },
+ "C2_dense|gs-0099": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific obligations and exclusions found in the cited excerpts without adding unsupported details."
+ },
+ "C2_dense|gs-0100": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the specific policy requirements in excerpts [2] and [4] are substantively identical, supporting the claim that they do not differ."
+ },
+ "C2_dense|gs-0102": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 July 2021 from excerpts [1] and [2], which explicitly state this date for the relevant notices."
+ },
+ "C2_dense|gs-0103": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C2_dense|gs-0104": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C2_dense|gs-0105": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 January 2025 and the notice date of 3 December 2024, both of which are explicitly stated in excerpt [1]."
+ },
+ "C2_dense|gs-0106": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C2_dense|gs-0107": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "Excerpt [1] explicitly states that the example regarding index options was deleted by MAS Notice 656 (Amendment) 2024, supporting the assistant's claims."
+ },
+ "C2_dense|gs-0114": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024 as stated in the cited excerpts [1, 2, 4, 5]."
+ },
+ "C3_hybrid_rrf|gs-0001": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific PD floors for KMort, KQRRE transactors, and KQRRE revolvers as stated in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0002": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement for periodic monitoring and the specific considerations mentioned in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0003": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the default criteria and specific facility rules found in the provided excerpts."
+ },
+ "C3_hybrid_rrf|gs-0004": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the data sources specified in excerpt [1] without adding unsupported requirements."
+ },
+ "C3_hybrid_rrf|gs-0006": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately synthesizes the general screening requirements from excerpts 2, 3, and 4 with the specific list sources detailed in excerpt 1, and all cited excerpts contain the supporting text."
+ },
+ "C3_hybrid_rrf|gs-0007": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement in excerpt [1] for a CMI to understand and obtain information on the purpose and intended nature of business relations."
+ },
+ "C3_hybrid_rrf|gs-0008": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific experience and qualification requirements for CEOs and Executive Directors found in the cited excerpts for insurance brokers, payment service providers, and REIT managers."
+ },
+ "C3_hybrid_rrf|gs-0009": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 5 (excerpt [1]) regarding record-keeping for licensees excluding paragraph (j) services."
+ },
+ "C3_hybrid_rrf|gs-0010": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions for choosing trading desk level reporting (unduly onerous consolidation or internal arrangements) found in excerpts [1] and [3]."
+ },
+ "C3_hybrid_rrf|gs-0011": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the notification requirement and format details found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0012": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 4.16 regarding staff expertise and regular review of training programs."
+ },
+ "C3_hybrid_rrf|gs-0013": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.31 (ongoing scrutiny) and clause 6.25 (pre-establishment review) found in the cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0014": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpt [1] regarding margin and collateral calls as additional liquidity demands when leverage or derivatives are used."
+ },
+ "C3_hybrid_rrf|gs-0015": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements for borrowing from accredited investors found in clause 11 (excerpt [3]), which modifies the general requirements in clause 9 (excerpt [1])."
+ },
+ "C3_hybrid_rrf|gs-0016": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements stated in excerpt [3] regarding the audit function's resource, independence, and assessment duties."
+ },
+ "C3_hybrid_rrf|gs-0017": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the timelines, communication requirements, and recourse options explicitly stated in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0019": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the materiality assessment factors and the automatic materiality rule for risk management functions found in the cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0021": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for due diligence and risk management found in the cited excerpts, specifically clauses 6 and 3.3.5."
+ },
+ "C3_hybrid_rrf|gs-0023": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the communication procedures described in excerpts [1], [2], and [4], specifically the requirement for regular reporting and senior management accountability."
+ },
+ "C3_hybrid_rrf|gs-0024": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes requirements from excerpt [5] (e.g., providing disclosures to potential customers before use) which are not contained in the cited excerpts [1] and [2]."
+ },
+ "C3_hybrid_rrf|gs-0025": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for stress testing scenarios and assumptions found in excerpts [1] and [4]."
+ },
+ "C3_hybrid_rrf|gs-0026": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific terms listed in clauses 7.1(a)-(g) of the cited excerpts, which apply to intragroup entities per clauses 7.2."
+ },
+ "C3_hybrid_rrf|gs-0027": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements for due diligence, documentation, and risk-based frequency found in excerpts [1] and [3]."
+ },
+ "C3_hybrid_rrf|gs-0028": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly interprets the question about multiple models as a question about Credit Risk Mitigation (CRM) capping, which is not what the question asked and is not supported by the provided excerpts regarding model selection."
+ },
+ "C3_hybrid_rrf|gs-0029": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpts [1], [2], and [3], which state that responsibility remains with the board and senior management despite delegation."
+ },
+ "C3_hybrid_rrf|gs-0030": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements for credit bureau checks and written declarations found in excerpts [1] and [2]."
+ },
+ "C3_hybrid_rrf|gs-0031": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the three specific enhanced CDD measures and monitoring requirements listed in clause 8.3 of excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0032": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific risk factors listed in clause 8.6 of excerpt [1] without adding unsupported requirements."
+ },
+ "C3_hybrid_rrf|gs-0033": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.25 of Notice 626, which is cited as excerpt [2]."
+ },
+ "C3_hybrid_rrf|gs-0034": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer conflates the scenario where the distributor is the customer (relying on paragraph 7.15 criteria) with the scenario where the distributor is an introducer (relying on paragraph 10), and incorrectly states that the VCC can rely on the distributor's identification of underlying investors in the latter case, whereas the excerpt states CDD must be performed on the investors directly."
+ },
+ "C3_hybrid_rrf|gs-0035": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes a requirement regarding valuation policies and controls which is found in excerpt [1], but the assistant only cited excerpts [2] and [4]."
+ },
+ "C3_hybrid_rrf|gs-0036": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements listed in clause 9.2 of excerpt [4], which is cited."
+ },
+ "C3_hybrid_rrf|gs-0037": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 11.3 of Notice 1014, which is cited as excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0038": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of all cited excerpts regarding reading guidelines in conjunction with legislation and their non-override nature."
+ },
+ "C3_hybrid_rrf|gs-0039": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific due diligence steps for finance companies found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0041": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for Specified Payment Services entities found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0042": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the text in paragraph 1-3 regarding the impact on risk assessment and paragraph 1-13 regarding the indispensability of strong leadership for the risk-based approach, both found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0043": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific legal requirements listed in excerpt [4] without adding unsupported details."
+ },
+ "C3_hybrid_rrf|gs-0044": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpt [1], which states that simplified CDD measures may be performed if risks are low, subject to the exemption in paragraph 6.15."
+ },
+ "C3_hybrid_rrf|gs-0045": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for a Depository found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0046": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that clause 7.4(b) prohibits simplified CDD measures when a customer is from a jurisdiction subject to FATF countermeasures, which is explicitly stated in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0047": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [4] which is not provided in the context, and includes claims about beneficial owners and connected parties that are not supported by the specific excerpts regarding new business relations or linked transactions."
+ },
+ "C3_hybrid_rrf|gs-0048": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions for exemption found in excerpt [1] (which applies to CMIs and is structurally identical to the bank regulations) and excerpt [5] (which provides the context for banks), and the citations are appropriate."
+ },
+ "C3_hybrid_rrf|gs-0049": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the mandatory requirements in clause 8.7 and the specific risk categories listed in the guidelines, all of which are present in the cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0050": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [3] regarding the appointment of an external auditor or independent qualified consultant to assess impersonation risk policies."
+ },
+ "C3_hybrid_rrf|gs-0051": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding higher risk sectors and excerpt [2] regarding the obligation to perform enhanced CDD for higher risk customers."
+ },
+ "C3_hybrid_rrf|gs-0052": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements and approval levels stated in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0053": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims the insurer is required to verify beneficial owners, whereas excerpt [1] explicitly states that a direct life insurer is not required to inquire about beneficial owners for such entities unless there are specific doubts or suspicions, which are not established by the customer being merely 'unfamiliar'."
+ },
+ "C3_hybrid_rrf|gs-0057": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the requirement for ECDD measures for higher risks (Excerpt 2) and links it to the enterprise-wide risk assessment and resource allocation (Excerpt 1), all of which are explicitly supported by the provided text."
+ },
+ "C3_hybrid_rrf|gs-0058": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the policy requirement in excerpt [2] and the document prioritization guidance in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0059": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement to apply ECDD measures and the specific risk factors (PEP influence, ownership structures) found in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0060": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer adds a specific limitation regarding transactions without an account that is not present in the cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0061": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer claims the STR must be filed 'immediately,' but the cited excerpt [1] only states the Depository 'shall... file an STR' without specifying an immediate deadline (which is found in excerpt [2] but not cited)."
+ },
+ "C3_hybrid_rrf|gs-0062": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately lists the four specific prohibitions found in excerpt [2], which is the cited source."
+ },
+ "C3_hybrid_rrf|gs-0063": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific exception and requirement found in excerpt [1] regarding CMIs acting as primary managers."
+ },
+ "C3_hybrid_rrf|gs-0064": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific information requirements for natural persons and legal persons/legal arrangements found in clause 6.14A of excerpt [2]."
+ },
+ "C3_hybrid_rrf|gs-0065": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The cited excerpt [4] only states that simplified CDD measures are permitted but does not list the specific measures regarding frequency of updates or transaction monitoring, which are found in the guidelines excerpts [1], [2], and [3]."
+ },
+ "C3_hybrid_rrf|gs-0066": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and requirements stated in excerpt [1] regarding due diligence enquiries and documentation."
+ },
+ "C3_hybrid_rrf|gs-0067": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption conditions and scope found in excerpt [1], and excerpt [3] provides parallel support for the same regulatory logic."
+ },
+ "C3_hybrid_rrf|gs-0068": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 15.9A of excerpt [1] regarding the sharing of customer, account, and transaction information, including unusual activities, within the financial group."
+ },
+ "C3_hybrid_rrf|gs-0069": {
+  "grounded": true,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer is factually supported by excerpt [4], but the assistant cited excerpts [3] and [5] (which do not exist in the provided text) instead of the correct source."
+ },
+ "C3_hybrid_rrf|gs-0070": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding internal risk management policies for finance companies establishing relations before verification."
+ },
+ "C3_hybrid_rrf|gs-0072": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.40 of excerpt [2] without adding unsupported details."
+ },
+ "C3_hybrid_rrf|gs-0073": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the mandatory enhanced CDD measures from excerpt [2] and the risk-based categories from excerpt [1], both of which are cited."
+ },
+ "C3_hybrid_rrf|gs-0074": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [5] which is not provided, and the specific risk factors mentioned (unusual ownership, geographic distance, shell companies) are not present in the provided excerpts [1]-[4]."
+ },
+ "C3_hybrid_rrf|gs-0075": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer fails to address the required treatment of collateral credit risk mitigation, which is not supported by the cited excerpt [1] and is not mentioned in the response."
+ },
+ "C3_hybrid_rrf|gs-0076": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts explicitly state that both Capital Markets Intermediaries and Financial Institutions Dealing In Precious Stones And Precious Metals must share customer, account, and transaction information within their financial groups for AML/CFT risk management, subject to confidentiality safeguards and tipping-off restrictions."
+ },
+ "C3_hybrid_rrf|gs-0077": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the monitoring and policy requirements for all three institution types as explicitly stated in the provided excerpts."
+ },
+ "C3_hybrid_rrf|gs-0078": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites Excerpt [3] which is not provided in the context, and claims definitions for banks that are not present in the available excerpts."
+ },
+ "C3_hybrid_rrf|gs-0081": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements and omissions present in the provided excerpts for VCCs and Specified Payment Services."
+ },
+ "C3_hybrid_rrf|gs-0085": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for Trust Companies, Banks, and Capital Markets Intermediaries contain identical text for clause 4.2, fully supporting the claim that the steps are identical."
+ },
+ "C3_hybrid_rrf|gs-0087": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the requirements in excerpts [1] and [2] are substantively identical regarding qualifications, resources, and access to records."
+ },
+ "C3_hybrid_rrf|gs-0088": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims that Credit Card or Charge Card Licensees share the same obligation based on the provided excerpts, but the excerpts only explicitly state this obligation for digital token service providers and do not link the credit card licensees to the specific intermediary clause cited."
+ },
+ "C3_hybrid_rrf|gs-0090": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": true,
+  "why": "The answer claims that Banks have similar PEP approval obligations, but Excerpt [2] (Banks) does not contain the specific text regarding senior management approval found in Excerpt [1] (Trust Companies), and the answer admits the excerpts are insufficient to answer the question."
+ },
+ "C3_hybrid_rrf|gs-0094": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the identical requirements found in excerpts [1] and [3] without adding unsupported details."
+ },
+ "C3_hybrid_rrf|gs-0095": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims that banks and finance companies have obligations for 'wire transfers' while intermediary institutions have obligations for 'value transfers', whereas the excerpts show that banks and finance companies (as beneficiary institutions) have obligations for both wire transfers (clauses 11.12) and value transfers (clauses 11A.14/11.16), and the answer conflates the specific terminology used in different notices without distinguishing that banks are not explicitly covered by the 'value transfer' clauses in the provided excerpts (which apply to finance companies, PSPs, etc.)."
+ },
+ "C3_hybrid_rrf|gs-0096": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies that the record-keeping requirements are identical across the cited notices for Banks, Merchant Banks, and Finance Companies."
+ },
+ "C3_hybrid_rrf|gs-0102": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 July 2021, which is explicitly stated in all three cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0103": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0104": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0105": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 January 2025 and the notice date of 3 December 2024, both of which are explicitly stated in excerpt [1]."
+ },
+ "C3_hybrid_rrf|gs-0106": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C3_hybrid_rrf|gs-0107": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The excerpts do not state that the deleted clauses specifically concerned 'exposure calculation for index options,' only that they were deleted and that index options are mentioned in a footnote."
+ },
+ "C3_hybrid_rrf|gs-0109": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The provided excerpts do not contain any information regarding over-collateralisation requirements, MAS Notice 656, or the specific amendment mentioned in the answer."
+ },
+ "C4_hybrid_rerank|gs-0001": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific PD floors for Kmort, QRRE transactors, and QRRE revolvers as stated in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0002": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement for periodic monitoring and the consideration of new investors found in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0003": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the definition of default and specific indicators found in excerpt [2], and the citation is correct."
+ },
+ "C4_hybrid_rerank|gs-0004": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the data sources specified in excerpt [1] without adding unsupported requirements."
+ },
+ "C4_hybrid_rerank|gs-0006": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the screening requirements and applicable entities found in all cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0007": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for obtaining purpose/nature information and specific identification details found in excerpts [1] and [4]."
+ },
+ "C4_hybrid_rerank|gs-0008": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific experience and qualification requirements for the three sectors mentioned in the cited excerpts without adding unsupported details."
+ },
+ "C4_hybrid_rerank|gs-0009": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the record-keeping and receipt obligations for licensees excluding paragraph (j) services as stated in excerpts [1] and [2]."
+ },
+ "C4_hybrid_rerank|gs-0010": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and examples provided in excerpt [1] regarding independent trading desks and administrative ease."
+ },
+ "C4_hybrid_rerank|gs-0011": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the notification requirements and format specified in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0012": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for staff expertise and program review found in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0013": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements in clauses 6.31 and 8.5, and the cited excerpts directly support these claims."
+ },
+ "C4_hybrid_rerank|gs-0014": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpt [1] regarding margin and collateral calls as additional liquidity demands when leverage or derivatives are used."
+ },
+ "C4_hybrid_rerank|gs-0015": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements in clause 11(6bc63680893b7fb6:11) regarding the exclusion of paragraph 9(f) and the inclusion of mark-to-market details, which are supported by the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0017": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the 21/45 day timelines, written communication requirements, and recourse options found in the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0018": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the exemptions listed in clause 6.16 of excerpt [1] without adding unsupported conditions."
+ },
+ "C4_hybrid_rerank|gs-0019": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the materiality factors from excerpt [1] and the dynamic nature of materiality from excerpt [2] without adding unsupported claims."
+ },
+ "C4_hybrid_rerank|gs-0020": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement to clearly mark amendments found in all cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0021": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer includes specific risk mitigation steps (data access, confidentiality, etc.) found in excerpt [5], which was not cited, and cites excerpts [2] and [3] which apply to general institutions rather than specifically banks."
+ },
+ "C4_hybrid_rerank|gs-0022": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpts [1], [2], and [3], which all mandate reviewing CDD data to keep it up-to-date, particularly for higher-risk customers."
+ },
+ "C4_hybrid_rerank|gs-0023": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for regular reporting and senior management responsibility found in excerpts [1] and [2], and the cross-committee communication requirement found in excerpt [4]."
+ },
+ "C4_hybrid_rerank|gs-0024": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly applies the exceptions for physical presence (found in excerpts [3] and [4]) to the notification requirement (found in excerpts [1] and [2]), which do not contain such exceptions."
+ },
+ "C4_hybrid_rerank|gs-0025": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately synthesizes requirements from the cited excerpts regarding stress scenarios, system-wide interactions, and currency-specific constraints."
+ },
+ "C4_hybrid_rerank|gs-0026": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific terms listed in clause 7.1 (cited as [3]) which clause 7.2 (cited as [1]) mandates must be included in agreements entered into by intragroup entities."
+ },
+ "C4_hybrid_rerank|gs-0027": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the due diligence requirements and periodic re-performance found in the cited excerpts for banks."
+ },
+ "C4_hybrid_rerank|gs-0028": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements stated in excerpts [1] and [4] regarding sub-dividing exposures and calculating risk-weighted amounts separately."
+ },
+ "C4_hybrid_rerank|gs-0029": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the content of excerpts [1], [2], and [3], which explicitly state that responsibility remains with the institution, board, and senior management despite delegation."
+ },
+ "C4_hybrid_rerank|gs-0030": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the comprehensive checks and written declaration requirements found in excerpts [1] and [2]."
+ },
+ "C4_hybrid_rerank|gs-0031": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the three specific enhanced CDD measures listed in clause 8.3 of excerpt [1] for the specified financial institution type."
+ },
+ "C4_hybrid_rerank|gs-0032": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific customer risk factors from excerpts [1], [3], and [4] and the enterprise-wide risk factors from excerpt [5], all of which are explicitly cited."
+ },
+ "C4_hybrid_rerank|gs-0033": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] without adding unsupported details."
+ },
+ "C4_hybrid_rerank|gs-0034": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions for relying on distributors or applying SCDD as stated in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0035": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements found in excerpts 1 and 4, and while excerpt 3 is cited, it does not contradict the claims made."
+ },
+ "C4_hybrid_rerank|gs-0036": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the requirements in clauses 9.2 and 9.4 of Notice 824, which are contained in the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0037": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 11.3 of excerpt [1] regarding identification, verification, and recording details."
+ },
+ "C4_hybrid_rerank|gs-0038": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the common instruction in all cited excerpts to read the guidelines in conjunction with legislation and other MAS issuances, without adding unsupported details."
+ },
+ "C4_hybrid_rerank|gs-0039": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the specific due diligence steps for a finance company found in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0041": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for Specified Payment Services entities found in excerpt [1], including the specific verification and record-keeping obligations."
+ },
+ "C4_hybrid_rerank|gs-0042": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The second sentence regarding the commensurability of risk management systems is not present in the provided excerpts."
+ },
+ "C4_hybrid_rerank|gs-0043": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific legal requirements listed in excerpt [1] without adding unsupported details."
+ },
+ "C4_hybrid_rerank|gs-0044": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the simplified CDD measures and conditions described in excerpts [1] and [2]."
+ },
+ "C4_hybrid_rerank|gs-0045": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for a Depository found in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0046": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the prohibition in clause 7.4(b) of the cited excerpt, which explicitly prevents simplified CDD measures for customers from FATF countermeasure jurisdictions."
+ },
+ "C4_hybrid_rerank|gs-0047": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding COSMIC information for new business relations and linked transactions, and excerpt [2] regarding internal risk management systems."
+ },
+ "C4_hybrid_rerank|gs-0048": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption conditions and exceptions stated in clause 6.16(e)(ii) of excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0049": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for enhanced CDD measures regarding authority-notified high-risk customers and PEPs as stated in the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0050": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "Excerpt [1] explicitly states that a digital token service provider must appoint an external auditor or independent qualified consultant at its own expense to assess the effectiveness of policies and technology solutions for impersonation risks during the first non-face-to-face contact."
+ },
+ "C4_hybrid_rerank|gs-0051": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding higher risk customers and excerpt [2] regarding higher risk sectors identified in Singapore's NRA."
+ },
+ "C4_hybrid_rerank|gs-0052": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements and approval levels for VCCs found in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0053": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption and its specific exceptions as stated in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0055": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims that the PEP exception applies to shell companies and cash-intensive businesses, whereas the excerpts state the PEP exception applies to PEPs themselves, and the specific details for shell companies are found in excerpt [3] which was not cited."
+ },
+ "C4_hybrid_rerank|gs-0057": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [4] which is not provided in the context, and the requirement for enhanced CDD measures is found in excerpt [3] (Guidelines to PSN02), not in the cited excerpts [1] and [4]."
+ },
+ "C4_hybrid_rerank|gs-0058": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the policy requirement in excerpt [1] and the document prioritization guidance in excerpt [3]."
+ },
+ "C4_hybrid_rerank|gs-0060": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the prohibition stated in clause 11-7 of excerpt [2], and the cited excerpt contains the specific text supporting this limitation."
+ },
+ "C4_hybrid_rerank|gs-0061": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly characterizes the filing of an STR as an 'immediate' obligation, whereas the cited excerpt only states that the Depository 'shall... file an STR' without specifying immediacy (and other excerpts specify 5 business days)."
+ },
+ "C4_hybrid_rerank|gs-0062": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific prohibitions and risk assessment requirements for Digital Token Service Providers found in excerpts [1] and [2]."
+ },
+ "C4_hybrid_rerank|gs-0063": {
+  "grounded": false,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer incorrectly states that the inquiry requirement applies 'unless' the CMI has doubts or suspicions, whereas the excerpt states the inquiry is required 'except where' interests are distributed by a specific financial institution, with the doubt/suspicion clause applying to the general exemption, not the specific primary manager exception."
+ },
+ "C4_hybrid_rerank|gs-0064": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.14A for both natural persons and legal persons/arrangements, which are contained in the cited excerpt [3]."
+ },
+ "C4_hybrid_rerank|gs-0065": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific SCDD measures listed in clause 7-4 of excerpt [4], which is the correct guideline for Capital Markets Intermediaries."
+ },
+ "C4_hybrid_rerank|gs-0066": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the conditions and requirements stated in excerpt [1] regarding due diligence enquiries and documentation."
+ },
+ "C4_hybrid_rerank|gs-0067": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the exemption conditions and scope stated in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0068": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 15.9A of excerpt [1] regarding information sharing for finance companies."
+ },
+ "C4_hybrid_rerank|gs-0069": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirement in excerpt [1] to review existing CDD data under paragraph 6.24 of MAS Notice 626 when information is lacking or outdated."
+ },
+ "C4_hybrid_rerank|gs-0070": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in excerpt [1] regarding internal risk management policies for establishing business relations prior to verification."
+ },
+ "C4_hybrid_rerank|gs-0071": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the definition of 'Borrower' in clause 40(b)(ii) of Notice 1106, including the specific condition regarding the primary applicant's inability to pay and the date threshold."
+ },
+ "C4_hybrid_rerank|gs-0072": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements in clause 6.40 of excerpt [1] without adding unsupported details."
+ },
+ "C4_hybrid_rerank|gs-0073": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the enhanced CDD measures for PEPs found in excerpt [1] and the other high-risk categories listed in excerpt [5], with excerpt [3] providing context on the risk-based approach."
+ },
+ "C4_hybrid_rerank|gs-0074": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific customer risk factors listed in excerpt [1], including unusual ownership structures, unusual business relations, and shell company characteristics."
+ },
+ "C4_hybrid_rerank|gs-0076": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the text of clauses 14.6 in both cited excerpts, which impose identical requirements on the respective entities."
+ },
+ "C4_hybrid_rerank|gs-0077": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately summarizes the identical obligations found in excerpts 1, 2, and 3 for the specified institution types."
+ },
+ "C4_hybrid_rerank|gs-0078": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The provided excerpts do not contain definitions for 'business relations' for Specified Payment Services or Trust Companies, and the cited excerpt [3] is not present in the input."
+ },
+ "C4_hybrid_rerank|gs-0081": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific requirements for VCCs (connected party IDs) and Specified Payment Services (legal form verification) as stated in the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0082": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the specific obligations and distinctions found in the cited excerpts, including the correct identification that only the Bank notice explicitly addresses shell entities among the three groups."
+ },
+ "C4_hybrid_rerank|gs-0085": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts explicitly list identical requirements for documenting, considering, updating, and reporting risk assessments for all three entity types."
+ },
+ "C4_hybrid_rerank|gs-0086": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites excerpt [4] which is not provided in the context, and incorrectly attributes clause 14.14 of Notice SFA 04-N02 to the Financial Institutions Dealing In Precious Stones And Precious Metals."
+ },
+ "C4_hybrid_rerank|gs-0088": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims the obligations are identical, ignoring that excerpt [1] requires the transfer to be 'immediate and secure' while excerpt [5] does not, and it conflates 'Credit Card Licensees' with 'Payment Service Providers' without specific support for the former in the provided excerpts."
+ },
+ "C4_hybrid_rerank|gs-0091": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer incorrectly claims the obligation is identical and the scope is the same, whereas the excerpts show Trust Companies have a distinct scope (legal arrangements, effective controllers) compared to Banks and CMIs (customers, beneficial owners)."
+ },
+ "C4_hybrid_rerank|gs-0093": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts explicitly state the same requirement for transaction scrutiny for both VCCs and payment service providers, supporting the assistant's conclusion that the requirements are identical."
+ },
+ "C4_hybrid_rerank|gs-0094": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for both VCCs and Specified Payment Services contain identical requirements to not establish relations and file an STR, supporting the assistant's conclusion that there is no difference."
+ },
+ "C4_hybrid_rerank|gs-0095": {
+  "grounded": false,
+  "citations_support": false,
+  "refused": false,
+  "why": "The answer cites Notice 626 for banks, which is not present in the provided excerpts, and claims identical obligations for banks without supporting text."
+ },
+ "C4_hybrid_rerank|gs-0096": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The excerpts for Banks, Merchant Banks, and Finance Companies contain identical text regarding the five-year record-keeping obligation, fully supporting the assistant's claim."
+ },
+ "C4_hybrid_rerank|gs-0098": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the identical five-year retention requirements for both entity types found in the cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0101": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective dates for the amendments in the cited excerpts (16 March 2021 for Notices 129, 130, 131 and 1 January 2025 for PSN04)."
+ },
+ "C4_hybrid_rerank|gs-0102": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 1 July 2021, which is explicitly stated in all cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0103": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0104": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ },
+ "C4_hybrid_rerank|gs-0105": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "Excerpt [1] explicitly states that MAS Notice FHC-N125 (Amendment) 2024 has effect from 1 January 2025."
+ },
+ "C4_hybrid_rerank|gs-0106": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in the cited excerpts [1] and [2]."
+ },
+ "C4_hybrid_rerank|gs-0109": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the 2024 amendment and the specific inclusion of CRE exposures with 100% risk weight as stated in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0110": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the deletion of the 'Income and Expenses' clause and the specific amendment (MAS Notice 306 (Amendment) 2021) based on the text in excerpt [1]."
+ },
+ "C4_hybrid_rerank|gs-0111": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer accurately reflects the requirements for timely updates and external assessment of substantial changes found in excerpts [1] and [5]."
+ },
+ "C4_hybrid_rerank|gs-0114": {
+  "grounded": true,
+  "citations_support": true,
+  "refused": false,
+  "why": "The answer correctly identifies the effective date of 10 May 2024, which is explicitly stated in all cited excerpts."
+ }
+}

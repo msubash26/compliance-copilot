@@ -114,3 +114,17 @@ def test_no_question_leaks_its_own_source(items):
 
     leaks = {i.id: check_leakage(i) for i in items}
     assert {k: v for k, v in leaks.items() if v} == {}
+
+
+def test_the_sweep_and_the_gate_call_the_same_retriever():
+    """Day 4's baseline and Day 5's C1 row are comparable by construction.
+
+    `regops_evals.corpus` re-exports the primitives rather than owning a second
+    copy, so this is checkable by identity rather than by reading both.
+    """
+    import regops_evals.corpus as corpus
+    import regops_retrieval.index as ri
+
+    assert corpus.Index is ri.Index
+    assert corpus.embed_one is ri.embed_one
+    assert corpus.EMBED_MODEL == ri.EMBED_MODEL

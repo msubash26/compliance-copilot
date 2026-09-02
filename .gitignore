@@ -20,3 +20,11 @@ outputs/
 # Derived intermediate: 970KB of third-party clause text, reproducible with
 # `regops-evals select --seed 0`. Same rule as the corpus PDFs (ADR-012).
 golden/*/candidates.json
+
+# Day 5. `results/day5/raw/` IS committed -- it is uids, metrics and latencies,
+# and it is what makes every cell of the results table traceable. These two are
+# not: `answers/` embeds the assembled context, which is megabytes of
+# third-party clause text (ADR-012's rule), and `decompositions/` is a
+# regenerable model cache.
+results/day5/answers/
+results/day5/decompositions/

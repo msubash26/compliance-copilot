@@ -49,3 +49,7 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 testpaths = ["tests", "ingest", "retrieval", "agents", "evals", "serving", "api"]
 python_files = ["test_*.py"]
 asyncio_mode = "auto"
+# `slow` is the one marker: a test that needs real model weights and a GPU.
+# CI has neither, and a test suite that cannot run in CI is not a gate.
+markers = ["slow: needs model weights on a GPU; skipped in CI"]
+addopts = "-m 'not slow'"
