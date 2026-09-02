@@ -12,6 +12,7 @@ dependencies = [
     "httpx>=0.28.1",
     "langchain-ollama>=1.1,<2",
     "langgraph>=1.2,<2",
+    "pydantic-ai>=2,<3",
     "regdocs-mcp>=0.1.0",
 ]
 

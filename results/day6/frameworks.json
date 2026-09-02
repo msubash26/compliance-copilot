@@ -1,0 +1,192 @@
+{
+  "model": "qwen3.5:9b",
+  "n": 6,
+  "results": [
+    {
+      "framework": "langgraph",
+      "n": 6,
+      "completed": 6,
+      "called_a_tool": 5,
+      "tool_calls_total": 11,
+      "tool_calls_mean": 1.83,
+      "tool_errors": 1,
+      "p50_s": 5.61,
+      "rows": [
+        {
+          "item_id": "gs-0001",
+          "completed": true,
+          "tool_calls": 2,
+          "tools": [
+            "search_notices",
+            "get_document_section"
+          ],
+          "tool_errors": 0,
+          "steps": 6,
+          "seconds": 5.6,
+          "stopped_by": ""
+        },
+        {
+          "item_id": "gs-0002",
+          "completed": true,
+          "tool_calls": 3,
+          "tools": [
+            "search_notices",
+            "get_document_section",
+            "get_document_section"
+          ],
+          "tool_errors": 1,
+          "steps": 8,
+          "seconds": 6.41,
+          "stopped_by": ""
+        },
+        {
+          "item_id": "gs-0003",
+          "completed": true,
+          "tool_calls": 2,
+          "tools": [
+            "search_notices",
+            "get_document_section"
+          ],
+          "tool_errors": 0,
+          "steps": 6,
+          "seconds": 6.5,
+          "stopped_by": ""
+        },
+        {
+          "item_id": "gs-0004",
+          "completed": true,
+          "tool_calls": 2,
+          "tools": [
+            "search_notices",
+            "get_document_section"
+          ],
+          "tool_errors": 0,
+          "steps": 6,
+          "seconds": 5.61,
+          "stopped_by": ""
+        },
+        {
+          "item_id": "gs-0005",
+          "completed": true,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 2,
+          "seconds": 1.52,
+          "stopped_by": ""
+        },
+        {
+          "item_id": "gs-0006",
+          "completed": true,
+          "tool_calls": 2,
+          "tools": [
+            "search_notices",
+            "get_document_section"
+          ],
+          "tool_errors": 0,
+          "steps": 6,
+          "seconds": 4.6,
+          "stopped_by": ""
+        }
+      ]
+    },
+    {
+      "framework": "pydantic-ai (retry)",
+      "n": 6,
+      "completed": 1,
+      "called_a_tool": 1,
+      "tool_calls_total": 19,
+      "tool_calls_mean": 3.17,
+      "tool_errors": 3,
+      "p50_s": 27.23,
+      "rows": [
+        {
+          "item_id": "gs-0001",
+          "completed": false,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 0,
+          "seconds": 16.75,
+          "stopped_by": "error",
+          "error": "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+        },
+        {
+          "item_id": "gs-0002",
+          "completed": true,
+          "tool_calls": 19,
+          "tools": [
+            "search_notices",
+            "search_notices",
+            "search_notices",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "list_obligations",
+            "search_notices",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "get_document_section",
+            "search_notices",
+            "get_document_section",
+            "get_document_section",
+            "final_result"
+          ],
+          "tool_errors": 3,
+          "steps": 39,
+          "seconds": 57.23,
+          "stopped_by": "",
+          "error": ""
+        },
+        {
+          "item_id": "gs-0003",
+          "completed": false,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 0,
+          "seconds": 26.29,
+          "stopped_by": "error",
+          "error": "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+        },
+        {
+          "item_id": "gs-0004",
+          "completed": false,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 0,
+          "seconds": 12.06,
+          "stopped_by": "error",
+          "error": "UnexpectedModelBehavior: Tool 'get_document_section' exceeded max retries count of 1. Consider raising the retry limit, or see the docs on tool retries: https://pydantic.dev/docs/ai/tools-toolsets/tools-advanced/#tool-retries"
+        },
+        {
+          "item_id": "gs-0005",
+          "completed": false,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 0,
+          "seconds": 27.23,
+          "stopped_by": "error",
+          "error": "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+        },
+        {
+          "item_id": "gs-0006",
+          "completed": false,
+          "tool_calls": 0,
+          "tools": [],
+          "tool_errors": 0,
+          "steps": 0,
+          "seconds": 75.03,
+          "stopped_by": "error",
+          "error": "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+        }
+      ]
+    }
+  ]
+}

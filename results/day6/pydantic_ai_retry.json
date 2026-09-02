@@ -1,0 +1,411 @@
+{
+  "summary": {
+    "framework": "pydantic-ai",
+    "model": "qwen3.5:9b",
+    "tool_error_behavior": "retry",
+    "endpoint": "openai-compatible (/v1) \u2014 reasoning cannot be disabled, see ADR-009",
+    "n": 3,
+    "completed": 2,
+    "called_a_tool": 2,
+    "tool_calls_total": 37,
+    "tool_errors": 5,
+    "cited_nothing": 0,
+    "p50_s": 66.37,
+    "errors": [
+      "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+    ]
+  },
+  "rows": [
+    {
+      "question": "What specific Probability of Default values should a Reporting Bank use when its calculated PD falls below the threshold for calculating KMort, KQRRE for transactors, and KQRRE for revolvers?",
+      "answer": null,
+      "tool_calls": [],
+      "steps": 0,
+      "seconds": 23.667227980971802,
+      "error": "UnexpectedModelBehavior: Exceeded maximum output retries (1)"
+    },
+    {
+      "question": "How often should an FMC monitor its managed assets to ensure it stays within specific limits?",
+      "answer": {
+        "answer": "The MAS Guidelines on Licensing and Conduct of Business for Fund Management Companies SFA 04-G05 and the Guidelines on Liquidity Risk Management Practices for Fund Management Companies SFA 04-G08 do not contain a clause that specifies FMCs with specific sub-fund limits must monitor managed assets daily or require such monitoring every two years. The guidelines state that an FMC should conduct ongoing liquidity risk monitoring throughout the CIS lifecycle and establish appropriate internal thresholds as part of its ongoing liquidity risk monitoring procedures, but they do not specify a mandatory daily monitoring frequency with a two-year cycle for specific sub-fund limits.",
+        "citations": [
+          {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "3"
+          },
+          {
+            "doc_id": "59746fe0216b705a",
+            "section_path": "5.1"
+          },
+          {
+            "doc_id": "59746fe0216b705a",
+            "section_path": "5.8"
+          }
+        ],
+        "sufficient": false
+      },
+      "tool_calls": [
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC monitor managed assets frequency limits regularly",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "2.4"
+          },
+          "error": true
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC specific limits managed assets monitor daily regular frequency",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "Exceeding the Limit of Managed Assets FMC specific limits daily",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "3"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC assets under management daily monitor specific limit regulatory requirement shall",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "specific limit FMC managed assets daily basis subfund",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "2"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "4.1.5"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "monitor managed assets daily basis FMC guidelines licensing conduct",
+            "top_k": 15
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "3.16.3"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "Exceeding the Limit of Managed Assets clause FMC",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "sub-fund FMC managed assets daily basis regulatory requirement",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "59746fe0216b705a",
+            "section_path": "5.8"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "0"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "1"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "bbfd16576f29b9c1",
+            "section_path": "3.7.1"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "sub-fund managed assets daily deal redemption FMC regulatory guidelines",
+            "doc_type": "guidelines",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "monitor CIS assets daily basis FMC regulatory requirement shall must",
+            "top_k": 15
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "assets under management FMC monitored regularly basis frequency",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "monitor assets daily basis specific limit FMC",
+            "top_k": 15
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC shall must monitor managed assets daily intraday liquidity risk management regulation",
+            "top_k": 15
+          },
+          "error": true
+        },
+        {
+          "tool": "final_result",
+          "args": {
+            "answer": "The MAS Guidelines on Licensing and Conduct of Business for Fund Management Companies [SFA 04-G05] and the Guidelines on Liquidity Risk Management Practices (Fund Management Companies) [SFA 04-G08] do not contain a clause that specifies FMCs with specific sub-fund limits must monitor managed assets daily or require such monitoring every two years. The guidelines state that an FMC should conduct ongoing liquidity risk monitoring throughout the CIS lifecycle and establish appropriate internal thresholds as part of its ongoing liquidity risk monitoring procedures, but they do not specify a mandatory daily monitoring frequency with a two-year cycle for specific sub-fund limits.",
+            "citations": "[{\"doc_id\": \"bbfd16576f29b9c1\", \"section_path\": \"3\"}, {\"doc_id\": \"59746fe0216b705a\", \"section_path\": \"5.1\"}, {\"doc_id\": \"59746fe0216b705a\", \"section_path\": \"5.8\"}],\n<sufficient>false"
+          },
+          "error": true
+        },
+        {
+          "tool": "final_result",
+          "args": {
+            "answer": "The MAS Guidelines on Licensing and Conduct of Business for Fund Management Companies SFA 04-G05 and the Guidelines on Liquidity Risk Management Practices for Fund Management Companies SFA 04-G08 do not contain a clause that specifies FMCs with specific sub-fund limits must monitor managed assets daily or require such monitoring every two years. The guidelines state that an FMC should conduct ongoing liquidity risk monitoring throughout the CIS lifecycle and establish appropriate internal thresholds as part of its ongoing liquidity risk monitoring procedures, but they do not specify a mandatory daily monitoring frequency with a two-year cycle for specific sub-fund limits.",
+            "citations": [
+              {
+                "doc_id": "bbfd16576f29b9c1",
+                "section_path": "3"
+              },
+              {
+                "doc_id": "59746fe0216b705a",
+                "section_path": "5.1"
+              },
+              {
+                "doc_id": "59746fe0216b705a",
+                "section_path": "5.8"
+              }
+            ],
+            "sufficient": false
+          },
+          "error": false
+        }
+      ],
+      "steps": 51,
+      "seconds": 129.89822955796262,
+      "error": ""
+    },
+    {
+      "question": "When does a reporting bank have to classify an exposure as defaulted?",
+      "answer": {
+        "answer": "A reporting bank must classify an exposure as defaulted when:\n\n**(1) General Default Condition (Section 1.1):** The obligor is unlikely to pay credit obligations in full without recourse, OR is past due more than 90 days on any credit obligation to the banking group.\n\n**(2) Indicators of Unlikeliness to Pay in Full (Section 1.4):**\n- Obligations placed on nonaccrued status\n- Write-off or specific allowance due to significant decline in credit quality\n- Sale at material credit-related economic loss\n- Distressed restructuring (material forgiveness/postponement of principal, interest, or fees)\n- Bankruptcy proceeding or similar order against the obligor\n- Obligor seeking bankruptcy protection\n- Facility acceleration\n- Revocation of operating authority (for banks, merchant banks, finance companies)\n- Downgrade to default rating by ECAI (for central governments)\n- Default to other financial creditors based on public information\n\n**(3) Specific Facility Triggers (Section 1.10):**\n- Overdraft: approved limit breached for more than 90 days\n- Corporate revolving loan: amount overdue for more than 90 days\n- Retail revolving loan: minimum monthly payment not paid by due date and not within 90 days thereafter, with subsequent payments also unpaid\n- Loan with periodic instalments: amount due/payable not paid within 90 days of due date\n\nSource: MAS Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore, Annex 7X (Section 1: Definition of Default and Section: Exclusion from Obligor-level Application of Definition of Default)",
+        "citations": [
+          {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "Section 1: Definition of Default/1.1"
+          },
+          {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "Section 1: Definition of Default/1.4"
+          },
+          {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "1.10"
+          }
+        ],
+        "sufficient": true
+      },
+      "tool_calls": [
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "exposure defaulted classification reporting bank",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "Section 1: Definition of Default/1.1"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "1.10"
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "Section 1: Definition of Default/1.1",
+            "offset": 4000
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "1.10",
+            "offset": 4000
+          },
+          "error": true
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "Definition of Default IRBA SA(CR) banking group",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "0"
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "\"A Reporting Bank must record a default\" \"banking group\"",
+            "top_k": 10
+          },
+          "error": false
+        },
+        {
+          "tool": "search_notices",
+          "args": {
+            "query": "Annex 7Y default definition obligor facility grade",
+            "top_k": 5
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "0",
+            "max_chars": 8000,
+            "offset": 4000
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "Section 1: Definition of Default/1.1",
+            "max_chars": 8000
+          },
+          "error": false
+        },
+        {
+          "tool": "get_document_section",
+          "args": {
+            "doc_id": "d60d84ece1ddaefe",
+            "section_path": "1.10",
+            "max_chars": 8000
+          },
+          "error": true
+        },
+        {
+          "tool": "final_result",
+          "args": {
+            "answer": "A reporting bank must classify an exposure as defaulted when:\n\n**(1) General Default Condition (Section 1.1):** The obligor is unlikely to pay credit obligations in full without recourse, OR is past due more than 90 days on any credit obligation to the banking group.\n\n**(2) Indicators of Unlikeliness to Pay in Full (Section 1.4):**\n- Obligations placed on nonaccrued status\n- Write-off or specific allowance due to significant decline in credit quality\n- Sale at material credit-related economic loss\n- Distressed restructuring (material forgiveness/postponement of principal, interest, or fees)\n- Bankruptcy proceeding or similar order against the obligor\n- Obligor seeking bankruptcy protection\n- Facility acceleration\n- Revocation of operating authority (for banks, merchant banks, finance companies)\n- Downgrade to default rating by ECAI (for central governments)\n- Default to other financial creditors based on public information\n\n**(3) Specific Facility Triggers (Section 1.10):**\n- Overdraft: approved limit breached for more than 90 days\n- Corporate revolving loan: amount overdue for more than 90 days\n- Retail revolving loan: minimum monthly payment not paid by due date and not within 90 days thereafter, with subsequent payments also unpaid\n- Loan with periodic instalments: amount due/payable not paid within 90 days of due date\n\nSource: MAS Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore, Annex 7X (Section 1: Definition of Default and Section: Exclusion from Obligor-level Application of Definition of Default)",
+            "citations": [
+              {
+                "doc_id": "d60d84ece1ddaefe",
+                "section_path": "Section 1: Definition of Default/1.1"
+              },
+              {
+                "doc_id": "d60d84ece1ddaefe",
+                "section_path": "Section 1: Definition of Default/1.4"
+              },
+              {
+                "doc_id": "d60d84ece1ddaefe",
+                "section_path": "1.10"
+              }
+            ],
+            "sufficient": true
+          },
+          "error": false
+        }
+      ],
+      "steps": 25,
+      "seconds": 66.37463295500493,
+      "error": ""
+    }
+  ]
+}

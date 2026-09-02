@@ -3,8 +3,8 @@
 RAG + multi-agent system over MAS / SGX regulatory corpora, running fully local on an
 RTX 3090 (air-gapped path), with a Bedrock parity path for cost/quality comparison.
 
-**Status:** Day 5 — seven retrieval configurations measured over that set, with per-query-type
-winners, a determinism fix that had to land first, and a routing rule read off the table.
+**Status:** Day 6 — a single agent over the MCP server, and `FAILURE_MODES.md`: twelve
+reproducible failures, four of which belong to the frameworks rather than the model.
 
 ## Layout
 
@@ -271,9 +271,73 @@ about determinism.** The second bug was found only by running the benchmark thre
 diffing the headline numbers. `hit@k` is a set test and survived both, which is why Day 4's
 baseline was never wrong. See ADR-022.
 
+## The agent, and the twelve ways it fails
+
+```bash
+uv run regops-agents "What must a bank do to identify the beneficial owner of a customer?"
+```
+
+A LangGraph ReAct agent over `regdocs-mcp`'s four tools, plus `search_local` backed by C4. The
+working demo is the easy half; the deliverable is [`FAILURE_MODES.md`](FAILURE_MODES.md) — **12
+failures, each with a trigger that reproduces it, a symptom measured with an `n`, a mitigation,
+and what that mitigation cost.** A failure with no reproduction is a story; a mitigation with no
+cost is a sales pitch.
+
+**Every failure the model owns is the same failure.** It invents filters nobody asked for (F1),
+ignores a recovery path a tool explicitly handed it (F5), and calls `diff_versions` with a
+`doc_id` of a shape this corpus does not use (F7). Tool *selection* was correct in every single
+provocation. Routing is not the hard part; argument grounding is.
+
+**One sentence of prompt bought what a 2.6× larger model bought.** Given only the server's tool
+schemas, `qwen3.5:9b` set an unasked-for filter on 5 of 29 calls and one of them removed the gold
+document from the results — silently, because a filter is an equality predicate and the answer is
+not ranked low, it is absent. Telling it not to filter unasked takes that to **0 of 30**, matching
+`qwen3.8` at half the latency and 6.6 GB against 17 GB. Model size was not the binding constraint.
+
+**Structured output solved the problem that was never the problem.**
+
+| layer | what it proves | measured, n=30 |
+|---|---|---|
+| 1. shape — Pydantic accepts the JSON | free | **30/30** |
+| 2. reference — every citation resolves against the index | one lookup | **19/30** |
+| 3. support — the cited clause contains the claim | needs a judge | Day 5's machinery |
+
+Constrained decoding produced zero malformed answers, which makes schema validity free and
+uninformative. 10 of the 11 reference failures cite **nothing** — `sufficient: true`,
+`citations: []`, schema-valid, unfalsifiable. *"We use structured outputs"* is not an answer to
+*"how do you know the citation is real"* (ADR-026).
+
+**The repair loop fixed 0 of 11.** Ten retries changed nothing; the eleventh, told it had cited
+nothing, obediently cited — and pasted the whole excerpt header into `doc_id`, trading omission
+for fabrication at double the latency. It is off by default. An unmeasured repair loop is a
+slower way to fail, and this one is measured.
+
+**Four of the twelve are the framework's, and those are the quiet ones.** `langgraph` 1.2.11 does
+not raise at `recursion_limit` — on `stream` or `invoke` — so an agent catching
+`GraphRecursionError` reports an exhausted run as a completed one; and it appends *"Sorry, need
+more steps to process this request."* as though the model had said it. `langchain-mcp-adapters`
+cannot talk to this server at any version: 0.3.1's `mcp>=1.24.0` resolves and then dies at import,
+0.3.2 pins `<2.0.0`, and the server targets spec `2026-07-28`. **Do not take a framework's
+integration package as evidence the integration is available.**
+
+**The portable tool surface costs 0.195 MRR, and that is not the interesting number.** Day 5
+measured `search_notices` (BM25 only) at MRR 0.486 against C4's 0.681, so the agent gets both
+tools and the tradeoff is published rather than chosen silently (ADR-025). But answering the same
+30 questions from C4 context instead of BM25 context made citations resolve **less** often —
+14/30 against 19/30, entirely through the model declining to cite. Citation compliance is not a
+retrieval property.
+
 ## Decisions
 
-[`DECISIONS.md`](DECISIONS.md) — 24 ADRs. The Day 5 ones:
+[`DECISIONS.md`](DECISIONS.md) — 27 ADRs. The Day 6 ones:
+
+- **ADR-025** Two tool surfaces, the portable one's cost measured, and why better retrieval did
+  not buy better-grounded answers
+- **ADR-026** Validation in three layers, why only the first is free, and the repair loop that
+  recovered nothing
+- **ADR-027** LangGraph against Pydantic AI on the same task, with the numbers
+
+The Day 5 ones:
 
 - **ADR-020** The seven configurations as a ladder plus ablations, why a factorial reading was
   rejected, and the constants left untuned and admitted (RRF `k=60`, rerank `top_n`)

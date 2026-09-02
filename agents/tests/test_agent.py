@@ -8,6 +8,9 @@ here, against a scripted model that cannot be flaky.
 
 from __future__ import annotations
 
+from pathlib import Path
+
+import pytest
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 from regops_agents.agent import MAX_STEPS, SYSTEM, Run, _harvest, ask
 from regops_agents.mcp_tools import MAX_RESULT_CHARS, _render
@@ -163,3 +166,35 @@ def test_a_result_within_budget_is_returned_whole():
         structured_content = None
 
     assert _render(R()) == "short"
+
+
+# -- the Pydantic AI build, without connecting to anything -----------------
+
+
+def test_the_pydantic_ai_agent_is_built_from_the_same_prompt_and_schema():
+    """Constructs only. The stdio server is not spawned until the agent is entered.
+
+    The comparison in ADR-027 is only worth anything if both agents are given the
+    same task, so the two things that define the task -- the measured system
+    prompt and the `Answer` schema -- are asserted to be shared rather than
+    reimplemented. A framework comparison whose two arms drifted apart would
+    measure the drift.
+    """
+    from regops_agents.pydai import build
+    from regops_agents.structured import Answer
+
+    agent, toolset = build(index=Path("index/regdocs.duckdb"))
+    assert agent.output_type is Answer
+    texts = [getattr(i, "instruction", str(i)) for i in (agent._instructions or [])]
+    assert any(t == SYSTEM for t in texts), "both agents must carry the identical prompt"
+    assert toolset is not None
+
+
+def test_the_pydantic_ai_agent_talks_to_the_same_server():
+    from regops_agents.pydai import build
+
+    _, toolset = build(index=Path("index/regdocs.duckdb"))
+    transport = getattr(toolset, "_transport", None) or getattr(toolset, "transport", None)
+    if transport is None:  # the attribute is private and may be renamed upstream
+        pytest.skip("transport attribute not exposed by this pydantic-ai version")
+    assert "regdocs-mcp" in " ".join(getattr(transport, "args", []))
