@@ -188,7 +188,7 @@ def test_no_judge_can_still_raise_a_new_mechanical_flag(index_path, tmp_path):
     assert any("leak" in f for f in after.failures)
 
 
-def test_a_truncated_negative_excerpt_says_that_it_is_truncated(index):
+def test_a_truncated_negative_excerpt_says_that_it_is_truncated(index, monkeypatch):
     """The negative set's one known defect, as a test.
 
     `gs-0118` asks whether MAS prescribes disclosure templates. The right clause
@@ -198,7 +198,13 @@ def test_a_truncated_negative_excerpt_says_that_it_is_truncated(index):
     A silent truncation is a judge being lied to about its evidence, so what is
     cut now says so. See ADR-024.
     """
+    from regops_evals import verify as V
     from regops_evals.verify import NEGATIVE_EXCERPT_CHARS, negative_excerpts
+
+    # No test in this suite calls a model, and CI has no GPU. `negative_excerpts`
+    # embeds the question before searching, so the embedder is stubbed rather
+    # than reached for -- what is under test is the excerpt window, not Ollama.
+    monkeypatch.setattr(V, "embed_one", lambda text, **kw: [0.0] * 768)
 
     long_clause = "d0000001:6.14"
     doc_id, _, path = long_clause.partition(":")
