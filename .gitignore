@@ -28,3 +28,6 @@ golden/*/candidates.json
 # regenerable model cache.
 results/day5/answers/
 results/day5/decompositions/
+
+# Day 6: the tool-call probe's raw per-call rows are large and regenerable;
+# the summaries in results/day6/*.json are what the write-up reads.

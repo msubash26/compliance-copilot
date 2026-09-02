@@ -3,7 +3,7 @@
 Ascending confidence: the items most likely to be wrong are first. Confidence is a
 ranking device, not a calibrated probability — see ADR-017.
 
-28 of 150 items carry at least one failed check.
+29 of 150 items carry at least one failed check.
 
 ## gs-0016 · factual_lookup · confidence 0.35
 
@@ -11,11 +11,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A Digital Payment Token Service provider must maintain an audit function that is adequately resourced and independent. This function must be able to regularly assess how effective the provider's internal policies, procedures, controls, and regulatory compliance are.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt refers to a 'payment service provider', not a 'Digital Payment Token Service provider', so the specific entity in the question is not addressed.
-
-**Verifier answering with no documents** (overlap with gold 0.25): I do not know the specific resource and independence requirements for the audit function of a Digital Payment Token Service provider under Singapore MAS regulation.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 17.5
 
@@ -29,11 +25,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** An institution must assess the materiality of an arrangement by considering factors such as the importance of the business activity, potential impacts on earnings and reputation, effects on customers and counterparties, costs involved, aggregate exposure to a single provider, and the ability to maintain internal controls.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt states that oversight should be commensurate with materiality but does not list the specific factors used to determine materiality.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — ​Guidelines on Outsourcing [Cancelled] · clause 6.8
 
@@ -47,11 +39,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The provider must treat all joint account holders as individual customers for due diligence purposes and provide complete details of each holder to the beneficiary institution.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt states the requirement to perform CDD on all joint account holders but does not specify the particular information that must be sent to the beneficiary institution.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 14
 
@@ -69,11 +57,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A specified payment service provider must perform enhanced customer due diligence measures for high-risk categories such as shell companies and cash-intensive businesses, unless the relationship involves a domestic, international organization, or former politically exposed person who presents a lower risk profile.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not list specific enhanced due diligence actions, only the requirement to take them, and the PEP exception is based on higher risk, not lower risk.
-
-**Verifier answering with no documents** (overlap with gold 0.07): I do not know the specific enhanced due diligence actions mandated by Singapore MAS for these specific customer types and the exact PEP exception without access to the current regulatory text.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Guidelines to Notice PSN01 on Prevention of Money Laundering and Countering the Financing of Terrorism - Specified Payment Services · clause 9
 
@@ -91,11 +75,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A licensee shall perform appropriate enhanced customer due diligence measures for business relations with, or transactions undertaken for, any customer who presents a higher risk for money laundering or terrorism financing and is notified to the licensee by the Authority or other relevant authorities in Singapore.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt references 'appropriate enhanced CDD measures in paragraph 8.3' but does not list the specific measures required, so the question asking for 'specific' measures cannot be answered using on
-
-**Verifier answering with no documents** (overlap with gold 0.074): I do not know the specific enhanced CDD measures mandated for this scenario.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Guidelines to Notice 626A on Prevention of Money Laundering and Countering the Financing of Terrorism – Credit Card or Charge Card Licensees · clause 8
 
@@ -113,11 +93,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The digital token service provider is prohibited from relying on the third party to carry out ongoing monitoring or review of transactions without an account being opened.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not contain any information regarding prohibitions on relying on third parties for ongoing transaction monitoring without an account being opened.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 11
 
@@ -135,11 +111,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Yes, a person who contributes towards another party's monthly repayments is considered a borrower if the original applicant was assessed as unable to pay those instalments when applying for the credit facility.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt defines a contributor as a borrower based on the date of the option to purchase or application, not based on the original applicant's ability to pay.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice 115 Residential Property Loans · clause 30
 
@@ -157,11 +129,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The bank must not recognize the effects of credit risk mitigation on that exposure, and it requires prior approval from the Authority to use such a conservative measure.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not state that using peak exposure prohibits the recognition of credit risk mitigation effects.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice 656 Exposures to Single Counterparty Groups for Banks Incorporated in Singapore · clause 2.8
 
@@ -179,11 +147,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Capital Markets Intermediaries and Financial Institutions Dealing In Precious Stones And Precious Metals must both share customer, account, and transaction information with their group-level functions when necessary for risk management, whereas the Depository is required to focus its efforts on ensuring regular and appropriate training for employees and officers regarding laws, suspicious transfer detection, and internal controls.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not contain any information regarding Financial Institutions Dealing In Precious Stones And Precious Metals, making it impossible to answer the comparison question using only the prov
-
-**Verifier answering with no documents** (overlap with gold 0.022): I do not know the specific comparative requirement for information sharing between these two categories under Singapore MAS regulations.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice SFA 04-N02 to Capital Markets Intermediaries on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 14.7
 
@@ -205,11 +169,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Digital Payment Token Services must develop group policies to share customer and transaction information across their financial group for AML/CFT risk management, whereas Specified Payment Services are restricted from providing individuals with access to their personal data, details on how that data was used, or the right to correct errors.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not distinguish between Digital Payment Token Services and Specified Payment Services, nor does it link the specific data access restrictions to Specified Payment Services.
-
-**Verifier answering with no documents** (overlap with gold 0.152): I do not know the specific regulatory requirements distinguishing Digital Payment Token Services from Specified Payment Services in this context.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 17.2
 
@@ -227,11 +187,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is the same for both institution types, as each must ensure their AML/CFT compliance officer and any assistants are suitably qualified, have adequate resources, and possess timely access to all customer records and relevant information needed to perform their functions.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not mention Digital Payment Token Service providers or Credit Card or Charge Card Licensees, so it cannot answer the question.
-
-**Verifier answering with no documents** (overlap with gold 0.1): I do not know the specific regulatory differences regarding AML/CFT compliance officer requirements and information access between Digital Payment Token Service providers and Credit Card or Charge Card Licensees under Singapore MAS regulations.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 17.4
 
@@ -249,11 +205,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is identical for all three institution types; in each case, the receiving intermediary must retain a full record of the transmitted information for at least five years.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not mention Banks, Merchant Banks, or Finance Companies, so it cannot support a comparison between these specific institution types.
-
-**Verifier answering with no documents** (overlap with gold 0.059): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice 626 Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 11.14
 
@@ -275,11 +227,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Yes, the requirement is identical for all three institution types: each must take reasonable measures consistent with straight-through processing to identify cross-border wire transfers lacking the required originator or beneficiary information.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt only mentions 'intermediary institution' and does not specify that Banks, Merchant Banks, or Finance Companies are the entities subject to this obligation.
-
-**Verifier answering with no documents** (overlap with gold 0.167): No, because the specific regulatory obligation to use straight-through processing (STP) to ensure the presence of originator and beneficiary details applies to banks and merchant banks under MAS Notice 626, whereas finance companies are not subject to this specific STP requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice 626 Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 11.15
 
@@ -301,11 +249,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is identical for both institution types; in either case, the receiving intermediary must keep a record of all information received from the ordering institution or another intermediary for at least five years.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not mention Digital Payment Token Service providers or Credit Card or Charge Card Licensees, so it cannot support a comparison between them.
-
-**Verifier answering with no documents** (overlap with gold 0.053): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 13.18
 
@@ -323,11 +267,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirements are identical for both institution types; each must take reasonable measures consistent with straight-through processing to identify such transfers.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt only mentions 'intermediary institution' and does not contain any information about Digital Payment Token Service providers or Credit Card Licensees.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 13.19
 
@@ -345,11 +285,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is identical for both institution types, as they must both implement appropriate internal risk-based policies, procedures, and controls to determine when to execute, reject, or suspend such transfers and define the necessary follow-up actions.
 
-**Failed checks:** judge_says_not_answerable_from_span, judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The excerpt does not mention Digital Payment Token Service providers or Credit Card or Charge Card Licensees, so it cannot confirm if the requirements are identical for these specific types.
-
-**Verifier answering with no documents** (overlap with gold 0.043): I do not know the specific requirement.
+**Failed checks:** judge_disagrees_with_answer, judge_says_not_answerable_from_span
 
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 13.20
 
@@ -361,6 +297,18 @@ ranking device, not a calibrated probability — see ADR-017.
 
 ---
 
+## gs-0118 · negative · confidence 0.4
+
+**Q.** Under Notice 653 Net Stable Funding Ratio Disclosure, what specific disclosure formats or supplementary reporting templates are financial institutions required to submit today?
+
+**A.** This question cannot be answered from the corpus of MAS notices and guidelines because MAS documents typically prescribe quantitative ratios and high-level qualitative principles rather than mandating specific visual disclosure formats or providing downloadable supplementary reporting templates.
+
+**Failed checks:** negative_is_answerable
+
+**Claimed unanswerable because:** `withdrawn_requirement`
+
+---
+
 ## gs-0026 · factual_lookup · confidence 0.6
 
 **Q.** What terms must be included in an outsourcing agreement entered into by an intragroup entity on behalf of the bank before obtaining relevant services?
@@ -368,10 +316,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **A.** If an intragroup entity enters into an outsourcing agreement on behalf of the bank, the bank must ensure that the required terms are included before obtaining or receiving the material ongoing outsourced service.
 
 **Failed checks:** judge_says_not_answerable_from_span
-
-**Verifier (qwen3.8:latest):** The excerpt references 'paragraph 7.1' for the specific terms but does not list them, so the question asking 'what terms' cannot be answered using only the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Notice 658 Management of Outsourced Relevant Services for Banks · clause 7.2
 
@@ -387,10 +331,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly includes 'a related obligor has defaulted' as a criterion, which is not mentioned in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.233): A reporting bank must classify an exposure as defaulted when the obligor is more than 90 days past due on any material credit obligation to the bank or any other financial institution, or when the bank judges that the obligor is unlikely to pay its credit obligations to the bank in full without the need for such action.
-
 **Gold span** — Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore · clause Section 1: Definition of Default/1.1
 
 > A Reporting Bank must record a default on any exposure to a particular obligor if - (a) it considers that the obligor is unlikely to pay its credit obligations to the banking group in full, without recourse by the Reporting Bank or any of its banking group entities to actions including realising collateral; or (b) the obligor is past due more than 90 days on any credit obligation to the banking group. 1.2 For the purposes of paragraph 1.1 of this Annex, for an IRBA exposure, the Authority may permit an extension of days past due beyond 90 days for a foreign PSE obligor, of up to 180 days, if a Reporting Bank requests such permission and provides strong justification for the extension. 1.3 If the Reporting Bank considers that paragraph 1.1 of this Annex no longer applies to a previously defaulted exposure, the Reporting Bank must assign a new obligor and facility grade to the exposure usi
@@ -404,10 +344,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **A.** A prior written agreement must be entered into between the parties to record the borrowing terms and conditions, regardless of whether collateral is provided. This agreement must define the capacities of the parties, detail title transfers for securities and collateral worth at least 100% of the borrowed value, outline rights regarding dividends and corporate actions, specify fee calculations, require daily mark-to-market procedures, describe return procedures, allow for early termination with fees, address set-off rights, list default events, and state the governing law and jurisdiction.
 
 **Failed checks:** judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly states that the agreement is required 'regardless of whether collateral is provided,' whereas the excerpt explicitly mandates provisions for collateral valued at least
-
-**Verifier answering with no documents** (overlap with gold 0.049): I do not know the specific provisions required in a written agreement for a registered insurer to borrow securities from an accredited investor under Singapore MAS regulations.
 
 **Gold span** — Notice 113 Securities Borrowing and Lending Activities · clause 9
 
@@ -423,10 +359,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer includes factors regarding countries with high corruption or inadequate AML controls, which are not mentioned in the provided excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.066): Under MAS Notice 626, a depository must consider factors such as the customer's nature of business, geographic location, whether the customer is a politically exposed person (PEP), the complexity of the transaction, and the use of non-face-to-face channels when determining if a customer presents higher money laundering or terrorist financing risks.
-
 **Gold span** — Guidelines to Notice SFA 03AA-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 8
 
 > 8-1 Where the ML/TF risks are identified to be higher, the Depository shall take enhanced CDD ('ECDD') measures to mitigate and manage those risks. 8-2 Examples of potentially higher risk categories under paragraph 8.5 of the Notice include - (a) Customer risk (i) customers from higher risk businesses / activities / sectors identified in Singapore's NRA, as well as other higher risk businesses / activities / sectors identified by the Depository; (ii) the ownership structure of the legal person or arrangement appears unusual or excessively complex given the nature of the legal person's or legal arrangement's business; (iii) legal persons or legal arrangements that are personal asset holding vehicles; (iv) the business relationship is conducted under unusual circumstances (e.g. significant unexplained geographic distance between the Depository and the customer); (v) companies that have nom
@@ -441,10 +373,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly claims the assessment involves 'qualitative and quantitative analyses,' which is not mentioned in the provided excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to Notice SFA02-N05 on Prevention of Money Laundering and Countering the Financing of Terrorism - Approved Exchanges and Recognised Market Operators · clause 4
 
 > Countries or Jurisdictions of its Customers 4-1 In relation to a customer who is a natural person, this refers to the nationality and place of domicile, business or work. For a customer who is a legal person or arrangement, this refers to both the country or jurisdiction of establishment, incorporation, or registration and, if different, the country or jurisdiction of operations as well. Other Relevant Authorities in Singapore 4-2 Examples include law enforcement authorities (e.g. Singapore Police Force, Commercial Affairs Department, Corrupt Practices Investigation Bureau) and other government authorities (e.g. Attorney General's Chambers, Ministry of Home Affairs, Ministry of Finance, Ministry of Law). Risk Assessment 4-3 In addition to assessing the ML/TF risks presented by an individual customer, an AE or RMO shall identify and assess ML/TF risks on an enterprise-wide level. 4 This s
@@ -458,10 +386,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **A.** The institution may reduce how often it updates customer identification details and lower the level of scrutiny on transactions, provided these reductions are based on reasonable monetary thresholds.
 
 **Failed checks:** judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly applies the monetary threshold condition to the reduction of identification updates, whereas the excerpt only links that threshold to transaction monitoring.
-
-**Verifier answering with no documents** (overlap with gold 0.093): For low-risk customers, a Capital Markets Intermediary may update customer identification information at a frequency lower than the standard requirement (typically upon material change or at a longer interval) and may apply simplified ongoing transaction monitoring that is less intensive than the standard enhanced monitoring, provided the risk assessment justifies such measures.
 
 **Gold span** — Guidelines to Notice SFA 04-N02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Capital Markets Intermediaries · clause 7
 
@@ -480,10 +404,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **A.** Trust Companies must develop policies considering their specific risk profile, including adherence to Section 57 of the CDSA on tipping-off, whereas Capital Markets Intermediaries and Depositories are specifically required to establish a single reference point for referring suspicious transactions and maintaining records of those referrals.
 
 **Failed checks:** judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly implies that Capital Markets Intermediaries and Depositories are not required to develop internal policies, whereas the excerpt explicitly states they must implement ap
-
-**Verifier answering with no documents** (overlap with gold 0.189): I do not know the specific regulatory distinctions between Trust Companies and Capital Markets Intermediaries/Depositories regarding these specific compliance obligations under MAS regulations.
 
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 13.1
 
@@ -507,10 +427,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly states that the scope is identical, whereas the excerpt shows that CMIs have an additional obligation to train 'representatives' in addition to employees and officers.
-
-**Verifier answering with no documents** (overlap with gold 0.071): I do not know the specific differences in training obligations for these three categories under Singapore MAS regulations.
-
 **Gold span** — Notice SFA 04-N02 to Capital Markets Intermediaries on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 14.14
 
 > A CMI shall take all appropriate steps to ensure that its employees, officers and representatives (whether in Singapore or elsewhere) are regularly and appropriately trained on - (a) AML/CFT laws and regulations, and in particular, CDD measures, and detecting and reporting of suspicious transactions; (b) prevailing techniques, methods and trends in money laundering and terrorism financing; and (c) the CMI's internal AML/CFT policies, procedures and controls, and the roles and responsibilities of employees, officers and representatives in combating money laundering and terrorism financing.
@@ -533,10 +449,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly claims the requirements are identical, whereas the excerpt shows the payment service provider has an additional obligation to observe the conduct of the customer's acco
-
-**Verifier answering with no documents** (overlap with gold 0.053): I do not know the specific regulatory requirement regarding the difference or identity of transaction scrutiny based on business profiles for Specified Payment Services and Variable Capital Companies under Singapore MAS regulations.
-
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 7.27
 
 > A payment service provider shall, during the course of business relations with a customer, observe the conduct of the customer's account and scrutinise transactions undertaken throughout the course of business relations, to ensure that the transactions are consistent with the payment service provider 's knowledge of the customer, its business and risk profile and where appropriate, the source of funds.
@@ -554,10 +466,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **A.** The core obligation to implement internal risk-based policies, procedures, and controls for handling wire transfers missing required originator or beneficiary data is identical across banks, merchant banks, and finance companies. However, the specific definitions within those policies must be tailored to each entity type, as the regulations explicitly assign these duties to banks, merchant banks, and finance companies respectively while excluding non-self-transfers between institutions.
 
 **Failed checks:** judge_disagrees_with_answer
-
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly claims the obligation is identical, whereas the excerpt explicitly limits the scope of the regulations to banks, merchant banks, and finance companies, implying the obl
-
-**Verifier answering with no documents** (overlap with gold 0.024): I do not know the specific requirement.
 
 **Gold span** — Notice 626 Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 11.16
 
@@ -581,10 +489,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** judge_disagrees_with_answer
 
-**Verifier (qwen3.8:latest):** The proposed answer incorrectly states that section 10.2 was removed, whereas the excerpt indicates that section 10.1 was deleted and section 10.2 was amended or retained.
-
-**Verifier answering with no documents** (overlap with gold 0.185): I do not know the specific requirement or the instrument that caused changes to the rule regarding separate records for private equity or venture capital investments under Singapore MAS regulation.
-
 **Gold span** — Notice 630 Private Equity and Venture Capital Investments · clause 10
 
 > 10.1 [Deleted by MAS Notice 630 (Amendment) 2021] 10.2 A bank in Singapore must ensure that each PE/VC investment is identifiable and that separate records for each PE/VC investment are kept for internal monitoring purposes. [MAS Notice 630 (Amendment) 2021]
@@ -599,10 +503,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **Failed checks:** answerable_without_corpus
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the three specific enhanced CDD measures (senior management approval, source of wealth/funds, and enhanced monitoring) listed in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.5): The financial institution must obtain senior management approval to establish or maintain the business relationship, take reasonable measures to determine the source of wealth and source of funds, and conduct enhanced ongoing monitoring of the business relationship.
-
 **Gold span** — Notice PSM-N01 Prevention of Money Laundering and Countering the Financing of Terrorism – Financial Institutions Dealing In Precious Stones And Precious Metals · clause 8.3
 
 > A financial institution shall, in addition to performing CDD measures (specified in paragraph 6), perform at least the following enhanced CDD measures where a customer or any beneficial owner of the customer is determined by the financial institution to be a politically exposed person, or a family member or close associate of a politically exposed person under paragraph 8.2: (a) obtain approval from the financial institution's senior management to establish or continue an account relationship with the customer or undertake any relevant business transaction without an account opened for the customer; (b) establish, by appropriate and reasonable means, the source of wealth and source of funds of the customer and any beneficial owner of the customer; and (c) conduct, during the course of an account relationship with, or when undertaking transactions in the course of the account relationship
@@ -614,10 +514,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What specific Probability of Default values should a Reporting Bank use when its calculated PD falls below the threshold for calculating KMort, KQRRE for transactors, and KQRRE for revolvers?
 
 **A.** For calculating KMort, the bank must apply a probability of default of 0.0005 if the actual value is lower. When calculating KQRRE, the bank applies 0.0005 for transactors and 0.001 for revolvers whenever their respective calculated probabilities are below those limits.
-
-**Verifier (qwen3.8:latest):** The proposed answer correctly identifies the specific PD floors of 0.0005 for KMort and QRRE transactors, and 0.001 for QRRE revolvers, as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore · clause 7.4.88
 
@@ -631,10 +527,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** An FMC subject to specific limits on managed assets should periodically monitor the size of the assets being managed to ensure compliance with those limits.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that an FMC should periodically monitor the size of assets to ensure adherence to limits, which matches the proposed answer.
-
-**Verifier answering with no documents** (overlap with gold 0.077): I do not know the specific requirement.
-
 **Gold span** — Guidelines on Licensing and Conduct of Business for Fund Management Companies [SFA 04-G05] · clause 2.3.3
 
 > moneys and assets contracted to the FMC, but which have been subcontracted to another party and for which the other party is carrying out fund management, whether on a discretionary authority granted by the customer or otherwise. 2.4 Exceeding the Limit of Managed Assets - An FMC subject to specific limits on managed assets should periodically monitor the size of the assets being managed, for the purpose of ensuring that it is adhering to such limits. The FMC should, among other things, consider potential changes in the size of the assets being managed arising from prospecting of new investors or investment mandates.
@@ -646,10 +538,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What data sources should an insurer use to validate the reasonableness of assumptions for base rates?
 
 **A.** An insurer must collect sufficient data based primarily on its own historical experience and relevant industry data to confirm that base rate assumptions are reasonable. Additional internal or external information, such as mortality statistics from reinsurers or observed trends in claims costs, may be used to supplement this primary data.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the excerpt's requirement to use primarily own historical and industry data, supplemented by other internal/external sources like reinsurer statistics and claim
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines on ​Risk Management Practices for Insurance Business - Core Activities · clause 3.3.4.1
 
@@ -663,10 +551,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This notice takes effect on 20 July 2015, at which time MAS Notice 211 dated 22 June 2007 is cancelled.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states the notice takes effect on 20 July 2015 and that MAS Notice 211 dated 22 June 2007 is cancelled on that date.
-
-**Verifier answering with no documents** (overlap with gold 0.062): I do not know the specific requirement because the question does not specify which MAS notice is being referred to.
-
 **Gold span** — MAS Notice 211 - Minimum and Best Practice Training and Competency Standards for Direct General Insurers · clause 12
 
 > This Notice shall take effect from 20 July 2015. MAS Notice 211 dated 22 June 2007 will be cancelled from 20 July 2015. Notes on History of Amendments MAS Notice 211 (Amendment) 2020 dated 16 April 2020 with effect from 20 April 2020. MAS Notice 211 (Amendment) 2021 dated 28 June 2021 with effect from 1 July 2021. MAS Notice 211 (Amendment No. 2) 2021 dated 28 October 2021 with effect from 1 November 2021.
@@ -678,10 +562,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Which specific information sources should be used to screen customers against?
 
 **A.** Customers must be screened against relevant money laundering and terrorist financing information sources, including lists provided by Singaporean authorities, the First Schedule of the TSOFA, and the FSM Sanctions Regulations.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the three specific sources listed in the excerpt for customer screening.
-
-**Verifier answering with no documents** (overlap with gold 0.12): I do not know the specific information sources mandated by Singapore MAS regulations for customer screening.
 
 **Gold span** — Guidelines on Prevention of Money Laundering and Countering the Financing of Terrorism - Direct General Insurance Business, Reinsurance Business, and Direct Life Insurance Business (Accident & Health Policies) · clause 5.1
 
@@ -695,10 +575,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A Commercial Money Institution must understand and, when appropriate, receive details about the purpose and intended nature of the customer's business relationship while processing the application to establish that relationship.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the requirement for the CMI to understand and obtain information regarding the purpose and intended nature of the business relations as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.276): A Commercial Money Institution must obtain the customer's name, address, date of birth, nationality, and identification details, as well as the nature and purpose of the business relationship, including the expected volume and value of transactions.
-
 **Gold span** — Notice SFA 04-N02 to Capital Markets Intermediaries on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 6.18
 
 > A CMI shall, when processing the application to establish business relations, understand and as appropriate, obtain from the customer information as to the purpose and intended nature of business relations. (VI) Ongoing Monitoring
@@ -710,10 +586,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What are the experience and qualification requirements for a CEO or an Executive Director?
 
 **A.** Both the Chief Executive Officer and Executive Directors must possess at least five years of relevant work experience along with satisfactory academic or professional qualifications. Additionally, the CEO specifically requires a minimum of three years of managerial experience in their specific field.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the specific experience and qualification requirements for both roles as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.097): I do not know the specific experience and qualification requirements for a CEO or Executive Director under Singapore MAS regulations.
 
 **Gold span** — Criteria for the Registration of an Insurance Broker [IA/II-G04] · clause 4.3
 
@@ -727,10 +599,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A licensee must maintain records in English containing all information specified in Annex A1 for every transaction related to the digital token service they provide.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the requirement for English-language records containing Annex A1 information for all transactions, consistent with the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.083): I do not know the specific record-keeping obligations for digital token services under the FSM Act definition paragraph (j) in Singapore MAS regulations.
-
 **Gold span** — MAS Notice FSM-N32 Conduct · clause 5
 
 > A licensee (other than a licensee that provides the service mentioned in paragraph (j) of the definition of 'digital token service' in paragraph 1 of Part 1 of the First Schedule to the FSM Act) must keep a record in the English language containing all the information set out in Annex A1, of all the licensee's transactions in respect of the digital token service the licensee is in the business of providing.
@@ -742,10 +610,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When can an entity choose to report short positions at the trading desk level instead of the legal entity level?
 
 **A.** An entity may elect to report its short sell orders and positions at the trading desk level if it finds consolidating data across desks administratively difficult or unduly onerous. This option allows each desk to report all its short positions independently, without needing to monitor the total aggregated position at the legal entity level to determine reporting obligations.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that an entity may choose the trading desk level if it is administratively easier or to avoid the burden of monitoring aggregated positions, which aligns with the propose
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines on the Regulation of Short Selling [SFA 07A-G01] · clause 5.2
 
@@ -759,10 +623,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** When compensation is completed in accordance with the relevant guidelines, the insurer must notify the Authority by submitting a report on its official letterhead through electronic means. This report needs to include all the specific information outlined in the Valuation Error Report Template.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the insurer should notify the Authority upon completion of compensation and specifies that the report must be on company letterhead and sent via electronic means.
-
-**Verifier answering with no documents** (overlap with gold 0.161): I do not know the specific requirement for notifying the Authority about completed compensation related to valuation errors under Singapore MAS regulations.
-
 **Gold span** — Notice 307 Investment-Linked Policies · clause 82
 
 > The insurer should notify the Authority when such compensation has been completed in compliance with paragraphs 79 to 81. VALUATION ERROR REPORT TEMPLATE The valuation error report should be made using the insurer's company letterhead and sent via electronic means. The report should contain the following information:
@@ -774,10 +634,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What training and review obligations does a bank have regarding its staff's ability to handle environmental risk?
 
 **A.** A bank must provide adequate expertise to its staff through capacity building and training so they can assess, manage, and monitor environmental risks effectively. The bank should also regularly update these programs to address new issues in environmental risk management.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the excerpt's requirements for staff expertise, specific risk management tasks, and regular program reviews.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines on Environmental Risk Management for Banks · clause 4.16
 
@@ -791,10 +647,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A digital token service provider must observe the conduct of a customer's account and scrutinize all transactions throughout the course of business relations. This is to ensure that these transactions are consistent with the provider's knowledge of the customer, its business and risk profile, and if appropriate, the source of funds.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the mandatory actions and their purpose as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — MAS Notice FSM-N27 Prevention of Money Laundering and Countering the Financing of Terrorism · clause 6.31
 
 > A digital token service provider must, during the course of business relations with a customer, observe the conduct of the customer's account and scrutinise transactions undertaken throughout the course of business relations, to ensure that the transactions are consistent with the digital tok en service provider's knowledge of the customer, its business and risk profile and if appropriate, the source of funds.
@@ -806,10 +658,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** If a collective investment scheme uses leverage or derivatives to generate returns, what additional sources of liquidity demands must an FMC consider in its management framework besides investor redemptions?
 
 **A.** An FMC managing such a scheme must consider potential liquidity demands arising from margin or collateral calls from derivative counterparties as part of its overall liquidity risk management framework.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that liquidity demands may arise from margin or collateral calls from derivative counterparties when leverage or derivatives are used, which aligns with the proposed answ
-
-**Verifier answering with no documents** (overlap with gold 0.4): The FMC must consider liquidity demands arising from margin calls, collateral requirements, and the settlement of derivative positions.
 
 **Gold span** — Guidelines on Liquidity Risk Management Practices (Fund Management Companies) [SFA 04-G08] · clause 1.5
 
@@ -823,10 +671,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The responsible financial institution must complete the investigation within 21 business days for straightforward cases or 45 business days for complex cases. The institution must then provide a written reply detailing the outcome and assessment of responsibility to the specified account holders. If an account holder disagrees with the assessment or if the claim falls outside the guidelines, they may pursue further action through existing dispute resolution avenues.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the investigation timelines, communication requirements, and recourse options detailed in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines on Shared Responsibility Framework · clause 7.9
 
 > The responsible FI, and responsible Telco where applicable, should complete an investigation of any relevant claim within 21 business days for straightforward cases or 45 business days for complex cases. 16 Complex cases may include cases where any party to the seemingly authorised transaction is overseas and uncontactable during the investigation period. Outcome Stage 7.10 The responsible FI should within the stipulated periods in paragraph 7.9 provide each account holder that the responsible FI has been instructed to send transaction notifications to in accordance with paragraph 3.1 17 of the EUPG, a written reply of the investigation outcome and the assessment of the account holder's responsibility. The responsible FI should seek acknowledgement, which need not be an agreement, from that account holder of the investigation outcome. Recourse Stage 7.11 Where the account holder does not
@@ -838,10 +682,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under what circumstances does a Capital Markets Intermediary not need to inquire about beneficial owners for a customer?
 
 **A.** A Capital Markets Intermediary is not required to inquire if there exists any beneficial owner when the customer is an entity listed and traded on the Singapore Exchange, an entity listed outside Singapore with adequate regulatory disclosure and transparency regarding beneficial owners, a financial institution listed in Appendix 1, a foreign financial institution supervised for AML/CFT consistent with FATF standards, or an investment vehicle managed by such institutions. However, this exemption does not apply if the CMI has doubts about the information's veracity or suspects links to money laundering or terrorism financing.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the specific exemptions listed in the excerpt and correctly includes the conditions under which the exemption does not apply.
-
-**Verifier answering with no documents** (overlap with gold 0.269): A Capital Markets Intermediary is not required to inquire about the beneficial owner if the customer is a legal person that is a regulated financial institution, a government entity, or a listed company, as these entities are generally considered to have adequate transparency and regulatory oversight.
 
 **Gold span** — Notice SFA 04-N02 to Capital Markets Intermediaries on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 6.16
 
@@ -855,10 +695,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** You must use the official template downloaded from MASNET and clearly mark any changes you make to the content of the form.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the requirement to use the MASNET template and clearly mark amendments as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.053): I do not know the specific formatting requirement for submitting amendments to this form without knowing which specific MAS form is being referenced.
-
 **Gold span** — Notice 130 on Insurance Returns (Accounts and Statements) for Captive Insurers · clause Instructions for completion of Form A7/1
 
 > Insurers shall use the template of this Form downloaded from the MAS Network (MASNET) for completion. Any amendments made to the contents of this Form shall be clearly marked on the submitted Form. [MAS Notice 130 (Amendment No. 2) 2020]
@@ -870,10 +706,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What due diligence and risk management practices should banks apply when subscribing to a cloud service?
 
 **A.** Banks are required to perform necessary due diligence and implement sound governance and risk management practices that align with the guidelines when they subscribe to a cloud service.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that banks should perform necessary due diligence and apply sound governance and risk management practices articulated in the guidelines when subscribing to CS.
-
-**Verifier answering with no documents** (overlap with gold 0.216): Banks must conduct due diligence to assess the cloud service provider's financial stability, operational resilience, and compliance with applicable laws, and implement risk management practices including contractual safeguards, data protection measures, and ongoing monitoring to ensure the provider meets MAS's expectations for outsourcing and technology risk management.
 
 **Gold span** — Guidelines on Outsourcing (Banks) · clause 6
 
@@ -887,10 +719,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The provider must ensure that CDD data, documents, and information are relevant and up-to-date by conducting reviews of existing records, with particular attention given to higher risk categories of customers.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the excerpt's requirement to keep CDD data up-to-date through reviews, especially for higher-risk customers.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 6.31
 
 > A payment service provider shall ensure that the CDD data, documents and information obtained in respect of customers, natural persons appointed to act on behalf of the customers, connected parties of the customers and beneficial owners of the customers, are relevant and kept up-to-date by undertaking reviews of existing CDD data, documents and information, particularly for higher risk categories of customers.
@@ -902,10 +730,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** If the board delegates its responsibilities to a committee, what specific communication procedures must it establish?
 
 **A.** The board should require the committee to report regularly and ensure that senior management is held accountable for implementation, while the board itself remains ultimately responsible for the committee's performance.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the excerpt's requirements for regular reporting, senior management accountability, and the board's retained responsibility.
-
-**Verifier answering with no documents** (overlap with gold 0.077): I do not know the specific communication procedures required by Singapore MAS regulations when a board delegates responsibilities to a committee.
 
 **Gold span** — Guidelines on Outsourcing (Banks) · clause 3.1.4
 
@@ -919,10 +743,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A licensee must notify all relevant parties in writing by publishing the information in publicly available materials and displaying it prominently so that customers can see it before using the digital token service.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the requirement to notify customers in writing via public publication and prominent display prior to service use as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — MAS Notice FSM-N32 Conduct · clause 15
 
 > A licensee must notify all its customers and potential customers in writing of its normal business days and hours and any changes to its normal business days and hours by: (a) publishing the notification in publicly available material; and (b) displaying prominently the notification such that a customer or potential customer would have notice of such information prior to using the digital token service provided by the licensee. Obligation of licensee to notify Authority of certain events
@@ -934,10 +754,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What specific components must an institution include in its liquidity risk stress testing programs to ensure effective contingency funding plans?
 
 **A.** An institution must incorporate a range of both short-term and long-term scenarios that are specific to itself as well as market-wide factors, utilizing conservative assumptions that are reviewed on a regular basis. The results from these tests should then be used to adjust the institution's liquidity risk management strategies, policies, positions, and to develop effective contingency funding plans.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the specific components and requirements outlined in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.027): I do not know the specific requirement.
 
 **Gold span** — Guidelines on Risk Management Practices – Liquidity Risk · clause 3.6
 
@@ -951,10 +767,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A bank must subject the service provider to appropriate due diligence processes to assess the risks associated with the outsourcing arrangements.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the requirement for banks to apply appropriate due diligence processes to assess risks as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.125): Banks must conduct due diligence to ensure the service provider has adequate financial resources, operational capabilities, and compliance with applicable laws and regulations, and must assess the provider's risk management framework, including its ability to meet service level agreements and handle incidents.
-
 **Gold span** — Guidelines on Outsourcing (Banks) · clause 3.3.1
 
 > In considering, renegotiating or renewing an outsourcing arrangement, a Bank should subject the service provider to appropriate due diligence processes to assess the risks associated with the outsourcing arrangements.
@@ -966,10 +778,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** If a reporting bank uses multiple credit risk measurement models for one exposure, how must it calculate the risk-weighted amount?
 
 **A.** The bank must split the exposure into separate portions based on each model and calculate the credit risk-weighted amount for each portion individually.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the bank must sub-divide the exposure into portions covered by each CRM and calculate the credit risk-weighted exposure amount of each portion separately.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Notice 637 Risk Based Capital Adequacy Requirements for Banks Incorporated in Singapore · clause Section 1: General Requirements/1.2
 
@@ -983,10 +791,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The institution, its board, and senior management must maintain effective oversight, governance, and risk management frameworks regardless of delegation.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that responsibilities for oversight, governance, and risk management continue to rest with the institution, its board, and senior management despite delegation.
-
-**Verifier answering with no documents** (overlap with gold 0.0): The financial institution retains ultimate responsibility for managing outsourcing risks, even when day-to-day duties are delegated to a service provider.
-
 **Gold span** — ​Guidelines on Outsourcing [Cancelled] · clause 5.2
 
 > 5.2.1 The board and senior management of an institution play pivotal roles in ensuring a sound risk management culture and environment. While an institution may delegate day-today operational duties to the service provider, the responsibilities for maintaining effective oversight and governance of outsourcing arrangements, managing outsourcing risks, and implementing an adequate outsourcing risk management framework, in accordance with these Guidelines, continue to rest with the institution, its board and senior management. The board and senior management of an institution should ensure there are adequate processes to provide a comprehensive institution-wide view of the institution's risk exposures from outsourcing, and incorporate the assessment and mitigation of such risks into the institution's outsourcing risk management framework.
@@ -998,10 +802,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What checks must a direct insurer perform before granting a credit facility for residential property purchase?
 
 **A.** A direct insurer must conduct comprehensive checks with credit bureaus and the HDB to verify if the borrower has outstanding facilities for other residential properties, assess their creditworthiness, and comply with specific regulatory paragraphs. If the borrower provides credible third-party information, the insurer may use it to supplement bureau data when necessary.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the mandatory checks with credit bureaus and HDB, the specific purposes of those checks, and the provision for supplementing data with credible third-party in
-
-**Verifier answering with no documents** (overlap with gold 0.167): I do not know the specific regulatory requirements for direct insurers granting credit facilities for residential property purchases under Singapore MAS regulations.
 
 **Gold span** — Notice 115 Residential Property Loans · clause 7
 
@@ -1015,10 +815,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** If a bank chooses to retain a customer despite reasonable grounds for suspicion of money laundering or terrorism financing, it must document the reasons for that decision and apply commensurate risk mitigation measures, which include enhanced ongoing monitoring.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the two mandatory actions (documenting reasons and applying risk mitigation measures including enhanced monitoring) specified in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.053): The bank must file a Suspicious Transaction Report (STR) with the Singapore Police Force's Commercial Crime Investigation Department (CCID) and must not disclose to the customer or any other person that the report has been made.
-
 **Gold span** — Notice 626 Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 6.25
 
 > Where there are any reasonable grounds for suspicion that existing business relations with a customer are connected with money laundering or terrorism financing, and where the bank considers it appropriate to retain the customer - (a) the bank shall substantiate and document the reasons for retaining the customer; and (b) the customer's business relations with the bank shall be subject to commensurate risk mitigation measures, including enhanced ongoing monitoring.
@@ -1030,10 +826,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When performing customer due diligence for a Variable Capital Company that uses a distributor to market its fund, under what conditions can the VCC rely on the distributor's identification of underlying investors instead of conducting its own inquiry?
 
 **A.** A Variable Capital Company may rely on a distributor's customer due diligence measures regarding underlying investors if the distributor is a financial institution supervised by the Monetary Authority of Singapore for anti-money laundering compliance. If these conditions are not met, the VCC must perform appropriate due diligence on the underlying investors itself or apply simplified measures where applicable.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that a VCC is not required to inquire about beneficial owners if the distributor meets the criteria of being a financial institution supervised by MAS for AML/CFT complia
-
-**Verifier answering with no documents** (overlap with gold 0.206): I do not know the specific regulatory requirement for when a Variable Capital Company can rely on a distributor's identification of underlying investors instead of conducting its own inquiry.
 
 **Gold span** — Guidelines to Notice VCC-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism – Variable Capital Companies · clause 2
 
@@ -1047,10 +839,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A finance company must document its risk assessments, consider all relevant factors before setting overall risk levels and mitigation strategies, keep these assessments current, and maintain mechanisms to share this information with the Authority.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the four specific steps (a) through (d) listed in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.097): I do not know the specific steps required by Singapore MAS regulations for a finance company to satisfy appropriate risk management requirements.
-
 **Gold span** — Notice 824 on Prevention of Money Laundering and Countering the Financing of Terrorism – Finance Companies · clause 4.2
 
 > The appropriate steps referred to in paragraph 4.1 shall include - (a) documenting the finance company's risk assessments; (b) considering all the relevant risk factors before determining the level of overall risk and the appropriate type and extent of mitigation to be applied; (c) keeping the finance company's risk assessments up -to-date; and (d) having appropriate mechanisms to provide its risk assessment information to the Authority. Risk Mitigation
@@ -1062,10 +850,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What measures must a finance company take when relying on a third party to perform customer due diligence?
 
 **A.** A finance company can rely on a third party's CDD if the third party has an existing independent relationship with the customer and performs its own checks under its own AML/CFT rules. The finance company may satisfy requirements by reviewing public assessments, examining foreign laws for comparability, obtaining professional advice, or reviewing the third party's policies.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the conditions for third-party reliance and the specific measures listed in paragraphs 9-2 and 9-4 of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.139): The finance company must ensure that the third party is subject to equivalent or higher standards of customer due diligence and that the company retains ultimate responsibility for the adequacy of the CDD performed.
 
 **Gold span** — Guidelines to MAS Notice 824 on Prevention of Money Laundering and Countering the Financing of Terrorism - Finance Companies · clause 9
 
@@ -1079,10 +863,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Before effecting a wire transfer, every merchant bank that acts as an ordering institution must identify and verify the originator's identity if not already done previously, and record sufficient details such as the date, currency type and amount, and value date to allow reconstruction of the transaction.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the identification and recording requirements specified in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.108): I do not know the specific identification and recording steps mandated by Singapore MAS regulations for merchant banks before executing a wire transfer.
-
 **Gold span** — Notice 1014 Prevention of Money Laundering and Countering the Financing of Terrorism – Merchant Banks · clause 11.3
 
 > Before effecting a wire transfer, every merchant bank that is an ordering institution shall - (a) identify the wire transfer originator and verify the wire transfer originator's identity, as the case may be (if the merchant bank has not already done so by virtue of paragraph 6); and (b) record adequate details of the wire transfer so as to permit its reconstruction, including but not limited to, the date of the wire transfer, the type and amount of currency transferred and the value date. (II) Cross-Border Wire Transfers Below or Equal To S$1,500
@@ -1094,10 +874,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How should these Guidelines be read in relation to relevant legislation?
 
 **A.** These Guidelines are not intended to replace legislative provisions and must be read alongside them, as well as any other written directions, codes, or guidelines issued by MAS.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the guidelines should be read in conjunction with relevant legislation and other MAS-issued documents, which aligns with the proposed answer.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — E-Payments User Protection Guidelines · clause 1.4
 
@@ -1111,10 +887,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A finance company must assess the suitability of the respondent institution by gathering adequate information about its business, determining its reputation and supervision quality, and evaluating its AML/CFT controls. Additionally, it must document respective responsibilities and obtain senior management approval before providing services to the new institution.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the specific due diligence steps outlined in paragraphs (a), (b), and (c) of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific due diligence steps mandated by MAS for this scenario.
-
 **Gold span** — Notice 824 on Prevention of Money Laundering and Countering the Financing of Terrorism – Finance Companies · clause 10.3
 
 > A finance company in Singapore shall perform the following measures, in addition to the measures as required by paragraphs 6, 7 and 8, when providing correspondent banking or other similar services: (a) assess the suitability of the respondent financial institution by taking the following steps: (i) gather adequate information about the respondent financial institution to understand fully the nature of the respondent financial institution's business, including making appropriate inquiries on its management, its major business activities and the countries or jurisdictions in which it operates; (ii) determine from any available sources the reputation of the respondent financial institution and the quality of supervision over the respondent financial institution, including whether it has been the subject of money laundering or terrorism financing investigation or regulatory action; and (iii
@@ -1126,10 +898,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Before processing a wire transfer, what specific identity verification and record-keeping actions must an ordering institution classified as a Specified Payment Services entity perform?
 
 **A.** The institution must identify the originator of the transfer and take reasonable steps to verify their identity. It also needs to record sufficient details to allow for reconstruction of the transaction, such as the date, currency type and amount, and value date.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the identity verification and record-keeping requirements listed in paragraphs (a) and (b) of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.086): I do not know the specific identity verification and record-keeping actions mandated for Specified Payment Services entities before processing a wire transfer under Singapore MAS regulations.
 
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 15.3
 
@@ -1143,10 +911,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The degree of observance with these Guidelines by the Depository may have an impact on the Authority's overall risk assessment of the Depository, including the quality of its board and senior management oversight, governance, internal controls and risk management.
 
-**Verifier (qwen3.8:latest):** The proposed answer is a direct quote from paragraph 1-3 of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to Notice SFA 03AA-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 1
 
 > 1-1 These Guidelines provide guidance to the Depository on the requirements in MAS Notice SFA03AA-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism - the Depository ('the Notice'). These Guidelines should be read in conjunction with the Notice. 1-2 The expressions used in these Guidelines have the same meanings as those found in the Notice, except where expressly defined in these Guidelines or where the context otherwise requires. For the purposes of these Guidelines, a reference to 'CDD measures' shall mean the measures as required by paragraphs 6, 7 and 8 of the Notice. 1-3 The degree of observance with these Guidelines by the Depository may have an impact on the Authority's overall risk assessment of the Depository, including the quality of its board and senior management oversight, governance, internal controls and risk management. 1-4 Key Concepts Money
@@ -1158,10 +922,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What specific laws and regulations must a Financial Institution Dealing In Precious Stones And Precious Metals consider when implementing enhanced customer due diligence for higher-risk situations?
 
 **A.** The institution must ensure its enhanced measures align with all laws, regulations, or directions administered by the Authority. This specifically includes requirements under section 192 read with section 15(1)(b) of the FSM Act and section 15(1)(a) of the FSM Act.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that enhanced CDD measures must take into account laws and regulations administered by the Authority, specifically citing section 192 read with section 15(1)(b) and secti
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Notice PSM-N01 Prevention of Money Laundering and Countering the Financing of Terrorism – Financial Institutions Dealing In Precious Stones And Precious Metals · clause 8.8
 
@@ -1175,10 +935,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** When risks are deemed low, an adviser may reduce how often customer information is updated, lower the intensity of ongoing transaction scrutiny based on set monetary limits, or infer the purpose of business relations from transaction types rather than collecting explicit details.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the three specific examples of Simplified Customer Due Diligence measures listed in paragraph 7-4 of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.049): The financial adviser may apply a simplified Customer Due Diligence (CDD) procedure, which typically involves verifying the customer's identity using reliable documents and records without the need for enhanced due diligence measures.
-
 **Gold span** — Guidelines to Notice FAA-N06 on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 7
 
 > 7-1 Paragraph 7.1 of the Notice permits a financial adviser to adopt a risk-based approach in assessing the necessary measures to be performed, and to perform appropriate SCDD measures in cases where the financial adviser is satisfied, upon analysis of risks, that the ML/TF risks are low. 7-2 Where a financial adviser applies SCDD measures, it is still required to perform ongoing monitoring of business relations under the Notice. 7-3 Under SCDD, a financial adviser may adopt a risk-based approach in assessing whether any measures should be performed for connected parties of the customer. 7-4 Where a financial adviser is satisfied that the risks of money laundering and terrorism financing are low, a financial adviser may perform SCDD measures. Examples of possible SCDD measures include - (a) reducing the frequency of updates of customer identification information; (b) reducing the degree
@@ -1191,10 +947,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The Depository must confirm that the respondent financial institution has implemented appropriate safeguards for the third party, can continuously monitor its business relationship with that party, and is prepared to provide customer due diligence information when asked.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the requirements for equivalent measures, ongoing monitoring, and willingness to provide CDD information as stated in the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Notice SFA 03AA-N01 to the Depository on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 10.4
 
 > Where the correspondent account services involve a payable-through account, the Depository shall be satisfied that - (a) the respondent financial institution has performed appropriate measures at least equivalent to those specified in paragraph 6 on the third party having direct access to the payable-through account; and (b) the respondent financial institution is able to perform ongoing monitoring of its business relations with that third party and is willing and able to provide CDD information to the Depository upon request.
@@ -1206,10 +958,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** If a Digital Payment Token Service provider operates in a jurisdiction where the FATF has called for countermeasures, can it still rely on an analysis showing low money laundering and terrorism financing risks to apply simplified customer due diligence measures?
 
 **A.** No, because a service provider is prohibited from applying simplified measures if any of its customers or beneficial owners are located in a jurisdiction subject to FATF countermeasures, regardless of the risk assessment outcome.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly prohibits simplified CDD measures where a customer or beneficial owner is from a jurisdiction subject to FATF countermeasures, overriding any low-risk assessment.
-
-**Verifier answering with no documents** (overlap with gold 0.189): No, under Singapore's MAS regulations (specifically the Payment Services Regulations and FATF-aligned guidelines), a provider cannot rely on a low-risk analysis to apply simplified due diligence if the jurisdiction is subject to FATF countermeasures, as such jurisdictions are explicitly excluded from the scope of risk-based simplification.
 
 **Gold span** — Guidelines to Notice PSN02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Payment Token Service · clause 7
 
@@ -1227,10 +975,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Banks must consider relevant information received through COSMIC, including past risk assessment results, when performing required measures. They should also pay attention to whether such information triggers specific suspicion scenarios and perform the necessary measures accordingly.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that banks should take into consideration information received through COSMIC, including risk assessment results, when performing risk mitigation measures and conducting
-
-**Verifier answering with no documents** (overlap with gold 0.04): I do not know the specific requirement.
-
 **Gold span** — Guidelines to Notice 626 on Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 6
 
 > 6-A Banks participating in COSMIC 6-A-1 Where relevant, a bank participating in COSMIC should take into consideration the information it has received through COSMIC, including the results of any risk assessments it has performed under MAS Notice FSM-N02 on 'Prevention of Money Laundering and Countering the Financing of Terrorism - Financial Institutions' Information Sharing Platform' ('MAS Notice FSM-N02'), when performing the risk mitigation measures under paragraphs 6, 7, and 8 of the Notice. For the avoidance of doubt, when performing such measures when establishing new business relations with a customer, the bank need not consider any information that is no longer available in COSMIC (e.g. Listings (as defined in MAS Notice FSM-N02) which are no longer available in COSMIC at the time of establishing new business relations with that customer). Notice Paragraph 6.2 6-1 Where There Are
@@ -1246,10 +990,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** For a bank dealing with an investment vehicle where the managers are financial institutions incorporated outside Singapore, under what specific conditions can it avoid performing CDD on the underlying investors?
 
 **A.** A bank is not required to identify or verify the underlying investors if the managing financial institution is subject to AML/CFT standards consistent with FATF requirements, unless the bank has doubts about the information provided or suspects money laundering or terrorism financing.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that banks are exempt from inquiring about beneficial owners for investment vehicles managed by foreign financial institutions subject to FATF-consistent AML/CFT requirem
-
-**Verifier answering with no documents** (overlap with gold 0.109): The bank can avoid performing CDD on the underlying investors if the investment vehicle is a regulated collective investment scheme (such as a unit trust or mutual fund) that is subject to ongoing regulatory oversight by a recognized foreign regulator, and the bank has verified that the vehicle itself has performed adequate CDD on its investors in accordance with applicable international standards
 
 **Gold span** — Guidelines to Notice 626 on Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 2
 
@@ -1267,10 +1007,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A Digital Token Service Provider must apply enhanced customer due diligence measures to any customer it determines presents a higher risk for money laundering or terrorism financing, or whose status is notified by the Authority.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the requirement in the final paragraph of the excerpt, which mandates ECDD for customers determined by the provider or notified by the Authority to present hi
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 8
 
 > 8-1 Where the ML/TF risks are identified to be higher, a digital token service provider shall take enhanced CDD ('ECDD') measures to mitigate and manage those risks. 8-2 Examples of potentially higher risk categories under paragraph 8.7 of the Notice include - (a) Customer risk (i) customers from higher risk businesses/ activities/ sectors identified in Singapore's NRA, guidance from the Authority, as well as other higher risk businesses/ activities/ sectors identified by the digital token service provider; (ii) the ownership structure of the legal person or arrangement appears unusual or excessively complex given the nature of the legal person's or legal arrangement's business; (iii) legal persons or legal arrangements that are personal asset holding vehicles; (iv) the business relations with a customer or transactions undertaken without an account being opened that are conducted under
@@ -1286,10 +1022,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** For a Digital Payment Token Service Provider conducting its first non-face-to-face business contact with a customer, what specific external assessment must be appointed to evaluate the effectiveness of policies regarding impersonation risks?
 
 **A.** The provider must appoint an external auditor or an independent qualified consultant at its own expense to assess the effectiveness of the policies and procedures related to impersonation risks.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that a payment service provider must appoint an external auditor or independent qualified consultant at its own expense to assess the effectiveness of policies and proced
-
-**Verifier answering with no documents** (overlap with gold 0.045): I do not know the specific external assessment requirement mandated by MAS regulations for this scenario.
 
 **Gold span** — Guidelines to Notice PSN02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Payment Token Service · clause 6
 
@@ -1307,10 +1039,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Approved Trustees must apply enhanced due diligence when they identify ML/TF risks as higher, specifically for customers falling into categories such as those from high-risk jurisdictions or sectors, complex ownership structures, or exhibiting characteristics of shell companies.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that enhanced CDD is required when ML/TF risks are identified as higher and lists high-risk sectors and shell company characteristics as examples of such risks.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to Notice SFA 13-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism - Approved Trustees · clause 8
 
 > 8-1 Where the ML/TF risks are identified to be higher, an approved trustee shall take enhanced CDD ('ECDD') measures to mitigate and manage those risks. 8-2 Examples of potentially higher risk categories under paragraph 8.7 of the Notice include - (a) Customer risk (i) customers from higher risk businesses / activities / sectors identified in Singapore's NRA, as well as other higher risk businesses / activities / sectors identified by the approved trustee; (ii) the ownership structure of the legal person appears unusual or excessively complex given the nature of the legal person's business; (iii) legal persons that are personal asset holding vehicles; (iv) the business relation is conducted under unusual circumstances (e.g. significant unexplained geographic distance between the approved trustee and the customer); (v) companies that have nominee shareholders or shares in bearer form; (vi
@@ -1326,10 +1054,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What specific ML/TF risk assessment requirements apply to Variable Capital Companies regarding new technologies, and what level of governance must approve these assessments?
 
 **A.** Variable Capital Companies must conduct a separate assessment of money laundering and terrorist financing risks associated with new products, practices, or technologies that handle customer funds, distinct from other standard risks. These specific assessments require approval from either senior management or the company's board of directors.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that ML/TF risk assessments for new technologies are separate from other risks and must be approved by senior management or the board of directors.
-
-**Verifier answering with no documents** (overlap with gold 0.146): I do not know the specific ML/TF risk assessment requirements for Variable Capital Companies regarding new technologies or the exact governance level required to approve them under Singapore MAS regulations.
 
 **Gold span** — Guidelines to Notice VCC-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism – Variable Capital Companies · clause 6
 
@@ -1347,10 +1071,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A direct life insurer is not generally required to inquire about beneficial owners for a foreign financial institution supervised under FATF standards, unless it has doubts regarding the information or suspects money laundering or terrorism financing.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that direct life insurers are not required to inquire about beneficial owners for foreign financial institutions subject to FATF standards unless they have doubts or susp
-
-**Verifier answering with no documents** (overlap with gold 0.162): Yes, the direct life insurer is required to verify the identity of the beneficial owners because the exception for financial institutions incorporated outside Singapore does not apply to life insurers, which must identify the natural persons who ultimately own or control the customer.
-
 **Gold span** — Guidelines to MAS Notice 314 Notice on Prevention of Money Laundering and Countering the Financing of Terrorism – Life Insurers · clause 6
 
 > Notice Paragraph 6.2 6-1 Where There Are Reasonable Grounds for Suspicion prior to the Establishment of Business Relations 6-1-1 In arriving at its decision for each case, a direct life insurer should take into account the relevant facts, including information that may be made available by the authorities and conduct a proper risk assessment. Notice Paragraphs 6.4 to 6.22 6-2 CDD Measures under Paragraphs 6.4 to 6.22 6-2-1 When relying on documents, a direct life insurer should be aware that the best documents to use to verify the identity of the customer are those most difficult to obtain illicitly or to counterfeit. These may include government issued identity cards or passports, reports from independent company registries, published or audited annual reports and other reliable sources of information. The rigour of the verification process should be commensurate with the customer's ris
@@ -1366,10 +1086,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** For a Specified Payment Service provider assessing a customer from a jurisdiction subject to FATF countermeasures, what specific risk classification must they apply, and how does this relate to the broader internal risk management systems required for identifying higher risk customers?
 
 **A.** The provider must treat any business relations or transactions with such a customer as presenting a higher risk for money laundering or terrorism financing. This requirement is one of the specific circumstances that fall under the implementation of appropriate internal risk management systems used to determine which customers present a higher risk.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that for customers from FATF countermeasure jurisdictions, the provider shall treat relations as higher risk, and this is listed as a specific circumstance under the broa
-
-**Verifier answering with no documents** (overlap with gold 0.237): The provider must classify the customer as 'high risk' and apply enhanced due diligence measures, which is a specific component of the broader internal risk management systems required to identify and monitor higher-risk customers under MAS regulations.
 
 **Gold span** — FSM-N01 Notice on Submission of Returns by Notified Entities · clause Instructions for completion of Form C/6
 
@@ -1387,10 +1103,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A Digital Token Service Provider must develop policies to address risks associated with non-face-to-face business relations. When verifying identity, they should prioritize using documents that are most difficult to obtain illicitly, counterfeit, or falsify digitally, such as government-issued identity cards or passports.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states the requirement to develop policies for non-face-to-face contacts and lists government-issued identity cards or passports as the preferred documents for verification.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 6
 
 > Notice Paragraph 6.2 6-1 Where There are Reasonable Grounds for Suspicion prior to the Establishment of Business Relations or Undertaking any Transaction without Opening an Account 6-1-1 In arriving at its decision for each case, a digital token service provider should take into account the relevant facts, including information that may be made available by the authorities, and conduct a proper risk assessment. Notice Paragraphs 6.3 to 6.4 6-2 When CDD is to be Performed and Linked Transactions 6-2-1 Two or more transactions may be related or linked if they involve the same sender or recipient. A digital token service provider should be aware that transactions may be entered into consecutively, with the intention of circumventing applicable thresholds set out in the Notice. Notice Paragraphs 6.5 to 6.22 6-3 CDD Measures under Paragraphs 6.5 to 6.22 6-3-1 When relying on documents, a digi
@@ -1406,10 +1118,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When a Capital Markets Intermediary identifies higher ML/TF risks in a customer relationship, what specific legal requirements must their enhanced due diligence measures satisfy?
 
 **A.** The CMI must ensure that its enhanced due diligence measures comply with any laws, regulations, or directions administered by the Authority, including those under the FSM Act.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that enhanced CDD measures must take into account requirements of laws, regulations, or directions administered by the Authority, including those under the FSM Act.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific legal requirement.
 
 **Gold span** — Guidelines to Notice SFA 04-N02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Capital Markets Intermediaries · clause 8
 
@@ -1427,10 +1135,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The institution may stop performing the measures but must document the justification for this decision and file a suspicious transaction report without delay.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the Depository may stop performing the measures, must document the basis for the assessment, and must file an STR.
-
-**Verifier answering with no documents** (overlap with gold 0.156): The depository is permitted to delay or omit the standard anti-money laundering steps that would alert the customer, provided they immediately file a Suspicious Transaction Report (STR) with the Singapore Police Force's Commercial Crime Investigation Department (CCID).
-
 **Gold span** — Guidelines to Notice SFA 03AA-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 13
 
 > 13-A The detection and investigation of concerns of higher ML/TF risks, even before suspicions of ML/TF are raised, can facilitate the early imposition of ML/TF risk mitigation measures. In this regard, the Depository should ensure that processes are in place to: (a) identify and prioritise the review of concerns of higher ML/TF risks; (b) ensure that such concerns of higher ML/TF risks are reviewed promptly; and (c) require any such concerns of higher ML/TF risks that cannot be reviewed promptly to be escalated to senior management, or a similar oversight body, for the application of appropriate ML/TF risk mitigation measures. 13-1 The Depository should ensure that the internal process for evaluating whether a matter should be referred to the Suspicious Transaction Reporting Office ('STRO') via an STR is completed without delay. The filing of an STR should not exceed 5 business days aft
@@ -1446,10 +1150,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** For a Digital Token Service Provider that has determined low money laundering and terrorism financing risks through adequate analysis, under what specific financial thresholds or circumstances involving FATF countermeasures or jurisdictional risk assessments is it prohibited from applying simplified customer due diligence measures?
 
 **A.** A Digital Token Service Provider must not apply simplified customer due diligence measures if cumulative transactions for a customer exceed S$20,000 in any one year period, if the customer or beneficial owner is from a country subject to FATF countermeasures or known for inadequate anti-money laundering controls, or if there is suspicion of money laundering or terrorism financing.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately summarizes the four specific prohibitions listed in the excerpt regarding financial thresholds, FATF countermeasures, jurisdictional risk, and suspicion of illicit activ
-
-**Verifier answering with no documents** (overlap with gold 0.2): I do not know the specific financial thresholds or circumstances under Singapore MAS regulations that prohibit a Digital Token Service Provider from applying simplified customer due diligence measures despite low risk assessments.
 
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 7
 
@@ -1467,10 +1167,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The Capital Markets Intermediary is required to inquire about the beneficial owners unless the underlying investors are distributed by a financial institution or are themselves supervised entities meeting specific standards, provided there are no suspicions of money laundering or terrorism financing.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states in footnote 6 that a CMI must inquire about beneficial owners when acting as the primary manager, except where interests are distributed by a financial institution as des
-
-**Verifier answering with no documents** (overlap with gold 0.038): I do not know the specific requirement.
-
 **Gold span** — Guidelines to Notice SFA 04-N02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Capital Markets Intermediaries · clause 2
 
 > Connected Party 2-1 The term 'partnership' as it appears in the definition of 'connected parties' includes foreign partnerships. The term 'manager' as it appears in limb (b) of the definition of 'connected parties' takes reference from section 2(1) of the Limited Liability Partnerships Act 2005 and section 28 of the Limited Partnerships Act 2008. 2-2 Examples of natural persons with executive authority in a company include the Chairman and Chief Executive Officer. An example of a natural person with executive authority in a partnership is the Managing Partner. Customer 2-3 When performing Customer Due Diligence ('CDD') measures in the scenarios below, the following approaches may be adopted: (a) Portfolio Managers A CMI (for e.g. a securities broker or fund management company) may encounter cases where the customer is the primary manager of a fund (as set out in Scenario 1 below). In thi
@@ -1486,10 +1182,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When a trust company identifies an effective controller of a trust relevant party that is a legal arrangement, what specific information must it obtain to verify that person's identity?
 
 **A.** The trust company must obtain the full name and any aliases, a unique identification number such as an identity card or passport number, the residential address, the date of birth, and the nationality of the identified effective controller.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately lists the specific identification details required for a natural person under paragraph 6.14A(a) of the excerpt.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines to Notice TCA-N03 on Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 6
 
@@ -1507,10 +1199,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The acquiring licensee must have conducted due diligence enquiries that raised no doubts regarding the adequacy of the previously adopted AML/CFT measures and documented these enquiries to satisfy the exception conditions.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the acquiring licensee must conduct due diligence enquiries that raise no doubt about the adequacy of previous AML/CFT measures and document such enquiries to rely o
-
-**Verifier answering with no documents** (overlap with gold 0.061): I do not know the specific additional verification steps required by Singapore MAS regulations for a Credit Card Licensee acquiring another institution's business and customer records without accuracy concerns.
-
 **Gold span** — Guidelines to Notice 626A on Prevention of Money Laundering and Countering the Financing of Terrorism – Credit Card or Charge Card Licensees · clause 6
 
 > Notice Paragraph 6.2 6-1 Where There Are Reasonable Grounds for Suspicion prior to the Establishment of Business Relations 6-1-1 In arriving at its decision for each case, a licensee should take into account the relevant facts, including information that may be made available by the authorities and conduct a proper risk assessment. Notice Paragraphs 6.4 to 6.17 6-2 CDD Measures under Paragraphs 6.4 to 6.17 6-2-1 When relying on documents, a licensee should be aware that the best documents to use to verify the identity of the customer are those most difficult to obtain illicitly or to counterfeit. These may include government-issued identity cards or passports, reports from independent company registries, published or audited annual reports and other reliable sources of information. The rigour of the verification process should be commensurate with the customer's risk profile. 6-2-2 A lic
@@ -1526,10 +1214,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When an approved trustee acquires a financial business along with its customer records without raising any concerns about their accuracy or previous anti-money laundering measures, what specific verification actions are they exempt from performing on those acquired customers?
 
 **A.** The acquiring approved trustee is exempt from performing the identity verification and due diligence measures required for those customers because they have simultaneously acquired all corresponding records with no doubts about their veracity and have conducted sufficient enquiries confirming the adequacy of the previous measures.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the acquiring trustee shall perform the measures required by paragraphs 6, 7, and 8 except where the conditions regarding the acquisition of records and due diligenc
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines to Notice SFA 13-N01 on Prevention of Money Laundering and Countering the Financing of Terrorism - Approved Trustees · clause 6
 
@@ -1547,10 +1231,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The institution is required to share positive name matches from screening against ML/TF sources, lists of customers exited due to suspicion, and names of parties on whom suspicious transaction reports were filed.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly lists positive name matches, exited customers, and STR parties as the specific information to be shared for risk management purposes.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to MAS Notice 824 on Prevention of Money Laundering and Countering the Financing of Terrorism - Finance Companies · clause 15
 
 > 15-1 As internal policies and procedures serve to guide employees and officers in ensuring compliance with AML/CFT laws and regulations, it is important that a finance company updates its policies and procedures in a timely manner, to take into account new operational, legal and regulatory developments and emerging or new ML/TF risks. Notice Paragraphs 15.3 to 15.9 15-2 Group Policy 15-2-1 For the avoidance of doubt, Singapore branches of finance companies incorporated outside Singapore need not comply with paragraphs 15.3 to 15.9 of the Notice. Paragraphs 15.3 to 15.9 of the Notice are intended to be applied by a finance company incorporated in Singapore to its branches and subsidiaries, but not to its parent entity and the finance company's other related corporations. 15-2-2 In relation to paragraph 15.6 of the Notice, examples of the types of information that should be shared within t
@@ -1566,10 +1246,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When new risk information arrives that indicates a customer lacks current details or key individuals are unknown, what specific internal review must a Financial Institution's Information Platform participant undertake regarding their existing customer data?
 
 **A.** The institution must conduct a review of its current CDD records and supporting documents for the relevant party or key individuals. This action is necessary to ensure the information remains relevant and up-to-date, especially when gaps are identified.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states in paragraph 4-4(a) that the institution should undertake a review of existing CDD data, documents, and information when it lacks sufficient or up-to-date information abo
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
 
 **Gold span** — Guidelines to MAS Notice FSM-N02 on Prevention of Money Laundering and Countering the Financing of Terrorism – Financial Institutions’ Information Sharing Platform · clause 4
 
@@ -1587,10 +1263,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A finance company must develop and implement internal risk management policies that define the conditions under which it can establish business relations with natural persons appointed to act on behalf of a customer prior to verifying their identity, while also ensuring such verification is completed as soon as reasonably practicable.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that a finance company must develop and implement internal risk management policies concerning the conditions for establishing business relations prior to verification an
-
-**Verifier answering with no documents** (overlap with gold 0.059): I do not know the specific internal policies required by Singapore MAS regulations for this scenario.
-
 **Gold span** — Guidelines to MAS Notice 824 on Prevention of Money Laundering and Countering the Financing of Terrorism - Finance Companies · clause 6
 
 > Notice Paragraph 6.2 6-1 Where There Are Reasonable Grounds for Suspicion prior to the Establishment of Business Relations or Undertaking any Transaction without opening an Account 6-1-1 In arriving at its decision for each case, a finance company should take into account the relevant facts, including information that may be made available by the authorities and conduct a proper risk assessment. Notice Paragraphs 6.3 to 6.4 6-2 When CDD is to be Performed and Linked Transactions 6-2-1 Paragraph 6.4 of the Notice is applicable to a finance company when it undertakes transactions for customers who or which have not established business relations with the finance company. 6-2-2 A finance company should monitor whether the related or linked transactions exceed the thresholds set out in paragraph 6.3(b) or paragraph 6.3(d) of the Notice and should take these into consideration when formulatin
@@ -1606,10 +1278,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** If an Approved Exchange or Recognised Market Operator establishes a business relationship with a customer before verifying their identity, what specific internal requirements must they implement and how should they proceed with completing that verification?
 
 **A.** They must develop and implement internal risk management policies outlining the conditions under which such early establishment is permitted, and they must complete the verification as soon as reasonably practicable.
-
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the requirements in the excerpt to develop internal risk management policies and complete verification as soon as reasonably practicable.
-
-**Verifier answering with no documents** (overlap with gold 0.074): I do not know the specific internal requirements mandated by MAS regulations for completing identity verification after a business relationship has been established.
 
 **Gold span** — Guidelines to Notice SFA02-N05 on Prevention of Money Laundering and Countering the Financing of Terrorism - Approved Exchanges and Recognised Market Operators · clause 6
 
@@ -1627,10 +1295,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The bank must obtain senior management approval before establishing business relations or conducting transactions, establish the source of wealth and funds, and conduct enhanced monitoring. Additionally, if the customer belongs to other high-risk categories such as those from higher-risk jurisdictions, involved in cash-intensive activities, or exhibiting signs of shell company misuse, these same enhanced measures should also be applied.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly lists the three required enhanced measures for PEPs and identifies the specific high-risk categories (including cash-intensive businesses and shell company characteristics) that
-
-**Verifier answering with no documents** (overlap with gold 0.358): Under MAS Notice 626, banks must obtain senior management approval to establish or maintain the business relationship, identify the source of wealth and source of funds, and conduct enhanced ongoing monitoring, while similar enhanced measures are generally triggered for customers in high-risk jurisdictions, those involved in cash-intensive businesses, or those with complex ownership structures.
-
 **Gold span** — Guidelines to MAS Notice 1014 on Prevention of Money Laundering and Countering the Financing of Terrorism - Merchant Banks · clause 8
 
 > 8-1 Where the ML/TF risks are identified to be higher, a merchant bank shall take enhanced CDD ('ECDD') measures to mitigate and manage those risks. 8-2 Examples of potentially higher risk categories under paragraph 8.7 of the Notice include - (a) Customer risk (i) customers from higher risk businesses / activities / sectors identified in Singapore's NRA, as well as other higher risk businesses / activities / sectors identified by the merchant bank; (ii) the ownership structure of the legal person or arrangement appears unusual or excessively complex given the nature of the legal person's or legal arrangement's business; (iii) legal persons or legal arrangements that are personal asset holding vehicles; (iv) the business relation is conducted under unusual circumstances (e.g. significant unexplained geographic distance between the merchant bank and the customer); (v) companies that have
@@ -1647,10 +1311,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** A Digital Payment Token Service must perform enhanced CDD if the customer's ownership structure appears unusually complex, involves personal asset holding vehicles or nominee shareholders, or if business relations occur without an account under unusual circumstances such as significant geographic distance.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly lists unusual ownership structures, personal asset holding vehicles, nominee shareholders, and unusual business relations (including geographic distance) as higher risk categori
-
-**Verifier answering with no documents** (overlap with gold 0.13): Enhanced CDD measures are required if the customer is a legal person or arrangement that is not a regulated financial institution and has a complex ownership structure, or if there is a close business relationship with a high-risk jurisdiction or entity that cannot be adequately understood through standard CDD.
-
 **Gold span** — Guidelines to Notice PSN02 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Payment Token Service · clause 8
 
 > 8-1 Where the ML/TF risks are identified to be higher, a payment service provider shall take enhanced CDD ('ECDD') measures to mitigate and manage those risks. 8-2 Examples of potentially higher risk categories under paragraph 8.7 of the Notice include - (a) Customer risk (i) customers from higher risk businesses/ activities/ sectors identified in Singapore's NRA, guidance from the Authority, as well as other higher risk businesses/ activities/ sectors identified by the payment service provider; (ii) the ownership structure of the legal person or arrangement appears unusual or excessively complex given the nature of the legal person's or legal arrangement's business; (iii) legal persons or legal arrangements that are personal asset holding vehicles; (iv) the business relations with a customer or transactions undertaken without an account being opened that are conducted under unusual circ
@@ -1666,10 +1326,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How does the obligation for beneficiary institutions to monitor wire transfers lacking required originator or beneficiary information apply across Banks, Merchant Banks, and Finance Companies?
 
 **A.** The requirement is identical for all three institution types: each must take reasonable measures, such as post-event or real-time monitoring where feasible, to detect cross-border wire transfers missing the necessary originator or beneficiary details.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that Banks, Merchant Banks, and Finance Companies all share the same obligation to take reasonable measures to identify cross-border wire transfers lacking required infor
-
-**Verifier answering with no documents** (overlap with gold 0.111): Beneficiary institutions must reject or return wire transfers that lack required originator or beneficiary information, and this obligation applies uniformly to Banks, Merchant Banks, and Finance Companies under MAS regulations.
 
 **Gold span** — Notice 626 Prevention of Money Laundering and Countering the Financing of Terrorism – Banks · clause 11.10
 
@@ -1691,10 +1347,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is different for Banks compared to the other two institution types. For Specified Payment Services, business relations are defined strictly as opening or maintaining an account. For Trust Companies, the provided text defines business contact but does not define 'business relations.' However, for Banks, the definition explicitly includes both opening or maintaining an account and providing financial advice.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly defines 'business relations' for payment service providers and banks (including financial advice for banks) but only defines 'business contact' for trust companies, confirming t
-
-**Verifier answering with no documents** (overlap with gold 0.086): I do not know the specific regulatory definitions of 'business relations' for these institution types under Singapore MAS regulations.
-
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 2.1
 
 > For the purposes of this Notice ⎯ 'AML/CFT' means anti -money laundering 1 and countering the financing of terrorism; 'Authority' means the Monetary Authority of Singapore; 'bank' has the same meaning as in section 2(1) of the Banking Act 1970; 'bank in Singapore' has the same meaning as in section 2(1) of the Banking Act 1970; 'bearer negotiable instrument' means ⎯ (a) a traveller's cheque; or (b) any negotiable instrument that is in bearer form, indorsed without any restriction, made out to a fictitious payee or otherwise in such form that title thereto passes upon delivery, and includes a negotiable instrument that has been signed but with the payee's name omitted; 1 In this Notice, money laundering includes proliferation financing, and all references in this Notice to money laundering (including money laundering risks) shall be construed accordingly. 'beneficial owner', in relation t
@@ -1714,10 +1366,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When an acquiring entity takes over part of another institution's business without transferring all records, does the specific type of license—Trust Company, Bank, or Capital Markets Intermediary—affect what due diligence steps must be performed on the acquired customers?
 
 **A.** The requirement is identical for Trust Companies, Banks, and Capital Markets Intermediaries; each must perform measures 6, 7, and 8 unless they simultaneously received all records with no concerns and completed satisfactory due diligence inquiries.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that Trust Companies, Banks, and CMIs must all perform the same measures (paragraphs 6, 7, and 8) under identical conditions regarding record acquisition and due diligenc
-
-**Verifier answering with no documents** (overlap with gold 0.048): I do not know the specific requirement.
 
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 6.30
 
@@ -1739,10 +1387,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** For Specified Payment Services, providers must obtain a unique identification number for connected parties unless risks are low and such data is unobtainable, whereas VCCs are required to verify the customer's legal form, proof of existence, constitution, and powers using reliable independent sources.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly contrasts the payment service provider's requirement to obtain unique identification numbers (with specific exceptions) against the VCC's requirement to verify legal form and ex
-
-**Verifier answering with no documents** (overlap with gold 0.186): I do not know the specific regulatory distinction between Specified Payment Services and Variable Capital Companies regarding the collection of unique identification numbers versus proof of legal existence under Singapore MAS regulations.
-
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 7.8
 
 > Where the customer is a legal person or legal arrangement, the payment service provider shall identify the connected parties of the customer, by obtaining at least the following information of each connected party: (a) full name, including any aliases; and (b) unique identification number (such as an identity card number, birth certificate number or passport number of the connected party). 7.8A Where the payment service provider - (a) has assessed that the money laundering and terrorism financing risks in relation to the customer are not high; and (b) is unable to obtain the unique identification number of the connected party after taking reasonable measures,
@@ -1758,10 +1402,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How do the risk assessment obligations for Trust Companies, Banks, and Capital Markets Intermediaries differ when dealing with customers from jurisdictions under FATF countermeasures versus those with inadequate AML/CFT measures versus shell entities?
 
 **A.** The requirement is the same for all three institution types: they must treat business relations as higher risk for customers from jurisdictions under FATF countermeasures, but only assess risk for those from jurisdictions with inadequate AML/CFT measures or shell entities.
-
-**Verifier (qwen3.8:latest):** The excerpt confirms that all three institution types must treat FATF countermeasure jurisdictions as higher risk, while only assessing risk for inadequate AML/CFT jurisdictions and shell entities.
-
-**Verifier answering with no documents** (overlap with gold 0.071): I do not know the specific regulatory distinctions mandated by MAS for these three entity types regarding those specific customer categories.
 
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 8.6
 
@@ -1783,10 +1423,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Specified Payment Services must document their risk assessments, keep them up-to-date, and provide information to the Authority, whereas Trust Companies and Banks are only required to undertake risk assessments before launch and take appropriate mitigation measures without a specific mandate for documentation or regulatory reporting in this context.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly lists documentation and reporting requirements for payment service providers but only mandates pre-launch assessment and mitigation for trust companies and banks.
-
-**Verifier answering with no documents** (overlap with gold 0.093): I do not know the specific requirements for documentation, risk assessment timing, and mitigation mechanisms for these entities regarding new products, practices, or technologies under Singapore MAS regulation.
-
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 5.2
 
 > The appropriate steps referred to in paragraph 5.1 shall include ⎯ (a) documenting the payment service provider 's risk assessments; (b) considering all the relevant risk factors before determining the level of overall risk and the appropriate type and extent of mitigation to be applied; (c) keeping the payment service provider 's risk assessments up-to-date; and (d) having appropriate mechanisms to provide its risk assessment information to the Authority. Risk Mitigation
@@ -1806,10 +1442,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How do the risk mitigation documentation steps for Trust Companies, Banks, and Capital Markets Intermediaries compare to one another?
 
 **A.** The requirements are identical for all three institution types, each mandating that they document their risk assessments, evaluate relevant factors to determine overall risk levels and mitigation measures, keep these assessments current, and establish mechanisms to share this information with the Authority.
-
-**Verifier (qwen3.8:latest):** The excerpt lists identical four-step requirements for all three institution types, which matches the proposed answer's description of identical mandates.
-
-**Verifier answering with no documents** (overlap with gold 0.083): I do not know the specific comparative requirements for risk mitigation documentation steps for Trust Companies, Banks, and Capital Markets Intermediaries under Singapore MAS regulation.
 
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 4.2
 
@@ -1831,10 +1463,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** Yes, the requirement is identical for both institution types: when an intermediary effects a value transfer, it must immediately and securely transmit the accompanying information to the recipient institution.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that both payment service providers and licensees acting as intermediary institutions must immediately and securely provide accompanying information to the recipient.
-
-**Verifier answering with no documents** (overlap with gold 0.062): I do not know the specific requirement.
-
 **Gold span** — Notice PSN02 Prevention of Money Laundering and Countering the Financing of Terrorism – Digital Payment Token Service · clause 13.17
 
 > Where a payment service provider that is an intermediary institution effects a value transfer to another intermediary institution or a beneficiary institution, the payment service provider shall immediately and securely provide the information accompanying the value transfer, to that other intermediary institution or beneficiary institution.
@@ -1850,10 +1478,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How do the AML/CFT rules for overseas branches compare across Capital Markets Intermediaries, Financial Institutions Dealing In Precious Stones And Precious Metals, and Variable Capital Companies regarding conflicting host country standards?
 
 **A.** The requirement is identical for all three institution types: each must instruct its overseas branch or subsidiary to apply the higher standard between Singapore and the host jurisdiction, provided that local law allows it.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that all three entity types must apply the higher of the two standards to the extent permitted by local law.
-
-**Verifier answering with no documents** (overlap with gold 0.05): I do not know the specific requirement.
 
 **Gold span** — Notice SFA 04-N02 to Capital Markets Intermediaries on Prevention of Money Laundering and Countering the Financing of Terrorism · clause 14.8
 
@@ -1875,10 +1499,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The core obligation for all three institution types is identical: each must implement internal systems to screen customers, their representatives, connected parties, and beneficial owners for PEP status or family/associate ties. However, the requirement applies to different subjects depending on the institution; it covers trust relevant parties for Trust Companies, whereas it covers customers for both Banks and Capital Markets Intermediaries. Additionally, Banks have a specific extra instruction to integrate information received through COSMIC into their existing screening frameworks.
 
-**Verifier (qwen3.8:latest):** The proposed answer accurately reflects the excerpt's distinction between the subjects screened (trust relevant parties vs. customers) and the specific COSMIC requirement for banks.
-
-**Verifier answering with no documents** (overlap with gold 0.145): I do not know the specific regulatory distinction regarding PEP screening obligations between Trust Companies and Banks/Capital Markets Intermediaries under Singapore MAS regulations.
-
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 8.2
 
 > A trust company shall implement appropriate internal risk management systems, policies, procedures and controls to determine if a trust relevant party, any natural person appointed to act on behalf of the trust relevant party, any connected party of the trust relevant party, or any effective controller of the trust relevant party is a politically exposed person, or a family member or close associate of a politically exposed person.
@@ -1898,10 +1518,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** How does the obligation to keep Customer Due Diligence data relevant and up-to-date differ among Trust Companies, Banks, and Capital Markets Intermediaries?
 
 **A.** The core obligation is identical for all three institution types: they must review existing CDD data particularly for higher risk categories. The difference lies in the specific subjects covered; Trust Companies must include legal arrangements and trust relevant parties, whereas Banks and Capital Markets Intermediaries focus on customers and their beneficial owners.
-
-**Verifier (qwen3.8:latest):** The excerpt confirms that while the review obligation is similar, Trust Companies cover legal arrangements and trust relevant parties, whereas Banks and CMIs cover customers and beneficial owners.
-
-**Verifier answering with no documents** (overlap with gold 0.227): I do not know the specific regulatory differences regarding the obligation to keep Customer Due Diligence data relevant and up-to-date among Trust Companies, Banks, and Capital Markets Intermediaries under Singapore MAS regulations.
 
 **Gold span** — Notice TCA-N03 Prevention of Money Laundering and Countering the Financing of Terrorism - Trust Companies · clause 6.24
 
@@ -1923,10 +1539,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement is identical for both Specified Payment Services and Variable Capital Companies, as each must inquire into the background and purpose of the relevant transactions to the extent possible and document their findings for potential disclosure to authorities.
 
-**Verifier (qwen3.8:latest):** The excerpt presents identical text for both entities, confirming that their obligations to inquire and document are the same.
-
-**Verifier answering with no documents** (overlap with gold 0.233): I do not know the specific regulatory distinction between Specified Payment Services and Variable Capital Companies regarding transaction background inquiries under MAS regulations.
-
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 7.30
 
 > A payment service provider shall, to the extent possible, inquire into the background and purpose of the transactions in paragraph 7.28 and document its findings with a view to making this information available to the relevant authorities should the need arise.
@@ -1942,10 +1554,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** For both Specified Payment Services and Variable Capital Companies, how does the requirement to handle a customer suspected of drug dealing or terrorism financing differ before establishing business relations?
 
 **A.** The requirement is the same for both institution types: each must refuse to establish business relations or undertake the transaction and file an STR 4 if they have reasonable grounds to suspect the funds are proceeds of crime or related to terrorism financing.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that both payment service providers and VCCs must refuse the relationship and file an STR under the same suspicion criteria.
-
-**Verifier answering with no documents** (overlap with gold 0.045): I do not know the specific requirement.
 
 **Gold span** — Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services · clause 7.2
 
@@ -1963,10 +1571,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The updated submission requirements became effective on 16 March 2021.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the MAS Notice 129 (Amendment) 2021 has effect from 16 March 2021.
-
-**Verifier answering with no documents** (overlap with gold 0.176): I do not know the specific effective date of the amendment regarding submission requirements in Singapore MAS regulation without more context on which specific regulation or amendment is being referenced.
-
 **Gold span** — Notice 129 on Insurance Returns (Accounts and Statements) · clause 4
 
 > MAS Notice 129 (Amendment) 2021 dated 15 March 2021 with effect from 16 March 2021. Appendix A SUBMISSION, SIGNATORY AND AUDIT REQUIREMENTS SUBMISSION REQUIREMENTS Appendix A - 1 SUBMISSION REQUIREMENTS Appendix A - 2 SUBMISSION REQUIREMENTS Appendix A - 3 SUBMISSION REQUIREMENTS Appendix A - 4 SUBMISSION REQUIREMENTS Appendix A - 5 SUBMISSION REQUIREMENTS Appendix A - 6 Appendix B LIST OF INSURANCE FORMS FOR MAINSTREAM INSURERS Co Code Year Month NAME OF INSURER _____________________________________________________________________________________________________ FORM A1 - STATEMENT OF FINANCIAL POSITION AS AT _____________________ MARKET VALUE ANNEX A1-1 OTHER INVESTMENTS AS AT _____________________ NOTIONAL PRINCIPAL AMOUNT ANNEX A1-2 OUTSTANDING PREMIUMS AS AT _____________________ ANNEX A1-3 REINSURANCE RECOVERABLES ON PAID CLAIMS AS AT _____________________ ANNEX A1-4 OTHER ASSETS A
@@ -1978,10 +1582,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When did the requirements for outstanding S$ credit facilities become effective?
 
 **A.** The regulations regarding outstanding S$ credit facilities became effective on 1 July 2021.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states the notice has effect from 1 July 2021, which aligns with the proposed answer.
-
-**Verifier answering with no documents** (overlap with gold 0.286): I do not know the specific effective date for the requirements for outstanding S$ credit facilities under Singapore MAS regulation.
 
 **Gold span** — Notice SFA 04-N04 Lending of Singapore Dollar to Non-Resident Financial Institutions for Holders of Capital Markets Services Licence · clause 2
 
@@ -1995,10 +1595,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The cancellation of those specific notices took effect from 10 May 2024.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notices are cancelled with effect from 10 May 2024.
-
-**Verifier answering with no documents** (overlap with gold 0.231): I do not know the specific effective date for the cancellation of the notices on Technology Risk Management and Cyber Hygiene.
-
 **Gold span** — Notice 127 Technology Risk Management [Cancelled] · clause 2
 
 > The following Notices are cancelled with effect from 10 May 2024: (a) MAS Notice 127 'Notice on Technology Risk Management' dated 21 June 2013; (b) MAS Notice 132 'Notice on Cyber Hygiene' dated 6 August 2019; (c) MAS Notice 506 'Notice on Technology Risk Management' dated 21 June 2013; (d) MAS Notice 507 'Notice on Cyber Hygiene' dated 6 August 2019.
@@ -2010,10 +1606,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What was the effective date for the cancellation of the notices regarding technology risk management and cyber hygiene?
 
 **A.** The cancellation of the notices on technology risk management and cyber hygiene took effect from 10 May 2024.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notices were cancelled with effect from 10 May 2024, which matches the proposed answer.
-
-**Verifier answering with no documents** (overlap with gold 0.5): I do not know the specific effective date for the cancellation of the notices regarding technology risk management and cyber hygiene.
 
 **Gold span** — Notice 834 Cyber Hygiene [Cancelled] · clause 2
 
@@ -2027,10 +1619,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The new provisions started applying on 1 January 2025.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notice has effect from 1 January 2025.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific date when the updated investment policy requirements for FHC groups came into force.
-
 **Gold span** — Notice FHC-N125 Investment Activities · clause Notes on History of Amendments/1
 
 > MAS Notice FHC-125 (Amendment) 2024 dated 3 December 2024 with effect from 1 January 2025. Appendix A Main Elements of Written Investment Policy for an FHC Group The written investment policy for an FHC group must include the following: 1 Policy relating to the determination of the strategic asset allocation. This must be done with due regard to asset-liability management 3 , overall risk tolerance 4 , long-term riskreturn requirements and the respective solvency positions of the DFHC (Licensed Insurer) and other entities within the FHC group. [MAS Notice FHC-N125 (Amendment) 2024] 2 Policy relating to the establishment of limits for the allocation of assets by type of asset, credit rating, geographical area, markets, sectors, counterparties and currency for the FHC group. In establishing the limits, a DFHC (Licensed Insurer) must ensure adequate diversification within a risk category an
@@ -2042,10 +1630,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When did the cancellation of the notices on technology risk management and cyber hygiene take effect?
 
 **A.** These notices were cancelled with effect from 10 May 2024.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notices were cancelled with effect from 10 May 2024, which matches the proposed answer.
-
-**Verifier answering with no documents** (overlap with gold 0.067): I do not know the specific effective date for the cancellation of notices on technology risk management and cyber hygiene in Singapore MAS regulations.
 
 **Gold span** — Notice on Cyber Hygiene for Licensed Credit Bureaus [Cancelled] · clause 2
 
@@ -2059,10 +1643,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The specific requirement concerning index options was deleted by MAS Notice 656 (Amendment) 2024.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the footnotes referencing index options were deleted by MAS Notice 656 (Amendment) 2024.
-
-**Verifier answering with no documents** (overlap with gold 0.176): I do not know the specific date when the provision regarding exposure calculation for index options was removed from Singapore MAS regulations.
-
 **Gold span** — Notice 656 Exposures to Single Counterparty Groups for Banks Incorporated in Singapore · clause 3.9
 
 > A Reporting Bank must calculate the exposure value of an investment in index positions, securitisations, hedge funds or investment funds held in the trading book applying the same approach as for similar instruments held in the banking book in accordance with paragraphs 4.4 to 4.16 of this Annex. Accordingly, the Reporting Bank may assign the amount invested in a particular structure to - (a) the structure itself, where it is defined as a distinct counterparty; (b) the counterparties corresponding to the underlying assets; or (c) the unknown client described in paragraph 4.11(b) of this Annex. 8 For example, an index option. 9 [Deleted by MAS Notice 656 (Amendment) 2024] 10 [Deleted by MAS Notice 656 (Amendment) 2024] [MAS Notice 656 (Amendment) 2024]
@@ -2074,10 +1654,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When did the amendment regarding excluded warrants take effect?
 
 **A.** The requirements listed in this appendix came into force on 28 July 2023.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the amendment has effect from 28 July 2023.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific effective date of the amendment regarding excluded warrants in Singapore MAS regulations.
 
 **Gold span** — Notice SFA 02-N01 Listing, De-Listing or Trading of Relevant Products on an Organised Market of an Approved Exchange or a Recognised Market Operator Incorporated in Singapore · clause 2
 
@@ -2091,10 +1667,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The requirement was amended by MAS Notice 656 (Amendment) 2024 to allow regulatory CRE exposures with a 100% or lower risk weight as part of the cover pool for qualifying covered bonds.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly lists regulatory CRE exposures with a 100% or lower risk weight under sub-paragraph (a)(iii) and cites [MAS Notice 656 (Amendment) 2024] immediately following that provision.
-
-**Verifier answering with no documents** (overlap with gold 0.056): I do not know the specific requirement.
-
 **Gold span** — Notice 656 Exposures to Single Counterparty Groups for Banks Incorporated in Singapore · clause 4.3
 
 > For the purposes of paragraph 4.2 of this Annex, a qualifying covered bond refers to a covered bond that meets the following conditions at the inception date of the covered bond and throughout its remaining maturity: (a) the cover pool of the covered bond consists of assets that constitute - 31 (i) exposures which would fall within the central government and central bank asset class, PSE asset class or MDB asset class under the SA(CR) in accordance with paragraph 7.3.1(b) to (d) of Part VII of MAS Notice 637; (ii) regulatory RRE exposures which would fall within the regulatory real estate asset sub-class under the SA(CR) in accordance with paragraph 7.3.1(k)(ii) of Part VII of MAS Notice 637 that would - (A) qualify for a 35% or lower risk weight under the SA(CR) set out in paragraphs 7.3.91 to 7.3.92 and subject to paragraph 7.3.96 of Part VII of MAS Notice 637; and (B) have a loan-to-v
@@ -2106,10 +1678,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When was the item regarding income and expenses removed from the notice's scope, and which specific amendment caused that change?
 
 **A.** The provision concerning income and expenses was deleted by MAS Notice 306 (Amendment) 2021, meaning it no longer applies under the current version of this guidance.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the item regarding income and expenses was deleted by MAS Notice 306 (Amendment) 2021.
-
-**Verifier answering with no documents** (overlap with gold 0.19): I do not know the specific amendment or date regarding the removal of income and expenses from the notice's scope in Singapore MAS regulations.
 
 **Gold span** — Notice 306 Market Conduct Standards for Life Insurers Providing Financial Advisory Services as defined under the Financial Advisers Act · clause 2
 
@@ -2123,10 +1691,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The document requires updates to be made in a timely manner to address new operational, legal, regulatory developments, or emerging ML/TF risks.
 
-**Verifier (qwen3.8:latest):** Paragraph 18-1 explicitly states that policies must be updated in a timely manner to account for new operational, legal, and regulatory developments and emerging ML/TF risks.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Guidelines to MAS Notice FSM-N27 on Prevention of Money Laundering and Countering the Financing of Terrorism - Digital Token Service Providers · clause 18
 
 > 18-1 As internal policies and procedures serve to guide employees, officers and representatives in ensuring compliance with AML/CFT laws and regulations, it is important that a digital token service provider updates its policies and procedures in a timely manner, to take into account new operational, legal and regulatory developments and emerging or new ML/TF risks. Notice Paragraphs 18.3 to 18.10 18-2 Group Policy 18-2-1 In relation to paragraph 18.6 of the Notice, examples of the types of information that should be shared within the financial group for risk management purposes are positive name matches arising from screening performed against ML/TF information sources, a list of customers who have been exited by the digital token service provider, its branches and subsidiaries based on suspicion of ML/TF and names of parties on whom STRs have been filed. Such information should be shar
@@ -2138,10 +1702,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When did the guidelines on the valuation of policy liabilities relating to life business take effect?
 
 **A.** These guidelines took effect from 31 March 2026.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notice has effect from 31 March 2026.
-
-**Verifier answering with no documents** (overlap with gold 0.067): I do not know the specific effective date of the guidelines on the valuation of policy liabilities relating to life business in Singapore.
 
 **Gold span** — Notice 133 Valuation and Capital Framework for Insurers · clause 8
 
@@ -2155,10 +1715,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The cancellation of these notices took effect from 10 May 2024.
 
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that the notices are cancelled with effect from 10 May 2024.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement.
-
 **Gold span** — Notice 644A Technology Risk Management [Cancelled] · clause 2
 
 > The following Notices are cancelled with effect from 10 May 2024: (a) MAS Notice 644 'Notice on Technology Risk Management' dated 21 June 2013; (b) MAS Notice 655 'Notice on Cyber Hygiene' dated 6 August 2019; (c) MAS Notice 644A 'Notice on Technology Risk Management' dated 21 June 2013; (d) MAS Notice 655A 'Notice on Cyber Hygiene' dated 6 August 2019; (e) MAS Notice 1114 'Notice on Technology Risk Management' dated 1 July 2021; (f) MAS Notice 1118 'Notice on Cyber Hygiene' dated 1 July 2021.
@@ -2170,10 +1726,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** When was this specific paragraph removed from the rules?
 
 **A.** This provision was deleted by the regulatory amendment issued in 2024.
-
-**Verifier (qwen3.8:latest):** The excerpt explicitly states that paragraphs 2.3 and 2.3A were deleted by MAS Notice 656 (Amendment) 2024.
-
-**Verifier answering with no documents** (overlap with gold 0.0): I do not know the specific requirement or the date it was removed from the rules.
 
 **Gold span** — Notice 656 Exposures to Single Counterparty Groups for Banks Incorporated in Singapore · clause 2.1
 
@@ -2187,8 +1739,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This information cannot be answered from the provided corpus because it contains only Singapore MAS notices and guidelines, which do not include regulatory standards issued by the Hong Kong Monetary Authority.
 
-**Verifier (qwen3.8:latest):** The provided excerpts are from Singapore MAS regulations, whereas the question specifically asks for standards specified by the Hong Kong Monetary Authority.
-
 **Claimed unanswerable because:** `other_jurisdiction`
 
 ---
@@ -2199,21 +1749,7 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This specific statutory penalty is not addressed in MAS notices or guidelines because it is defined directly within the text of the Proceeds of Crime Act and related subsidiary legislation, which form the primary legal source for such penalties rather than MAS supervisory documents.
 
-**Verifier (qwen3.8:latest):** The provided excerpts contain definitions and general AML/CFT guidelines from MAS notices, but none mention the Proceeds of Crime Act or statutory penalties for failing to comply with a money launderi
-
 **Claimed unanswerable because:** `out_of_scope_instrument`
-
----
-
-## gs-0118 · negative · confidence 1.0
-
-**Q.** Under Notice 653 Net Stable Funding Ratio Disclosure, what specific disclosure formats or supplementary reporting templates are financial institutions required to submit today?
-
-**A.** This question cannot be answered from the corpus of MAS notices and guidelines because MAS documents typically prescribe quantitative ratios and high-level qualitative principles rather than mandating specific visual disclosure formats or providing downloadable supplementary reporting templates.
-
-**Verifier (qwen3.8:latest):** The provided excerpts only introduce the scope and applicability of Notice 653 or discuss unrelated topics, without specifying the actual disclosure formats or supplementary reporting templates requir
-
-**Claimed unanswerable because:** `withdrawn_requirement`
 
 ---
 
@@ -2222,8 +1758,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What specific percentage of unitholder consent is required under Notice 1018 to approve a restructuring of the underlying assets for a Private Equity fund?
 
 **A.** This information is not addressed in MAS notices or guidelines because the regulatory framework for private equity funds does not prescribe a fixed numerical threshold for unitholder consent on asset restructuring, leaving such procedural details to be determined by the individual fund's offering document and trust deed.
-
-**Verifier (qwen3.8:latest):** None of the provided excerpts mention Notice 1018 or specify the percentage of unitholder consent required for restructuring underlying assets in a Private Equity fund.
 
 **Claimed unanswerable because:** `invented_specific`
 
@@ -2235,8 +1769,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This matter is not addressed in MAS notices or guidelines because the Singapore Deposit Insurance Corporation (SDIC) regulates deposit insurance coverage and claims, not operational environmental standards such as data centre energy use.
 
-**Verifier (qwen3.8:latest):** None of the excerpts mention energy efficiency metrics or data centre operations in the context of MAS Notice DIA-N01.
-
 **Claimed unanswerable because:** `unregulated_topic`
 
 ---
@@ -2246,8 +1778,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Given the cancellation of MAS Notice 1119 regarding cyber hygiene standards, what specific equivalent mandatory requirements for third-party risk management and supply chain security audits are currently enforced by the Hong Kong Monetary Authority under its Code of Banking Practice?
 
 **A.** This question cannot be answered using only MAS notices and guidelines because those documents exclusively cover Singapore regulatory obligations and do not contain information about the specific enforcement actions or mandatory audit frequencies set by the Hong Kong Monetary Authority.
-
-**Verifier (qwen3.8:latest):** The provided excerpts only confirm the cancellation of specific MAS Notices and do not contain any information regarding Hong Kong Monetary Authority requirements or its Code of Banking Practice.
 
 **Claimed unanswerable because:** `other_jurisdiction`
 
@@ -2259,8 +1789,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This information is not available because the specific statutory penalties and sections of the Act are established by legislation, whereas the MAS corpus contains only notices and guidelines that do not define criminal or civil penalties.
 
-**Verifier (qwen3.8:latest):** Excerpt [10] identifies the relevant Act (Financial Holding Companies Act 2013) for Notice 608 but does not state the specific statutory penalties for non-compliance, and no other excerpt provides thi
-
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
 ---
@@ -2270,8 +1798,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under Notice PSN01 Prevention of Money Laundering and Countering the Financing of Terrorism – Specified Payment Services, what specific obligations must a financial institution fulfill today regarding customer due diligence for cross-border remittances?
 
 **A.** This question cannot be answered from MAS notices or guidelines because the specified instrument has been cancelled or withdrawn, meaning its requirements are no longer in force and do not constitute current regulatory obligations.
-
-**Verifier (qwen3.8:latest):** The excerpts mention CDD in general contexts or list review areas, but none specify the concrete obligations for cross-border remittances under PSN01.
 
 **Claimed unanswerable because:** `withdrawn_requirement`
 
@@ -2283,8 +1809,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The required specific percentage is not addressed in MAS notices or guidelines because the regulatory framework does not mandate a fixed provisioning percentage based solely on the duration of difficulty, leaving such calculation methodology to the institution's own internal policies.
 
-**Verifier (qwen3.8:latest):** None of the provided excerpts mention Notice 1005A or specify a provisioning percentage for borrowers with financial difficulties persisting beyond six months.
-
 **Claimed unanswerable because:** `invented_specific`
 
 ---
@@ -2294,8 +1818,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under the current regulatory framework administered by the Monetary Authority of Singapore, are financial institutions required to submit quarterly energy consumption reports detailing the kilowatt-hour usage of their primary data centre facilities for external auditing purposes?
 
 **A.** This inquiry cannot be answered from MAS notices or guidelines because the Monetary Authority of Singapore does not regulate or mandate reporting standards for corporate data centre energy efficiency or general facility utility consumption.
-
-**Verifier (qwen3.8:latest):** None of the excerpts mention requirements for quarterly energy consumption reports or data centre kilowatt-hour usage.
 
 **Claimed unanswerable because:** `unregulated_topic`
 
@@ -2307,8 +1829,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This question cannot be answered using MAS notices and guidelines because these documents do not contain information regarding the specific regulatory requirements or alignment standards set by the Hong Kong Monetary Authority.
 
-**Verifier (qwen3.8:latest):** None of the excerpts compare MAS Notice FHC-N610 with Hong Kong Monetary Authority reporting obligations.
-
 **Claimed unanswerable because:** `other_jurisdiction`
 
 ---
@@ -2318,8 +1838,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under the Securities and Futures Act, what specific statutory penalty applies for a dealer who fails to maintain an accurate register of dealers as required by Notice 753?
 
 **A.** This specific statutory penalty is not addressed in MAS notices or guidelines because such documents do not contain provisions of the Securities and Futures Act itself, which is where penalties are defined.
-
-**Verifier (qwen3.8:latest):** MAS Notice 753 is issued under the Banking Act, not the Securities and Futures Act, and none of the excerpts specify a statutory penalty for failing to maintain a register of dealers under the SFA.
 
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
@@ -2331,8 +1849,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This cannot be answered from the MAS corpus because the provided notice is explicitly effective only from 1 January 2027, meaning it contains no provisions or requirements applicable to reporting obligations before that date.
 
-**Verifier (qwen3.8:latest):** The question asks for requirements under Notice FAA-N27, but the provided excerpts only discuss Notice FAA-N14, FAA-N13, FAA-N20, FAA-N03, FAA-N26, or SFA04-N11, and none contain the specific reportin
-
 **Claimed unanswerable because:** `withdrawn_requirement`
 
 ---
@@ -2342,8 +1858,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What is the specific minimum percentage of shareholder ownership required for a Singapore Variable Capital Company (VCC) to be classified as an 'eligible investment company' under the Prevention of Money Laundering and Countering the Financing of Terrorism framework?
 
 **A.** This specific threshold is not addressed in MAS notices or guidelines because the regulatory definition of an 'eligible investment company' relies on qualifying criteria set out in the Securities and Futures Act rather than a fixed ownership percentage stipulated in MAS AML/CFT notices.
-
-**Verifier (qwen3.8:latest):** The provided excerpts contain only titles, table of contents, and general definitions or exemptions regarding beneficial owners, but none specify a minimum percentage of shareholder ownership required
 
 **Claimed unanswerable because:** `invented_specific`
 
@@ -2355,8 +1869,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This matter is not addressed in MAS notices or guidelines because employment residency requirements and labor contract clauses fall under the jurisdiction of the Ministry of Manpower, not the Monetary Authority of Singapore.
 
-**Verifier (qwen3.8:latest):** None of the excerpts mention Notice 625, Sections 31 and 33, or any exemptions related to mandatory residency clauses in employment contracts.
-
 **Claimed unanswerable because:** `unregulated_topic`
 
 ---
@@ -2366,8 +1878,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** According to Notice 755 on weekly S$ transaction reporting, what specific thresholds and formats does the Hong Kong Monetary Authority require for cross-border trade reporting from Singapore to Hong Kong?
 
 **A.** This requirement is not addressed in MAS notices or guidelines because they exclusively cover Singapore regulatory mandates and do not contain information regarding the operational standards or reporting thresholds imposed by the Hong Kong Monetary Authority.
-
-**Verifier (qwen3.8:latest):** The provided excerpts discuss MAS notices regarding weekly S$ transaction reporting and cross-border trade in China, but none contain information about HKMA requirements for reporting from Singapore t
 
 **Claimed unanswerable because:** `other_jurisdiction`
 
@@ -2379,8 +1889,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This information is not addressed in MAS notices or guidelines because they do not contain the primary statutory provisions or specific court-determined penalties found in the Banking Act.
 
-**Verifier (qwen3.8:latest):** None of the excerpts specify the section of the Banking Act regarding unlicensed banking offenses or the maximum penalty prescribed by the courts.
-
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
 ---
@@ -2390,8 +1898,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under Notice 834 Cyber Hygiene, what specific technical controls must a financial institution implement to ensure its third-party vendors meet the minimum cybersecurity standards for remote access?
 
 **A.** This is not addressed in MAS notices or guidelines because the referenced document, 'Notice 834 Cyber Hygiene', has been officially cancelled and withdrawn from the regulatory corpus.
-
-**Verifier (qwen3.8:latest):** The excerpts discuss general vendor due diligence, remote access controls for internal users, or definitions, but none specify the technical controls a financial institution must impose on third-party
 
 **Claimed unanswerable because:** `withdrawn_requirement`
 
@@ -2403,8 +1909,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This is not addressed in MAS notices or guidelines because the referenced document has been cancelled and the current active regulatory text does not contain these specific requirements regarding high-risk classification thresholds, CISO appointment deadlines, or mandatory revenue allocation percentages for cybersecurity training.
 
-**Verifier (qwen3.8:latest):** None of the excerpts mention a specific deadline for appointing a CISO or a mandate to allocate 100% of annual revenue to cybersecurity training.
-
 **Claimed unanswerable because:** `invented_specific`
 
 ---
@@ -2414,8 +1918,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** In accordance with the technology risk management framework outlined in Notice FSM-N03, what are the specific regulatory requirements for an institution's internal policies regarding employee overtime compensation and annual income tax filing deadlines?
 
 **A.** This matter is not addressed in MAS notices or guidelines because employment law and individual income tax obligations fall entirely under the jurisdiction of the Ministry of Manpower and the Inland Revenue Authority of Singapore, respectively, and are outside the scope of financial regulation.
-
-**Verifier (qwen3.8:latest):** None of the excerpts discuss employee overtime compensation or annual income tax filing deadlines, as they focus on AML/CFT, risk governance, and insurance returns.
 
 **Claimed unanswerable because:** `unregulated_topic`
 
@@ -2427,8 +1929,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This query cannot be answered from MAS notices or guidelines because those documents exclusively contain Singapore regulatory requirements and do not include specific definitions or enforcement actions issued by the Hong Kong Monetary Authority.
 
-**Verifier (qwen3.8:latest):** The question asks for a definition by the Hong Kong Monetary Authority, but the provided excerpts are from Singapore's MAS and do not contain any information regarding HKMA guidelines.
-
 **Claimed unanswerable because:** `other_jurisdiction`
 
 ---
@@ -2438,8 +1938,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under what specific section of the Act is a financial institution liable to a court-ordered penalty for failing to file a reinsurance declaration within 30 days of entering an agreement?
 
 **A.** This inquiry cannot be answered from MAS notices or guidelines because such documents only provide supervisory expectations and do not contain statutory provisions, specific court remedies, or the exact sections of Acts that define legal liabilities and penalties.
-
-**Verifier (qwen3.8:latest):** None of the excerpts mention a reinsurance declaration, a 30-day filing deadline, or a specific section of the Act imposing a court-ordered penalty for such a failure.
 
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
@@ -2451,8 +1949,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This question is not addressed in MAS notices or guidelines because the referenced document 'Notice 1111' specifically pertains to capital adequacy requirements and does not contain provisions regarding liquidity coverage ratio minimums.
 
-**Verifier (qwen3.8:latest):** None of the excerpts state the specific minimum liquidity coverage ratio required for merchant banks under Notice 1111.
-
 **Claimed unanswerable because:** `withdrawn_requirement`
 
 ---
@@ -2462,8 +1958,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** What is the specific maximum percentage of a client's portfolio that an exempt person is permitted to hold without obtaining prior written consent from the Securities and Futures Authority under Notice SFA 04-N07?
 
 **A.** This specific numerical threshold is not addressed in MAS notices or guidelines, as the regulation focuses on prohibited representations rather than establishing quantitative limits on portfolio holdings for exempt persons.
-
-**Verifier (qwen3.8:latest):** None of the provided excerpts state a specific maximum percentage of a client's portfolio that an exempt person is permitted to hold without prior written consent under Notice SFA 04-N07.
 
 **Claimed unanswerable because:** `invented_specific`
 
@@ -2475,8 +1969,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This issue is not addressed in MAS notices or guidelines because workplace health and safety liabilities for employees are governed by Singapore's Employment Act and related labour laws, not by financial market conduct regulations.
 
-**Verifier (qwen3.8:latest):** None of the excerpts address the specific legal question of whether client fund segregation requirements cover liabilities for workplace ergonomic injuries.
-
 **Claimed unanswerable because:** `unregulated_topic`
 
 ---
@@ -2486,8 +1978,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Does the Hong Kong Monetary Authority impose a similar prohibition on the circulation of 10,000 Singapore Dollars denominated currency notes within its jurisdiction?
 
 **A.** This matter is not addressed in the provided corpus because it contains only Singapore Monetary Authority notices and guidelines, which do not include regulatory requirements or enforcement actions from the Hong Kong Monetary Authority.
-
-**Verifier (qwen3.8:latest):** The provided excerpts only discuss Singapore MAS regulations and general banking topics, none of which state whether the Hong Kong Monetary Authority imposes a similar prohibition.
 
 **Claimed unanswerable because:** `other_jurisdiction`
 
@@ -2499,8 +1989,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The specific statutory penalty for non-compliance with a Section 102 direction is not addressed in MAS notices or guidelines because such penalties are defined exclusively within the primary legislation of the Banking Act itself.
 
-**Verifier (qwen3.8:latest):** None of the excerpts mention the statutory penalty for non-compliance with a Section 102 direction under the Banking Act.
-
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
 ---
@@ -2510,8 +1998,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under Notice 823 Dealing in Government Securities, what are the current reporting requirements for a financial institution acquiring sovereign bonds issued by an entity other than Singapore's central government?
 
 **A.** This inquiry cannot be answered from MAS notices or guidelines because specific reporting requirements for non-central government sovereign bonds under this instrument are not addressed, and such instruments typically do not cover derivative or secondary market dealings in non-domestic sovereign securities outside their primary scope.
-
-**Verifier (qwen3.8:latest):** None of the excerpts contain specific reporting requirements for acquiring sovereign bonds from non-Singapore entities under Notice 823; they only provide definitions or unrelated regulatory details.
 
 **Claimed unanswerable because:** `withdrawn_requirement`
 
@@ -2523,8 +2009,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** The MAS does not set a specific LTV threshold for borrowers over 70 years in Notice 632, as this notice primarily establishes the general rule that residential property loans must be fully secured and typically prohibits second mortgages unless strictly necessary for refinancing existing debt.
 
-**Verifier (qwen3.8:latest):** None of the excerpts specify the maximum LTV ratio for a second mortgage granted to a borrower over 70 years of age.
-
 **Claimed unanswerable because:** `invented_specific`
 
 ---
@@ -2534,8 +2018,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** In the context of residential property loan risk assessment under Notice 825B, does MAS provide specific guidance on how to account for energy efficiency ratings and carbon footprint disclosures when evaluating a borrower's long-term debt servicing capacity?
 
 **A.** This is not addressed in MAS notices or guidelines because the Monetary Authority of Singapore does not regulate consumer product safety or building energy performance standards, which fall under the jurisdiction of other agencies such as the Energy Market Authority.
-
-**Verifier (qwen3.8:latest):** None of the excerpts provide specific guidance on accounting for energy efficiency ratings or carbon footprint disclosures in the context of Notice 825B or residential loan risk assessment.
 
 **Claimed unanswerable because:** `unregulated_topic`
 
@@ -2547,8 +2029,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This requirement cannot be answered from MAS notices or guidelines because they exclusively cover Singapore regulatory frameworks and do not contain Hong Kong Monetary Authority documents or their specific exemption criteria.
 
-**Verifier (qwen3.8:latest):** None of the excerpts reference HKMA Notice 2018/61 or provide specific exemption criteria for transactions involving close relatives of directors.
-
 **Claimed unanswerable because:** `other_jurisdiction`
 
 ---
@@ -2558,8 +2038,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under which section of the Securities and Futures Act is the statutory penalty for contravening a prohibition order defined, and what specific court remedy is available for enforcement?
 
 **A.** This information is not addressed in MAS notices or guidelines because statutory penalties and specific court remedies are prescribed by the Securities and Futures Act and its subsidiary regulations, which constitute primary legislation rather than regulatory guidance documents.
-
-**Verifier (qwen3.8:latest):** None of the excerpts specify the section of the Securities and Futures Act defining the statutory penalty for contravening a prohibition order or the specific court remedy available for enforcement.
 
 **Claimed unanswerable because:** `out_of_scope_instrument`
 
@@ -2571,8 +2049,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This is not addressed in MAS notices or guidelines because the document titled 'Notice 824' does not contain information on licensing requirements; instead, it focuses exclusively on anti-money laundering and counter-terrorist financing obligations applicable to finance companies.
 
-**Verifier (qwen3.8:latest):** The provided excerpts contain only table of contents, general principles, or training requirements, and do not list the specific licensing requirements for finance companies.
-
 **Claimed unanswerable because:** `withdrawn_requirement`
 
 ---
@@ -2583,8 +2059,6 @@ ranking device, not a calibrated probability — see ADR-017.
 
 **A.** This specific percentage threshold is not addressed in MAS notices or guidelines because Notice 319 has been cancelled with effect from 31 March 2020 and does not contain such a provision.
 
-**Verifier (qwen3.8:latest):** None of the excerpts mention MAS Notice 319, IFRS 17 transitional relief, or a specific percentage threshold for discount rates.
-
 **Claimed unanswerable because:** `invented_specific`
 
 ---
@@ -2594,8 +2068,6 @@ ranking device, not a calibrated probability — see ADR-017.
 **Q.** Under the Prevention of Money Laundering and Countering the Financing of Terrorism Act, are digital asset service providers required to submit quarterly energy consumption reports for their data centre operations as part of their mandatory sustainability disclosures?
 
 **A.** No, this is not addressed in MAS notices or guidelines because the Monetary Authority of Singapore does not regulate corporate carbon footprints or data centre energy usage, which fall under the jurisdiction of other agencies such as the Energy Market Authority or the Environmental Protection Department.
-
-**Verifier (qwen3.8:latest):** The provided excerpts discuss AML/CFT compliance requirements such as suspicious transaction reporting and due diligence, but none mention energy consumption reports or sustainability disclosures.
 
 **Claimed unanswerable because:** `unregulated_topic`
 

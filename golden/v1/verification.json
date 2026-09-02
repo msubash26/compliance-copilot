@@ -1,9 +1,9 @@
 {
   "items": 150,
-  "flagged": 28,
-  "machine_verified": 122,
+  "flagged": 29,
+  "machine_verified": 121,
   "human_reviewed": 0,
-  "verifier": "qwen3.8:latest",
+  "verifier": null,
   "drift": {
     "resolved": 150,
     "moved": 0,
@@ -12,7 +12,8 @@
   "failures_by_check": {
     "judge_disagrees_with_answer": 26,
     "judge_says_not_answerable_from_span": 17,
-    "answerable_without_corpus": 1
+    "answerable_without_corpus": 1,
+    "negative_is_answerable": 1
   },
-  "wall_s": 451.9
+  "wall_s": 0.7
 }

@@ -414,7 +414,10 @@ def write_review_queue(path: Path, items: list[GoldenItem], checks: dict[str, Ch
     # Rstrip each line: the quoted clause text and the verifier's sentences carry
     # trailing spaces, and this file is regenerated on every verify run -- left
     # alone it would be rewritten by the whitespace hook every single time.
-    path.write_text("\n".join(line.rstrip() for line in out) + "\n")
+    # rstrip *then* one newline: the section builder ends on a blank line, so a
+    # plain join leaves two and `end-of-file-fixer` rewrites the file on every
+    # commit. Same fix as the Day 5 report renderer, same reason.
+    path.write_text("\n".join(line.rstrip() for line in out).rstrip("\n") + "\n")
 
 
 def run_verify(

@@ -44,13 +44,13 @@ does not get to exclude the questions whose answer is *not in the corpus*.
 
 | config | hit@5 | recall@5 | full@5 | hit@20 | ndcg@10 | mrr | p50_s | p95_s | n |
 |---|---|---|---|---|---|---|---|---|---|
-| `C1_bm25` | 0.670 | 0.536 | 0.417 | 0.870 | 0.481 | 0.486 | 0.016 | 0.020 | 115 |
-| `C2_dense` | 0.661 | 0.542 | 0.417 | 0.826 | 0.518 | 0.517 | 0.092 | 0.102 | 115 |
-| `C3_hybrid_rrf` | 0.730 | 0.606 | 0.487 | 0.878 | 0.564 | 0.574 | 0.108 | 0.118 | 115 |
-| `C4_hybrid_rerank` | 0.835 | 0.707 | 0.574 | 0.948 | 0.661 | 0.681 | 0.514 | 0.541 | 115 |
-| `C5_no_context` | 0.835 | 0.697 | 0.556 | 0.922 | 0.650 | 0.672 | 0.522 | 0.553 | 115 |
-| `C6_child_units` | 0.809 | 0.670 | 0.530 | 0.896 | 0.641 | 0.676 | 0.357 | 0.402 | 115 |
-| `C7_decompose` | 0.661 | 0.571 | 0.478 | 0.896 | 0.533 | 0.532 | 1.643 | 2.195 | 115 |
+| `C1_bm25` | 0.670 | 0.536 | 0.417 | 0.870 | 0.481 | 0.486 | 0.015 | 0.019 | 115 |
+| `C2_dense` | 0.661 | 0.542 | 0.417 | 0.826 | 0.518 | 0.517 | 0.093 | 0.104 | 115 |
+| `C3_hybrid_rrf` | 0.730 | 0.606 | 0.487 | 0.878 | 0.564 | 0.574 | 0.110 | 0.122 | 115 |
+| `C4_hybrid_rerank` | 0.835 | 0.707 | 0.574 | 0.948 | 0.661 | 0.681 | 0.518 | 0.558 | 115 |
+| `C5_no_context` | 0.835 | 0.697 | 0.556 | 0.922 | 0.650 | 0.672 | 0.521 | 0.560 | 115 |
+| `C6_child_units` | 0.809 | 0.670 | 0.530 | 0.896 | 0.641 | 0.676 | 0.359 | 0.405 | 115 |
+| `C7_decompose` | 0.661 | 0.571 | 0.478 | 0.896 | 0.533 | 0.532 | 1.663 | 2.212 | 115 |
 
 `hit@k` is any gold span retrieved (Day 4's metric, unchanged). `recall@k` is the
 *fraction* of gold spans retrieved, which is the only one of the three that separates
@@ -147,13 +147,13 @@ Rank quality over the top 10; informative on the multi-span types.
 | `C7_decompose` | 0.630 | 0.485 | 0.395 | 0.566 | 0.533 |
 | **n** | 45 | 30 | 25 | 15 | 115 |
 
-## Sensitivity: the same sweep over the 122 unflagged items
+## Sensitivity: the same sweep over the 121 unflagged items
 
-28 of the 150 items are machine-verified but not human-reviewed, and `comparative` is
-the least-verified type at 12 of 25. A conclusion that survives only on the full set
-belongs to the golden set's noise rather than to the retriever, so both are published.
+29 of the 150 items are machine-verified but not human-reviewed, and `comparative`
+is the least-verified type. A conclusion that survives only on the full set belongs to
+the golden set's noise rather than to the retriever, so both are published.
 
-| config | mrr (150) | mrr (122) | Δ | hit@5 (150) | hit@5 (122) | Δ |
+| config | mrr (150) | mrr (121) | Δ | hit@5 (150) | hit@5 (121) | Δ |
 |---|---|---|---|---|---|---|
 | `C1_bm25` | 0.486 | 0.526 | +0.040 | 0.670 | 0.690 | +0.020 |
 | `C2_dense` | 0.517 | 0.551 | +0.033 | 0.661 | 0.701 | +0.040 |
@@ -167,8 +167,8 @@ Every configuration gains on the cleaner subset, which is what a flagged item be
 harder item predicts. What matters is whether any **switch changes its verdict** on a
 query type — helps, hurts, or too small to call — between the two runs:
 
-- `factual_lookup` — − parent-child (chunks): **flat** on 150, **hurts** on 122
-- `comparative` — − parent-child (chunks): **flat** on 150, **hurts** on 122
+- `factual_lookup` — − parent-child (chunks): **flat** on 150, **hurts** on 121
+- `comparative` — − parent-child (chunks): **flat** on 150, **hurts** on 121
 
 Those rows rest on the golden set as much as on the retriever, and are not narrated
 as retrieval findings above.
@@ -217,7 +217,9 @@ a question the corpus cannot answer is *dangerous*, and refusing one it can is *
 Judged by `qwen3.8:latest`, which is not the model that wrote the answers — the Day 4
 rule, for the Day 4 reason. Groundedness is the rate over answers that *made a claim*: an abstention has no claims to support, so counting it either way would be scoring silence.
 
-**The one false answer is the golden set's, not the system's.** `C4_hybrid_rerank`'s single false answer on the 35 negatives is `gs-0118`, which asks what disclosure formats or reporting templates MAS requires. The system answered that Notice 653 prescribes the NSFR Disclosure Template in Table 1 of Annex 1, published semi-annually in the Pillar 3 report — and every one of those phrases is in the retrieved context. **The answer is right and the item is wrong.** Day 4's verifier had that clause at rank 3 and still passed the item at confidence 1.0, because `negative_excerpts` showed the judge the first 700 characters of a 12,689-character clause and the requirement begins at character 3,697 (ADR-024). So this column reads **0.029 as measured, 0.000 excluding `gs-0118`**. The item is not edited here: under ADR-017 a flag comes from the checker, and re-verifying would move the flagged split every other number on this page is keyed to.
+**The one false answer is the golden set's, not the system's.** `C4_hybrid_rerank`'s single false answer on the 35 negatives is `gs-0118`, which asks what disclosure formats or reporting templates MAS requires. The system answered that Notice 653 prescribes the NSFR Disclosure Template in Table 1 of Annex 1, published semi-annually in the Pillar 3 report — and every one of those phrases is in the retrieved context. **The answer is right and the item is wrong.** Day 4's verifier had that clause at rank 3 and still passed the item at confidence 1.0, because `negative_excerpts` showed the judge the first 700 characters of a 12,689-character clause and the requirement begins at character 3,697 (ADR-024). So this column reads **0.029 as measured, 0.000 excluding `gs-0118`**.
+
+The item now carries that finding itself: re-verified at a 6,000-character window, `gs-0118` fails `negative_is_answerable` and ships **flagged** at confidence 0.4. The flag came from the checker, not from a hand edit. It moved the split by exactly one item and changed no number on this page, because the flagged/unflagged sensitivity subsets are over the grounded items and this one is a negative.
 
 ### How much of the false-abstention rate belongs to the golden set
 
@@ -257,7 +259,7 @@ Rates used: Claude Haiku 4.5 (Bedrock on-demand), $1.00/M input and $5.00/M outp
 
 ## The rule this table supports
 
-1. **Rerank everything.** It is the largest single lever in the sweep (+0.106 MRR overall) and it does not hurt any query type. It costs 406ms, which is affordable next to a generator that takes seconds.
+1. **Rerank everything.** It is the largest single lever in the sweep (+0.106 MRR overall) and it does not hurt any query type. It costs 408ms, which is affordable next to a generator that takes seconds.
 2. **But budget it against the query class, not the average.** The same reranker is worth +0.318 MRR on `temporal` (n=15) and +0.037 on `comparative` (n=25). `temporal` questions resolve against amendment endnotes whose wording is near-identical across forty documents, which is precisely the disambiguation a cross-encoder does; a lookup whose clause already ranks first has nothing left to reorder.
 3. **Prefer the lexical arm on cross-reference questions.** BM25 beats dense by +0.073 MRR on `multi_hop` (n=30) and loses by -0.071 on `factual_lookup` (n=45). A cross-reference is a citation — a literal string — and that is lexical territory; a paraphrased lookup is not.
 4. **Do not decompose.** It loses on all four types, by -0.148 MRR overall, at 3.2× the p50 latency. It was run on all 150 items rather than only where it was expected to help, which is why this is a result rather than an assumption.
@@ -265,21 +267,21 @@ Rates used: Claude Haiku 4.5 (Bedrock on-demand), $1.00/M input and $5.00/M outp
 5. **Contextual embeddings and the cross-encoder are competing for the same ranking error.** On the dense arm alone, `+ctx` is worth several MRR points (ADR-015). With the reranker on, removing it costs only +0.009 MRR overall and +0.000 on `temporal` — no per-type movement clears one item's worth. Keeping both is defensible; claiming both are earning their keep is not.
 6. **Assemble as chunks unless the whole clause is needed.** The parent-child switch costs -0.004 MRR overall — noise — while cutting mean context from 10,098 to 4,264 characters and truncated queries from 42 to 0. It belongs in the cost column, which is where research predicted it would land. The one exception is `temporal` (-0.100, n=15, so 1.5 items) — an amendment endnote is short and self-contained, and splitting it loses the sentence that dates it.
 
-   *Caveat, and it is this switch's alone.* On the 122 unflagged items the parent-child switch stops being flat and starts hurting on `factual_lookup`, `comparative`. That verdict change is the sensitivity run doing its job: this is the one recommendation above that rests on which 28 items are flagged, so treat chunk assembly as a cost optimisation to *measure* per deployment rather than a free win.
+   *Caveat, and it is this switch's alone.* On the 121 unflagged items the parent-child switch stops being flat and starts hurting on `factual_lookup`, `comparative`. That verdict change is the sensitivity run doing its job: this is the one recommendation above that rests on which 29 items are flagged, so treat chunk assembly as a cost optimisation to *measure* per deployment rather than a free win.
 
-**What would change this.** `temporal` and `comparative` carry the two thinnest cells (n=15 and n=25, of which 13 comparative items are unflagged), and every claim above that rests on them is one or two items from moving. The reranking result does not: it is +0.106 MRR over 115 items and it holds on the 122-item subset.
+**What would change this.** `temporal` and `comparative` carry the two thinnest cells, and every claim above that rests on them is one or two items from moving. The reranking result does not: it holds on the 121-item unflagged subset as well as on the full set.
 
 ## Cost of the measurement itself
 
 | config | wall time, 150 queries |
 |---|---|
 | `C1_bm25` | 4s |
-| `C2_dense` | 12s |
+| `C2_dense` | 13s |
 | `C3_hybrid_rrf` | 15s |
-| `C4_hybrid_rerank` | 75s |
+| `C4_hybrid_rerank` | 76s |
 | `C5_no_context` | 76s |
 | `C6_child_units` | 53s |
-| `C7_decompose` | 262s |
-| **total** | 497s |
+| `C7_decompose` | 266s |
+| **total** | 502s |
 
-This is why the retrieval sweep runs complete on all seven configurations and nothing is sampled. Measured here, the cheapest generation config is 1.61s per query against 0.016s for the cheapest retrieval config — 103× — which is why generation runs on four configurations and retrieval on seven (ADR-021).
+This is why the retrieval sweep runs complete on all seven configurations and nothing is sampled. Measured here, the cheapest generation config is 1.61s per query against 0.015s for the cheapest retrieval config — 104× — which is why generation runs on four configurations and retrieval on seven (ADR-021).

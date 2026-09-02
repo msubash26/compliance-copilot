@@ -12,7 +12,7 @@ Three rules the renderer enforces so the prose cannot outrun the numbers:
 - **A movement is bolded only where it clears one item's worth on that type's n.**
   Everything else is printed unbolded and left unnarrated: it is real arithmetic
   on a difference this set cannot resolve.
-- **The 122-item sensitivity run is not an appendix.** Where a per-type winner
+- **The unflagged-subset sensitivity run is not an appendix.** Where a per-type winner
   differs between all-150 and the unflagged subset, the row is marked, because
   that conclusion belongs to the golden set rather than to the retriever.
 
@@ -187,18 +187,20 @@ def write_report(report: dict, path: Path, *, answers_dir: Path | None = None) -
             L += _switch_section(cfgs, names)
 
     # -- sensitivity -------------------------------------------------------
+    c = _counts(report)
+    un, fl, tot = c["unflagged"], c["flagged"], c["items"]
     L += [
-        "## Sensitivity: the same sweep over the 122 unflagged items",
+        f"## Sensitivity: the same sweep over the {un} unflagged items",
         "",
-        "28 of the 150 items are machine-verified but not human-reviewed, and `comparative` is",
-        "the least-verified type at 12 of 25. A conclusion that survives only on the full set",
-        "belongs to the golden set's noise rather than to the retriever, so both are published.",
+        f"{fl} of the {tot} items are machine-verified but not human-reviewed, and `comparative`",
+        "is the least-verified type. A conclusion that survives only on the full set belongs to",
+        "the golden set's noise rather than to the retriever, so both are published.",
         "",
     ]
     rows = []
     for n in names:
         a = cfgs[n]["all_150"]["overall"]
-        b = cfgs[n]["unflagged_122"]["overall"]
+        b = cfgs[n]["unflagged"]["overall"]
         rows.append(
             [
                 f"`{n}`",
@@ -213,11 +215,19 @@ def write_report(report: dict, path: Path, *, answers_dir: Path | None = None) -
     L += [
         _table(
             rows,
-            ["config", "mrr (150)", "mrr (122)", "Δ", "hit@5 (150)", "hit@5 (122)", "Δ"],
+            [
+                "config",
+                f"mrr ({tot})",
+                f"mrr ({un})",
+                "Δ",
+                f"hit@5 ({tot})",
+                f"hit@5 ({un})",
+                "Δ",
+            ],
         ),
         "",
     ]
-    flips = _conclusion_flips(cfgs, names)
+    flips = _conclusion_flips(cfgs, names, c)
     L += [
         "Every configuration gains on the cleaner subset, which is what a flagged item being a",
         "harder item predicts. What matters is whether any **switch changes its verdict** on a",
@@ -266,10 +276,11 @@ def write_report(report: dict, path: Path, *, answers_dir: Path | None = None) -
     ]
 
     # -- generation --------------------------------------------------------
-    L += _generation_section(gen, names, cfgs)
+    golden = Path(report["golden"]) if report.get("golden") else None
+    L += _generation_section(gen, names, cfgs, golden)
 
     # -- the conclusion ----------------------------------------------------
-    L += _routing_section(cfgs, names, disp)
+    L += _routing_section(cfgs, names, _counts(report), disp)
 
     # -- timings -----------------------------------------------------------
     L += ["## Cost of the measurement itself", ""]
@@ -323,6 +334,21 @@ SWITCHES = (
     ("C4_hybrid_rerank", "C6_child_units", "− parent-child (chunks)"),
     ("C4_hybrid_rerank", "C7_decompose", "+ query decomposition"),
 )
+
+
+def _counts(data: dict) -> dict:
+    """The flagged split, from the data.
+
+    Older sweeps recorded no `counts` block and the renderer carried the numbers
+    as literals -- which went stale the moment Day 6 re-verified the golden set
+    and moved 122/28 to 121/29. The fallback derives them so an old artifact
+    still renders, but a current one is read rather than remembered.
+    """
+    c = data.get("counts")
+    if c:
+        return c
+    total = data.get("items", 150)
+    return {"items": total, "flagged": 0, "unflagged": total, "grounded": total}
 
 
 def _switch_section(cfgs: dict, names: list[str]) -> list[str]:
@@ -403,7 +429,7 @@ def _switch_section(cfgs: dict, names: list[str]) -> list[str]:
     ]
 
 
-def _conclusion_flips(cfgs: dict, names: list[str]) -> list[str]:
+def _conclusion_flips(cfgs: dict, names: list[str], counts: dict) -> list[str]:
     """Does any switch's per-type verdict change between the two runs?
 
     The verdict, not the number: every number moves a little on a cleaner
@@ -424,17 +450,18 @@ def _conclusion_flips(cfgs: dict, names: list[str]) -> list[str]:
             return "flat"
         return "helps" if d > 0 else "hurts"
 
+    tot, un = counts["items"], counts["unflagged"]
     have = set(names)
     out = []
     for a, b, label in SWITCHES:
         if a not in have or b not in have:
             continue
         for qt in QUERY_TYPES:
-            v150 = verdict("all_150", a, b, qt)
-            v122 = verdict("unflagged_122", a, b, qt)
-            if v150 and v122 and v150 != v122:
+            v_all = verdict("all_150", a, b, qt)
+            v_un = verdict("unflagged", a, b, qt)
+            if v_all and v_un and v_all != v_un:
                 out.append(
-                    f"`{qt}` — {label.replace('**', '')}: **{v150}** on 150, **{v122}** on 122"
+                    f"`{qt}` — {label.replace('**', '')}: **{v_all}** on {tot}, **{v_un}** on {un}"
                 )
     return out
 
@@ -483,8 +510,11 @@ def _useful(g: dict) -> float:
 # item stays in the set until the checker flags it (ADR-017, ADR-024).
 KNOWN_BAD_NEGATIVE = "gs-0118"
 
+# The excerpt window `verify` now shows the judge (ADR-024). Day 4 used 700.
+NEGATIVE_WINDOW = 6_000
 
-def _false_answer_caveat(gen: dict, names: list[str]) -> list[str]:
+
+def _false_answer_caveat(gen: dict, names: list[str], golden: Path | None = None) -> list[str]:
     """The false-answer column, corrected for a golden-set defect it exposed."""
     best = min(
         (n for n in names if n in gen["configs"]),
@@ -509,11 +539,48 @@ def _false_answer_caveat(gen: dict, names: list[str]) -> list[str]:
         " `negative_excerpts` showed the judge the first 700 characters of a 12,689-character"
         " clause and the requirement begins at character 3,697 (ADR-024). So this column reads"
         f" **{g['false_answer_rate']:.3f} as measured, {0.0:.3f} excluding"
-        f" `{KNOWN_BAD_NEGATIVE}`**. The item is not edited here: under ADR-017 a flag comes from"
-        " the checker, and re-verifying would move the flagged split every other number on this"
-        " page is keyed to.",
+        f" `{KNOWN_BAD_NEGATIVE}`**.",
         "",
+        *_bad_negative_status(golden),
     ]
+
+
+def _bad_negative_status(golden: Path | None) -> list[str]:
+    """Whether the checker has caught up with the defect the benchmark found.
+
+    Written as a lookup rather than a sentence because it has now been true both
+    ways. Day 5 published the item unflagged and said so; Day 6 re-verified at a
+    6,000-character window and the item flagged itself. Neither state is edited
+    in: under ADR-017 a flag comes from the checker, never from a hand edit, so
+    this reads the artifact and reports what it finds.
+    """
+    if golden is None or not Path(golden).exists():
+        return []
+    for line in Path(golden).read_text().splitlines():
+        if not line.strip() or f'"{KNOWN_BAD_NEGATIVE}"' not in line:
+            continue
+        it = json.loads(line)
+        if it.get("id") != KNOWN_BAD_NEGATIVE:
+            continue
+        v = it.get("verification", {})
+        if v.get("status") == "flagged" and "negative_is_answerable" in (v.get("failures") or []):
+            return [
+                f"The item now carries that finding itself: re-verified at a"
+                f" {NEGATIVE_WINDOW:,}-character window, `{KNOWN_BAD_NEGATIVE}` fails"
+                " `negative_is_answerable` and ships **flagged** at confidence"
+                f" {v.get('confidence', 0):.1f}. The flag came from the checker, not from a hand"
+                " edit. It moved the split by exactly one item and changed no number on this"
+                " page, because the flagged/unflagged sensitivity subsets are over the grounded"
+                " items and this one is a negative.",
+                "",
+            ]
+        return [
+            "The item is not edited here: under ADR-017 a flag comes from the checker, and"
+            " re-verifying would move the flagged split every other number on this page is"
+            " keyed to.",
+            "",
+        ]
+    return []
 
 
 def _abstention_split_section(gen: dict, names: list[str]) -> list[str]:
@@ -564,7 +631,10 @@ def _abstention_split_section(gen: dict, names: list[str]) -> list[str]:
     ]
 
 
-def _routing_section(cfgs: dict, names: list[str], disp: dict | None = None) -> list[str]:
+def _routing_section(
+    cfgs: dict, names: list[str], counts: dict, disp: dict | None = None
+) -> list[str]:
+    c = counts
     """The rule the table supports, with its numbers pulled live from the table.
 
     Written here rather than typed into the markdown so that re-running the
@@ -651,24 +721,24 @@ def _routing_section(cfgs: dict, names: list[str], disp: dict | None = None) -> 
             "so 1.5 items) — an amendment endnote is short and self-contained, and splitting it "
             "loses the sentence that dates it.",
         ]
-        pc_flips = [f for f in _conclusion_flips(cfgs, names) if "parent-child" in f]
+        pc_flips = [f for f in _conclusion_flips(cfgs, names, counts) if "parent-child" in f]
         if pc_flips:
             L += [
                 "",
-                "   *Caveat, and it is this switch's alone.* On the 122 unflagged items the "
-                "parent-child switch stops being flat and starts hurting on "
+                f"   *Caveat, and it is this switch's alone.* On the {c['unflagged']} unflagged "
+                "items the parent-child switch stops being flat and starts hurting on "
                 + ", ".join(f"`{f.split('`')[1]}`" for f in pc_flips)
                 + ". That verdict change is the sensitivity run doing its job: this is the one "
-                "recommendation above that rests on which 28 items are flagged, so treat "
-                "chunk assembly as a cost optimisation to *measure* per deployment rather "
+                f"recommendation above that rests on which {c['flagged']} items are flagged, so "
+                "treat chunk assembly as a cost optimisation to *measure* per deployment rather "
                 "than a free win.",
             ]
     L += [
         "",
-        "**What would change this.** `temporal` and `comparative` carry the two thinnest cells "
-        "(n=15 and n=25, of which 13 comparative items are unflagged), and every claim above "
-        "that rests on them is one or two items from moving. The reranking result does not: it "
-        "is +0.106 MRR over 115 items and it holds on the 122-item subset.",
+        "**What would change this.** `temporal` and `comparative` carry the two thinnest cells, "
+        "and every claim above that rests on them is one or two items from moving. The reranking "
+        f"result does not: it holds on the {c['unflagged']}-item unflagged subset as well as on "
+        "the full set.",
         "",
     ]
     return L
@@ -697,7 +767,9 @@ def _load_generation(answers_dir: Path | None) -> dict | None:
     return gen
 
 
-def _generation_section(gen: dict | None, names: list[str], cfgs: dict) -> list[str]:
+def _generation_section(
+    gen: dict | None, names: list[str], cfgs: dict, golden: Path | None = None
+) -> list[str]:
     L = [
         "## Groundedness and abstention",
         "",
@@ -763,7 +835,7 @@ def _generation_section(gen: dict | None, names: list[str], cfgs: dict) -> list[
         " silence.",
         "",
     ]
-    L += _false_answer_caveat(gen, names)
+    L += _false_answer_caveat(gen, names, golden)
     L += _abstention_split_section(gen, names)
     if "cost" in gen:
         c = gen["cost"]

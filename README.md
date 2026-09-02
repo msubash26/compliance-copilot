@@ -128,7 +128,7 @@ next section is what it earned.
 
 Verification runs on **`qwen3.8`, a different model from the generator**, because a model
 agreeing with itself is not evidence. **0 of 35 negatives** turned out to be answerable, **0 of
-115** questions could be answered without the corpus, and **28 of 150** items ship flagged rather
+115** questions could be answered without the corpus, and **29 of 150** items ship flagged rather
 than deleted. Nothing has been reviewed by a human, every item says so, and a test asserts it.
 See [`evals/README.md`](evals/README.md) and [`golden/v1/README.md`](golden/v1/README.md).
 
@@ -196,8 +196,8 @@ equally and the original question ends up with one vote in three.
 **Parent-child is not a recall axis, as predicted.** C6 is −0.4 MRR — noise — but **2.4× smaller
 context** (4,264 vs 10,098 chars) and **0 of 150 queries truncated against 42**. The axis belongs
 in the cost column, not the quality one — with one caveat the sensitivity run produced: on the
-122 unflagged items the switch stops being flat and starts *hurting* `factual_lookup` and
-`comparative`. It is the only recommendation here that depends on which 28 items are flagged, so
+121 unflagged items the switch stops being flat and starts *hurting* `factual_lookup` and
+`comparative`. It is the only recommendation here that depends on which 29 items are flagged, so
 it ships as a cost optimisation to measure per deployment rather than as a free win.
 
 ### What the generation pass found
@@ -232,10 +232,14 @@ Template, and the *item* is wrong to claim MAS mandates no templates. Day 4's ve
 clause at rank 3 and still passed the item at confidence 1.0, because it showed the judge only
 the first 700 characters of a 12,689-character clause — and the answer begins at character 3,697.
 A silent truncation is a judge being lied to about its evidence. The window is now 6,000
-characters and whatever is still cut says so (ADR-024). `gs-0118` is *not* hand-edited: the flag
-has to come from the checker, and re-verifying would move the 122/28 split this whole table is
-keyed to. So the affected number is quoted both ways — C4's false-answer rate is **1/35 = 0.029
-as measured, 0/35 excluding `gs-0118`** — and the re-verification is first work on Day 6.
+characters and whatever is still cut says so (ADR-024). So the affected number is quoted both
+ways — C4's false-answer rate is **1/35 = 0.029 as measured, 0/35 excluding `gs-0118`**.
+
+Day 6 re-verified the set through that wider window, and the item flagged *itself*: `gs-0118`
+now fails `negative_is_answerable` and ships flagged at confidence 0.4, having previously passed
+at 1.0. Nothing was hand-edited — under ADR-017 a flag comes from the checker — and the change is
+**one item**: the split moved 122/28 → 121/29 and every ranking number above is byte-identical,
+because the sensitivity subsets are over the 115 grounded items and this one is a negative.
 
 ### The routing rule this implies
 
@@ -243,7 +247,7 @@ Rerank everything (it is 400ms and never hurts); budget it against the query cla
 the average; prefer the lexical arm on cross-reference questions; do not decompose; and treat
 chunk assembly as a measured cost optimisation rather than a free 2.4× saving.
 
-Full write-up, the 122-item sensitivity run, and per-item rows for every cell:
+Full write-up, the 121-item sensitivity run, and per-item rows for every cell:
 [`results/day5/retrieval.md`](results/day5/retrieval.md).
 
 ### One thing that had to be fixed before any of it counted

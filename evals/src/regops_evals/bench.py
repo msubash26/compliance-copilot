@@ -18,7 +18,7 @@ Three things this harness refuses to do:
   believed; a mismatch means the definition moved and the table is void.
 - **Hide the instrument's defects.** 28 of the 150 items are machine-verified
   but not human-reviewed. Every table is therefore computed twice -- over all
-  150, and over the 122 unflagged -- and a conclusion that flips between them
+  150, and over the unflagged subset -- and a conclusion that flips between them
   belongs to the golden set's noise, not to the retriever.
 """
 
@@ -202,10 +202,20 @@ def run_sweep(
 
     raw_dir.mkdir(parents=True, exist_ok=True)
     all_rows: dict[str, list[Row]] = {}
+    flagged_n = sum(1 for it in items if it.verification.status == "flagged")
     report: dict = {
         "golden": str(golden),
         "index": str(index),
         "items": len(items),
+        # The split, measured at sweep time rather than remembered. Every number
+        # in the sensitivity section is keyed to it, and it moves whenever the
+        # golden set is re-verified.
+        "counts": {
+            "items": len(items),
+            "flagged": flagged_n,
+            "unflagged": len(items) - flagged_n,
+            "grounded": sum(1 for it in items if it.gold_spans),
+        },
         "pool": POOL,
         "configs": {},
     }
@@ -237,7 +247,11 @@ def run_sweep(
             },
             "wall_s": round(wall, 1),
             "all_150": aggregate(rows),
-            "unflagged_122": aggregate(rows, unflagged_only=True),
+            # Keyed on what the subset *is*, not on how many items it had the day
+            # the key was written. Day 6's re-verification moved the split from
+            # 122/28 to 121/29 and every literal "122" in the renderer went stale
+            # at once; the counts now travel with the data (see `counts` below).
+            "unflagged": aggregate(rows, unflagged_only=True),
         }
         o = report["configs"][cfg.name]["all_150"]["overall"]
         print(

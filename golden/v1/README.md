@@ -38,24 +38,37 @@ And by **`qwen3.8`, a different model from the generator `qwen3.5:9b`**:
 - can this be answered from this span, and does the recorded answer agree with it;
 - can it be answered with no documents at all — **0 of 115** could, once the model's own claim to
   know was replaced by a comparison against the gold answer (ADR-017);
-- for every negative, does anything in the corpus in fact answer it — **0 of 35** did.
+- for every negative, does anything in the corpus in fact answer it — **1 of 35** does, and it
+  is flagged (see below).
 
 ## The flags
 
-28 of 150 items failed at least one check and ship **flagged, not deleted**:
+29 of 150 items failed at least one check and ship **flagged, not deleted**:
 
 | check | items |
 |---|---|
 | verifier disagrees with the recorded answer | 26 |
 | verifier says the span does not answer the question | 17 |
 | answerable without the corpus | 1 |
+| a negative turned out to be answerable | 1 |
 
 By type: `comparative` 12/25, `factual_lookup` 8/45, `multi_hop` 7/30, `temporal` 1/15,
-`negative` **0/35**.
+`negative` **1/35**.
 
 Deleting them would have been easy and would have said less. *The verifier disagreed on 26 of
 150* is a quality claim; a silently filtered file is not. Start at the top of
-`review_queue.md` — it is ordered so that the ~28 contested items come first.
+`review_queue.md` — it is ordered so that the ~29 contested items come first.
+
+**The `negative` flag arrived late, and how it arrived is the point.** This set shipped on Day 4
+with 0 of 35 negatives answerable, verified against a deliberately hard search. Day 5's benchmark
+then produced one "false answer" — `gs-0118` — and on inspection the *system* was right and the
+*item* was wrong: Notice 653 does prescribe an NSFR Disclosure Template. The verifier had that
+clause at rank 3 and passed the item at confidence 1.0 anyway, because it was shown the first
+**700 characters** of a 12,689-character clause and the requirement begins at character 3,697. A
+silent truncation is a judge being lied to about its evidence. The window is now **6,000
+characters** and anything still cut says so (ADR-024). Re-verified through it, `gs-0118` failed
+`negative_is_answerable` on its own — no hand edit, per ADR-017 — and the split moved 122/28 to
+121/29. It is the only item that moved.
 
 ## Known limits
 

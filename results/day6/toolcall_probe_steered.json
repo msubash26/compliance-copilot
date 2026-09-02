@@ -1,0 +1,984 @@
+{
+  "sample": [
+    "gs-0001",
+    "gs-0002",
+    "gs-0003",
+    "gs-0004",
+    "gs-0005",
+    "gs-0006",
+    "gs-0007",
+    "gs-0008",
+    "gs-0009",
+    "gs-0010",
+    "gs-0011",
+    "gs-0012",
+    "gs-0046",
+    "gs-0047",
+    "gs-0048",
+    "gs-0049",
+    "gs-0050",
+    "gs-0051",
+    "gs-0052",
+    "gs-0053",
+    "gs-0076",
+    "gs-0077",
+    "gs-0078",
+    "gs-0079",
+    "gs-0080",
+    "gs-0081",
+    "gs-0101",
+    "gs-0102",
+    "gs-0103",
+    "gs-0104"
+  ],
+  "system": "steered",
+  "models": {
+    "qwen3.5:9b": {
+      "summary": {
+        "n": 30,
+        "emitted": 30,
+        "emitted_rate": 1.0,
+        "tools": {
+          "search_notices": 30
+        },
+        "added_a_filter": 0,
+        "added_a_filter_rate": 0.0,
+        "excludes_gold": 0,
+        "excludes_gold_rate": 0.0,
+        "excluded_by": {},
+        "top_k_below_5": 0,
+        "p50_s": 0.665,
+        "max_s": 8.344,
+        "errors": 0,
+        "by_type": {
+          "factual_lookup": {
+            "n": 12,
+            "excludes_gold": 0
+          },
+          "multi_hop": {
+            "n": 8,
+            "excludes_gold": 0
+          },
+          "comparative": {
+            "n": 6,
+            "excludes_gold": 0
+          },
+          "temporal": {
+            "n": 4,
+            "excludes_gold": 0
+          }
+        }
+      },
+      "calls": [
+        {
+          "item_id": "gs-0001",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Probability of Default threshold KMort KQRRE transactors revolvers Reporting Bank"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 8.34444491902832,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0002",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC monitor managed assets frequency limits"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6083230639924295,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0003",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "classify exposure as defaulted reporting bank"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6077527599991299,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0004",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "insurer validate reasonableness assumptions base rates data sources"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6539153199992143,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0005",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "effective date replaced previous notice",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.291460175998509,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0006",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "screen customers information sources"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.5823490400216542,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0007",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Commercial Money Institution customer business relationship information application process"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6359149200143293,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0008",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "CEO Executive Director experience qualification requirements",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 0.717692103004083,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0009",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "record-keeping obligations licensee digital token services"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6356201620073989,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0010",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "report short positions trading desk level legal entity level"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.665317935985513,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0011",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "notifying Authority completed compensation valuation errors"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6460540120024234,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0012",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "bank staff training review environmental risk",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 0.7638767850003205,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0046",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Digital Payment Token Service provider FATF countermeasures simplified customer due diligence low risk money laundering terrorism financing"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.7387801720178686,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0047",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "COSMIC information risk assessments new business relations linked transactions obligations banks"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6585426260135137,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0048",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "bank investment vehicle managers financial institutions incorporated outside Singapore CDD underlying investors exemption",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 0.8065881499787793,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0049",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Digital Token Service Provider enhanced CDD higher risk customers"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6319758510217071,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0050",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Digital Payment Token Service Provider non-face-to-face business contact customer impersonation risk external assessment"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.7101599660236388,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0051",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "enhanced due diligence higher-risk sectors customers Approved Trustees"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6324343160376884,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0052",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Variable Capital Company ML/TF risk assessment new technologies governance approval"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6788382779923268,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0053",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "direct life insurer beneficial owner verification foreign financial institution FATF exception"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6836357800057158,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0076",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "information sharing requirement money laundering risk management Capital Markets Intermediaries Depository Financial Institutions Precious Stones Precious Metals"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.7946416640188545,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0077",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "beneficiary institutions monitor wire transfers lacking required originator or beneficiary information"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6635301030473784,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0078",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "definition business relations Specified Payment Services Trust Companies Banks financial advice",
+            "top_k": 20
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 20,
+          "wall_s": 0.787618950009346,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0079",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "money laundering compliance obligations Trust Companies internal controls tipping-off record-keeping"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 1.1205850099795498,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0080",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "acquiring entity takes over part of another institution's business without transferring all records due diligence customers license type Trust Company Bank Capital Markets Intermediary"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.8289658689755015,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0081",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "legal person customer identification obligations unique identification number proof of legal existence Specified Payment Services VCC",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 0.8830190330045298,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0101",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "amendment submission requirements effective date"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6082035269937478,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0102",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "outstanding S$ credit facilities effective date"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6437602790538222,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0103",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "cancellation Technology Risk Management Cyber Hygiene"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.6395328500075266,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0104",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "cancellation notices technology risk management cyber hygiene"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.635562943003606,
+          "error": ""
+        }
+      ]
+    },
+    "qwen3.8:latest": {
+      "summary": {
+        "n": 30,
+        "emitted": 29,
+        "emitted_rate": 0.9667,
+        "tools": {
+          "search_notices": 29
+        },
+        "added_a_filter": 0,
+        "added_a_filter_rate": 0.0,
+        "excludes_gold": 0,
+        "excludes_gold_rate": 0.0,
+        "excluded_by": {},
+        "top_k_below_5": 0,
+        "p50_s": 1.335,
+        "max_s": 16.366,
+        "errors": 0,
+        "by_type": {
+          "factual_lookup": {
+            "n": 12,
+            "excludes_gold": 0
+          },
+          "multi_hop": {
+            "n": 8,
+            "excludes_gold": 0
+          },
+          "comparative": {
+            "n": 6,
+            "excludes_gold": 0
+          },
+          "temporal": {
+            "n": 4,
+            "excludes_gold": 0
+          }
+        }
+      },
+      "calls": [
+        {
+          "item_id": "gs-0001",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Probability of Default threshold KMort KQRRE transactors revolvers",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 16.366023221984506,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0002",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "FMC monitor managed assets within limits frequency",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.2078297730186023,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0003",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "reporting bank classify exposure as defaulted",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.164148023002781,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0004",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "validate reasonableness of assumptions for base rates data sources",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.2202011999906972,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0005",
+          "query_type": "factual_lookup",
+          "emitted": false,
+          "tool": "",
+          "args": {},
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 2.3241868800250813,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0006",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "screen customers against information sources",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.1591336309793405,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0007",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "customer business relationship information obtain application process",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.2120826950413175,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0008",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "experience and qualification requirements for Chief Executive Officer or Executive Director",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 1.1855470989830792,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0009",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "record-keeping obligations digital token services",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 1.261966586986091,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0010",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "report short positions trading desk level instead of legal entity level"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 1.1475741459871642,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0011",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "notifying the Authority about completed compensation related to valuation errors",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.2755682720453478,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0012",
+          "query_type": "factual_lookup",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "training and review of staff ability to handle environmental risk",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 1.373389128013514,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0046",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "simplified customer due diligence FATF countermeasures high-risk jurisdiction",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.5104045249754563,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0047",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "COSMIC information received risk assessment new business relations linked transactions",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.3644819989567623,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0048",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "investment vehicle managers financial institutions incorporated outside Singapore CDD underlying investors",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.3321069639641792,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0049",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "enhanced CDD measures higher risk customers Digital Token Service Provider",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.2904431670322083,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0050",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Digital Payment Token Service Provider non-face-to-face business contact impersonation risk external assessment",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.334935016988311,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0051",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Approved Trustees enhanced due diligence higher-risk sectors customers",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.311962705978658,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0052",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "Variable Capital Company ML/TF risk assessment new technologies",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 2.0983057179837488,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0053",
+          "query_type": "multi_hop",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "beneficial owners financial institution incorporated outside Singapore FATF standards CDD exception",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 1.4626980969915166,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0076",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "information sharing requirement money laundering risk management",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 2.318671425979119,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0077",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "beneficiary institution monitor wire transfer lacking originator or beneficiary information",
+            "top_k": 10
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 10,
+          "wall_s": 2.1444144279812463,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0078",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "\"business relations\" definition",
+            "top_k": 20
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 20,
+          "wall_s": 1.121817203995306,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0079",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "money laundering compliance obligations internal controls tipping-off record-keeping",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 2.888016411976423,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0080",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "acquiring entity takes over part of business due diligence acquired customers",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 2.235842699999921,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0081",
+          "query_type": "comparative",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "identification obligations legal person customer unique identification number proof of legal existence",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 1.8467463109991513,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0101",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "amendment submission requirements",
+            "top_k": 15
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": 15,
+          "wall_s": 1.3806894610170275,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0102",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "outstanding S$ credit facilities"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 0.9765535070328042,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0103",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "cancellation of notices Technology Risk Management Cyber Hygiene"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 1.3400239800103009,
+          "error": ""
+        },
+        {
+          "item_id": "gs-0104",
+          "query_type": "temporal",
+          "emitted": true,
+          "tool": "search_notices",
+          "args": {
+            "query": "cancellation of notices technology risk management cyber hygiene"
+          },
+          "filters_added": [],
+          "excludes_gold": [],
+          "top_k": null,
+          "wall_s": 1.2188652550103143,
+          "error": ""
+        }
+      ]
+    }
+  }
+}
