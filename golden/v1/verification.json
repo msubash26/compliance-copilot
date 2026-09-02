@@ -1,0 +1,18 @@
+{
+  "items": 150,
+  "flagged": 28,
+  "machine_verified": 122,
+  "human_reviewed": 0,
+  "verifier": "qwen3.8:latest",
+  "drift": {
+    "resolved": 150,
+    "moved": 0,
+    "missing": 0
+  },
+  "failures_by_check": {
+    "judge_disagrees_with_answer": 26,
+    "judge_says_not_answerable_from_span": 17,
+    "answerable_without_corpus": 1
+  },
+  "wall_s": 451.9
+}

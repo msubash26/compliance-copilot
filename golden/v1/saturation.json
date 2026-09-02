@@ -1,0 +1,89 @@
+{
+  "golden": "golden/v1/golden.jsonl",
+  "index": "index/regdocs.duckdb",
+  "k": 5,
+  "items": 150,
+  "grounded": 115,
+  "overall": {
+    "bm25_full@1": 0.191,
+    "bm25_full@20": 0.643,
+    "bm25_full@5": 0.417,
+    "bm25_hit@1": 0.391,
+    "bm25_hit@20": 0.87,
+    "bm25_hit@5": 0.67,
+    "dense_full@1": 0.235,
+    "dense_full@20": 0.583,
+    "dense_full@5": 0.409,
+    "dense_hit@1": 0.322,
+    "dense_hit@20": 0.809,
+    "dense_hit@5": 0.609
+  },
+  "per_query_type": {
+    "factual_lookup": {
+      "bm25_full@1": 0.422,
+      "bm25_full@20": 0.911,
+      "bm25_full@5": 0.733,
+      "bm25_hit@1": 0.422,
+      "bm25_hit@20": 0.911,
+      "bm25_hit@5": 0.733,
+      "dense_full@1": 0.556,
+      "dense_full@20": 0.844,
+      "dense_full@5": 0.733,
+      "dense_hit@1": 0.556,
+      "dense_hit@20": 0.844,
+      "dense_hit@5": 0.733
+    },
+    "multi_hop": {
+      "bm25_full@1": 0.0,
+      "bm25_full@20": 0.333,
+      "bm25_full@5": 0.167,
+      "bm25_hit@1": 0.467,
+      "bm25_hit@20": 0.933,
+      "bm25_hit@5": 0.8,
+      "dense_full@1": 0.0,
+      "dense_full@20": 0.367,
+      "dense_full@5": 0.167,
+      "dense_hit@1": 0.133,
+      "dense_hit@20": 0.9,
+      "dense_hit@5": 0.6
+    },
+    "comparative": {
+      "bm25_full@1": 0.0,
+      "bm25_full@20": 0.44,
+      "bm25_full@5": 0.16,
+      "bm25_hit@1": 0.36,
+      "bm25_hit@20": 0.76,
+      "bm25_hit@5": 0.56,
+      "dense_full@1": 0.0,
+      "dense_full@20": 0.36,
+      "dense_full@5": 0.16,
+      "dense_hit@1": 0.24,
+      "dense_hit@20": 0.76,
+      "dense_hit@5": 0.56
+    },
+    "temporal": {
+      "bm25_full@1": 0.2,
+      "bm25_full@20": 0.8,
+      "bm25_full@5": 0.4,
+      "bm25_hit@1": 0.2,
+      "bm25_hit@20": 0.8,
+      "bm25_hit@5": 0.4,
+      "dense_full@1": 0.133,
+      "dense_full@20": 0.6,
+      "dense_full@5": 0.333,
+      "dense_hit@1": 0.133,
+      "dense_hit@20": 0.6,
+      "dense_hit@5": 0.333
+    }
+  },
+  "negatives": {
+    "n": 35,
+    "nearest_clause_cosine_distance": {
+      "median": 0.2419,
+      "min": 0.1393
+    },
+    "note": "no gold span exists; Day 5 measures abstention, not recall, on these"
+  },
+  "saturation_ceiling": 0.8,
+  "saturated": false
+}

@@ -16,3 +16,7 @@ outputs/
 .pytest_cache/
 .ruff_cache/
 .ipynb_checkpoints/
+
+# Derived intermediate: 970KB of third-party clause text, reproducible with
+# `regops-evals select --seed 0`. Same rule as the corpus PDFs (ADR-012).
+golden/*/candidates.json
