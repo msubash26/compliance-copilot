@@ -292,6 +292,46 @@ async def node_inspect(payload: dict, config) -> dict:
     }
 
 
+def node_check_findings(state: SupervisorState, config) -> Command:
+    """Layer 2 on the coverage path, which otherwise never meets it.
+
+    A coverage finding is a citation: *this document covers the topic, at clause
+    8.2*. The first version of this graph carried those straight to the answer
+    without checking them, so the coverage route was the one path on which a
+    claim could reach a reader unverified -- and it is also the path whose answer
+    a compliance officer is most likely to act on, because it names documents.
+
+    Free, mechanical, and it downgrades rather than rejects: a finding whose
+    clause does not resolve becomes an uncovered one with the violation recorded,
+    which is the conservative direction. Claiming coverage that cannot be looked
+    up is the failure worth avoiding; missing coverage is visible to anyone who
+    reads the document.
+    """
+    box, _, _, _ = _cfg(config)
+    kept, violations = [], []
+    for f in state.get("findings", []):
+        if f["covered"] and box.clause(f["doc_id"], f["section_path"]) is None:
+            violations.append(
+                f"reference: ({f['doc_id']}, {f['section_path']}) is not in the index"
+            )
+            kept.append({**f, "covered": False, "unverified": True})
+        else:
+            kept.append(f)
+
+    covered = [f for f in kept if f["covered"]]
+    return Command(
+        goto="approve",
+        update={
+            "findings": None if not kept else [*kept],
+            "citations": [
+                {"doc_id": f["doc_id"], "section_path": f["section_path"]} for f in covered
+            ],
+            "violations": violations,
+            "notes": [f"check: {len(covered)} verified, {len(violations)} unverifiable"],
+        },
+    )
+
+
 def node_approve(state: SupervisorState, config) -> Command:
     """Human in the loop, and the reason `interrupt()` is the first statement.
 
@@ -411,11 +451,12 @@ def build(*, plan_and_execute: bool = False):
     )
     g.add_node("fan_out", node_fan_out, destinations=("inspect", "synthesise"))
     g.add_node("inspect", node_inspect)
+    g.add_node("check_findings", node_check_findings, destinations=("approve",))
     g.add_node("approve", node_approve, destinations=("retrieve", "synthesise"))
     g.add_node("synthesise", node_synthesise)
 
     g.add_edge(START, "router")
-    g.add_edge("inspect", "approve")
+    g.add_edge("inspect", "check_findings")
     g.add_edge("synthesise", END)
     return g
 

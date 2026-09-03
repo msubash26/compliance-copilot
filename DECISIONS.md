@@ -1114,3 +1114,171 @@ framework reaches the model through a lossier endpoint than the other. It is eno
 the qualitative claims — MCP compatibility, failure loudness, control surfaces, retry futility —
 and not enough to rank the frameworks on answer quality. The completion columns in particular
 should not be quoted without the sentence explaining that they measure different bars.
+
+---
+
+## ADR-028 — The supervisor is hand-rolled, and the model is not allowed to supply an identifier
+**Date:** 2026-09-07 · **Status:** Accepted
+
+**Decision.** Day 7's supervisor is a `StateGraph` written here, not
+`langgraph-supervisor`. Inside it, **the model supplies exactly one argument — the search
+text — and the graph supplies every identifier**.
+
+**Why not the prebuilt supervisor.** `langgraph-supervisor==0.0.31` resolves against the pinned
+`langgraph` 1.2.11 and imports cleanly; this is a choice, not a constraint. The three things
+that make Day 7 worth doing are one budget shared across five workers, an interrupt placed to
+avoid a measured double-billing, and a partial result returned at the ceiling — and all three are
+precisely what a prebuilt supervisor owns and would hide. F12 is four days old: an integration
+package a major version behind the protocol, discovered only because the integration was
+attempted. The cost of hand-rolling is roughly 80 lines and the "I used the standard package"
+line, and the counter-argument is real — "I evaluated it and rejected it" is only a good answer
+if the reason is specific. This ADR is the specific reason.
+
+**Why the model gets no identifiers.** Day 6's finding, read off every failure the model owned:
+*tool selection was correct in every single provocation; argument grounding is the defect.* F1
+sets a filter nobody asked for. F7 calls the right tool with an invented `doc_id`. F5 is handed a
+recovery path and ignores it. So `retrieve` calls `search_notices` with a query the model wrote
+and a `top_k` the graph chose, and reads sections with `doc_id`s that came out of the search
+results.
+
+**State this as what it is.** F1 and F7 cannot occur here **because the capability that produces
+them has been removed**, not because the model got better. The cost is exactly F1's prompt
+mitigation's cost — the filters are unavailable when a question genuinely wants one — and it is
+paid structurally rather than by asking the model nicely. On a multi-issuer corpus that cost
+would be larger than it is here.
+
+**What it bought, measured.** On the coverage set, 15 of the 63 identifiers Day 6's single agent
+cited do not resolve against the index; the supervisor's are 0 of 12. On the lookup set, 12 of 13
+against 4 of 5. See `results/day7/day7.md`.
+
+---
+
+## ADR-029 — The budget is three currencies and one conversion, not a dollar figure
+**Date:** 2026-09-07 · **Status:** Accepted
+
+**Decision.** The run budget is denominated in **steps, wall-clock seconds and tokens**. A dollar
+figure is derived by converting tokens through a rate declared in `budget.USD_PER_MTOK_IN/OUT`
+and overridable by environment variable. Exceeding any ceiling returns a partial result with
+`stopped_by` set; nothing raises.
+
+**Why not dollars.** The prep plan asks for a ceiling at "N steps or $X". There is no per-token
+price on a 3090. A dollar ceiling here would be a step ceiling with a dollar sign painted on it,
+and the painting is the part an interviewer would notice. What is actually scarce is measured
+instead, and the one quantity this machine cannot observe is visibly the one that was assumed —
+the rate is a constant with a comment saying it is an order-of-magnitude anchor and not a quote.
+
+**Limits are configuration; spend is state.** Limits never change during a run, so they travel in
+`RunnableConfig["configurable"]` and never reach the checkpointer. Spend does change, so it is a
+plain dict of primitives rather than a dataclass: a checkpointer serialises state, and a dataclass
+in state fails at the persistence boundary rather than at construction, a long way from where the
+mistake was made.
+
+**Spend needs a reducer that adds.** Two branches of a `Send` fan-out both write spend in the same
+super-step. Without a reducer that is an `InvalidUpdateError`; with a last-write-wins reducer the
+graph runs and silently loses one branch's cost — which would make the fan-out look cheaper than
+it is, and the fan-out's cost is the one number Day 7 exists to get right.
+
+**Wall clock is read live, not from state.** A worker that blocks 90 seconds on a queued model
+call has spent 90 seconds whether or not it recorded them, so `_ceiling` takes the maximum of the
+recorded seconds and the elapsed time since the run began.
+
+**Cost.** Three ceilings are three things to tune and three ways to stop a run early. The order
+they are checked in is fixed so that a run blowing two of them reports the same one every time —
+a ceiling that reports non-deterministically is not something a test can pin.
+
+---
+
+## ADR-030 — `interrupt()` is the first statement of its node
+**Date:** 2026-09-07 · **Status:** Accepted
+
+**Decision.** Any node that calls `interrupt()` calls it first. Expensive or non-idempotent work
+goes in the node *before* it, so the checkpoint boundary sits between them.
+
+**Measured.** A three-node graph interrupting in the middle, started in one interpreter and
+resumed in another, with a counter as the first statement of the interrupting node: **2 executions
+for 1 logical visit**. `interrupt()` replays its node from the top on resume. With the counter
+placed *after* the `interrupt()` call: 1.
+
+**Why it matters here.** The natural way to write human-in-the-loop review is to analyse and then
+ask — *"here is the gap report, approve it?"*. Written that way on this graph, the gap analysis
+runs again on resume: a second inference bill, silently, and any non-idempotent side effect twice.
+The failure has no error and no log line; the only symptom is a token count that is quietly double
+what the run appears to have done.
+
+**Enforced, not documented.**
+`agents/tests/test_checkpoint.py::test_the_interrupting_node_body_runs_once_per_logical_visit`
+counts executions across a real two-process resume and asserts 1. Verified to fail — the same
+probe with the body moved above the `interrupt()` call reports 2. Without that test this ADR is a
+comment, and comments do not survive refactors.
+
+**Cost.** One extra node and one extra checkpoint write per approval. That is the price of the
+boundary being somewhere other than in the middle of the expensive thing.
+
+**Related.** `AsyncPostgresSaver` refuses a synchronous `get_state` from the main thread and says
+so, naming `aget_state` in the message. Worth contrasting with F9, where the framework's step
+ceiling neither raised nor reported: the same library is capable of both.
+
+---
+
+## ADR-031 — Fan-out is kept for context isolation, having been measured to buy no time
+**Date:** 2026-09-07 · **Status:** Accepted
+
+**Decision.** The coverage sweep keeps its parallel `Send` fan-out. The justification is **one
+context window per document**, and explicitly *not* wall-clock time, which was measured at nothing.
+
+**Measured**, inside the graph, arms alternating, median of five rounds, four branches over four
+documents:
+
+| | |
+|---|---|
+| sequential | 3.69s |
+| parallel | 3.69s |
+| **speedup** | **1.00×** |
+| ceiling, `sum / max` | 3.12× |
+| share of the available saving captured | −0.1% |
+
+And the measurement that explains it and transfers to other hardware: **one branch is 95% queued
+model time** (3.50s across four branches) and 5% uncontended MCP and DuckDB work (0.17s). The
+branches are not competing for the orchestrator; they are queueing at one model server, and
+concurrency in front of a queue does not shorten it. `OLLAMA_NUM_PARALLEL` is unset and
+`OLLAMA_MAX_LOADED_MODELS=1`.
+
+**So why keep it.** The prep plan gives two conditions under which multi-agent earns its keep:
+subtasks that are genuinely parallel, or subtasks that need different context windows. The first
+does not hold on this deployment and the numbers say so. The second does: each branch holds
+several full clauses of one document, and four of them do not fit one window — which is why the
+single agent hit the step ceiling on 1 of 3 coverage tasks and spent 5× the tokens. The fan-out is
+kept for the condition it satisfies, and the ADR says which one.
+
+**What would change this.** A hosted endpoint with real concurrency, or `OLLAMA_NUM_PARALLEL`
+raised with enough VRAM for parallel KV caches, moves the queued 95% and the ceiling of 3.12×
+becomes reachable. The measurement is reported as a property of *this deployment*, not of fan-out.
+
+**Cost of reporting it this way.** A skim reads "the fan-out did not work" as "the candidate could
+not build a fan-out". Mitigated by publishing the ceiling next to the result, so the size of the
+forgone prize is visible before the attempt.
+
+---
+
+## ADR-032 — A truncation cap belongs to the caller, not to the tool
+**Date:** 2026-09-07 · **Status:** Accepted · **Amends:** the Day 6 bridge
+
+**Decision.** `mcp_tools()` takes `max_result_chars`. The model-facing agent keeps Day 6's 12,000;
+the supervisor, which parses tool results and compacts them itself, passes `PARSER_RESULT_CHARS`.
+
+**Why.** Day 6 put a 12,000-character cap in the MCP bridge because the only consumer was a model
+and the result went straight into a prompt, where an over-long value is dropped from the front
+silently (F3). Day 7 added a second consumer with the opposite requirement. `search_notices`
+crosses 12,000 characters at `top_k` 20 on this corpus and `list_obligations` crosses it on its
+first page; in both cases the graph received a string cut mid-JSON, parsed nothing, and continued
+with **zero results and no error** — and three nodes later wrote that the corpus was silent.
+
+**The general form, which is the part worth keeping.** A mitigation is written against a consumer.
+Day 6's cap is correct for the consumer it was written for and wrong for the next one, and the
+failure surfaced two layers away from the code that caused it. **A policy about how much a
+consumer can hold is not a property of the tool**, and putting it in the tool makes the tool
+un-reusable in a way that is invisible until someone reuses it.
+
+**Cost.** One more parameter, and a caller that gets it wrong now over-fills a context window
+instead of under-filling a parser. The bridge still truncates and still says so; only the number
+moved, and only for callers who ask.

@@ -1,10 +1,16 @@
 # Failure modes
 
-Twelve ways this agent fails, each with a trigger that reproduces it, a symptom measured with
+Fifteen ways this agent fails, each with a trigger that reproduces it, a symptom measured with
 an `n`, the mitigation applied, and **what that mitigation cost**. A failure with no
 reproduction is a story; a mitigation with no cost is a sales pitch.
 
-Everything below was measured on 2026-09-06 against the real 433 MB index, the real
+F1–F12 were measured on 2026-09-06 on Day 6's single agent. **F13–F15 were added on 2026-09-07
+and none of them could have been found by a single agent** — they need a run that pauses, a
+consumer that parses rather than reads, and two tool calls in flight at once. That is worth
+noting next to the day's headline result that multi-agent bought no wall-clock time: it bought
+these instead.
+
+Everything below was measured against the real 433 MB index, the real
 `regdocs-mcp` server over stdio, and the 150-item golden set. The sample where one is used is
 30 grounded questions drawn deterministically from the golden set — 12 `factual_lookup`, 8
 `multi_hop`, 6 `comparative`, 4 `temporal` — declared in `toolcall_probe.SAMPLE` so a re-run is
@@ -16,17 +22,23 @@ view: a lot of writing about agent failure assumes the model is the unreliable p
 | | failure | where it lives | still open? |
 |---|---|---|---|
 | F1 | Invented tool arguments narrow the search past the answer | model | mitigated |
-| F2 | A schema-valid answer cites something that does not exist — or nothing | model | **open** |
+| F2 | A schema-valid answer cites something that does not exist — or nothing | model | mitigated (Day 7) |
 | F3 | Over-long prompts are truncated from the front, silently | runtime | mitigated |
 | F4 | Tool-call loops: the same search, permuted, until the budget goes | model | bounded |
-| F5 | A tool error is delivered, and its recovery path is ignored | model | **open** |
+| F5 | A tool error is delivered, and its recovery path is ignored | model | mitigated (Day 7) |
 | F6 | Oversized tool results exhaust the step budget | tool surface | mitigated |
-| F7 | The right tool, called with an invented identifier | model | **open** |
+| F7 | The right tool, called with an invented identifier | model | mitigated (Day 7) |
 | F8 | The same query returned a different ranking each run | tool | **fixed** |
 | F9 | The step ceiling neither raises nor reports | framework | mitigated |
 | F10 | The framework substitutes its own answer at that ceiling | framework | mitigated |
 | F11 | The repair loop fixes nothing, and converts one failure into another | design | **removed** |
 | F12 | The MCP adapter cannot talk to a spec-current MCP server | framework | worked around |
+| F13 | An interrupting node's body runs twice, and bills twice | framework | mitigated |
+| F14 | A truncation written for a model silently breaks a parser | design | mitigated |
+| F15 | Parallel tool calls on one MCP session read each other's results | tool | **fixed** |
+
+F2, F5 and F7 were open at the end of Day 6. Day 7 closed all three, structurally rather than by
+prompting — see their entries.
 
 ---
 
@@ -114,6 +126,27 @@ and it is a real reduction in coverage.
 predicted fabricated citations as the dominant failure. Shape validity is better here (30/30) and
 the dominant failure is *omission*, not fabrication. The layered argument survives either way —
 it is strengthened, since the gap between layers 1 and 2 is wider than predicted.
+
+**Day 7 addendum — the schema fix Day 6 named and deferred.** Day 6 recorded that the one
+mechanism that had worked perfectly was constrained decoding, that a schema requiring a non-empty
+`citations` array would make omission unexpressible, and that it needed *two* schemas and
+something to choose between them. A supervisor has a router, so it now costs one branch.
+
+Measured: **Ollama honours `minItems`.** Given a prompt with no sources at all, the strict schema
+emits `[{"doc_id": "", "section_path": ""}]` rather than `[]`. It does not conjure a real
+citation — it converts a **silent omission** into an **unresolvable citation**, which layer 2
+catches by its primary route rather than by the roundabout "claims to be sufficient but cites
+nothing". Over the Day 7 lookup set the single agent asserted 5 citations across 6 questions
+(1 unresolvable); the graph asserted 13 (1 unresolvable).
+
+`negative` routes keep the loose schema. Forcing a citation on a question the corpus genuinely
+does not answer manufactures the fabrication F11's repair loop was removed for causing, and
+abstention is a first-class outcome on this corpus — 35 of the 150 golden items have no answer
+in it.
+
+**Cost.** A question whose retrieval failed now produces a bad citation instead of no citation.
+That is a *better* failure — layer 2 catches it and the graph reroutes — but it is more output,
+not less, and on a corpus where abstention is common the route decision is now load-bearing.
 
 ---
 
@@ -212,6 +245,20 @@ prompt, which is untested and would be another unmeasured prompt claim.
 sentence of prompt competing with F1's for the model's attention — and F1's sentence is measured,
 so it is not being diluted before this one is.
 
+**Day 7 addendum — fixed by moving the decision out of the model.** F5's assessment was that
+making the model act on a recovery path needed an untested sentence of prompt competing with F1's
+measured one. The supervisor does not ask the model at all: `check` is mechanical, and when a
+citation fails to resolve it routes the run back to `retrieve` with the user's own words as the
+query. The recovery path is taken by the graph, on the model's behalf.
+
+This is the clearest thing the extra machinery buys, and it is worth being precise about the
+scope: it recovers from *this* failure, not from tool errors in general. A tool error inside a
+worker is still surfaced rather than acted on.
+
+**Cost, measured.** The reroute fired on the Day 7 lookup set and **changed no outcome** —
+plan-and-execute, which is the same graph without this edge, produced identical citation counts
+for 16% fewer tokens. A recovery path earns its keep only when it fires *and* fixes something.
+
 ---
 
 ## F6 — Oversized tool results exhaust the step budget
@@ -276,6 +323,19 @@ first is a plan-step constraint, and that is Day 7's supervisor, not a prompt pa
 ADR-004 (`regdocs-mcp`) records that this corpus has no genuine multi-version document, the
 question has no good answer anyway — which is a reason to leave it failing loudly rather than to
 paper over it.
+
+**Day 7 addendum — fixed by removing the capability.** F7's note said the fix was "a plan-step
+constraint, and that is Day 7's supervisor". It is, and the form it took is blunter than
+"constrain": in the supervisor the model never supplies an identifier at all. It writes the search
+text; every `doc_id` and `section_path` used comes out of a search result (ADR-028).
+
+Say what that is. F7 cannot occur here **because the capability that produces it has been
+removed**, not because the model improved. Measured on the Day 7 coverage set: 15 of the 63
+identifiers the single agent cited do not resolve against the index; the supervisor's are 0 of 12.
+
+**Cost.** The same cost F1's prompt mitigation had, paid structurally — the model cannot reach for
+a filter or a version even when a question genuinely wants one. `diff_versions` is unreachable
+from the supervisor entirely.
 
 ---
 
@@ -430,6 +490,105 @@ own pins before designing around it.
 
 ---
 
+## F13 — An interrupting node's body runs twice, and bills twice
+
+**Trigger.** `uv run pytest agents/tests/test_checkpoint.py -k logical_visit`. A three-node graph
+that calls `interrupt()` in the middle, started in one interpreter and resumed in another, with a
+counter as the first statement of the interrupting node.
+
+**Symptom.** **2 executions for 1 logical visit** — once on the interrupting pass, once on resume.
+`interrupt()` replays its node from the top. With the counter placed *after* the `interrupt()`
+call: 1.
+
+Nothing is raised and nothing is logged. The only symptom is a token count quietly double what
+the run appears to have done, and any non-idempotent side effect happening twice.
+
+**Why this is a trap rather than a quirk.** The natural way to write human review is *analyse,
+then ask* — "here is the gap report, approve it?". Written that way, the gap analysis runs again
+on resume. The obvious code is the wrong code, and it is wrong invisibly.
+
+**Mitigation.** `interrupt()` is the first statement of `approve_report`, with the expensive node
+before it, so the checkpoint boundary lands between them (ADR-030). Enforced by a test that counts
+node-body executions across a real two-process resume and asserts 1 — verified to fail on the
+inverted arrangement.
+
+**Cost.** One extra node and one extra checkpoint write per approval.
+
+---
+
+## F14 — A truncation written for a model silently breaks a parser
+
+**Trigger.** `uv run python -c "..."` calling `search_notices` at `top_k=20` through the Day 6
+bridge, and `json.loads` on the result. Or `list_obligations` on any real document.
+
+**Symptom.** Day 6's bridge caps a tool result at 12,000 characters and appends a note saying so
+— correct for a model, whose next stop is a prompt. Day 7's supervisor **parses** these results.
+Measured on this corpus:
+
+| call | characters returned | parses as JSON |
+|---|---|---|
+| `search_notices` top_k=8 | 6,521 | yes |
+| `search_notices` top_k=20 | 12,098 (capped) | **no** |
+| `list_obligations`, first page | 12,098 (capped) | **no** |
+
+The graph got zero hits, **no error**, and three nodes later wrote that the corpus was silent on
+the topic. It took a wrong answer about politically exposed persons to find it.
+
+**Why it is worth an entry of its own.** The bug is not in either layer. The cap is a correct
+mitigation for F3; the parse is a correct way to read a JSON tool. The defect is that **a policy
+about how much a consumer can hold was written into the tool**, and it surfaced two layers from
+the code that caused it, as a content error rather than a failure.
+
+**Mitigation.** The cap is now the caller's: `mcp_tools(index, max_result_chars=...)`, with the
+model-facing agent keeping 12,000 and the supervisor passing a parser-sized value (ADR-032).
+`workers.search` additionally halves `top_k` and retries when it sees the truncation sentinel,
+and records that it did.
+
+**Cost.** A caller that gets the parameter wrong now over-fills a context window rather than
+under-filling a parser, which is the louder of the two failures but still a failure. The back-off
+returns fewer results than asked for; paging with the server's own `next_cursor` is the better fix
+and is not free.
+
+---
+
+## F15 — Parallel tool calls on one MCP session read each other's results · **fixed**
+
+**Trigger.** Four concurrent `list_obligations` calls for four different `doc_id`s over one
+`ClientSession`. `uv run pytest tests/test_concurrency.py` in `regdocs-mcp`.
+
+**Symptom.** A valid `doc_id` comes back as missing:
+
+```
+TOOL ERROR from list_obligations: no document '1b9b9f6db2876069'.
+Use search_notices to obtain a valid doc_id.
+```
+
+Against the real index, three trials of four concurrent calls: **2/4, 1/4 and 1/4 wrong**, and
+**0/4** when the same calls were made one after another.
+
+**Cause.** `regdocs_mcp.server._db()` returned a single process-wide `DuckDBPyConnection` to every
+handler, under a comment saying that was safe because the connection is read-only. Read-only
+protects the *file*; a connection carries one statement context, and FastMCP runs handlers
+concurrently. Two handlers could each read the other's result set.
+
+**This is the worst-shaped failure in this document.** It is silent and it *inverts*. There is no
+transport error to retry — the tool returns a well-formed, authoritative statement that a document
+is not in the corpus, one call after the same server returned that document's id from a search.
+The coverage sweep read it as four AML notices being silent on politically exposed persons and
+wrote that into an answer.
+
+**Mitigation.** Each handler gets its own `cursor()` — an independent connection over the same
+open database, one object and no I/O (`regdocs-mcp` ADR-009). Three regression tests, all of which
+fail on the pre-fix code against the synthetic fixture; two of them assert that each parallel call
+received *its own* document, because a crossed result set can also succeed with someone else's
+rows and an error count would not catch that.
+
+**Cost.** One Python object per call. The alternative — holding the creation lock across every
+query — would also have been correct and would have converted a correctness bug into a throughput
+ceiling.
+
+---
+
 ## What this list says, taken together
 
 **The model's failures are all one failure.** F1 (invented filters), F5 (ignored recovery path)
@@ -437,12 +596,32 @@ and F7 (invented `doc_id`) are the same defect seen three times: the model picks
 and is careless about what it passes. Tool *selection* was correct in every single provocation.
 Routing is not the hard part — argument grounding is.
 
-**Four of twelve belong to the framework, and those are the quiet ones.** F9, F10 and F12 produce
-no error at all; F9 and F10 actively produce output that looks like success. The model's failures
-are loud by comparison — a wrong filter still returns results you can inspect, a loop is visible
-in the trace. It is the infrastructure that lies quietly.
+**And all three were fixed by taking the decision away from the model, not by asking it better.**
+F1 by a prompt that suppresses a capability, F5 and F7 by a graph that supplies every identifier
+itself. The honest way to describe the Day 7 fixes is that *the capability that produced the
+failure was removed*, at the same cost the prompt fix had.
 
-**Two mitigations that sound responsible are worth nothing here.** Structured output (F2) is 100%
-effective at the layer that was never the problem, and the repair loop (F11) recovered zero of
-eleven. Both are standard recommendations. Both were measured rather than assumed, and only the
-measurement distinguishes them from the one-sentence prompt change in F1 that actually worked.
+**Five of fifteen belong to the framework or the plumbing, and those are the quiet ones.** F9,
+F10, F12 and F13 produce no error at all; F9 and F10 actively produce output that looks like
+success, and F13's only symptom is a token count quietly double what the run appears to have done.
+The model's failures are loud by comparison — a wrong filter still returns results you can inspect,
+a loop is visible in the trace. It is the infrastructure that lies quietly.
+
+**The worst failures invert rather than error.** F15 tells you a document is not in the corpus,
+authoritatively, one call after handing you its id. F14 tells you the corpus is silent because a
+cap written for a different consumer cut a JSON document in half. Neither raises. Both were found
+by a *content* error three layers downstream, and both would have been invisible to any amount of
+exception handling.
+
+**Two mitigations that sound responsible are worth less than they sound.** Structured output (F2)
+is 100% effective at the layer that was never the problem — and the schema-level fix that finally
+helped did so by converting a silent failure into a catchable one, not by producing right answers.
+The repair loop (F11) recovered zero of eleven. Both are standard recommendations. Only measurement
+distinguishes them from the one-sentence prompt change in F1 that actually worked.
+
+**The thing that found three of these was the architecture that bought no time.** Day 7's fan-out
+was measured at a 1.00× speedup against a 3.12× ceiling. It also produced F13, F14 and F15, none
+of which a single sequential agent could have surfaced: they need a run that pauses, a consumer
+that parses rather than reads, and two tool calls in flight at once. That is not an argument for
+multi-agent. It is an argument that the failure surface changes when the shape does, and that a
+list like this one is a property of a deployment rather than of a model.
