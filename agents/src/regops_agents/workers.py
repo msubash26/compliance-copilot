@@ -36,7 +36,9 @@ from pydantic import BaseModel, Field
 from regops_retrieval.index import Index
 
 from regops_agents.llm import MODEL, chat
+from regops_agents.record import Recorder
 from regops_agents.structured import Answer, Citation, check_references, check_shape
+from regops_agents.trace import NULL, Tracer
 
 # How many hits one retrieval round returns, and how many of them get read in
 # full. Chosen, not model-supplied -- see the module docstring.
@@ -116,6 +118,11 @@ class Toolbox:
     tools: dict = field(default_factory=dict)  # name -> StructuredTool, from the MCP server
     ix: Index | None = None
     model: str = MODEL
+    # Both optional and both default to doing nothing, so every Day 6 and Day 7
+    # call site keeps working unchanged and an untraced, unrecorded run is still
+    # the same run. See `record.py` and `trace.py`.
+    recorder: Recorder | None = None
+    tracer: Tracer = NULL
 
     def clause(self, doc_id: str, section_path: str):
         if self.ix is None:
@@ -152,6 +159,8 @@ def route(question: str, box: Toolbox) -> tuple[Route | None, dict]:
         system=ROUTER_SYSTEM,
         model=box.model,
         schema=Route.model_json_schema(),
+        tracer=box.tracer,
+        name="llm:route",
     )
     try:
         r = Route.model_validate_json(reply.content)
@@ -264,6 +273,8 @@ def extract(
         EXTRACT_PROMPT.format(question=question, context=context),
         model=box.model,
         schema=schema.model_json_schema(),
+        tracer=box.tracer,
+        name="llm:extract",
     )
     ans, _ = check_shape(reply.content)
     return ans, reply.spend()
@@ -439,6 +450,8 @@ async def inspect_one(
         model=box.model,
         schema=Finding.model_json_schema(),
         num_ctx=BRANCH_NUM_CTX,
+        tracer=box.tracer,
+        name="llm:inspect",
     )
     try:
         return Finding.model_validate_json(reply.content), reply.spend()
@@ -506,5 +519,7 @@ def synthesise(question: str, draft: str, citations: list[dict], box: Toolbox, e
     reply = chat(
         SYNTH_PROMPT.format(question=question, draft=draft, citations=cites, extra=extra),
         model=box.model,
+        tracer=box.tracer,
+        name="llm:synthesise",
     )
     return reply.content.strip(), reply.spend()

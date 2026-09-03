@@ -9,6 +9,9 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "regops-retrieval",
+    # Day 8: the agent eval drives the agents. `regops-agents` does not depend on
+    # this package, so the edge is one-way and `uv` resolves it without a cycle.
+    "regops-agents",
     "duckdb>=1.5",
     "httpx>=0.27",
     "pydantic>=2.9",

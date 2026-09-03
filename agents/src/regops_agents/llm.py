@@ -25,6 +25,7 @@ import httpx
 from regops_retrieval.index import base_url
 
 from regops_agents.budget import spent
+from regops_agents.trace import GENERATION, NULL, Tracer, usage
 
 MODEL = "qwen3.5:9b"
 TIMEOUT_S = 300.0
@@ -58,6 +59,8 @@ def chat(
     schema: dict | None = None,
     temperature: float = 0.0,
     num_ctx: int | None = None,
+    tracer: Tracer = NULL,
+    name: str = "chat",
 ) -> Reply:
     """A single completion. Never raises -- a dead endpoint is a `Reply` with an error.
 
@@ -82,20 +85,35 @@ def chat(
     if schema is not None:
         payload["format"] = schema
 
-    t0 = time.perf_counter()
-    try:
-        r = httpx.post(f"{base_url()}/api/chat", json=payload, timeout=TIMEOUT_S)
-        r.raise_for_status()
-        body = r.json()
-    except (httpx.HTTPError, ValueError) as exc:
-        return Reply("", time.perf_counter() - t0, 0, 0, f"{type(exc).__name__}: {exc}")
+    # The generation wraps the transport, so a failed call is a traced failure
+    # rather than a gap. A model call that never appears is the hardest thing to
+    # find in a span tree.
+    with tracer.observe(
+        name,
+        as_type=GENERATION,
+        model=model,
+        input=messages,
+        model_parameters={"temperature": temperature, "num_ctx": num_ctx, "think": False},
+        metadata={"constrained": schema is not None},
+    ) as obs:
+        t0 = time.perf_counter()
+        try:
+            r = httpx.post(f"{base_url()}/api/chat", json=payload, timeout=TIMEOUT_S)
+            r.raise_for_status()
+            body = r.json()
+        except (httpx.HTTPError, ValueError) as exc:
+            reply = Reply("", time.perf_counter() - t0, 0, 0, f"{type(exc).__name__}: {exc}")
+            obs.update(output="", level="ERROR", status_message=reply.error[:200])
+            return reply
 
-    return Reply(
-        content=(body.get("message", {}) or {}).get("content") or "",
-        seconds=time.perf_counter() - t0,
-        # Ollama reports both directions. `prompt_eval_count` is absent when the
-        # prompt prefix was served from cache, which is a real saving and is
-        # recorded as such rather than back-filled with an estimate.
-        in_tokens=int(body.get("prompt_eval_count") or 0),
-        out_tokens=int(body.get("eval_count") or 0),
-    )
+        reply = Reply(
+            content=(body.get("message", {}) or {}).get("content") or "",
+            seconds=time.perf_counter() - t0,
+            # Ollama reports both directions. `prompt_eval_count` is absent when
+            # the prompt prefix was served from cache, which is a real saving and
+            # is recorded as such rather than back-filled with an estimate.
+            in_tokens=int(body.get("prompt_eval_count") or 0),
+            out_tokens=int(body.get("eval_count") or 0),
+        )
+        obs.update(output=reply.content, usage_details=usage(reply.spend()))
+        return reply

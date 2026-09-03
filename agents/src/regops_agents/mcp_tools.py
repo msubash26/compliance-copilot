@@ -28,12 +28,15 @@ from __future__ import annotations
 
 import os
 from collections.abc import AsyncIterator
-from contextlib import asynccontextmanager
+from contextlib import ExitStack, asynccontextmanager
 from pathlib import Path
 
 from langchain_core.tools import StructuredTool
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
+
+from regops_agents.record import Recorder
+from regops_agents.trace import NULL, TOOL, Tracer
 
 # The server repo, as a sibling. It is a path dependency of this workspace
 # already (ADR-001), so this is the same checkout `uv sync` installed.
@@ -79,12 +82,19 @@ async def mcp_tools(
     *,
     server_dir: Path = SERVER_DIR,
     max_result_chars: int = MAX_RESULT_CHARS,
+    recorder: Recorder | None = None,
+    tracer: Tracer = NULL,
 ) -> AsyncIterator[list]:
     """The server's four tools, as LangChain tools, for the life of the session.
 
     stdio, because it needs no running process -- the same transport the Day 1
     Claude Code registration uses, so what the agent talks to is what a user
     talks to.
+
+    `recorder` and `tracer` are both optional and both wrap the call here rather
+    than in either agent, because this is the one layer the single agent and the
+    supervisor share. Instrumenting each architecture separately would produce
+    two records and an argument about whether they are comparable.
     """
     # `VIRTUAL_ENV` is dropped: the server is a separate uv project, and inheriting
     # this workspace's active venv makes its `uv run` warn on every spawn.
@@ -99,7 +109,7 @@ async def mcp_tools(
         listed = (await session.list_tools()).tools
 
         def make(name: str, description: str, schema: dict) -> StructuredTool:
-            async def call(**kwargs) -> str:
+            async def invoke(**kwargs) -> str:
                 res = await session.call_tool(name, kwargs)
                 if res.is_error:
                     # The SDK delivers a tool's own ToolError here rather than
@@ -108,6 +118,19 @@ async def mcp_tools(
                     # and F5 measures whether the model uses it.
                     return f"TOOL ERROR from {name}: {_render(res, max_result_chars)}"
                 return _render(res, max_result_chars)
+
+            async def call(**kwargs) -> str:
+                if recorder is None and not tracer.enabled:
+                    return await invoke(**kwargs)
+                with ExitStack() as stack:
+                    obs = stack.enter_context(tracer.observe(name, as_type=TOOL, input=kwargs))
+                    box = stack.enter_context(recorder.call(name, kwargs)) if recorder else [""]
+                    box[0] = out = await invoke(**kwargs)
+                    obs.update(
+                        output=out[:2000],
+                        metadata={"result_chars": len(out), "truncated": len(out) > 2000},
+                    )
+                    return out
 
             return StructuredTool.from_function(
                 coroutine=call,

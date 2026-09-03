@@ -3503,6 +3503,7 @@ dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
     { name = "python-dotenv" },
+    { name = "regops-agents" },
     { name = "regops-retrieval" },
 ]
 
@@ -3512,6 +3513,7 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.27" },
     { name = "pydantic", specifier = ">=2.9" },
     { name = "python-dotenv", specifier = ">=1.0" },
+    { name = "regops-agents", editable = "agents" },
     { name = "regops-retrieval", editable = "retrieval" },
 ]
 

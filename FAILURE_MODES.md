@@ -36,6 +36,7 @@ view: a lot of writing about agent failure assumes the model is the unreliable p
 | F13 | An interrupting node's body runs twice, and bills twice | framework | mitigated |
 | F14 | A truncation written for a model silently breaks a parser | design | mitigated |
 | F15 | Parallel tool calls on one MCP session read each other's results | tool | **fixed** |
+| F16 | An error is written with a recovery path and delivered without it | tool surface | **fixed** |
 
 F2, F5 and F7 were open at the end of Day 6. Day 7 closed all three, structurally rather than by
 prompting — see their entries.
@@ -589,6 +590,52 @@ ceiling.
 
 ---
 
+## F16 — An error is written with a recovery path and delivered without it
+
+**Where:** `regdocs-mcp` `search_notices` and `list_obligations`, both paging call sites.
+**Found:** Day 8, by a single agent giving up on a coverage sweep in the middle of the eval.
+**Status:** **fixed** — `regdocs-mcp` ADR-010, `server._offset`, `tests/test_cursor_errors.py`.
+
+`index.decode_cursor` raises `ValueError("malformed cursor 'page2'; pass back a nextCursor
+verbatim")`. That sentence exists for exactly one reason: to tell a model how to recover. It never
+arrived. FastMCP passes a `ToolError`'s text through verbatim and **masks an unexpected
+exception's message**, so the client received
+
+```
+TOOL ERROR from list_obligations: Error executing tool list_obligations
+```
+
+three times in a row, and the agent stopped. The helpful message was produced, formatted, and
+written to a local log with a full traceback, on a machine the model cannot read.
+
+**Why it survived.** `server.py`'s module docstring has carried the rule since Day 2, in these
+words: *"recoverable failures must not use bare ValueError/LookupError."* The rule was right, it
+was written down at the top of the file it governs, and two lines in that file broke it — because
+the `raise` is in `index.py`. **A convention stated in one module cannot be enforced in another.**
+Every other recoverable failure in the file raises `ToolError` three lines from where it is
+detected, and these two delegated the detection to a helper that had no idea it was inside an MCP
+handler.
+
+**Why it is F5's mirror image, and worth having both.** F5 is *a tool error is delivered, and its
+recovery path is ignored* — the model was handed the way out and did not take it. F16 is the same
+sentence in the same system with the arrow reversed: the recovery path was never delivered, and the
+model's behaviour was identical from the outside. **The two are indistinguishable in a transcript
+of the agent alone**, which is what makes F16 expensive: every symptom points at the model.
+
+**How it was found.** Not by a test — by reading server stderr during a 30-task eval and noticing
+that one tool was raising rather than returning. The tool-call recorder marks a call as failed when
+its result begins with `TOOL ERROR`, so a *masked* error is still counted; what it cannot show is
+that the message was useless. That took a human reading a log.
+
+**The general form.** An error message is only as good as the channel that delivers it, and the
+quality of the channel is decided somewhere other than where the message is written. Anything that
+formats a helpful string and hands it to a framework is making an assumption about that framework's
+masking policy, and that assumption is worth a test that asserts what the *client* receives rather
+than what the server raised.
+
+
+---
+
 ## What this list says, taken together
 
 **The model's failures are all one failure.** F1 (invented filters), F5 (ignored recovery path)
@@ -601,11 +648,19 @@ F1 by a prompt that suppresses a capability, F5 and F7 by a graph that supplies 
 itself. The honest way to describe the Day 7 fixes is that *the capability that produced the
 failure was removed*, at the same cost the prompt fix had.
 
-**Five of fifteen belong to the framework or the plumbing, and those are the quiet ones.** F9,
+**Five of sixteen belong to the framework or the plumbing, and those are the quiet ones.** F9,
 F10, F12 and F13 produce no error at all; F9 and F10 actively produce output that looks like
 success, and F13's only symptom is a token count quietly double what the run appears to have done.
 The model's failures are loud by comparison — a wrong filter still returns results you can inspect,
 a loop is visible in the trace. It is the infrastructure that lies quietly.
+
+**Three times now, a failure of the plumbing has been indistinguishable from a failure of the
+model.** F16 is the clearest: the tool raised, the recovery sentence was masked, and what the
+transcript showed was an agent that gave up on a question it could have paged through — exactly
+F5's signature with the cause on the other side of the boundary. F14 read as a silent corpus and
+was a truncation policy; F15 read as a missing document and was a shared cursor. **When the model
+looks careless, the honest first move is to check what it was actually handed**, and on this
+project that check has paid three times out of three.
 
 **The worst failures invert rather than error.** F15 tells you a document is not in the corpus,
 authoritatively, one call after handing you its id. F14 tells you the corpus is silent because a
@@ -619,9 +674,10 @@ helped did so by converting a silent failure into a catchable one, not by produc
 The repair loop (F11) recovered zero of eleven. Both are standard recommendations. Only measurement
 distinguishes them from the one-sentence prompt change in F1 that actually worked.
 
-**The thing that found three of these was the architecture that bought no time.** Day 7's fan-out
-was measured at a 1.00× speedup against a 3.12× ceiling. It also produced F13, F14 and F15, none
-of which a single sequential agent could have surfaced: they need a run that pauses, a consumer
-that parses rather than reads, and two tool calls in flight at once. That is not an argument for
+**The thing that found four of these was the architecture that bought no time.** Day 7's fan-out
+was measured at a 1.00× speedup against a 3.12× ceiling. It also produced F13, F14, F15 and — one
+day later, on the eval that exists to measure it — F16: none of which a single sequential agent
+could have surfaced, because they need a run that pauses, a consumer that parses rather than reads,
+two tool calls in flight at once, and a paging sweep long enough for a model to invent a cursor. That is not an argument for
 multi-agent. It is an argument that the failure surface changes when the shape does, and that a
 list like this one is a property of a deployment rather than of a model.

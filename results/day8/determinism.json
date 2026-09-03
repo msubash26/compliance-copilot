@@ -1,0 +1,290 @@
+{
+  "gated_arm": "supervisor",
+  "arms": {
+    "supervisor": {
+      "arm": "supervisor",
+      "left": "results/day8/eval.json",
+      "right": "results/day8/rerun.json",
+      "compared_fields": [
+        "route",
+        "answer",
+        "cited_uids",
+        "asserted",
+        "unresolvable",
+        "docs_read",
+        "n_tool_calls",
+        "steps",
+        "in_tokens",
+        "out_tokens",
+        "stopped_by",
+        "abstained",
+        "success"
+      ],
+      "items": 30,
+      "only_in_left": [],
+      "only_in_right": [],
+      "differing": [],
+      "identical": true,
+      "tokens": [
+        119456,
+        119456
+      ],
+      "steps_identical": true,
+      "p50_s": [
+        6.11,
+        6.12
+      ]
+    },
+    "single_agent": {
+      "arm": "single_agent",
+      "left": "results/day8/eval.json",
+      "right": "results/day8/rerun.json",
+      "compared_fields": [
+        "route",
+        "answer",
+        "cited_uids",
+        "asserted",
+        "unresolvable",
+        "docs_read",
+        "n_tool_calls",
+        "steps",
+        "in_tokens",
+        "out_tokens",
+        "stopped_by",
+        "abstained",
+        "success"
+      ],
+      "items": 30,
+      "only_in_left": [],
+      "only_in_right": [],
+      "differing": [
+        {
+          "task_id": "t-002",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-003",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-005",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-006",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-007",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-008",
+          "fields": [
+            "answer",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-009",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "unresolvable",
+            "docs_read",
+            "n_tool_calls",
+            "steps",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-010",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "unresolvable",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-011",
+          "fields": [
+            "in_tokens"
+          ]
+        },
+        {
+          "task_id": "t-012",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "asserted",
+            "in_tokens",
+            "out_tokens",
+            "abstained",
+            "success"
+          ]
+        },
+        {
+          "task_id": "t-013",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-014",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-016",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "unresolvable",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-017",
+          "fields": [
+            "answer",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-018",
+          "fields": [
+            "answer",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-019",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "asserted",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-020",
+          "fields": [
+            "answer",
+            "asserted",
+            "unresolvable",
+            "docs_read",
+            "n_tool_calls",
+            "steps",
+            "in_tokens",
+            "out_tokens",
+            "stopped_by"
+          ]
+        },
+        {
+          "task_id": "t-021",
+          "fields": [
+            "in_tokens"
+          ]
+        },
+        {
+          "task_id": "t-022",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-023",
+          "fields": [
+            "answer",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-026",
+          "fields": [
+            "answer",
+            "asserted",
+            "unresolvable",
+            "n_tool_calls",
+            "steps",
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-027",
+          "fields": [
+            "answer",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-028",
+          "fields": [
+            "in_tokens",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-029",
+          "fields": [
+            "answer",
+            "out_tokens"
+          ]
+        },
+        {
+          "task_id": "t-030",
+          "fields": [
+            "answer",
+            "cited_uids",
+            "asserted",
+            "in_tokens",
+            "out_tokens"
+          ]
+        }
+      ],
+      "identical": false,
+      "tokens": [
+        590990,
+        579956
+      ],
+      "steps_identical": false,
+      "p50_s": [
+        6.02,
+        5.99
+      ]
+    }
+  }
+}

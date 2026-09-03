@@ -1282,3 +1282,169 @@ un-reusable in a way that is invisible until someone reuses it.
 **Cost.** One more parameter, and a caller that gets it wrong now over-fills a context window
 instead of under-filling a parser. The bridge still truncates and still says so; only the number
 moved, and only for callers who ask.
+
+---
+
+## ADR-033 — "Task success" is four mechanical outcomes, and the composite that requires all four
+**Date:** 2026-09-08 · **Status:** Accepted
+
+**Decision.** An agent task succeeds when **all four** of these hold, each derived from
+`golden/v1` rather than asserted in the eval: it **read every gold document** (tool-call recall),
+it **cited at least one clause that resolves** against the index, it **abstained iff the corpus
+cannot answer**, and it **finished inside the budget**. All four are reported separately as well as
+composed, and no model's opinion appears in any of them.
+
+**Why four and not one.** A single "success" number cannot be acted on. These fail for different
+reasons and are fixed in different places: recall is a retrieval problem, citation resolution is a
+grounding problem, abstention is a calibration problem, and the budget is a control-flow problem.
+The composite is what the gate compares; the four are what a person reads to know which thing
+broke.
+
+**Why "read", not "retrieved".** Recall counts documents the agent *fetched in full*, never ones
+that merely appeared in a search result. A `doc_id` BM25 put in front of the model was offered to
+it, not used by it, and crediting that would make this column a measurement of Day 5's retriever —
+a question already answered, on 150 items rather than 30.
+
+**Why abstention is two rates.** ADR-021's argument, one layer up: false abstention (refusing a
+question you had the clause for) and false answering (answering one the corpus cannot support) are
+different failures with different costs, and averaging them produces a number that describes
+neither. The five negatives are the dangerous direction and are reported as counts, because five
+items make a rate with a very wide interval.
+
+**The weak link, named.** Abstention is detected from the answer text against a list of refusal
+markers (`agenteval.REFUSAL`). It is the least principled mechanism in the module. It stays
+mechanical anyway: the alternative is asking the judge, and then the gate depends on a model's
+opinion. Both signals — the marker and "cited nothing at all" — are recorded per row so a
+disagreement between them is visible rather than averaged away.
+
+**Cost.** Four outcomes is four things to keep true, and the composite is harsh: a run that answers
+perfectly from a document it never opened still fails. That is the intended reading. An answer that
+is right without the evidence is a model recalling MAS regulation, which is precisely what
+`golden/v1`'s closed-book check (ADR-017) exists to keep out of these measurements.
+
+---
+
+## ADR-034 — The gate is exact on quality and banded only on latency
+**Date:** 2026-09-08 · **Status:** Accepted · **Supersedes:** the prep plan's ">5% drop" threshold
+
+**Decision.** Any drop in a mechanical metric fails the build — no band, no tolerance, a single
+regressed task is enough. Latency alone gets a band, at **25%** on p50, and p95 is reported and
+never gated.
+
+**Why, and it is a measurement rather than a preference.** Ten tasks through the supervisor three
+times in one process and once more in a **fresh interpreter**: **0 of 10** items differed in route,
+citations, steps, tokens or answer text, the token total was identical to the digit at **39,737**
+on all four runs, and 10 of 10 answers were byte-identical across the process boundary. **The
+noise floor on every quality metric is zero.** A 5% band on a 30-task set is one and a half tasks
+of slack against a metric that does not move, which would hide exactly the resolution the
+determinism work was paid for.
+
+**And it was paid for.** Temperature 0, `think: false`, Ollama's constrained decoding, and two
+ranking-determinism fixes that cost the better part of a day between them (ADR-022 here, ADR-008 in
+`regdocs-mcp`, where 9 of 40 queries returned a different top-20 before the fix). An exact gate is
+the dividend from that work, and it is worth stating in those terms: *"we gate at 5%"* and *"we
+gate at zero because we measured the noise floor at zero"* are very different claims about the same
+system.
+
+**Latency is the exception because it is the one thing that moves.** The same four runs took 67.2s,
+58.6s, 59.7s and 60.3s — a 6.5% spread with byte-identical output. The band is set at 25% so it
+fires on a real change rather than on a warm model or a busy GPU. Re-running does not tighten it,
+either: a repeat resamples only Ollama's queue, which is a fact about the server rather than about
+the agent, so the honest cost story is tokens.
+
+**p95 is not gated.** Over thirty tasks it is a single order statistic — one slow task moves it
+entirely — and gating it would make the build depend on which task happened to queue behind a model
+load. It is published with `n` beside it.
+
+**Cost.** Exactness means a legitimate change that trades one task for another fails the build and
+has to be argued for in the commit that re-baselines. That is the intended friction. The failure
+this avoids is worse: a band wide enough to be comfortable is a band wide enough to pass the
+regression it was installed to catch.
+
+---
+
+## ADR-035 — The eval runs locally and CI gates the artifact
+**Date:** 2026-09-08 · **Status:** Accepted
+
+**Context.** The prep plan's bar for Day 8 is *"you can change a prompt, push, and have CI tell you
+whether you made it worse."* Measured before planning: GitHub's hosted runners have no GPU and
+`gh api /repos/.../actions/runners` returns `total_count: 0`. **The evaluation cannot run on the
+machine that gates the build.**
+
+**Rejected: a CI job that skips when there is no model.** It is a green check mark that proves
+nothing, and Day 4 already wrote down that a test which cannot run in CI is not a gate. A skipped
+job is worse than no job, because the check mark is indistinguishable from a passing one.
+
+**Decision.** The eval runs locally and commits `results/day8/eval.json`. CI gates that artifact,
+three ways:
+
+1. **Staleness.** The artifact records a hash over every prompt and system message it was produced
+   from, plus a hash of the task file. CI recomputes both from the working tree and fails on a
+   mismatch. *A prompt changed and pushed without a re-run fails the build.* CI cannot measure the
+   change; it can refuse to believe a number that was measured before it — which satisfies the prep
+   plan's requirement by refusing a stale number rather than by pretending to measure a fresh one.
+2. **Comparison** against `results/day8/baseline.json`, exact on the mechanical metrics (ADR-034).
+3. **Replay** — `agents/tests/test_replay.py` drives the whole graph over 44 recorded MCP results
+   with a scripted model. Routing, the reroute, the ceilings and the fan-out are all exercised with
+   no GPU. It gates **structure, not quality**, and its docstring says so rather than letting a
+   green replay imply a good model.
+
+**The hash is over the prompt strings, not the files.** Hashing `workers.py` would turn every
+docstring edit red, and a gate that goes red for reasons nobody is working on gets switched off
+inside a week — after which the build is green for a reason nobody can state. So `prompts.REGISTRY`
+names the constants explicitly, and two tests hold the line in both directions: a docstring change
+must not move the hash, a prompt change must. A third test scans the modules for unregistered
+prompt constants, because a prompt the gate cannot see is the one way this mechanism fails
+silently.
+
+**Committing a results file has a cost and it is the point.** A re-run produces a diff in every
+metric line, which makes some commits noisy. A gate needs something to compare against, CI cannot
+produce it, and a committed artifact with a staleness hash is auditable in a way a cached workflow
+artifact is not.
+
+**Only the supervisor is gated.** All three architectures are measured — that keeps Day 7's
+comparison alive as a regression surface for free — but gating all three triples the ways a build
+fails for reasons nobody is working on.
+
+---
+
+## ADR-036 — Three judge axes, and the calibration boundary they are not allowed to cross
+**Date:** 2026-09-08 · **Status:** Accepted
+
+**Decision.** The support judge scores **three axes separately** — `supported`, `complete`,
+`cited_correctly` — using `qwen3.8`, and it **never gates the build**. Human agreement is measured
+against a separate artifact, `golden/judge_calibration/`, which is never merged into `golden/v1`.
+
+**Why three.** They fail for different reasons and one composite hides which. An answer can be
+perfectly supported and cover a third of the question (`supported` passes, `complete` fails). A
+citation can resolve against the index and still be the wrong clause for the claim attached to it
+(`cited_resolvable` passes mechanically, `cited_correctly` fails) — and that last one is the only
+failure in this project that no mechanical check can see, and the one a compliance reviewer would
+care about most.
+
+**Why it is worth having at all, measured.** `qwen3.8` with Day 5's groundedness rubric over eight
+of the supervisor's own answers, each judged twice — as produced, and with one invented requirement
+appended: **0 of 8** poisoned answers judged grounded, and **6 of 8** as-produced answers judged
+grounded. Both halves matter. A judge that passed everything would be perfectly self-consistent and
+worthless; this one refused two of the graph's own answers, and those two are exactly where a human
+score has something to decide. At **3.6s** per call, judging thirty tasks is two minutes.
+
+**And the caveat that goes in the write-up.** An invented 17-year retention period is a *blatant*
+poison. 8/8 on blatant says nothing about subtle. That is what calibration is for, and until it
+happens the judge is uncalibrated and no agreement rate is quoted — not estimated, absent.
+
+**The boundary.** `golden/v1` carries `verification.human_reviewed: false` on all 150 items and a
+test asserts it (ADR-017). Hand-scores live in `golden/judge_calibration/items.jsonl` with their own
+provenance and README, are never used to relabel a golden item, and a calibration record carries no
+`golden_id` field at all — so there is no route back into the golden set even by accident.
+
+**Selection is biased toward disagreement, and the bias is published.** Contested rows first — the
+ones where the judge and the mechanical outcomes reach opposite verdicts. Twenty examples everyone
+already agrees about would report a high agreement rate that is an artifact of picking easy cases.
+The consequence is that the sample is **not representative** and the resulting rate is a **lower
+bound**, which is the useful direction to be wrong in; `agreement.json` carries that sentence in
+its own `sample_note` rather than leaving a reader to work it out.
+
+**Why the judge does not gate.** A build that fails on an uncalibrated model's opinion fails for a
+reason nobody can audit, and a judge outage would then take down the build rather than degrade the
+report. Gating is the mechanical metrics' job.

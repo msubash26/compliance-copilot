@@ -34,3 +34,43 @@ jobs:
       - name: Tests
         working-directory: compliance-copilot
         run: uv run pytest -q
+
+  # Day 8. The evaluation itself cannot run here: GitHub's hosted runners have no
+  # GPU and this account has no self-hosted runner (`gh api .../actions/runners`
+  # returns total_count: 0). A job that skipped when there is no model would be a
+  # green check mark that proves nothing, and Day 4 wrote down that a test which
+  # cannot run in CI is not a gate.
+  #
+  # So the eval runs locally and commits results/day8/eval.json, and this job
+  # gates the artifact: it refuses a number measured against prompts that have
+  # since changed, refuses any mechanical regression against the baseline, and
+  # replays the whole graph over recorded MCP results to catch structural breakage
+  # the artifact cannot see.
+  agent-eval:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: compliance-copilot
+      - uses: actions/checkout@v4
+        with:
+          repository: msubash26/regdocs-mcp
+          path: regdocs-mcp
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv python install 3.12
+      - name: Sync
+        working-directory: compliance-copilot
+        run: uv sync --all-extras --dev
+      # Structure, not quality: a scripted model over 44 recorded tool results.
+      # It cannot tell you the agent got worse at answering, and it says so.
+      - name: Replay the graph without a GPU
+        working-directory: compliance-copilot
+        run: uv run pytest agents/tests/test_replay.py evals/tests/test_prompts.py -q
+      # Staleness first, then every mechanical metric against the baseline. A
+      # prompt changed and pushed without re-running the eval fails here.
+      - name: Gate the committed eval artifact
+        working-directory: compliance-copilot
+        run: uv run regops-evals gate-agent

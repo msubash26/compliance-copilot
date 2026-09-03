@@ -1,0 +1,71 @@
+A gate never observed failing is a gate nobody knows the polarity of.
+This is the transcript of making it fail on purpose, and then pass again.
+
+=== 0. the committed artifact, untouched
+
+  reported, not gated (see the module docstring for why)
+  tool-call precision (mean)                      0.4100    0.4100
+  trajectory efficiency (mean)                    0.3694    0.3694
+  tokens                                          119456    119456
+  p95 latency                                    10.7600   10.7600
+
+GATE PASSED: the artifact is fresh and no mechanical metric regressed.
+   $? = 0
+
+=== 1. degrade EXTRACT_PROMPT — delete the three sentences that explain
+       how to read a citation out of an excerpt header
+  removed 3 lines from workers.EXTRACT_PROMPT
+
+=== 2. push it without re-running the eval. The committed numbers were
+       measured against a prompt that no longer exists.
+  tokens                                          119456    119456
+  p95 latency                                    10.7600   10.7600
+
+  STALE: the prompts changed since this eval was produced (a34086820012 -> 5bdd77e0367c). Moved: workers.EXTRACT_PROMPT. Re-run `regops-evals agent-eval` and commit the artifact.
+
+GATE FAILED: 1 problem(s).
+   $? = 1
+
+=== 3. re-run the eval against the degraded prompt:
+       uv run regops-evals agent-eval --arms supervisor --no-coverage --no-judge \
+                                      --out results/day8/eval-degraded.json
+       (4 minutes on the 3090; the artifact it wrote is used below)
+
+=== 4. the artifact is fresh again — and now the metrics are what fail
+
+  metric                                        baseline       now   verdict
+  ----------------------------------------------------------------------------
+  task success (all four outcomes)                    13        12   FAIL
+  gold documents read                                 19        20   ok
+  cited something resolvable                          30        30   ok
+  abstained correctly                                 20        18   FAIL
+  finished within budget                              30        30   ok
+  tool-call recall (mean)                         0.6933    0.7267   ok
+  resolvable citations                                69        76   ok
+  unresolvable citations                               0         0   ok
+  answered a question the corpus cannot                1         3   FAIL
+  tool-call errors                                     0         0   ok
+  p50 latency (banded)                              6.11      6.77   ok  +11% of 25%
+
+  reported, not gated (see the module docstring for why)
+  tool-call precision (mean)                      0.4100    0.4120
+  trajectory efficiency (mean)                    0.3694    0.3389
+  tokens                                          119456    130877
+  p95 latency                                    10.7600   11.3900
+
+  REGRESSION: task success (all four outcomes) 13 -> 12
+  REGRESSION: abstained correctly 20 -> 18
+  REGRESSION: answered a question the corpus cannot 1 -> 3
+
+GATE FAILED: 3 problem(s).
+   $? = 1
+
+=== 5. revert the prompt
+  tokens                                          119456    119456
+  p95 latency                                    10.7600   10.7600
+
+GATE PASSED: the artifact is fresh and no mechanical metric regressed.
+   $? = 0
+
+Three sentences. Task success 13 -> 12, and the graph went from answering
+1 of the 5 unanswerable questions to answering 3 — the dangerous direction.

@@ -36,6 +36,7 @@ days old. ADR-028 carries the argument and its cost.
 
 from __future__ import annotations
 
+import inspect
 import time
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
@@ -58,6 +59,8 @@ from regops_agents.budget import (
 from regops_agents.checkpoint import checkpointer
 from regops_agents.llm import MODEL
 from regops_agents.mcp_tools import PARSER_RESULT_CHARS, mcp_tools
+from regops_agents.record import Recorder
+from regops_agents.trace import NULL, SPAN, Tracer
 from regops_agents.workers import (
     COVERAGE_TOP_K,
     TOP_K,
@@ -431,6 +434,54 @@ async def node_synthesise(state: SupervisorState, config) -> dict:
 # -- the graph ---------------------------------------------------------------
 
 
+# What a node span carries. Not the state: `context` alone is 11,000 characters
+# on a coverage run, and a span tree whose every node holds a copy of it is
+# unreadable in the UI and expensive to ship. These are the fields a person
+# reading the waterfall is actually asking about.
+SPAN_KEYS = ("route", "query", "sufficient", "stopped_by", "retries", "approved")
+
+
+def _summary(obj) -> dict:
+    """A node's state or `Send` payload, compacted to what a trace should show."""
+    if not isinstance(obj, dict):
+        return {}
+    out = {k: obj[k] for k in SPAN_KEYS if k in obj}
+    for k, v in (("hits", "hits"), ("citations", "citations"), ("findings", "findings")):
+        if isinstance(obj.get(k), list):
+            out[f"n_{v}"] = len(obj[k])
+    if isinstance(obj.get("context"), str):
+        out["context_chars"] = len(obj["context"])
+    if isinstance(obj.get("doc"), dict):  # the fan-out branch payload
+        out["doc_id"] = obj["doc"].get("doc_id", "")
+        out["title"] = obj["doc"].get("title", "")[:60]
+    return out
+
+
+def _traced(name: str, fn):
+    """One node, wrapped in a span, without touching the node.
+
+    Wrapping at registration rather than inside each body is what keeps the
+    tracing from becoming nine more things to keep in step. The tracer comes out
+    of the toolbox, which every node already receives, so an untraced run runs
+    the unwrapped path and pays a dict lookup.
+    """
+    is_async = inspect.iscoroutinefunction(fn)
+
+    async def node(state, config):
+        box, *_ = _cfg(config)
+        if not box.tracer.enabled:
+            return await fn(state, config) if is_async else fn(state, config)
+        with box.tracer.observe(name, as_type=SPAN, input=_summary(state)) as obs:
+            out = await fn(state, config) if is_async else fn(state, config)
+            update = getattr(out, "update", out) if not isinstance(out, dict) else out
+            obs.update(output=_summary(update if isinstance(update, dict) else {}))
+            return out
+
+    node.__name__ = f"traced_{name}"
+    node.__doc__ = fn.__doc__
+    return node
+
+
 def build(*, plan_and_execute: bool = False):
     """The supervisor. `plan_and_execute=True` is Phase 5's variant, not a mode.
 
@@ -441,19 +492,27 @@ def build(*, plan_and_execute: bool = False):
     not of two implementations that happen to differ everywhere.
     """
     g = StateGraph(SupervisorState)
-    g.add_node("router", node_router, destinations=("retrieve", "synthesise"))
-    g.add_node("retrieve", node_retrieve, destinations=("extract", "fan_out", "synthesise"))
-    g.add_node("extract", node_extract, destinations=("check", "synthesise"))
+    g.add_node("router", _traced("router", node_router), destinations=("retrieve", "synthesise"))
+    g.add_node(
+        "retrieve",
+        _traced("retrieve", node_retrieve),
+        destinations=("extract", "fan_out", "synthesise"),
+    )
+    g.add_node("extract", _traced("extract", node_extract), destinations=("check", "synthesise"))
     g.add_node(
         "check",
-        node_check if not plan_and_execute else _check_once,
+        _traced("check", node_check if not plan_and_execute else _check_once),
         destinations=("retrieve", "synthesise"),
     )
-    g.add_node("fan_out", node_fan_out, destinations=("inspect", "synthesise"))
-    g.add_node("inspect", node_inspect)
-    g.add_node("check_findings", node_check_findings, destinations=("approve",))
-    g.add_node("approve", node_approve, destinations=("retrieve", "synthesise"))
-    g.add_node("synthesise", node_synthesise)
+    g.add_node("fan_out", _traced("fan_out", node_fan_out), destinations=("inspect", "synthesise"))
+    # The four branches are siblings under `fan_out` in the trace, which is the
+    # picture that shows Day 7's 1.00x rather than arguing it.
+    g.add_node("inspect", _traced("inspect", node_inspect))
+    g.add_node(
+        "check_findings", _traced("check_findings", node_check_findings), destinations=("approve",)
+    )
+    g.add_node("approve", _traced("approve", node_approve), destinations=("retrieve", "synthesise"))
+    g.add_node("synthesise", _traced("synthesise", node_synthesise))
 
     g.add_edge(START, "router")
     g.add_edge("inspect", "check_findings")
@@ -494,6 +553,8 @@ async def running(
     plan_and_execute: bool = False,
     persist: bool = False,
     approve: bool = True,
+    recorder: Recorder | None = None,
+    tracer: Tracer = NULL,
 ) -> AsyncIterator[tuple]:
     """Everything a run needs, opened once and closed once.
 
@@ -514,10 +575,22 @@ async def running(
             # The graph parses tool results and compacts them itself, so it takes
             # them whole. The model-facing cap stays where Day 6 put it, on the
             # agent that puts raw results into a prompt. See F14.
-            mcp_tools(index, max_result_chars=PARSER_RESULT_CHARS) as tools,
+            mcp_tools(
+                index,
+                max_result_chars=PARSER_RESULT_CHARS,
+                recorder=recorder,
+                tracer=tracer,
+            ) as tools,
             checkpointer(required=persist) as saver,
         ):
-            box = Toolbox(index=index, tools={t.name: t for t in tools}, ix=ix, model=model)
+            box = Toolbox(
+                index=index,
+                tools={t.name: t for t in tools},
+                ix=ix,
+                model=model,
+                recorder=recorder,
+                tracer=tracer,
+            )
             app = graph.compile(checkpointer=saver)
 
             def config(thread: str) -> dict:
@@ -546,15 +619,21 @@ async def ask(
     question: str,
     *,
     thread: str | None = None,
+    trace_name: str = "supervisor",
 ) -> dict:
     """One question through the graph. Returns state plus what it cost.
 
     Never raises on a ceiling -- that is the contract Day 6 established and the
     prep plan asks for in as many words: *"a partial result returned rather than
     an exception"*.
+
+    One trace per question, so a LangFuse trace and an eval row are the same
+    unit. Anything coarser makes "which task was slow" a question you answer by
+    counting spans.
     """
     thread = thread or f"q-{time.time_ns()}"
     cfg = config(thread)
+    tracer = cfg["configurable"]["toolbox"].tracer
     t0 = time.perf_counter()
     state = {
         "question": question,
@@ -563,7 +642,9 @@ async def ask(
         "findings": [],
         "notes": [],
     }
-    out = await app.ainvoke(state, cfg)
+    with tracer.trace(trace_name, input={"question": question}) as root:
+        out = await app.ainvoke(state, cfg)
+        root.update(output={"answer": (out.get("answer") or "")[:2000]})
     out["thread_id"] = thread
     out["wall_seconds"] = round(time.perf_counter() - t0, 3)
     out["cost"] = summary(out.get("spend") or new_spend(), cfg["configurable"]["budget"])

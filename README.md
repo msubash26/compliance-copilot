@@ -3,11 +3,11 @@
 RAG + multi-agent system over MAS / SGX regulatory corpora, running fully local on an
 RTX 3090 (air-gapped path), with a Bedrock parity path for cost/quality comparison.
 
-**Status:** Day 7 — a supervisor over the same MCP server, with a Postgres checkpointer, a
-human-in-the-loop interrupt and a three-currency cost ceiling. Its headline number is negative:
-**parallel fan-out bought 1.00× against a 3.12× ceiling.** `FAILURE_MODES.md` is fifteen
-reproducible failures; three of them could only have been found by the architecture that bought
-no time.
+**Status:** Day 8 — thirty agent tasks with machine-checkable expectations, five metrics over
+three architectures, LangFuse traces, a three-axis judge, and **a CI gate that fails on a stale
+artifact or any mechanical regression**. Change a prompt, push without re-running the eval, and
+the build goes red. `FAILURE_MODES.md` is sixteen reproducible failures; four of them could only
+have been found by the architecture that bought no time.
 
 ## Layout
 
@@ -281,7 +281,7 @@ uv run regops-agents "What must a bank do to identify the beneficial owner of a 
 ```
 
 A LangGraph ReAct agent over `regdocs-mcp`'s four tools, plus `search_local` backed by C4. The
-working demo is the easy half; the deliverable is [`FAILURE_MODES.md`](FAILURE_MODES.md) — **15
+working demo is the easy half; the deliverable is [`FAILURE_MODES.md`](FAILURE_MODES.md) — **16
 failures, each with a trigger that reproduces it, a symptom measured with an `n`, a mitigation,
 and what that mitigation cost.** A failure with no reproduction is a story; a mitigation with no
 cost is a sales pitch.
@@ -407,9 +407,118 @@ F15 (parallel tool calls on one MCP session read each other's results, so a vali
 back as *no such document* — fixed in `regdocs-mcp`, ADR-009). None needs a better model; all
 three need a run that pauses, a consumer that parses rather than reads, or two calls in flight.
 
+## The agent eval, and a gate that can actually fail
+
+```bash
+uv run regops-evals build-tasks                  # 30 tasks, derived from golden/v1
+uv run regops-evals agent-eval --trace           # ~16 min on the 3090, all three arms
+uv run regops-evals gate-agent                   # what CI runs
+```
+
+Thirty end-to-end tasks, **derived from the golden set rather than rewritten from it**: each
+carries the `golden_id` it came from, so a change to `golden/v1` shows up as a failing test
+rather than as drift. `min_tool_calls` is supplied by the data too — one search plus one read per
+distinct gold document — so trajectory efficiency is a ratio against a principled floor.
+[`results/day8/day8.md`](results/day8/day8.md), generated.
+
+**Task success is four mechanical outcomes and the composite that requires all four** — read
+every gold document, cite something that resolves, abstain iff the corpus cannot answer, finish
+inside the budget. No judge appears in any of them.
+
+| | single agent | supervisor | plan-and-execute |
+|---|---|---|---|
+| task success (all four) | 7/30 | **13/30** | **13/30** |
+| gold documents read | 17/30 | 19/30 | 19/30 |
+| cited something resolvable | 14/30 | **30/30** | **30/30** |
+| resolvable citations | 16 | 69 | **73** |
+| **identifiers that do not exist** | **17** | **0** | **0** |
+| tokens | 590,990 | 119,456 | **106,220** |
+| p50 / p95 seconds | 6.0 / 22.3 | 6.1 / **10.8** | **5.5** / 10.6 |
+| tool-call recall | 0.56 | **0.69** | **0.69** |
+| trajectory efficiency | **0.74** | 0.37 | 0.38 |
+
+**The single agent asserted 33 citations and 17 of them do not exist.** That is the headline, and
+it is worse than Day 7's smaller sample suggested. It also spends **4.9× the tokens** and its p95
+is **2.1×** the graph's, because it re-reads its own tool output through a context window on
+every step.
+
+**And it wins two columns, which is why they are in the table.** Trajectory efficiency and
+tool-call precision both go to the single agent, for the same reason: the supervisor's retriever
+always spends one search and five reads, so its efficiency is a property of a fixed shape rather
+than of a decision per task. *If the task is one clause and nobody will check the citation, a
+single agent is cheaper per call and the graph is overhead.* The graph's case rests entirely on
+the identifiers being real.
+
+**Abstention is two rates, never one** (ADR-021, applied to agents). The supervisor answers only
+1 of the 5 unanswerable questions against the single agent's 2 — and refuses **9 of 25**
+answerable ones against 6. The strict-citation schema that removed the fabrications also made the
+graph shyer, and both halves are published.
+
+**Plan-and-execute is the supervisor minus one edge and it beats it.** Identical mechanical
+outcomes for 11% fewer tokens, 10% faster, and **four more** resolvable citations — the reroute
+fires, replaces a good retrieval with a second one, and loses evidence. This is the second day
+running that a retry loop has measured to zero or worse (F11 was the first).
+
+### Layer 3, and the human half
+
+A three-axis judge (`supported`, `complete`, `cited_correctly`) on `qwen3.8` — not the model that
+wrote the answers. It splits the arms where the mechanical checks cannot: `supported` **11/16**
+for the graph against **6/19** for the single agent, `cited_correctly` **14/16** against **9/19**.
+It does not gate: an uncalibrated model's opinion is not something a build should fail on.
+
+[`golden/judge_calibration/`](golden/judge_calibration/) holds 20 verdicts selected for a human to
+score, **11 of them contested** — the judge and the mechanical checks reach opposite verdicts. It
+is a separate artifact with its own README, never merged into `golden/v1`, never used to relabel
+an item (ADR-017, ADR-036). Until it is scored, `calibration-report` prints `uncalibrated` and
+**quotes no number**.
+
+### The gate
+
+CI has no GPU and this account has no self-hosted runner (`total_count: 0`), so the eval cannot
+run where the gate runs. A CI job that skips when there is no model is a green check mark that
+proves nothing. So the eval runs locally, commits `results/day8/eval.json`, and **CI gates the
+artifact** three ways (ADR-035):
+
+- **Staleness** — the artifact hashes every prompt and system message it was produced from, plus
+  the task file. CI recomputes both. *A prompt changed and pushed without a re-run fails the
+  build.* The hash covers the prompt **strings**, not the files, so a docstring edit does not turn
+  the build red — asserted in both directions by `evals/tests/test_prompts.py`.
+- **Comparison** — every mechanical metric must be at least as good as `baseline.json`, **exactly**.
+  Not 5%: the noise floor was measured at zero (below). Latency alone gets a 25% band against a
+  measured 6.5% spread (ADR-034).
+- **Replay** — `agents/tests/test_replay.py` drives the whole graph over 44 recorded MCP results
+  with a scripted model, in under a second, with no GPU. Routing, the reroute, the ceilings and
+  the fan-out. It gates **structure, not quality**, and says so.
+
+[`results/day8/gate-can-fail.txt`](results/day8/gate-can-fail.txt) is the transcript of the gate
+being made to fail on purpose: three sentences deleted from `EXTRACT_PROMPT`, the build red on
+staleness, then red again on the metrics after a re-run, then green after a revert. A gate never
+observed failing is a gate nobody knows the polarity of.
+
+### Traces
+
+`--trace` sends one trace per task to LangFuse — a span per node, a generation per model call
+carrying Ollama's token counts, a tool span per MCP call. Opt-in and non-fatal: a LangFuse that is
+down degrades a run to untraced rather than failing it. See [`docs/langfuse.md`](docs/langfuse.md)
+for v4's renamed span API and its read-only 404s, and
+[`docs/trace-fanout.txt`](docs/trace-fanout.txt) for the picture that makes Day 7's fan-out result
+legible: four `inspect` siblings starting together and finishing at 5.98s, 8.32s, 10.52s and
+13.08s — a staircase, which is what a queue looks like.
+
 ## Decisions
 
-[`DECISIONS.md`](DECISIONS.md) — 32 ADRs. The Day 7 ones:
+[`DECISIONS.md`](DECISIONS.md) — 36 ADRs. The Day 8 ones:
+
+- **ADR-033** "Task success" is four mechanical outcomes and the composite that needs all four,
+  every one derived from the golden set; why recall counts documents *read* rather than retrieved
+- **ADR-034** The gate is exact on quality and banded only on latency, because the noise floor was
+  measured at zero and the 6.5% latency spread was not
+- **ADR-035** The eval runs locally and CI gates the artifact — staleness, comparison, replay —
+  because there is no GPU where the build runs
+- **ADR-036** Three judge axes scored separately, the judge never gates, and the calibration
+  boundary `golden/v1` is not allowed to cross
+
+The Day 7 ones:
 
 - **ADR-028** The supervisor is hand-rolled, `langgraph-supervisor` was available and rejected,
   and the model is not allowed to supply an identifier — which closes F1 and F7 by removing the

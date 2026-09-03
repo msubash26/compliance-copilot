@@ -1,13 +1,19 @@
 # regops-agents
 
 Two agents over [`regdocs-mcp`](https://github.com/msubash26/regdocs-mcp) — a LangGraph ReAct
-agent (Day 6) and a supervisor graph (Day 7) — and the fifteen ways they fail.
+agent (Day 6) and a supervisor graph (Day 7) — and the sixteen ways they fail.
 
 The working demo is the easy half. The deliverables are
-[`FAILURE_MODES.md`](../FAILURE_MODES.md) — fifteen failures, each with a trigger that reproduces
+[`FAILURE_MODES.md`](../FAILURE_MODES.md) — sixteen failures, each with a trigger that reproduces
 it, a symptom measured with an `n`, a mitigation, and what that mitigation cost — and
-[`results/day7/day7.md`](../results/day7/day7.md), which puts the two architectures in the same
-table and lets the single agent win where it wins.
+[`results/day8/day8.md`](../results/day8/day8.md), which puts three architectures on thirty tasks
+with machine-checkable expectations and lets the single agent win where it wins.
+
+Day 8 added two things to this package that are not agents. `record.py` records every MCP call —
+name, arguments, result size, error, elapsed — on the **bridge** rather than in either agent,
+because that is the one layer both architectures pass through; instrumenting each separately would
+produce two records and an argument about whether they are comparable. `trace.py` sends the same
+events to LangFuse, opt-in and unable to take a run down with it.
 
 ```bash
 uv run regops-agents "What must a bank do to identify the beneficial owner of a customer?"
@@ -90,14 +96,30 @@ uv run python -m regops_agents.toolcall_probe --system steered
 uv run python -m regops_agents.measure_structured --arm bm25     # F2, ADR-026
 uv run python -m regops_agents.measure_structured --arm c4       # ADR-025
 uv run python -m regops_agents.provoke                           # F3, F5, F6, F7
+uv run python -m regops_agents.fanout                            # Day 7: 1.00x vs 3.12x
+uv run python -m regops_agents.architectures                     # Day 7: three arms
+uv run regops-evals agent-eval --trace                           # Day 8: the whole eval
 ```
 
-Raw rows land in `results/day6/` and are committed.
+Raw rows land in `results/day6/`, `results/day7/` and `results/day8/`, and are committed. The
+Day 8 artifact is committed for a further reason: CI has no GPU, so the build gates
+`results/day8/eval.json` rather than reproducing it (ADR-035).
 
 ## Tests
 
-`uv run pytest agents/ -q` — 20 tests, **no model and no server**. A scripted chat model drives
-the graph, so the step ceiling, the harvester and the citation resolver are all testable in CI.
+`uv run pytest agents/ -q` — **no model and no server**. A scripted chat model drives the graph,
+so the step ceiling, the harvester and the citation resolver are all testable in CI.
+
+`test_replay.py` is the newest and the one with a limit worth stating: it runs the **whole** graph
+over 44 recorded MCP results with a scripted model, in under a second, and it gates **structure,
+not quality**. It cannot tell you the agent got better or worse at answering — the model is a
+script and the corpus is a frozen dict. It can tell you whether the router still reaches the
+retriever, whether a coverage question still fans out into four siblings, whether an unresolvable
+citation still sends a run backwards exactly once, and whether a ceiling still returns a partial
+answer instead of raising. Those are what break when someone edits an edge, and every one of them
+is invisible to a metrics artifact produced before the edit. A tool call the fixture does not hold
+**raises**, loudly: a replay whose misses fall back to an empty result passes forever while testing
+nothing.
 The citation-resolver fixture is the actual bad output from the research run:
 `{"doc_id": "[1]", "section_path": "clause 6.14 (d0000001:6.14)"}`.
 

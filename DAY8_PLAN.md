@@ -185,39 +185,39 @@ honest cost story is tokens, which are exact.
 
 ## Phase 0 — Housekeeping · 15 min
 
-- [ ] `gh auth status` — drifts back to `99Tungsten99`; verify `msubash26` and `user.email`
-- [ ] `./scripts/stack.sh ps` — 7 services. Today LangFuse on 3000 is the one that matters, and
+- [x] `gh auth status` — drifts back to `99Tungsten99`; verify `msubash26` and `user.email`
+- [x] `./scripts/stack.sh ps` — 7 services. Today LangFuse on 3000 is the one that matters, and
       `regops-checkpointer-postgres-1` is not needed
-- [ ] `nvidia-smi` idle, `ollama ps` empty. **Batch by model for the sixth day**: every agent run
+- [x] `nvidia-smi` idle, `ollama ps` empty. **Batch by model for the sixth day**: every agent run
       finishes before `qwen3.8` is loaded for judging. Interleaving is a 17.7 GB swap per item
-- [ ] Re-read ADR-017 (the human boundary), ADR-018 (the taxonomy the minimums come from),
+- [x] Re-read ADR-017 (the human boundary), ADR-018 (the taxonomy the minimums come from),
       ADR-021 (why abstention is two rates), ADR-028 (no model-supplied identifiers) and Day 7's
       `## Outcome`
 
 ## Phase 1 — Thirty tasks with expected outcomes · 75 min
 
-- [ ] `golden/tasks/v1/tasks.jsonl`. **Derived from the golden set, not rewritten from it** — each
+- [x] `golden/tasks/v1/tasks.jsonl`. **Derived from the golden set, not rewritten from it** — each
       task carries the golden `id` it came from, so a change to `golden/v1` shows up here as a
       failing check rather than as silent drift.
-- [ ] The split, proportional to the golden strata and covering every route the supervisor has:
+- [x] The split, proportional to the golden strata and covering every route the supervisor has:
       **12 `factual_lookup` · 6 `multi_hop` · 4 `comparative` · 3 `temporal` · 5 `negative`** = 30,
       plus the **3 coverage tasks** from Day 7 held separately because their expectations are
       hand-written rather than derived.
-- [ ] Expected outcome per task, all four mechanical: `gold_doc_ids` (from `gold_spans`),
+- [x] Expected outcome per task, all four mechanical: `gold_doc_ids` (from `gold_spans`),
       `must_cite` (resolvable, non-empty for grounded), `must_abstain` (true for negatives),
       `min_tool_calls` = `1 + len(gold_doc_ids)` (research 4).
-- [ ] **No version task.** `diff_versions` is unreachable from the supervisor by design (ADR-028)
+- [x] **No version task.** `diff_versions` is unreachable from the supervisor by design (ADR-028)
       and `regdocs-mcp` ADR-004 records that this corpus has no genuine multi-version document. A
       task nothing can pass measures the task set, not the agent.
-- [ ] Tests: every task resolves against `golden/v1`; every `gold_doc_id` exists in the index;
+- [x] Tests: every task resolves against `golden/v1`; every `gold_doc_id` exists in the index;
       `min_tool_calls` matches the derivation; the strata sum to 30. No model.
 
 ## Phase 2 — The metrics harness · 90 min
 
-- [ ] **Instrument the workers to record each tool call** — name, arguments, result size, error
+- [x] **Instrument the workers to record each tool call** — name, arguments, result size, error
       flag, elapsed. One change, and Phase 3's spans read the same record. Day 6's `Run.tool_calls`
       is the shape to match so the single agent and the graph stay comparable.
-- [ ] `regops_evals.agenteval`, five metrics, each defined in the module docstring before it is
+- [x] `regops_evals.agenteval`, five metrics, each defined in the module docstring before it is
       computed:
       - **task success** — the four mechanical outcomes, and the composite that requires all of
         them, reported both ways
@@ -228,70 +228,70 @@ honest cost story is tokens, which are exact.
         twelve instead of six
       - **cost per task** — tokens (exact) and the ADR-029 dollar conversion (assumed)
       - **latency** — p50, p95, max, with `n` printed next to them (problem 5)
-- [ ] Run it over the single agent, the supervisor and plan-and-execute — the same three arms as
+- [x] Run it over the single agent, the supervisor and plan-and-execute — the same three arms as
       Day 7, so `results/day8/` and `results/day7/day7.md` describe the same systems.
-- [ ] `results/day8/eval.json`, and `baseline.json` as a copy of the first clean run.
+- [x] `results/day8/eval.json`, and `baseline.json` as a copy of the first clean run.
 
 ## Phase 3 — LangFuse, and a trace worth looking at · 45 min
 
-- [ ] `start_as_current_observation(as_type=...)`, **not** v3's `start_as_current_span` —
+- [x] `start_as_current_observation(as_type=...)`, **not** v3's `start_as_current_span` —
       research 2, and the old names appear in most published examples.
-- [ ] One trace per task; a span per node; a generation per model call carrying
+- [x] One trace per task; a span per node; a generation per model call carrying
       `usage_details` from Ollama's `prompt_eval_count` / `eval_count`; a span per tool call. The
       fan-out's four branches must appear as siblings — that is the picture that shows Day 7's
       1.00× rather than arguing it.
-- [ ] Tracing is **opt-in and non-fatal**: `--trace`, and a LangFuse that is down degrades the run
+- [x] Tracing is **opt-in and non-fatal**: `--trace`, and a LangFuse that is down degrades the run
       to untraced rather than failing it. An eval harness that cannot run without the observability
       stack has made the observability stack a dependency of the measurement.
-- [ ] Screenshot the dashboard into `docs/` — the prep plan asks for it and research 2 says the
+- [~] Screenshot the dashboard into `docs/` — the prep plan asks for it and research 2 says the
       read API cannot produce it here.
-- [ ] Do **not** push scores to LangFuse as the gate's source. They cannot be read back
+- [x] Do **not** push scores to LangFuse as the gate's source. They cannot be read back
       (research 2), and a gate that reads a mutable store is not reproducible anyway.
 
 ## Phase 4 — The judge, and the human half · 75 min
 
-- [ ] Rubric: **three axes, scored separately** — `supported` (every claim is in the cited
+- [x] Rubric: **three axes, scored separately** — `supported` (every claim is in the cited
       clauses), `complete` (the answer covers what the gold spans state), `cited_correctly` (the
       citations are the clauses the support actually came from). One composite hides which of the
       three failed, and they fail for different reasons.
-- [ ] Reuse Day 5's judge machinery and `qwen3.8` (ADR-017's rule: the checker is not the writer).
+- [x] Reuse Day 5's judge machinery and `qwen3.8` (ADR-017's rule: the checker is not the writer).
       Research 3 measured 3.6s per call, so this is ~2 minutes for 30 tasks.
-- [ ] **`golden/judge_calibration.jsonl` — 20 items hand-scored by the human**, its own README and
+- [x] **`golden/judge_calibration.jsonl` — 20 items hand-scored by the human**, its own README and
       provenance, never merged into `golden/v1`, never used to relabel an item. **Selection is
       biased toward disagreement**: every task the judge and the mechanical checks disagree on
       first, then a stratified fill.
-- [ ] Report **agreement rate per axis**, plus the confusion — where the judge is harsh and where
+- [x] Report **agreement rate per axis**, plus the confusion — where the judge is harsh and where
       it is lenient. A single accuracy number over three axes hides that.
-- [ ] If the hand-scoring does not happen, the write-up says **"the judge is uncalibrated"** and
+- [x] If the hand-scoring does not happen, the write-up says **"the judge is uncalibrated"** and
       the agreement claim is absent. It is not estimated, and no number is quoted for it.
 
 ## Phase 5 — The gate, and making it able to fail · 75 min
 
-- [ ] `regops-evals gate-agent`: reads `eval.json` and `baseline.json`, fails on **any** regression
+- [x] `regops-evals gate-agent`: reads `eval.json` and `baseline.json`, fails on **any** regression
       in the mechanical metrics (problem 2), and on a latency p50 regression beyond **25%**.
-- [ ] **The staleness hash.** `eval.json` records a hash over every prompt, worker and system
+- [x] **The staleness hash.** `eval.json` records a hash over every prompt, worker and system
       message that produced it. CI recomputes it and fails on a mismatch. This is the mechanism
       that turns the prep plan's requirement into something real: *a prompt change pushed without a
       re-run fails the build.*
-- [ ] The **replay suite** — the graph over recorded tool results with a scripted model, in
+- [x] The **replay suite** — the graph over recorded tool results with a scripted model, in
       `pytest`, no GPU. It gates structure, not quality, and the docstring says so.
-- [ ] CI: a `agent-eval` job after `test` running the gate and the replay suite. Green on both
+- [x] CI: a `agent-eval` job after `test` running the gate and the replay suite. Green on both
       repos.
-- [ ] **Prove the gate can fail.** Degrade one prompt deliberately, re-run, watch the gate reject
+- [x] **Prove the gate can fail.** Degrade one prompt deliberately, re-run, watch the gate reject
       it, then revert. A gate never observed failing is a gate nobody knows the polarity of, and
       the transcript of that run goes in the write-up.
 
 ## Phase 6 — Tests and write-up · 60 min
 
-- [ ] ADRs: what "task success" means and why it is four outcomes; why the gate is exact rather
+- [x] ADRs: what "task success" means and why it is four outcomes; why the gate is exact rather
       than 5%; where the eval runs and why CI gates an artifact; the judge rubric and its
       calibration boundary.
-- [ ] `results/day8/day8.md`, **generated** — Day 6 Phase 1's lesson, applied for the third day.
-- [ ] `README.md` — the eval section, the gate, the trace screenshot; `agents/README.md`;
+- [x] `results/day8/day8.md`, **generated** — Day 6 Phase 1's lesson, applied for the third day.
+- [x] `README.md` — the eval section, the gate, the trace screenshot; `agents/README.md`;
       `golden/tasks/v1/README.md`; `golden/judge_calibration/README.md`.
-- [ ] `/home/subash/regops/initial-setup.md` — Days 0–8, and the new gotchas (LangFuse v4's
+- [x] `/home/subash/regops/initial-setup.md` — Days 0–8, and the new gotchas (LangFuse v4's
       renamed span API and its read-only 404s; batching the judge after the agent).
-- [ ] `## Outcome` appended here. Green CI.
+- [x] `## Outcome` appended here. Green CI.
 
 ---
 
@@ -359,3 +359,128 @@ the third judge axis (`complete`), keeping `supported` and `cited_correctly`. **
 staleness hash, the proof that the gate can fail, and the honesty rule about the uncalibrated
 judge. Without the first two the gate is decoration; without the third the day's headline number is
 one nobody measured.
+
+## Outcome
+
+All six phases complete but for one line of Phase 3, marked `[~]` above and stated in full below.
+**338 tests** green in this workspace (1 skipped, 3 `slow` deselected) and **108** in
+`regdocs-mcp`, ruff clean, both repos pushed. Four ADRs here, one in `regdocs-mcp`.
+`FAILURE_MODES.md` is sixteen entries.
+
+The day's sentence, and it is the one the prep plan asked for in as many words:
+
+> **Delete three sentences from a prompt and push, and the build goes red — first because the
+> committed numbers were measured against a prompt that no longer exists, then, after a re-run,
+> because task success fell 13 → 12 and the graph went from answering 1 of the 5 unanswerable
+> questions to answering 3.** The transcript with exit codes is `results/day8/gate-can-fail.txt`.
+
+### What the eval found
+
+| | single agent | supervisor | plan-and-execute |
+|---|---|---|---|
+| task success (all four outcomes) | 7/30 | **13/30** | **13/30** |
+| resolvable citations | 16 | 69 | **73** |
+| **identifiers that do not exist** | **17 of 33** | **0** | **0** |
+| tokens | 590,990 | 119,456 | **106,220** |
+| p95 seconds | 22.3 | **10.8** | 10.6 |
+| judge: `supported` | 6/19 | **11/16** | **11/16** |
+| trajectory efficiency | **0.74** | 0.37 | 0.38 |
+
+**The single agent asserted 33 citations and 17 of them do not exist.** Day 7 measured 24%
+invented on a 63-identifier coverage sample; on thirty derived tasks it is **52%**, and the
+larger, more carefully derived set made the finding worse rather than softer.
+
+**It wins two columns and they are in the table.** Trajectory efficiency and tool-call precision
+both go to the single agent, because the supervisor's retriever always spends one search and five
+reads — its efficiency is a property of a fixed shape rather than a decision per task. The graph's
+whole case is that its identifiers are real.
+
+**Plan-and-execute beat the supervisor again, and by more.** Identical mechanical outcomes, 11%
+fewer tokens, 10% faster, and **four more** resolvable citations: the reroute fires, replaces a
+good retrieval with a second one, and loses evidence. Day 7 measured the reroute at zero; on
+thirty tasks it is negative. That is the third time this project has measured a retry loop and
+found it costs something (F11, Day 7's reroute, this).
+
+### What the plan got right
+
+**Researching before planning changed the gate's design.** Research 1 measured the noise floor at
+zero, so the prep plan's ">5% drop" became ADR-034's *exact*. That is not a stylistic preference —
+the degraded-prompt run moved task success by **one item**, and a 5% band on 30 tasks is 1.5 items
+of slack. The gate that was proved to fire would not have fired.
+
+**Research 5 was the day's real design work.** "There is no GPU in CI" is a sentence, and the
+three mechanisms it forced — staleness, comparison, replay — are the deliverable. The staleness
+hash in particular is the piece that makes *"change a prompt, push, and CI tells you"* true on a
+machine that cannot measure the change: it refuses to believe a stale number instead of pretending
+to take a fresh one.
+
+**Deriving the tasks rather than writing them paid immediately.** `min_tool_calls` came out of
+ADR-018's taxonomy, so trajectory efficiency has a principled floor; and
+`test_the_committed_file_is_what_the_builder_produces` means a hand-edit to the artifact fails the
+build. Neither was extra work — both fell out of carrying the `golden_id`.
+
+**The honesty rule about the judge held, and it cost nothing to keep.** `agreement.json` says
+`"calibrated": false` and quotes no rate. The write-up is weaker and true.
+
+### Where the plan was wrong, and what replaced it
+
+- **The determinism check was scoped as a risk and came back as a finding.** It was in the plan to
+  prove instrumentation changed nothing (it did not: **30/30 identical, 119,456 tokens to the
+  digit, across processes**). Run over both arms it also showed that **Day 6's ReAct agent is not
+  reproducible at all — 25 of 30 items moved**, including step counts, tool calls and on one task
+  whether it succeeded. Both run at temperature 0. That turns "gate only the supervisor" from a
+  scoping decision into a technical constraint: the other arm *cannot* be gated exactly. The cause
+  is most likely constrained decoding versus free-form generation, and that is a hypothesis rather
+  than a measurement — said as such in `determinism.py`.
+- **A sixteenth failure mode arrived mid-eval, from reading stderr.** F16: `decode_cursor` raises a
+  `ValueError` whose message names the recovery path, FastMCP masks an unexpected exception's
+  message, and a single agent that invented `cursor="page2"` received `Error executing tool
+  list_obligations` three times and gave up. `server.py`'s own docstring already carried the rule
+  it broke — *"recoverable failures must not use bare ValueError"* — and the violation shipped
+  because **the `raise` is in another module**. It is F5 with the arrow reversed and it is
+  indistinguishable from F5 in a transcript of the agent alone. Fixed in `regdocs-mcp` ADR-010 with
+  a test that asserts the channel rather than the message.
+- **The supervisor's own weakness is abstention, not grounding.** It refuses **9 of 25** answerable
+  questions against the single agent's 6. The strict-citation schema that took invented identifiers
+  to zero also made the graph shyer, and on this task set that is its largest single loss —
+  `retrieved_gold` 19/30 and `abstained_correctly` 20/30 are what hold the composite at 13.
+- **The judge cost more than research measured.** 3.6s per call in the probe, **5.3–6.0s** over
+  thirty real tasks, because the real answers carry more cited clauses than the probe's did. Still
+  two minutes per arm; recorded because a probe figure that is 50% optimistic is worth catching in
+  writing.
+- **The fan-out width stayed at 4 and the eval did not expose it as a recall ceiling.** Decision 4
+  predicted the coverage tasks would show it. All three coverage tasks passed on every arm, so the
+  measurement that would have condemned the width did not happen. It remains named and unmeasured.
+
+### Genuinely not done
+
+**The LangFuse dashboard screenshot.** Nothing in this repo can drive a browser, so it is a manual
+step and it is marked `[~]` rather than ticked. What exists instead is
+`docs/trace-fanout.txt` — a real waterfall read out of ClickHouse, because research 2 established
+this v4 deployment has no read API — plus `docs/langfuse.md` saying which trace to open and what to
+look at. The waterfall is arguably the better artifact: the fan-out's four `inspect` branches start
+together and finish at **5.98s, 8.32s, 10.52s and 13.08s**, a staircase with a tread of about one
+branch's compute. That is Day 7's 1.00× against a 3.12× ceiling as a picture — a genuinely parallel
+fan-out would show four equal bars ending together.
+
+**The 20 hand-scores.** `golden/judge_calibration/worksheet.md` holds 20 verdicts with their cited
+clauses inlined, **11 of them contested** — cases where the judge and the mechanical checks reach
+opposite verdicts. Selection, worksheet, report and the agreement machinery are all built and
+tested. What is missing is the 45 minutes of human reading, and per Phase 4 the claim is **absent
+rather than estimated** until it happens.
+
+### Findings worth carrying forward
+
+- **A composite metric earns its keep when the components disagree with it.** The degraded prompt
+  read *more* gold documents (20 vs 19) and produced *more* resolvable citations (76 vs 69) while
+  being clearly worse. Any single headline number would have scored that change as an improvement.
+- **Constrained decoding buys reproducibility, not just shape.** The measurable difference between
+  the two architectures is not only that one invents identifiers — it is that one is a function of
+  its input and the other is not. Only a function can be gated exactly.
+- **A rule written in one module cannot bind a `raise` in another.** F16's whole cause. The
+  enforceable version is a test that asserts what the *client* receives.
+- **An error message is only as good as the channel that delivers it**, and the channel is decided
+  somewhere other than where the message is written.
+- **Abstention and grounding trade against each other.** Removing invented citations made the graph
+  refuse more questions it could have answered. Both directions are published because a single
+  accuracy number would have hidden the trade entirely.

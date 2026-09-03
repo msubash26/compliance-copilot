@@ -1,0 +1,53 @@
+trace 18284e2402f95140721dd01bb4f5e0cb
+
+span                                    type        elapsed tokens  |0s                     21.0s|
+----------------------------------------------------------------------------------------------------------
+supervisor · t-903                      SPAN         21.00s         |##############################################|
+  router                                SPAN          0.53s         |#                                             |
+    llm:route                           GENERATION    0.53s    197  |#                                             |
+  retrieve                              SPAN          0.12s         | #                                            |
+    search_notices                      TOOL          0.09s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.00s         | #                                            |
+    get_document_section                TOOL          0.00s         | #                                            |
+  fan_out                               SPAN          0.00s         | #                                            |
+  inspect                               SPAN         13.25s         | #############################                |
+    list_obligations                    TOOL          0.04s         | #                                            |
+    list_obligations                    TOOL          0.06s         | #                                            |
+    get_document_section                TOOL          0.02s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    llm:inspect                         GENERATION   13.08s  5,299  | #############################                |
+  inspect                               SPAN         10.69s         | #######################                      |
+    list_obligations                    TOOL          0.06s         | #                                            |
+    list_obligations                    TOOL          0.05s         | #                                            |
+    get_document_section                TOOL          0.02s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.00s         | #                                            |
+    llm:inspect                         GENERATION   10.52s  5,165  | #######################                      |
+  inspect                               SPAN          8.49s         | ###################                          |
+    list_obligations                    TOOL          0.08s         | #                                            |
+    list_obligations                    TOOL          0.04s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    get_document_section                TOOL          0.01s         | #                                            |
+    llm:inspect                         GENERATION    8.32s  5,246  | ###################                          |
+  inspect                               SPAN          6.11s         | #############                                |
+    list_obligations                    TOOL          0.10s         | #                                            |
+    get_document_section                TOOL          0.03s         | #                                            |
+    llm:inspect                         GENERATION    5.98s    774  | #############                                |
+  check_findings                        SPAN          0.01s         |                              #               |
+  approve                               SPAN          0.00s         |                              #               |
+  synthesise                            SPAN          7.06s         |                              ############### |
+    llm:synthesise                      GENERATION    7.05s    521  |                              ############### |

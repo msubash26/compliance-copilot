@@ -1,0 +1,8738 @@
+{
+ "single_agent": [
+  {
+   "task_id": "t-001",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Probability of Default threshold KMort KQRRE transactors revolvers"
+     },
+     "result_chars": 6422,
+     "error": false,
+     "seconds": 0.1057,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.4.88"
+     },
+     "result_chars": 791,
+     "error": false,
+     "seconds": 0.0095,
+     "task_id": "t-001"
+    }
+   ]
+  },
+  {
+   "task_id": "t-002",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "FMC monitor managed assets frequency limits"
+     },
+     "result_chars": 6708,
+     "error": false,
+     "seconds": 0.13,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "2.4"
+     },
+     "result_chars": 286,
+     "error": true,
+     "seconds": 0.0105,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "2.3.3"
+     },
+     "result_chars": 991,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-002"
+    }
+   ]
+  },
+  {
+   "task_id": "t-003",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "insurer validate reasonableness assumptions base rates data sources"
+     },
+     "result_chars": 6754,
+     "error": false,
+     "seconds": 0.1495,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a635e0bf93b047fa",
+      "section_path": "3.3.4.1"
+     },
+     "result_chars": 1135,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-003"
+    }
+   ]
+  },
+  {
+   "task_id": "t-004",
+   "calls": []
+  },
+  {
+   "task_id": "t-005",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "screen customers information sources",
+      "top_k": 10
+     },
+     "result_chars": 7297,
+     "error": false,
+     "seconds": 0.0606,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "5.1"
+     },
+     "result_chars": 1212,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-005"
+    }
+   ]
+  },
+  {
+   "task_id": "t-006",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Commercial Money Institution customer business relationship information application process"
+     },
+     "result_chars": 7059,
+     "error": false,
+     "seconds": 0.1374,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.18"
+     },
+     "result_chars": 888,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.3"
+     },
+     "result_chars": 1221,
+     "error": false,
+     "seconds": 0.0108,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Commercial Money Institution CDD customer due diligence application process information obtain"
+     },
+     "result_chars": 6810,
+     "error": false,
+     "seconds": 0.1062,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Commercial Money Institution CMI customer due diligence information obtain application process"
+     },
+     "result_chars": 6702,
+     "error": false,
+     "seconds": 0.0689,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2b1bc1dfa4766264",
+      "section_path": "6.18"
+     },
+     "result_chars": 608,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"Commercial Money Institution\" CMI customer due diligence information obtain application establish business relations"
+     },
+     "result_chars": 6770,
+     "error": false,
+     "seconds": 0.1145,
+     "task_id": "t-006"
+    }
+   ]
+  },
+  {
+   "task_id": "t-007",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "CEO Executive Director experience qualification requirements",
+      "top_k": 10
+     },
+     "result_chars": 6703,
+     "error": false,
+     "seconds": 0.0757,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f03ab4a4ef9d7b37",
+      "section_path": "4.3"
+     },
+     "result_chars": 640,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-007"
+    }
+   ]
+  },
+  {
+   "task_id": "t-008",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "record-keeping obligations licensee digital token services"
+     },
+     "result_chars": 6108,
+     "error": false,
+     "seconds": 0.0755,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cf7022fe78fb1df9",
+      "section_path": "5"
+     },
+     "result_chars": 696,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-008"
+    }
+   ]
+  },
+  {
+   "task_id": "t-009",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "short position reporting trading desk level legal entity level"
+     },
+     "result_chars": 6477,
+     "error": false,
+     "seconds": 0.114,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.3"
+     },
+     "result_chars": 744,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.4"
+     },
+     "result_chars": 1180,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-009"
+    }
+   ]
+  },
+  {
+   "task_id": "t-010",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "notifying the Authority completed compensation valuation errors"
+     },
+     "result_chars": 5687,
+     "error": false,
+     "seconds": 0.0442,
+     "task_id": "t-010"
+    }
+   ]
+  },
+  {
+   "task_id": "t-011",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "bank staff training review environmental risk"
+     },
+     "result_chars": 6298,
+     "error": false,
+     "seconds": 0.0699,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.16"
+     },
+     "result_chars": 643,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-011"
+    }
+   ]
+  },
+  {
+   "task_id": "t-012",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "digital token service provider customer accounts transactions business relations obligations"
+     },
+     "result_chars": 6830,
+     "error": false,
+     "seconds": 0.0731,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.31"
+     },
+     "result_chars": 769,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-012"
+    }
+   ]
+  },
+  {
+   "task_id": "t-013",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service provider FATF countermeasures simplified customer due diligence low risk money laundering terrorism financing"
+     },
+     "result_chars": 7066,
+     "error": false,
+     "seconds": 0.0619,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "7.4"
+     },
+     "result_chars": 1008,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-013"
+    }
+   ]
+  },
+  {
+   "task_id": "t-014",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "COSMIC information risk assessment new business relations linked transactions obligations banks"
+     },
+     "result_chars": 7090,
+     "error": false,
+     "seconds": 0.0686,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "6-A-1"
+     },
+     "result_chars": 242,
+     "error": true,
+     "seconds": 0.0065,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "6"
+     },
+     "result_chars": 4411,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "6",
+      "offset": 4000
+     },
+     "result_chars": 4426,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-014"
+    }
+   ]
+  },
+  {
+   "task_id": "t-015",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "investment vehicle managers financial institutions incorporated outside Singapore CDD underlying investors exemption",
+      "top_k": 10
+     },
+     "result_chars": 7157,
+     "error": false,
+     "seconds": 0.1438,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.16"
+     },
+     "result_chars": 1574,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-015"
+    }
+   ]
+  },
+  {
+   "task_id": "t-016",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Token Service Provider enhanced CDD higher risk customers"
+     },
+     "result_chars": 6850,
+     "error": false,
+     "seconds": 0.0704,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.6"
+     },
+     "result_chars": 1907,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-016"
+    }
+   ]
+  },
+  {
+   "task_id": "t-017",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service Provider non-face-to-face business contact customer impersonation risk external assessment"
+     },
+     "result_chars": 6601,
+     "error": false,
+     "seconds": 0.0492,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.42"
+     },
+     "result_chars": 781,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-017"
+    }
+   ]
+  },
+  {
+   "task_id": "t-018",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "enhanced due diligence higher-risk sectors customers Approved Trustees"
+     },
+     "result_chars": 6571,
+     "error": false,
+     "seconds": 0.06,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "db7e7522a1b65374",
+      "section_path": "8.7"
+     },
+     "result_chars": 807,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-018"
+    }
+   ]
+  },
+  {
+   "task_id": "t-019",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "beneficiary institutions monitor wire transfers lacking required originator or beneficiary information"
+     },
+     "result_chars": 6635,
+     "error": false,
+     "seconds": 0.1125,
+     "task_id": "t-019"
+    }
+   ]
+  },
+  {
+   "task_id": "t-020",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "definition business relations specified payment services trust companies banks financial advice",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0531,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" definition",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0625,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "204df51b355e0c16",
+      "section_path": "2"
+     },
+     "result_chars": 4473,
+     "error": false,
+     "seconds": 0.0055,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" definition specified payment services",
+      "top_k": 10
+     },
+     "result_chars": 6775,
+     "error": false,
+     "seconds": 0.0483,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" bank trust company financial advice",
+      "top_k": 15
+     },
+     "result_chars": 10359,
+     "error": false,
+     "seconds": 0.1123,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" definition bank notice 626",
+      "top_k": 10
+     },
+     "result_chars": 6862,
+     "error": false,
+     "seconds": 0.0802,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" bank trust company financial advice customer",
+      "top_k": 15
+     },
+     "result_chars": 10401,
+     "error": false,
+     "seconds": 0.082,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" definition",
+      "top_k": 30
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0852,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "204df51b355e0c16",
+      "section_path": "2",
+      "max_chars": 8000
+     },
+     "result_chars": 5634,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-020"
+    }
+   ]
+  },
+  {
+   "task_id": "t-021",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "acquiring entity takes over part of another institution's business without transferring all records due diligence customers license type Trust Company Bank Capital Markets Intermediary",
+      "top_k": 10
+     },
+     "result_chars": 6861,
+     "error": false,
+     "seconds": 0.154,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "6.30"
+     },
+     "result_chars": 1292,
+     "error": false,
+     "seconds": 0.0308,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "6.30"
+     },
+     "result_chars": 1274,
+     "error": false,
+     "seconds": 0.021,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.30"
+     },
+     "result_chars": 1193,
+     "error": false,
+     "seconds": 0.0267,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "6.30"
+     },
+     "result_chars": 1268,
+     "error": false,
+     "seconds": 0.0328,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.35"
+     },
+     "result_chars": 1351,
+     "error": false,
+     "seconds": 0.0501,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.29"
+     },
+     "result_chars": 1197,
+     "error": false,
+     "seconds": 0.0501,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "6.29"
+     },
+     "result_chars": 1279,
+     "error": false,
+     "seconds": 0.0533,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2b1bc1dfa4766264",
+      "section_path": "6.30"
+     },
+     "result_chars": 1208,
+     "error": false,
+     "seconds": 0.0483,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6924267737f25dd6",
+      "section_path": "6.29"
+     },
+     "result_chars": 1290,
+     "error": false,
+     "seconds": 0.0457,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4170013c9fcfb8ea",
+      "section_path": "6.35"
+     },
+     "result_chars": 1291,
+     "error": false,
+     "seconds": 0.0463,
+     "task_id": "t-021"
+    }
+   ]
+  },
+  {
+   "task_id": "t-022",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "legal person customer identification obligations unique identification number proof of legal existence Specified Payment Services VCC",
+      "top_k": 10
+     },
+     "result_chars": 6884,
+     "error": false,
+     "seconds": 0.1158,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.8"
+     },
+     "result_chars": 848,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.8"
+     },
+     "result_chars": 1036,
+     "error": false,
+     "seconds": 0.0063,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.5"
+     },
+     "result_chars": 417,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-022"
+    }
+   ]
+  },
+  {
+   "task_id": "t-023",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "amendment submission requirements effective date"
+     },
+     "result_chars": 6443,
+     "error": false,
+     "seconds": 0.1093,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "82e0a1322d541858",
+      "section_path": "16"
+     },
+     "result_chars": 1334,
+     "error": false,
+     "seconds": 0.0083,
+     "task_id": "t-023"
+    }
+   ]
+  },
+  {
+   "task_id": "t-024",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "outstanding S$ credit facilities effective date"
+     },
+     "result_chars": 6416,
+     "error": false,
+     "seconds": 0.0426,
+     "task_id": "t-024"
+    }
+   ]
+  },
+  {
+   "task_id": "t-025",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Technology Risk Management Cyber Hygiene cancellation effective date"
+     },
+     "result_chars": 6020,
+     "error": false,
+     "seconds": 0.0546,
+     "task_id": "t-025"
+    }
+   ]
+  },
+  {
+   "task_id": "t-026",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Minimum and Best Practice Training and Competency Standards for Direct General Insurers Hong Kong Monetary Authority"
+     },
+     "result_chars": 6720,
+     "error": false,
+     "seconds": 0.0458,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "0"
+     },
+     "result_chars": 527,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "1"
+     },
+     "result_chars": 553,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "2"
+     },
+     "result_chars": 1309,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-026"
+    }
+   ]
+  },
+  {
+   "task_id": "t-027",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Proceeds of Crime Act money laundering control order penalty failure comply"
+     },
+     "result_chars": 7048,
+     "error": false,
+     "seconds": 0.0662,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Proceeds of Crime Act control order penalty fine imprisonment"
+     },
+     "result_chars": 6516,
+     "error": false,
+     "seconds": 0.0562,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Proceeds of Crime Act section 104 control order penalty"
+     },
+     "result_chars": 6225,
+     "error": false,
+     "seconds": 0.0429,
+     "task_id": "t-027"
+    }
+   ]
+  },
+  {
+   "task_id": "t-028",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 restructuring underlying assets private equity fund unitholder consent percentage"
+     },
+     "result_chars": 6475,
+     "error": false,
+     "seconds": 0.1021,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "11"
+     },
+     "result_chars": 2821,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 restructuring underlying assets unitholder consent percentage",
+      "doc_id": "4af97e78d66623e3"
+     },
+     "result_chars": 6597,
+     "error": false,
+     "seconds": 0.0944,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 unitholder consent percentage restructuring underlying assets"
+     },
+     "result_chars": 6598,
+     "error": false,
+     "seconds": 0.0827,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018",
+      "top_k": 50
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0572,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Private Equity Notice 1018 restructuring unitholder consent",
+      "top_k": 30
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.1333,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "1"
+     },
+     "result_chars": 580,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 restructuring underlying assets consent percentage unitholder",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0746,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "2"
+     },
+     "result_chars": 253,
+     "error": true,
+     "seconds": 0.0094,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "2.1"
+     },
+     "result_chars": 4347,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "2.1",
+      "offset": 4000
+     },
+     "result_chars": 363,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-028"
+    }
+   ]
+  },
+  {
+   "task_id": "t-029",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "DIA-N01 Deposit Insurance Returns energy efficiency metrics data centre operations"
+     },
+     "result_chars": 5877,
+     "error": false,
+     "seconds": 0.0454,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "0"
+     },
+     "result_chars": 4308,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "0",
+      "offset": 4000
+     },
+     "result_chars": 785,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-029"
+    }
+   ]
+  },
+  {
+   "task_id": "t-030",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "customer due diligence cross-border remittances specified payment services",
+      "doc_type": "notices"
+     },
+     "result_chars": 6787,
+     "error": false,
+     "seconds": 0.1494,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.3"
+     },
+     "result_chars": 1792,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7"
+     },
+     "result_chars": 611,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "8"
+     },
+     "result_chars": 415,
+     "error": false,
+     "seconds": 0.0069,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "9"
+     },
+     "result_chars": 432,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "customer due diligence CDD cross-border remittance wire transfer specified payment services PSN01",
+      "doc_type": "notices"
+     },
+     "result_chars": 6729,
+     "error": false,
+     "seconds": 0.0925,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.43"
+     },
+     "result_chars": 1759,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-030"
+    }
+   ]
+  },
+  {
+   "task_id": "t-901",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "politically exposed persons",
+      "top_k": 50
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.2409,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8"
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0151,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "politically exposed person obligation shall",
+      "top_k": 30
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0415,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.1"
+     },
+     "result_chars": 2181,
+     "error": false,
+     "seconds": 0.009,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "cursor": "next"
+     },
+     "result_chars": 129,
+     "error": true,
+     "seconds": 0.0216,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8"
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0171,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.1"
+     },
+     "result_chars": 2179,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4"
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0158,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "politically exposed person enhanced due diligence",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.1161,
+     "task_id": "t-901"
+    }
+   ]
+  },
+  {
+   "task_id": "t-902",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "keep records record keeping maintain records",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0696,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "record keeping maintain records obligation shall must",
+      "top_k": 5
+     },
+     "result_chars": 3488,
+     "error": false,
+     "seconds": 0.0378,
+     "task_id": "t-902"
+    }
+   ]
+  },
+  {
+   "task_id": "t-903",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "suspicious transaction report filing requirement",
+      "top_k": 20
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.0585,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "suspicious transaction report filing requirement",
+      "top_k": 50
+     },
+     "result_chars": 12098,
+     "error": false,
+     "seconds": 0.1066,
+     "task_id": "t-903"
+    }
+   ]
+  }
+ ],
+ "supervisor": [
+  {
+   "task_id": "t-001",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Probability of Default threshold KMort KQRRE transactors revolvers",
+      "top_k": 8
+     },
+     "result_chars": 5233,
+     "error": false,
+     "seconds": 0.1544,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.4.88",
+      "max_chars": 3000
+     },
+     "result_chars": 791,
+     "error": false,
+     "seconds": 0.0094,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.1.10",
+      "max_chars": 3000
+     },
+     "result_chars": 3363,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.1.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3363,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "Section 3: Use of the Undrawn Limit/3.3",
+      "max_chars": 3000
+     },
+     "result_chars": 2919,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.4.82",
+      "max_chars": 3000
+     },
+     "result_chars": 1572,
+     "error": false,
+     "seconds": 0.0068,
+     "task_id": "t-001"
+    }
+   ]
+  },
+  {
+   "task_id": "t-002",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "FMC managed assets monitoring frequency limits",
+      "top_k": 8
+     },
+     "result_chars": 5381,
+     "error": false,
+     "seconds": 0.0438,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "2.3.3",
+      "max_chars": 3000
+     },
+     "result_chars": 991,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "6.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3352,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 1284,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "5.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1194,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "4.1.5",
+      "max_chars": 3000
+     },
+     "result_chars": 2878,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-002"
+    }
+   ]
+  },
+  {
+   "task_id": "t-003",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "data sources validate reasonableness assumptions base rates insurer",
+      "top_k": 8
+     },
+     "result_chars": 5556,
+     "error": false,
+     "seconds": 0.122,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a635e0bf93b047fa",
+      "section_path": "3.3.4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1135,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "93f080a77550485c",
+      "section_path": "3.4.6",
+      "max_chars": 3000
+     },
+     "result_chars": 1245,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7b517a5d808ebfe4",
+      "section_path": "8.16",
+      "max_chars": 3000
+     },
+     "result_chars": 1039,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a635e0bf93b047fa",
+      "section_path": "3.3.4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1148,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "Section 2: Oversight and Control/2.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3394,
+     "error": false,
+     "seconds": 0.0085,
+     "task_id": "t-003"
+    }
+   ]
+  },
+  {
+   "task_id": "t-004",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "effective date superseded notice",
+      "top_k": 8
+     },
+     "result_chars": 4858,
+     "error": false,
+     "seconds": 0.0469,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7b6ed29cd18394f8",
+      "section_path": "14.5",
+      "max_chars": 3000
+     },
+     "result_chars": 2264,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "12",
+      "max_chars": 3000
+     },
+     "result_chars": 763,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "02784662152c36cb",
+      "section_path": "4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2747,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "39d13c798102b285",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 453,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6bc63680893b7fb6",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 1007,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-004"
+    }
+   ]
+  },
+  {
+   "task_id": "t-005",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "information sources screening customers",
+      "top_k": 8
+     },
+     "result_chars": 5794,
+     "error": false,
+     "seconds": 0.0445,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "5.9",
+      "max_chars": 3000
+     },
+     "result_chars": 880,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.39",
+      "max_chars": 3000
+     },
+     "result_chars": 846,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.34",
+      "max_chars": 3000
+     },
+     "result_chars": 851,
+     "error": false,
+     "seconds": 0.0034,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "6.37",
+      "max_chars": 3000
+     },
+     "result_chars": 858,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.43",
+      "max_chars": 3000
+     },
+     "result_chars": 863,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-005"
+    }
+   ]
+  },
+  {
+   "task_id": "t-006",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "commercial money institution customer business relationship information obtain application process",
+      "top_k": 8
+     },
+     "result_chars": 5389,
+     "error": false,
+     "seconds": 0.1004,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.18",
+      "max_chars": 3000
+     },
+     "result_chars": 888,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1221,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bee1e1b2c4640e52",
+      "section_path": "3.2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1044,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.18",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "6.18",
+      "max_chars": 3000
+     },
+     "result_chars": 1104,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-006"
+    }
+   ]
+  },
+  {
+   "task_id": "t-007",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "CEO Executive Director experience qualification requirements",
+      "top_k": 8
+     },
+     "result_chars": 5432,
+     "error": false,
+     "seconds": 0.09,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f03ab4a4ef9d7b37",
+      "section_path": "4.3",
+      "max_chars": 3000
+     },
+     "result_chars": 640,
+     "error": false,
+     "seconds": 0.0073,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3a02ac314f68629e",
+      "section_path": "3.2.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1097,
+     "error": false,
+     "seconds": 0.0073,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b75f7fa613e6320e",
+      "section_path": "3.1.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1161,
+     "error": false,
+     "seconds": 0.0061,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "3.7.3",
+      "max_chars": 3000
+     },
+     "result_chars": 3365,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ec039f71dadab441",
+      "section_path": "A3 Guidance on Disclosures Related to/4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 922,
+     "error": false,
+     "seconds": 0.0033,
+     "task_id": "t-007"
+    }
+   ]
+  },
+  {
+   "task_id": "t-008",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "record keeping obligations licensee digital token services",
+      "top_k": 8
+     },
+     "result_chars": 5012,
+     "error": false,
+     "seconds": 0.117,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cf7022fe78fb1df9",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 696,
+     "error": false,
+     "seconds": 0.0081,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "15.1",
+      "max_chars": 3000
+     },
+     "result_chars": 620,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "15.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1346,
+     "error": false,
+     "seconds": 0.008,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cf7022fe78fb1df9",
+      "section_path": "PARTICULARS TO BE INCLUDED IN THE/1",
+      "max_chars": 3000
+     },
+     "result_chars": 3324,
+     "error": false,
+     "seconds": 0.0138,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3c074a620584c861",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 2452,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-008"
+    }
+   ]
+  },
+  {
+   "task_id": "t-009",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "short position reporting trading desk level legal entity level election",
+      "top_k": 8
+     },
+     "result_chars": 5233,
+     "error": false,
+     "seconds": 0.0512,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2834,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 919,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.8",
+      "max_chars": 3000
+     },
+     "result_chars": 796,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.3",
+      "max_chars": 3000
+     },
+     "result_chars": 744,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1180,
+     "error": false,
+     "seconds": 0.0055,
+     "task_id": "t-009"
+    }
+   ]
+  },
+  {
+   "task_id": "t-010",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "compensation valuation error notification requirements Authority",
+      "top_k": 8
+     },
+     "result_chars": 4608,
+     "error": false,
+     "seconds": 0.0505,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "79",
+      "max_chars": 3000
+     },
+     "result_chars": 983,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "80",
+      "max_chars": 3000
+     },
+     "result_chars": 741,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "VALUATION ERROR REPORT TEMPLATE/7",
+      "max_chars": 3000
+     },
+     "result_chars": 489,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "82",
+      "max_chars": 3000
+     },
+     "result_chars": 615,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "81",
+      "max_chars": 3000
+     },
+     "result_chars": 447,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-010"
+    }
+   ]
+  },
+  {
+   "task_id": "t-011",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "training review obligations staff ability handle environmental risk",
+      "top_k": 8
+     },
+     "result_chars": 5057,
+     "error": false,
+     "seconds": 0.0965,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.16",
+      "max_chars": 3000
+     },
+     "result_chars": 643,
+     "error": false,
+     "seconds": 0.0114,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "0b9d827b36ec64cc",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 666,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "4.8",
+      "max_chars": 3000
+     },
+     "result_chars": 3311,
+     "error": false,
+     "seconds": 0.0091,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1176,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "3.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1414,
+     "error": false,
+     "seconds": 0.008,
+     "task_id": "t-011"
+    }
+   ]
+  },
+  {
+   "task_id": "t-012",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "digital token service provider customer account transaction obligations",
+      "top_k": 8
+     },
+     "result_chars": 5730,
+     "error": false,
+     "seconds": 0.1377,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.24",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "12.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2419,
+     "error": false,
+     "seconds": 0.0055,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0075,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-012"
+    }
+   ]
+  },
+  {
+   "task_id": "t-013",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service provider jurisdiction FATF countermeasures simplified customer due diligence risk analysis",
+      "top_k": 8
+     },
+     "result_chars": 5179,
+     "error": false,
+     "seconds": 0.0856,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1294,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "7.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1265,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1427,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.2",
+      "max_chars": 3000
+     },
+     "result_chars": 488,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.3",
+      "max_chars": 3000
+     },
+     "result_chars": 519,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-013"
+    }
+   ]
+  },
+  {
+   "task_id": "t-014",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "obligations banks information received COSMIC risk assessments new business relations linked transactions",
+      "top_k": 8
+     },
+     "result_chars": 5612,
+     "error": false,
+     "seconds": 0.1867,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.20",
+      "max_chars": 3000
+     },
+     "result_chars": 1903,
+     "error": false,
+     "seconds": 0.0099,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.21",
+      "max_chars": 3000
+     },
+     "result_chars": 929,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1018,
+     "error": false,
+     "seconds": 0.0061,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3409,
+     "error": false,
+     "seconds": 0.0144,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 3420,
+     "error": false,
+     "seconds": 0.0069,
+     "task_id": "t-014"
+    }
+   ]
+  },
+  {
+   "task_id": "t-015",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "CDD underlying investors foreign financial institution managers Singapore bank exemption conditions",
+      "top_k": 8
+     },
+     "result_chars": 6005,
+     "error": false,
+     "seconds": 0.0486,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "dfe9391b0680b233",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3458,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "47b63d38c08ab635",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3420,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "606b1eaa2a5961ad",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3441,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3447,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3429,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-015"
+    }
+   ]
+  },
+  {
+   "task_id": "t-016",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Token Service Provider enhanced CDD higher risk customers",
+      "top_k": 8
+     },
+     "result_chars": 5439,
+     "error": false,
+     "seconds": 0.0523,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.38",
+      "max_chars": 3000
+     },
+     "result_chars": 829,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.7",
+      "max_chars": 3000
+     },
+     "result_chars": 763,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1305,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.8",
+      "max_chars": 3000
+     },
+     "result_chars": 939,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1516,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-016"
+    }
+   ]
+  },
+  {
+   "task_id": "t-017",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service Provider first non-face-to-face business contact customer external assessment impersonation risks policies",
+      "top_k": 8
+     },
+     "result_chars": 5282,
+     "error": false,
+     "seconds": 0.0815,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.42",
+      "max_chars": 3000
+     },
+     "result_chars": 781,
+     "error": false,
+     "seconds": 0.0063,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.37",
+      "max_chars": 3000
+     },
+     "result_chars": 803,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.37",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.39",
+      "max_chars": 3000
+     },
+     "result_chars": 632,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.38",
+      "max_chars": 3000
+     },
+     "result_chars": 829,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-017"
+    }
+   ]
+  },
+  {
+   "task_id": "t-018",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "enhanced due diligence higher-risk sectors effective date",
+      "top_k": 8
+     },
+     "result_chars": 5437,
+     "error": false,
+     "seconds": 0.093,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bee1e1b2c4640e52",
+      "section_path": "3.2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1044,
+     "error": false,
+     "seconds": 0.0089,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.6",
+      "max_chars": 3000
+     },
+     "result_chars": 724,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1305,
+     "error": false,
+     "seconds": 0.0034,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3323,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "5.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1696,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-018"
+    }
+   ]
+  },
+  {
+   "task_id": "t-019",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "wire transfer monitoring obligation originator beneficiary information Banks Merchant Banks Finance Companies",
+      "top_k": 8
+     },
+     "result_chars": 5448,
+     "error": false,
+     "seconds": 0.1551,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "11.10",
+      "max_chars": 3000
+     },
+     "result_chars": 666,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "11.10",
+      "max_chars": 3000
+     },
+     "result_chars": 673,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "606b1eaa2a5961ad",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3414,
+     "error": false,
+     "seconds": 0.0072,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "6.41",
+      "max_chars": 3000
+     },
+     "result_chars": 1081,
+     "error": false,
+     "seconds": 0.0095,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f7cf89430a01ec83",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3413,
+     "error": false,
+     "seconds": 0.0102,
+     "task_id": "t-019"
+    }
+   ]
+  },
+  {
+   "task_id": "t-020",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" \"Specified Payment Services\" \"Trust Companies\" \"Banks\" \"financial advice\"",
+      "top_k": 8
+     },
+     "result_chars": 5339,
+     "error": false,
+     "seconds": 0.0916,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6b7de14979d221de",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3318,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.0082,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3386,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ea7234906c732d76",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3352,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "9.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2004,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-020"
+    }
+   ]
+  },
+  {
+   "task_id": "t-021",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "due diligence requirements Trust Company Bank Capital Markets Intermediary partial business transfer customer records",
+      "top_k": 8
+     },
+     "result_chars": 5235,
+     "error": false,
+     "seconds": 0.1491,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "86ef6622a51098f6",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2412,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "6.30",
+      "max_chars": 3000
+     },
+     "result_chars": 1292,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "8785e88a087f6077",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 3354,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d570e12d828c6fae",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 2976,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-021"
+    }
+   ]
+  },
+  {
+   "task_id": "t-022",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "legal person customer identification obligations Specified Payment Services VCC unique identification number proof of legal existence",
+      "top_k": 8
+     },
+     "result_chars": 5513,
+     "error": false,
+     "seconds": 0.0501,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.13",
+      "max_chars": 3000
+     },
+     "result_chars": 3401,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.7",
+      "max_chars": 3000
+     },
+     "result_chars": 1186,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.14",
+      "max_chars": 3000
+     },
+     "result_chars": 3392,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.14",
+      "max_chars": 3000
+     },
+     "result_chars": 3395,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.8",
+      "max_chars": 3000
+     },
+     "result_chars": 1333,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-022"
+    }
+   ]
+  },
+  {
+   "task_id": "t-023",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "amendment submission requirements effective date",
+      "top_k": 8
+     },
+     "result_chars": 5209,
+     "error": false,
+     "seconds": 0.0529,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "82e0a1322d541858",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 1334,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "454c464f4ea2b0cb",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 1267,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2c4be0699b9b7829",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3338,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "de0c4c217095c14b",
+      "section_path": "3.4",
+      "max_chars": 3000
+     },
+     "result_chars": 730,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a4174f84f3a09cf5",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 843,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-023"
+    }
+   ]
+  },
+  {
+   "task_id": "t-024",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "outstanding S$ credit facilities requirements effective date",
+      "top_k": 8
+     },
+     "result_chars": 5165,
+     "error": false,
+     "seconds": 0.0559,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "572c7ae5489fdb90",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 648,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "745fe234a24ff121",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 651,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7af91c4a1623eff3",
+      "section_path": "1",
+      "max_chars": 3000
+     },
+     "result_chars": 718,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "573e686fb6d15bac",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 714,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2cc32443b25234d4",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3326,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-024"
+    }
+   ]
+  },
+  {
+   "task_id": "t-025",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "cancellation notice Technology Risk Management Cyber Hygiene effective date",
+      "top_k": 8
+     },
+     "result_chars": 4911,
+     "error": false,
+     "seconds": 0.0524,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "08c32bfed8b449ab",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "692d6fb79eca55da",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6df6011c55037361",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ab77fc707c0c5318",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 804,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "dd9146fa3c5c279a",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-025"
+    }
+   ]
+  },
+  {
+   "task_id": "t-026",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Minimum Best Practice Training Competency Standards Direct General Insurers HKMA",
+      "top_k": 8
+     },
+     "result_chars": 5237,
+     "error": false,
+     "seconds": 0.0464,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 1259,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 527,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 1309,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 2030,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "aa4da0a0ab68e942",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3393,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-026"
+    }
+   ]
+  },
+  {
+   "task_id": "t-027",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Proceeds of Crime Act money laundering control order failure to comply statutory penalty",
+      "top_k": 8
+     },
+     "result_chars": 5602,
+     "error": false,
+     "seconds": 0.0896,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cd784f00a52e055e",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1153,
+     "error": false,
+     "seconds": 0.0061,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bdbf8696962103b6",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1137,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "79bd539512a1ae36",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1179,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "1.6",
+      "max_chars": 3000
+     },
+     "result_chars": 3482,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "165361fa64b9d6d6",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 759,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "What are the statutory penalties under the Proceeds of Crime Act for a person who fails to comply with a money laundering control order issued by a court?",
+      "top_k": 8
+     },
+     "result_chars": 5541,
+     "error": false,
+     "seconds": 0.0621,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "1.6",
+      "max_chars": 3000
+     },
+     "result_chars": 3482,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7ef9e23467ef266c",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3377,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "dfe9391b0680b233",
+      "section_path": "1",
+      "max_chars": 3000
+     },
+     "result_chars": 3410,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "db7e7522a1b65374",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3393,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2b1bc1dfa4766264",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3406,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-027"
+    }
+   ]
+  },
+  {
+   "task_id": "t-028",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 private equity fund restructuring unitholder consent percentage",
+      "top_k": 8
+     },
+     "result_chars": 4895,
+     "error": false,
+     "seconds": 0.0771,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 2821,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "775fc77f5ad2b5e8",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3485,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "29",
+      "max_chars": 3000
+     },
+     "result_chars": 401,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "c80a593cdfa4ae0d",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 428,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f5dd0be0e70c82db",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2911,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "What specific percentage of unitholder consent is required under Notice 1018 to approve a restructuring of the underlying assets for a Private Equity fund?",
+      "top_k": 8
+     },
+     "result_chars": 5303,
+     "error": false,
+     "seconds": 0.0782,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 2821,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1ad028089f41085f",
+      "section_path": "4.3.2.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1002,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f57e4ed885b9e612",
+      "section_path": "4.3.2.2",
+      "max_chars": 3000
+     },
+     "result_chars": 890,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "Guidance/2",
+      "max_chars": 3000
+     },
+     "result_chars": 3316,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "02784662152c36cb",
+      "section_path": "6.1.4",
+      "max_chars": 3000
+     },
+     "result_chars": 3381,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-028"
+    }
+   ]
+  },
+  {
+   "task_id": "t-029",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "DIA-N01 Deposit Insurance Returns submission energy efficiency metrics data centre operations",
+      "top_k": 8
+     },
+     "result_chars": 4562,
+     "error": false,
+     "seconds": 0.0486,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3304,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 3314,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "8fed4bd76b2e4e76",
+      "section_path": "RELEVANT SERVICES CONSIDERED AS/4",
+      "max_chars": 3000
+     },
+     "result_chars": 409,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fdd9abd789d1e3a6",
+      "section_path": "RELEVANT SERVICES CONSIDERED AS/4",
+      "max_chars": 3000
+     },
+     "result_chars": 419,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3323,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "In relation to our deposit-taking activities, does the Deposit Insurance Corporation require financial institutions to report on the energy efficiency metrics of their data centre operations as part of the DIA-N01 Deposit Insurance Returns submission?",
+      "top_k": 8
+     },
+     "result_chars": 5102,
+     "error": false,
+     "seconds": 0.1369,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3304,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 3314,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e009012799d12e8e",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3302,
+     "error": false,
+     "seconds": 0.0077,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1188a622bb1e9e96",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3367,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ea7234906c732d76",
+      "section_path": "Examples of Outsourcing Arrangements/1",
+      "max_chars": 3000
+     },
+     "result_chars": 3377,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-029"
+    }
+   ]
+  },
+  {
+   "task_id": "t-030",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "PSN01 specified payment services customer due diligence cross-border remittances obligations",
+      "top_k": 8
+     },
+     "result_chars": 5289,
+     "error": false,
+     "seconds": 0.1117,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "c1b8b7d110372b74",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3331,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1205,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3c074a620584c861",
+      "section_path": "12",
+      "max_chars": 3000
+     },
+     "result_chars": 2140,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.43",
+      "max_chars": 3000
+     },
+     "result_chars": 1759,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "82e0a1322d541858",
+      "section_path": "Instructions for completion of Forms 2A/5",
+      "max_chars": 3000
+     },
+     "result_chars": 3107,
+     "error": false,
+     "seconds": 0.0068,
+     "task_id": "t-030"
+    }
+   ]
+  },
+  {
+   "task_id": "t-901",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "politically exposed persons obligation",
+      "top_k": 30
+     },
+     "result_chars": 21194,
+     "error": false,
+     "seconds": 0.1454,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2181,
+     "error": false,
+     "seconds": 0.0103,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2119,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2105,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2127,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4170013c9fcfb8ea",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2159,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8"
+     },
+     "result_chars": 26404,
+     "error": false,
+     "seconds": 0.0323,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "013c800b281bc0bc"
+     },
+     "result_chars": 42702,
+     "error": false,
+     "seconds": 0.0494,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069"
+     },
+     "result_chars": 43018,
+     "error": false,
+     "seconds": 0.0639,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40"
+     },
+     "result_chars": 32615,
+     "error": false,
+     "seconds": 0.0684,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 29256,
+     "error": false,
+     "seconds": 0.0324,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 27057,
+     "error": false,
+     "seconds": 0.0262,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 37866,
+     "error": false,
+     "seconds": 0.0218,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 25245,
+     "error": false,
+     "seconds": 0.024,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2181,
+     "error": false,
+     "seconds": 0.0242,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2119,
+     "error": false,
+     "seconds": 0.0212,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 20157,
+     "error": false,
+     "seconds": 0.0171,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2127,
+     "error": false,
+     "seconds": 0.0143,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 872,
+     "error": false,
+     "seconds": 0.0146,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1170,
+     "error": false,
+     "seconds": 0.0153,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2105,
+     "error": false,
+     "seconds": 0.0089,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 744,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1306,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 801,
+     "error": false,
+     "seconds": 0.0079,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1156,
+     "error": false,
+     "seconds": 0.0075,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1200,
+     "error": false,
+     "seconds": 0.0111,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1487,
+     "error": false,
+     "seconds": 0.0076,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1536,
+     "error": false,
+     "seconds": 0.0075,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1003,
+     "error": false,
+     "seconds": 0.0079,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1355,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1419,
+     "error": false,
+     "seconds": 0.0081,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3387,
+     "error": false,
+     "seconds": 0.009,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1375,
+     "error": false,
+     "seconds": 0.0084,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "6.10",
+      "max_chars": 3000
+     },
+     "result_chars": 1207,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1289,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1219,
+     "error": false,
+     "seconds": 0.0072,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.8",
+      "max_chars": 3000
+     },
+     "result_chars": 865,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.10",
+      "max_chars": 3000
+     },
+     "result_chars": 1053,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-901"
+    }
+   ]
+  },
+  {
+   "task_id": "t-902",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "obligation keep records maintain documentation",
+      "top_k": 30
+     },
+     "result_chars": 20067,
+     "error": false,
+     "seconds": 0.045,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 766,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.1",
+      "max_chars": 3000
+     },
+     "result_chars": 586,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.1",
+      "max_chars": 3000
+     },
+     "result_chars": 634,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 626,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "11.2",
+      "max_chars": 3000
+     },
+     "result_chars": 615,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1363829f117073a2"
+     },
+     "result_chars": 8958,
+     "error": false,
+     "seconds": 0.0517,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069"
+     },
+     "result_chars": 43018,
+     "error": false,
+     "seconds": 0.0438,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40"
+     },
+     "result_chars": 32615,
+     "error": false,
+     "seconds": 0.0391,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad"
+     },
+     "result_chars": 41693,
+     "error": false,
+     "seconds": 0.0477,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 25245,
+     "error": false,
+     "seconds": 0.0154,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 37866,
+     "error": false,
+     "seconds": 0.0182,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 34783,
+     "error": false,
+     "seconds": 0.0285,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 766,
+     "error": false,
+     "seconds": 0.0202,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.1",
+      "max_chars": 3000
+     },
+     "result_chars": 634,
+     "error": false,
+     "seconds": 0.0192,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 20157,
+     "error": false,
+     "seconds": 0.02,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.4",
+      "max_chars": 3000
+     },
+     "result_chars": 810,
+     "error": false,
+     "seconds": 0.0201,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1310,
+     "error": false,
+     "seconds": 0.0177,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 28268,
+     "error": false,
+     "seconds": 0.0193,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.1",
+      "max_chars": 3000
+     },
+     "result_chars": 586,
+     "error": false,
+     "seconds": 0.0153,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.2",
+      "max_chars": 3000
+     },
+     "result_chars": 702,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.5",
+      "max_chars": 3000
+     },
+     "result_chars": 742,
+     "error": false,
+     "seconds": 0.0141,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzoxNTA"
+     },
+     "result_chars": 512,
+     "error": false,
+     "seconds": 0.0143,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.5",
+      "max_chars": 3000
+     },
+     "result_chars": 694,
+     "error": false,
+     "seconds": 0.0148,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "3.6",
+      "max_chars": 3000
+     },
+     "result_chars": 1177,
+     "error": false,
+     "seconds": 0.0152,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "13.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1201,
+     "error": false,
+     "seconds": 0.0084,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 626,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3373,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1521,
+     "error": false,
+     "seconds": 0.0083,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3403,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 812,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1202,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1326,
+     "error": false,
+     "seconds": 0.006,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1572,
+     "error": false,
+     "seconds": 0.0061,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1153,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.6",
+      "max_chars": 3000
+     },
+     "result_chars": 768,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 778,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "16.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1258,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 818,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-902"
+    }
+   ]
+  },
+  {
+   "task_id": "t-903",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "suspicious transaction report filing requirement MAS notice guideline",
+      "top_k": 30
+     },
+     "result_chars": 21324,
+     "error": false,
+     "seconds": 0.0855,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "13",
+      "max_chars": 3000
+     },
+     "result_chars": 3445,
+     "error": false,
+     "seconds": 0.0069,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0068,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "655bbd1025365217",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2042,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "13.4",
+      "max_chars": 3000
+     },
+     "result_chars": 967,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "235ba83000dd5002"
+     },
+     "result_chars": 41043,
+     "error": false,
+     "seconds": 0.0415,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "26a5b2e22168ec78"
+     },
+     "result_chars": 50585,
+     "error": false,
+     "seconds": 0.0612,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "01fd29007c35846f"
+     },
+     "result_chars": 43672,
+     "error": false,
+     "seconds": 0.0774,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "655bbd1025365217"
+     },
+     "result_chars": 1994,
+     "error": false,
+     "seconds": 0.0985,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 13971,
+     "error": false,
+     "seconds": 0.0582,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 26964,
+     "error": false,
+     "seconds": 0.054,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 7805,
+     "error": false,
+     "seconds": 0.0381,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "655bbd1025365217",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2042,
+     "error": false,
+     "seconds": 0.0264,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "13",
+      "max_chars": 3000
+     },
+     "result_chars": 3445,
+     "error": false,
+     "seconds": 0.0232,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0148,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0102,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 3439,
+     "error": false,
+     "seconds": 0.009,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "9",
+      "max_chars": 3000
+     },
+     "result_chars": 3444,
+     "error": false,
+     "seconds": 0.0099,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0101,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "9",
+      "max_chars": 3000
+     },
+     "result_chars": 3457,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0105,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 3469,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "4",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3470,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "18",
+      "max_chars": 3000
+     },
+     "result_chars": 3479,
+     "error": false,
+     "seconds": 0.0087,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3447,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "10",
+      "max_chars": 3000
+     },
+     "result_chars": 3437,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3465,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "4",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0065,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3465,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-903"
+    }
+   ]
+  }
+ ],
+ "plan_and_execute": [
+  {
+   "task_id": "t-001",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Probability of Default threshold KMort KQRRE transactors revolvers",
+      "top_k": 8
+     },
+     "result_chars": 5233,
+     "error": false,
+     "seconds": 0.1301,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.4.88",
+      "max_chars": 3000
+     },
+     "result_chars": 791,
+     "error": false,
+     "seconds": 0.0142,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.1.10",
+      "max_chars": 3000
+     },
+     "result_chars": 3363,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.1.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3363,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "Section 3: Use of the Undrawn Limit/3.3",
+      "max_chars": 3000
+     },
+     "result_chars": 2919,
+     "error": false,
+     "seconds": 0.0075,
+     "task_id": "t-001"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "7.4.82",
+      "max_chars": 3000
+     },
+     "result_chars": 1572,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-001"
+    }
+   ]
+  },
+  {
+   "task_id": "t-002",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "FMC managed assets monitoring frequency limits",
+      "top_k": 8
+     },
+     "result_chars": 5380,
+     "error": false,
+     "seconds": 0.1242,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "2.3.3",
+      "max_chars": 3000
+     },
+     "result_chars": 991,
+     "error": false,
+     "seconds": 0.0061,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "6.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3352,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 1284,
+     "error": false,
+     "seconds": 0.013,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "59746fe0216b705a",
+      "section_path": "5.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1194,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-002"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "4.1.5",
+      "max_chars": 3000
+     },
+     "result_chars": 2878,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-002"
+    }
+   ]
+  },
+  {
+   "task_id": "t-003",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "data sources validate reasonableness assumptions base rates insurer",
+      "top_k": 8
+     },
+     "result_chars": 5556,
+     "error": false,
+     "seconds": 0.1115,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a635e0bf93b047fa",
+      "section_path": "3.3.4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1135,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "93f080a77550485c",
+      "section_path": "3.4.6",
+      "max_chars": 3000
+     },
+     "result_chars": 1245,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7b517a5d808ebfe4",
+      "section_path": "8.16",
+      "max_chars": 3000
+     },
+     "result_chars": 1039,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a635e0bf93b047fa",
+      "section_path": "3.3.4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1148,
+     "error": false,
+     "seconds": 0.006,
+     "task_id": "t-003"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d60d84ece1ddaefe",
+      "section_path": "Section 2: Oversight and Control/2.5",
+      "max_chars": 3000
+     },
+     "result_chars": 3394,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-003"
+    }
+   ]
+  },
+  {
+   "task_id": "t-004",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "effective date superseded notice",
+      "top_k": 8
+     },
+     "result_chars": 4858,
+     "error": false,
+     "seconds": 0.0538,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7b6ed29cd18394f8",
+      "section_path": "14.5",
+      "max_chars": 3000
+     },
+     "result_chars": 2264,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "12",
+      "max_chars": 3000
+     },
+     "result_chars": 763,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "02784662152c36cb",
+      "section_path": "4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2747,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "39d13c798102b285",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 453,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-004"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6bc63680893b7fb6",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 1007,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-004"
+    }
+   ]
+  },
+  {
+   "task_id": "t-005",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "information sources screening customers",
+      "top_k": 8
+     },
+     "result_chars": 5794,
+     "error": false,
+     "seconds": 0.0444,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "5.9",
+      "max_chars": 3000
+     },
+     "result_chars": 880,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.39",
+      "max_chars": 3000
+     },
+     "result_chars": 846,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.34",
+      "max_chars": 3000
+     },
+     "result_chars": 851,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "6.37",
+      "max_chars": 3000
+     },
+     "result_chars": 858,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-005"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.43",
+      "max_chars": 3000
+     },
+     "result_chars": 863,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-005"
+    }
+   ]
+  },
+  {
+   "task_id": "t-006",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "commercial money institution customer business relationship information obtain application process",
+      "top_k": 8
+     },
+     "result_chars": 5389,
+     "error": false,
+     "seconds": 0.1079,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.18",
+      "max_chars": 3000
+     },
+     "result_chars": 888,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "441e2dd1bba03cbe",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1221,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bee1e1b2c4640e52",
+      "section_path": "3.2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1044,
+     "error": false,
+     "seconds": 0.0055,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.18",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-006"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "6.18",
+      "max_chars": 3000
+     },
+     "result_chars": 1104,
+     "error": false,
+     "seconds": 0.0034,
+     "task_id": "t-006"
+    }
+   ]
+  },
+  {
+   "task_id": "t-007",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "CEO Executive Director experience qualification requirements",
+      "top_k": 8
+     },
+     "result_chars": 5431,
+     "error": false,
+     "seconds": 0.0988,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f03ab4a4ef9d7b37",
+      "section_path": "4.3",
+      "max_chars": 3000
+     },
+     "result_chars": 640,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3a02ac314f68629e",
+      "section_path": "3.2.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1097,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b75f7fa613e6320e",
+      "section_path": "3.1.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1161,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bbfd16576f29b9c1",
+      "section_path": "3.7.3",
+      "max_chars": 3000
+     },
+     "result_chars": 3365,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-007"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ec039f71dadab441",
+      "section_path": "A3 Guidance on Disclosures Related to/4.1",
+      "max_chars": 3000
+     },
+     "result_chars": 922,
+     "error": false,
+     "seconds": 0.0074,
+     "task_id": "t-007"
+    }
+   ]
+  },
+  {
+   "task_id": "t-008",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "record keeping obligations licensee digital token services",
+      "top_k": 8
+     },
+     "result_chars": 5011,
+     "error": false,
+     "seconds": 0.0386,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cf7022fe78fb1df9",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 696,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "15.1",
+      "max_chars": 3000
+     },
+     "result_chars": 620,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "15.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1346,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cf7022fe78fb1df9",
+      "section_path": "PARTICULARS TO BE INCLUDED IN THE/1",
+      "max_chars": 3000
+     },
+     "result_chars": 3324,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-008"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3c074a620584c861",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 2452,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-008"
+    }
+   ]
+  },
+  {
+   "task_id": "t-009",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "short position reporting trading desk level legal entity level election",
+      "top_k": 8
+     },
+     "result_chars": 5233,
+     "error": false,
+     "seconds": 0.0462,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2834,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 919,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.8",
+      "max_chars": 3000
+     },
+     "result_chars": 796,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.3",
+      "max_chars": 3000
+     },
+     "result_chars": 744,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-009"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "500847d09f18bad7",
+      "section_path": "5.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1180,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-009"
+    }
+   ]
+  },
+  {
+   "task_id": "t-010",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "compensation valuation error notification requirements Authority",
+      "top_k": 8
+     },
+     "result_chars": 4608,
+     "error": false,
+     "seconds": 0.0455,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "79",
+      "max_chars": 3000
+     },
+     "result_chars": 983,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "80",
+      "max_chars": 3000
+     },
+     "result_chars": 741,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "VALUATION ERROR REPORT TEMPLATE/7",
+      "max_chars": 3000
+     },
+     "result_chars": 489,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "82",
+      "max_chars": 3000
+     },
+     "result_chars": 615,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-010"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2ce598463248de9d",
+      "section_path": "81",
+      "max_chars": 3000
+     },
+     "result_chars": 447,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-010"
+    }
+   ]
+  },
+  {
+   "task_id": "t-011",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "training review obligations staff ability handle environmental risk",
+      "top_k": 8
+     },
+     "result_chars": 5058,
+     "error": false,
+     "seconds": 0.0865,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.16",
+      "max_chars": 3000
+     },
+     "result_chars": 643,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "0b9d827b36ec64cc",
+      "section_path": "5.7",
+      "max_chars": 3000
+     },
+     "result_chars": 666,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "4.8",
+      "max_chars": 3000
+     },
+     "result_chars": 3311,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1176,
+     "error": false,
+     "seconds": 0.0065,
+     "task_id": "t-011"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "3.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1414,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-011"
+    }
+   ]
+  },
+  {
+   "task_id": "t-012",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "digital token service provider customer account transaction obligations",
+      "top_k": 8
+     },
+     "result_chars": 5729,
+     "error": false,
+     "seconds": 0.0964,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.24",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "12.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2419,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.008,
+     "task_id": "t-012"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-012"
+    }
+   ]
+  },
+  {
+   "task_id": "t-013",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service provider jurisdiction FATF countermeasures simplified customer due diligence risk analysis",
+      "top_k": 8
+     },
+     "result_chars": 5180,
+     "error": false,
+     "seconds": 0.0621,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1294,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "7.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1265,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1427,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.2",
+      "max_chars": 3000
+     },
+     "result_chars": 488,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-013"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "7.3",
+      "max_chars": 3000
+     },
+     "result_chars": 519,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-013"
+    }
+   ]
+  },
+  {
+   "task_id": "t-014",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "obligations banks information received COSMIC risk assessments new business relations linked transactions",
+      "top_k": 8
+     },
+     "result_chars": 5612,
+     "error": false,
+     "seconds": 0.0974,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.20",
+      "max_chars": 3000
+     },
+     "result_chars": 1903,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.21",
+      "max_chars": 3000
+     },
+     "result_chars": 929,
+     "error": false,
+     "seconds": 0.0032,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1018,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3409,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-014"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 3420,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-014"
+    }
+   ]
+  },
+  {
+   "task_id": "t-015",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "CDD underlying investors foreign financial institution managers Singapore bank exemption conditions",
+      "top_k": 8
+     },
+     "result_chars": 6005,
+     "error": false,
+     "seconds": 0.0582,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "dfe9391b0680b233",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3458,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "47b63d38c08ab635",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3420,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "606b1eaa2a5961ad",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3441,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3447,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-015"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a0a676334344e6eb",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 3429,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-015"
+    }
+   ]
+  },
+  {
+   "task_id": "t-016",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Token Service Provider enhanced CDD higher risk customers",
+      "top_k": 8
+     },
+     "result_chars": 5440,
+     "error": false,
+     "seconds": 0.0568,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.38",
+      "max_chars": 3000
+     },
+     "result_chars": 829,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.7",
+      "max_chars": 3000
+     },
+     "result_chars": 763,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1305,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.8",
+      "max_chars": 3000
+     },
+     "result_chars": 939,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-016"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1516,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-016"
+    }
+   ]
+  },
+  {
+   "task_id": "t-017",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Digital Payment Token Service Provider first non-face-to-face business contact customer external assessment impersonation risks policies",
+      "top_k": 8
+     },
+     "result_chars": 5282,
+     "error": false,
+     "seconds": 0.1132,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.42",
+      "max_chars": 3000
+     },
+     "result_chars": 781,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.37",
+      "max_chars": 3000
+     },
+     "result_chars": 803,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.37",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0034,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.39",
+      "max_chars": 3000
+     },
+     "result_chars": 632,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-017"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "6.38",
+      "max_chars": 3000
+     },
+     "result_chars": 829,
+     "error": false,
+     "seconds": 0.0078,
+     "task_id": "t-017"
+    }
+   ]
+  },
+  {
+   "task_id": "t-018",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "enhanced due diligence higher-risk sectors effective date",
+      "top_k": 8
+     },
+     "result_chars": 5436,
+     "error": false,
+     "seconds": 0.0761,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bee1e1b2c4640e52",
+      "section_path": "3.2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1044,
+     "error": false,
+     "seconds": 0.0069,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ac56b51123bf2a3e",
+      "section_path": "4.6",
+      "max_chars": 3000
+     },
+     "result_chars": 724,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "b9a0d91d0de33dc4",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1305,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3323,
+     "error": false,
+     "seconds": 0.0052,
+     "task_id": "t-018"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "5.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1696,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-018"
+    }
+   ]
+  },
+  {
+   "task_id": "t-019",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "wire transfer monitoring obligation originator beneficiary information Banks Merchant Banks Finance Companies",
+      "top_k": 8
+     },
+     "result_chars": 5446,
+     "error": false,
+     "seconds": 0.0505,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "11.10",
+      "max_chars": 3000
+     },
+     "result_chars": 666,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "11.10",
+      "max_chars": 3000
+     },
+     "result_chars": 673,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "606b1eaa2a5961ad",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3414,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "53eecf17e91a9016",
+      "section_path": "6.41",
+      "max_chars": 3000
+     },
+     "result_chars": 1081,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-019"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f7cf89430a01ec83",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3413,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-019"
+    }
+   ]
+  },
+  {
+   "task_id": "t-020",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "\"business relations\" \"Specified Payment Services\" \"Trust Companies\" \"Banks\" \"financial advice\"",
+      "top_k": 8
+     },
+     "result_chars": 5339,
+     "error": false,
+     "seconds": 0.0627,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6b7de14979d221de",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3318,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.0033,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "e4fb21489268b5b7",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3386,
+     "error": false,
+     "seconds": 0.0033,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ea7234906c732d76",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3352,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-020"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "9.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2004,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-020"
+    }
+   ]
+  },
+  {
+   "task_id": "t-021",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "due diligence requirements Trust Company Bank Capital Markets Intermediary partial business transfer customer records",
+      "top_k": 8
+     },
+     "result_chars": 5236,
+     "error": false,
+     "seconds": 0.0589,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "86ef6622a51098f6",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2412,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "6.30",
+      "max_chars": 3000
+     },
+     "result_chars": 1292,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "8785e88a087f6077",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 3354,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "d570e12d828c6fae",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 2976,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-021"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-021"
+    }
+   ]
+  },
+  {
+   "task_id": "t-022",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "legal person customer identification obligations Specified Payment Services VCC unique identification number proof of legal existence",
+      "top_k": 8
+     },
+     "result_chars": 5513,
+     "error": false,
+     "seconds": 0.0729,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.13",
+      "max_chars": 3000
+     },
+     "result_chars": 3401,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "7.7",
+      "max_chars": 3000
+     },
+     "result_chars": 1186,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.14",
+      "max_chars": 3000
+     },
+     "result_chars": 3392,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.14",
+      "max_chars": 3000
+     },
+     "result_chars": 3395,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-022"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "5283d58b005b2342",
+      "section_path": "6.8",
+      "max_chars": 3000
+     },
+     "result_chars": 1333,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-022"
+    }
+   ]
+  },
+  {
+   "task_id": "t-023",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "amendment submission requirements effective date",
+      "top_k": 8
+     },
+     "result_chars": 5208,
+     "error": false,
+     "seconds": 0.0671,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "82e0a1322d541858",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 1334,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "454c464f4ea2b0cb",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 1267,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2c4be0699b9b7829",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3338,
+     "error": false,
+     "seconds": 0.006,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "de0c4c217095c14b",
+      "section_path": "3.4",
+      "max_chars": 3000
+     },
+     "result_chars": 730,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-023"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "a4174f84f3a09cf5",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 843,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-023"
+    }
+   ]
+  },
+  {
+   "task_id": "t-024",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "outstanding S$ credit facilities requirements effective date",
+      "top_k": 8
+     },
+     "result_chars": 5167,
+     "error": false,
+     "seconds": 0.0578,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "572c7ae5489fdb90",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 648,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "745fe234a24ff121",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 651,
+     "error": false,
+     "seconds": 0.0036,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7af91c4a1623eff3",
+      "section_path": "1",
+      "max_chars": 3000
+     },
+     "result_chars": 718,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "573e686fb6d15bac",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 714,
+     "error": false,
+     "seconds": 0.004,
+     "task_id": "t-024"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "2cc32443b25234d4",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3326,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-024"
+    }
+   ]
+  },
+  {
+   "task_id": "t-025",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "cancellation notice Technology Risk Management Cyber Hygiene effective date",
+      "top_k": 8
+     },
+     "result_chars": 4913,
+     "error": false,
+     "seconds": 0.1322,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "08c32bfed8b449ab",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "692d6fb79eca55da",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 805,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "6df6011c55037361",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "ab77fc707c0c5318",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 804,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-025"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "dd9146fa3c5c279a",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 792,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-025"
+    }
+   ]
+  },
+  {
+   "task_id": "t-026",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Minimum Best Practice Training Competency Standards Direct General Insurers HKMA",
+      "top_k": 8
+     },
+     "result_chars": 5235,
+     "error": false,
+     "seconds": 0.0576,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 1259,
+     "error": false,
+     "seconds": 0.0075,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 527,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "2",
+      "max_chars": 3000
+     },
+     "result_chars": 1309,
+     "error": false,
+     "seconds": 0.0058,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fbe5dbad0e5ed573",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 2030,
+     "error": false,
+     "seconds": 0.0048,
+     "task_id": "t-026"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "aa4da0a0ab68e942",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3393,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-026"
+    }
+   ]
+  },
+  {
+   "task_id": "t-027",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Proceeds of Crime Act money laundering control order failure to comply statutory penalty",
+      "top_k": 8
+     },
+     "result_chars": 5602,
+     "error": false,
+     "seconds": 0.1055,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "cd784f00a52e055e",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1153,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "bdbf8696962103b6",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1137,
+     "error": false,
+     "seconds": 0.0077,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "79bd539512a1ae36",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 1179,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "1.6",
+      "max_chars": 3000
+     },
+     "result_chars": 3482,
+     "error": false,
+     "seconds": 0.0049,
+     "task_id": "t-027"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "165361fa64b9d6d6",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 759,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-027"
+    }
+   ]
+  },
+  {
+   "task_id": "t-028",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "Notice 1018 private equity fund restructuring unitholder consent percentage",
+      "top_k": 8
+     },
+     "result_chars": 4895,
+     "error": false,
+     "seconds": 0.0544,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 2821,
+     "error": false,
+     "seconds": 0.0044,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "775fc77f5ad2b5e8",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3485,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4af97e78d66623e3",
+      "section_path": "29",
+      "max_chars": 3000
+     },
+     "result_chars": 401,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "c80a593cdfa4ae0d",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 428,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-028"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "f5dd0be0e70c82db",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2911,
+     "error": false,
+     "seconds": 0.0034,
+     "task_id": "t-028"
+    }
+   ]
+  },
+  {
+   "task_id": "t-029",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "DIA-N01 Deposit Insurance Returns submission energy efficiency metrics data centre operations",
+      "top_k": 8
+     },
+     "result_chars": 4563,
+     "error": false,
+     "seconds": 0.1133,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3304,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "7aa5debd9f9cf6a5",
+      "section_path": "3",
+      "max_chars": 3000
+     },
+     "result_chars": 3314,
+     "error": false,
+     "seconds": 0.0093,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "8fed4bd76b2e4e76",
+      "section_path": "RELEVANT SERVICES CONSIDERED AS/4",
+      "max_chars": 3000
+     },
+     "result_chars": 409,
+     "error": false,
+     "seconds": 0.0069,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "fdd9abd789d1e3a6",
+      "section_path": "RELEVANT SERVICES CONSIDERED AS/4",
+      "max_chars": 3000
+     },
+     "result_chars": 419,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-029"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "62e4615987027703",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3323,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-029"
+    }
+   ]
+  },
+  {
+   "task_id": "t-030",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "PSN01 specified payment services customer due diligence cross-border remittances obligations",
+      "top_k": 8
+     },
+     "result_chars": 5289,
+     "error": false,
+     "seconds": 0.0481,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "c1b8b7d110372b74",
+      "section_path": "0",
+      "max_chars": 3000
+     },
+     "result_chars": 3331,
+     "error": false,
+     "seconds": 0.0039,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1205,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3c074a620584c861",
+      "section_path": "12",
+      "max_chars": 3000
+     },
+     "result_chars": 2140,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "00a6891ff9267e21",
+      "section_path": "7.43",
+      "max_chars": 3000
+     },
+     "result_chars": 1759,
+     "error": false,
+     "seconds": 0.0035,
+     "task_id": "t-030"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "82e0a1322d541858",
+      "section_path": "Instructions for completion of Forms 2A/5",
+      "max_chars": 3000
+     },
+     "result_chars": 3107,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-030"
+    }
+   ]
+  },
+  {
+   "task_id": "t-901",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "politically exposed persons obligation",
+      "top_k": 30
+     },
+     "result_chars": 21195,
+     "error": false,
+     "seconds": 0.2228,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2181,
+     "error": false,
+     "seconds": 0.0103,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2119,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2105,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2127,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "4170013c9fcfb8ea",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2159,
+     "error": false,
+     "seconds": 0.0057,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8"
+     },
+     "result_chars": 26404,
+     "error": false,
+     "seconds": 0.0372,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "013c800b281bc0bc"
+     },
+     "result_chars": 42702,
+     "error": false,
+     "seconds": 0.045,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069"
+     },
+     "result_chars": 43018,
+     "error": false,
+     "seconds": 0.0556,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40"
+     },
+     "result_chars": 32615,
+     "error": false,
+     "seconds": 0.0625,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 29256,
+     "error": false,
+     "seconds": 0.0347,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 27057,
+     "error": false,
+     "seconds": 0.0438,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 37866,
+     "error": false,
+     "seconds": 0.0373,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 25245,
+     "error": false,
+     "seconds": 0.0373,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2181,
+     "error": false,
+     "seconds": 0.0249,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2119,
+     "error": false,
+     "seconds": 0.0192,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 20157,
+     "error": false,
+     "seconds": 0.0187,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 872,
+     "error": false,
+     "seconds": 0.0176,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2127,
+     "error": false,
+     "seconds": 0.0129,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1170,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2105,
+     "error": false,
+     "seconds": 0.009,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 744,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1306,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 801,
+     "error": false,
+     "seconds": 0.0072,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1487,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1200,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.4",
+      "max_chars": 3000
+     },
+     "result_chars": 1156,
+     "error": false,
+     "seconds": 0.0077,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1536,
+     "error": false,
+     "seconds": 0.0085,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1355,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1419,
+     "error": false,
+     "seconds": 0.0078,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1003,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3387,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3b3ee4828e1084c8",
+      "section_path": "6.10",
+      "max_chars": 3000
+     },
+     "result_chars": 1207,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "8.3",
+      "max_chars": 3000
+     },
+     "result_chars": 1375,
+     "error": false,
+     "seconds": 0.0073,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1289,
+     "error": false,
+     "seconds": 0.0047,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "013c800b281bc0bc",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 2343,
+     "error": false,
+     "seconds": 0.0056,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.8",
+      "max_chars": 3000
+     },
+     "result_chars": 865,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "3.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1219,
+     "error": false,
+     "seconds": 0.0053,
+     "task_id": "t-901"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "6.10",
+      "max_chars": 3000
+     },
+     "result_chars": 1053,
+     "error": false,
+     "seconds": 0.0037,
+     "task_id": "t-901"
+    }
+   ]
+  },
+  {
+   "task_id": "t-902",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "obligation keep records maintain documentation",
+      "top_k": 30
+     },
+     "result_chars": 20069,
+     "error": false,
+     "seconds": 0.146,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 766,
+     "error": false,
+     "seconds": 0.0126,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.1",
+      "max_chars": 3000
+     },
+     "result_chars": 586,
+     "error": false,
+     "seconds": 0.0122,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.1",
+      "max_chars": 3000
+     },
+     "result_chars": 634,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 626,
+     "error": false,
+     "seconds": 0.0115,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "11.2",
+      "max_chars": 3000
+     },
+     "result_chars": 615,
+     "error": false,
+     "seconds": 0.0071,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1363829f117073a2"
+     },
+     "result_chars": 8958,
+     "error": false,
+     "seconds": 0.0326,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069"
+     },
+     "result_chars": 43018,
+     "error": false,
+     "seconds": 0.0385,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40"
+     },
+     "result_chars": 32615,
+     "error": false,
+     "seconds": 0.0619,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad"
+     },
+     "result_chars": 41693,
+     "error": false,
+     "seconds": 0.0698,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.3",
+      "max_chars": 3000
+     },
+     "result_chars": 766,
+     "error": false,
+     "seconds": 0.0341,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 37866,
+     "error": false,
+     "seconds": 0.041,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 25245,
+     "error": false,
+     "seconds": 0.0385,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.4",
+      "max_chars": 3000
+     },
+     "result_chars": 810,
+     "error": false,
+     "seconds": 0.0281,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 34783,
+     "error": false,
+     "seconds": 0.0341,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 20157,
+     "error": false,
+     "seconds": 0.0259,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.2",
+      "max_chars": 3000
+     },
+     "result_chars": 702,
+     "error": false,
+     "seconds": 0.0131,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.1",
+      "max_chars": 3000
+     },
+     "result_chars": 634,
+     "error": false,
+     "seconds": 0.0168,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzoxMDA"
+     },
+     "result_chars": 28268,
+     "error": false,
+     "seconds": 0.0226,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.1",
+      "max_chars": 3000
+     },
+     "result_chars": 586,
+     "error": false,
+     "seconds": 0.0211,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "3.6",
+      "max_chars": 3000
+     },
+     "result_chars": 1177,
+     "error": false,
+     "seconds": 0.0207,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1310,
+     "error": false,
+     "seconds": 0.0153,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "cursor": "bzoxNTA"
+     },
+     "result_chars": 512,
+     "error": false,
+     "seconds": 0.0179,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.5",
+      "max_chars": 3000
+     },
+     "result_chars": 694,
+     "error": false,
+     "seconds": 0.0159,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1363829f117073a2",
+      "section_path": "6.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1521,
+     "error": false,
+     "seconds": 0.0167,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "11.5",
+      "max_chars": 3000
+     },
+     "result_chars": 742,
+     "error": false,
+     "seconds": 0.0187,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 626,
+     "error": false,
+     "seconds": 0.0114,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3373,
+     "error": false,
+     "seconds": 0.0086,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "13.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1201,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "12.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1202,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "2.1",
+      "max_chars": 3000
+     },
+     "result_chars": 3403,
+     "error": false,
+     "seconds": 0.0067,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 812,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "14.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1153,
+     "error": false,
+     "seconds": 0.008,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.2",
+      "max_chars": 3000
+     },
+     "result_chars": 1326,
+     "error": false,
+     "seconds": 0.0051,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "3bd0ff97c75d1a40",
+      "section_path": "6.5",
+      "max_chars": 3000
+     },
+     "result_chars": 1572,
+     "error": false,
+     "seconds": 0.0066,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "14.6",
+      "max_chars": 3000
+     },
+     "result_chars": 768,
+     "error": false,
+     "seconds": 0.0082,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "1b9b9f6db2876069",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 778,
+     "error": false,
+     "seconds": 0.0081,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "16.1",
+      "max_chars": 3000
+     },
+     "result_chars": 1258,
+     "error": false,
+     "seconds": 0.0042,
+     "task_id": "t-902"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "604c3f4b73b0a8ad",
+      "section_path": "4.2",
+      "max_chars": 3000
+     },
+     "result_chars": 818,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-902"
+    }
+   ]
+  },
+  {
+   "task_id": "t-903",
+   "calls": [
+    {
+     "tool": "search_notices",
+     "args": {
+      "query": "suspicious transaction report filing requirement MAS notice guideline",
+      "top_k": 30
+     },
+     "result_chars": 21324,
+     "error": false,
+     "seconds": 0.0516,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "13",
+      "max_chars": 3000
+     },
+     "result_chars": 3445,
+     "error": false,
+     "seconds": 0.0045,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0041,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0043,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "655bbd1025365217",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2042,
+     "error": false,
+     "seconds": 0.0046,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "61178e1043022702",
+      "section_path": "13.4",
+      "max_chars": 3000
+     },
+     "result_chars": 967,
+     "error": false,
+     "seconds": 0.0038,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "235ba83000dd5002"
+     },
+     "result_chars": 41043,
+     "error": false,
+     "seconds": 0.0492,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "26a5b2e22168ec78"
+     },
+     "result_chars": 50585,
+     "error": false,
+     "seconds": 0.0516,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "01fd29007c35846f"
+     },
+     "result_chars": 43672,
+     "error": false,
+     "seconds": 0.0438,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "655bbd1025365217"
+     },
+     "result_chars": 1994,
+     "error": false,
+     "seconds": 0.0401,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "655bbd1025365217",
+      "section_path": "1.2",
+      "max_chars": 3000
+     },
+     "result_chars": 2042,
+     "error": false,
+     "seconds": 0.0112,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 7805,
+     "error": false,
+     "seconds": 0.015,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 13971,
+     "error": false,
+     "seconds": 0.0396,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "list_obligations",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "cursor": "bzo1MA"
+     },
+     "result_chars": 26964,
+     "error": false,
+     "seconds": 0.0343,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "16",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0296,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3454,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "13",
+      "max_chars": 3000
+     },
+     "result_chars": 3445,
+     "error": false,
+     "seconds": 0.0094,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "9",
+      "max_chars": 3000
+     },
+     "result_chars": 3444,
+     "error": false,
+     "seconds": 0.0098,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0065,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "7",
+      "max_chars": 3000
+     },
+     "result_chars": 3439,
+     "error": false,
+     "seconds": 0.0054,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "17",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0083,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "11",
+      "max_chars": 3000
+     },
+     "result_chars": 3449,
+     "error": false,
+     "seconds": 0.0095,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "9",
+      "max_chars": 3000
+     },
+     "result_chars": 3457,
+     "error": false,
+     "seconds": 0.0065,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "4",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0065,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "18",
+      "max_chars": 3000
+     },
+     "result_chars": 3479,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "14",
+      "max_chars": 3000
+     },
+     "result_chars": 3469,
+     "error": false,
+     "seconds": 0.007,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "6",
+      "max_chars": 3000
+     },
+     "result_chars": 3447,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "4",
+      "max_chars": 3000
+     },
+     "result_chars": 3476,
+     "error": false,
+     "seconds": 0.0059,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "5",
+      "max_chars": 3000
+     },
+     "result_chars": 3470,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "01fd29007c35846f",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3465,
+     "error": false,
+     "seconds": 0.0062,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "26a5b2e22168ec78",
+      "section_path": "8",
+      "max_chars": 3000
+     },
+     "result_chars": 3465,
+     "error": false,
+     "seconds": 0.0064,
+     "task_id": "t-903"
+    },
+    {
+     "tool": "get_document_section",
+     "args": {
+      "doc_id": "235ba83000dd5002",
+      "section_path": "10",
+      "max_chars": 3000
+     },
+     "result_chars": 3437,
+     "error": false,
+     "seconds": 0.005,
+     "task_id": "t-903"
+    }
+   ]
+  }
+ ]
+}

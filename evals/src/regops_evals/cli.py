@@ -17,6 +17,17 @@ Day 5 adds the sweep, which reads that set rather than building it:
                           --report results/day5/retrieval.md
     regops-evals generate-answers --configs ladder     # 4 x 150, ~68 min on the 3090
     regops-evals judge            --answers results/day5/answers
+
+Day 8 adds the agent eval, which runs locally because CI has no GPU, and the gate,
+which runs in CI against the artifact the eval committed:
+
+    regops-evals build-tasks --golden golden/v1/golden.jsonl   # 30, derived
+    regops-evals agent-eval  --index index/regdocs.duckdb --trace
+    regops-evals gate-agent  --eval results/day8/eval.json \
+                             --baseline results/day8/baseline.json
+    regops-evals calibrate       --eval results/day8/eval.json   # 20 items to hand-score
+    regops-evals calibration-report
+    regops-evals determinism --left a.json --right b.json        # instrumentation check
 """
 
 from __future__ import annotations
@@ -156,6 +167,76 @@ def cmd_judge(a: argparse.Namespace) -> int:
     return judge_answers(a.golden, a.answers, model=a.model, out=a.out)
 
 
+def cmd_build_tasks(a: argparse.Namespace) -> int:
+    from regops_evals.tasks import build, write_tasks
+
+    tasks = build(a.golden)
+    write_tasks(a.out, tasks)
+    counts: dict[str, int] = {}
+    for t in tasks:
+        counts[t.query_type] = counts.get(t.query_type, 0) + 1
+    for qt, n in sorted(counts.items()):
+        print(f"  {qt:16s} {n:3d}")
+    print(f"wrote {len(tasks)} tasks -> {a.out}")
+    return 0
+
+
+def cmd_agent_eval(a: argparse.Namespace) -> int:
+    import asyncio
+
+    from regops_evals.agenteval import main_async
+
+    return asyncio.run(main_async(a))
+
+
+def cmd_gate_agent(a: argparse.Namespace) -> int:
+    from regops_evals.gate_agent import run_gate_agent
+
+    return run_gate_agent(a.eval, a.baseline, arm=a.arm, latency_tolerance=a.latency_tolerance)
+
+
+def cmd_calibrate(a: argparse.Namespace) -> int:
+    from regops_evals.calibration import select, write
+
+    report = json.loads(a.eval.read_text())
+    items = select(report, target=a.target)
+    ix = None
+    if a.index and a.index.exists():
+        from regops_retrieval.index import Index
+
+        ix = Index(a.index)
+    try:
+        write(items, a.out, worksheet=a.worksheet, index=ix)
+    finally:
+        if ix is not None:
+            ix.close()
+    contested = sum(i.contested for i in items)
+    print(f"{len(items)} items selected, {contested} contested (judge vs mechanical disagree)")
+    print(f"-> {a.out}")
+    print(f"-> {a.worksheet}")
+    return 0
+
+
+def cmd_calibration_report(a: argparse.Namespace) -> int:
+    from regops_evals.calibration import read, report
+
+    rep = report(read(a.items))
+    print(json.dumps(rep, indent=2))
+    if a.out:
+        a.out.parent.mkdir(parents=True, exist_ok=True)
+        a.out.write_text(json.dumps(rep, indent=2) + "\n")
+        print(f"-> {a.out}")
+    # Never fails a build. An uncalibrated judge is a stated limitation, not a
+    # broken artifact -- see `calibration.py`.
+    return 0
+
+
+def cmd_determinism(a: argparse.Namespace) -> int:
+    from regops_evals.determinism import run_determinism
+
+    return run_determinism(a.left, a.right, arms=tuple(a.arms), gated=a.gated, out=a.out)
+
+
 def cmd_gate(a: argparse.Namespace) -> int:
     from regops_evals.gate import run_gate
 
@@ -203,6 +284,62 @@ def main() -> None:
     q.add_argument("--k", type=int, default=5)
     q.add_argument("--out", type=Path, default=None)
     q.set_defaults(fn=cmd_gate)
+
+    bt = sub.add_parser("build-tasks", help="derive the 30 agent tasks from the golden set")
+    bt.add_argument("--golden", type=Path, default=Path("golden/v1/golden.jsonl"))
+    bt.add_argument("--out", type=Path, default=Path("golden/tasks/v1/tasks.jsonl"))
+    bt.set_defaults(fn=cmd_build_tasks)
+
+    ae = sub.add_parser("agent-eval", help="run the agent architectures over the task set")
+    ae.add_argument("--index", type=Path, default=Path("index/regdocs.duckdb"))
+    ae.add_argument("--tasks", type=Path, default=Path("golden/tasks/v1/tasks.jsonl"))
+    ae.add_argument("--arms", nargs="+", default=["all"])
+    ae.add_argument("--model", default="qwen3.5:9b")
+    ae.add_argument("--judge-model", default="qwen3.8:latest")
+    ae.add_argument("--limit", type=int, default=None)
+    ae.add_argument("--coverage", action=argparse.BooleanOptionalAction, default=True)
+    ae.add_argument("--judge", action=argparse.BooleanOptionalAction, default=True)
+    ae.add_argument("--trace", action="store_true", help="send spans to LangFuse (opt-in)")
+    ae.add_argument("--max-steps", type=int, default=24)
+    ae.add_argument("--max-seconds", type=float, default=600.0)
+    ae.add_argument("--max-tokens", type=int, default=120_000)
+    ae.add_argument("--out", type=Path, default=Path("results/day8/eval.json"))
+    ae.add_argument("--calls", type=Path, default=None)
+    ae.set_defaults(fn=cmd_agent_eval)
+
+    gaa = sub.add_parser("gate-agent", help="fail the build on a stale or regressed eval")
+    gaa.add_argument("--eval", type=Path, default=Path("results/day8/eval.json"))
+    gaa.add_argument("--baseline", type=Path, default=Path("results/day8/baseline.json"))
+    gaa.add_argument("--arm", default="supervisor", help="the arm the gate enforces")
+    gaa.add_argument(
+        "--latency-tolerance",
+        type=float,
+        default=0.25,
+        help="fractional p50 regression allowed; the measured spread is 6.5%%",
+    )
+    gaa.set_defaults(fn=cmd_gate_agent)
+
+    cb = sub.add_parser("calibrate", help="pick 20 judge verdicts for a human to score")
+    cb.add_argument("--eval", type=Path, default=Path("results/day8/eval.json"))
+    cb.add_argument("--index", type=Path, default=Path("index/regdocs.duckdb"))
+    cb.add_argument("--target", type=int, default=20)
+    cb.add_argument("--out", type=Path, default=Path("golden/judge_calibration/items.jsonl"))
+    sheet = Path("golden/judge_calibration/worksheet.md")
+    cb.add_argument("--worksheet", type=Path, default=sheet)
+    cb.set_defaults(fn=cmd_calibrate)
+
+    cr = sub.add_parser("calibration-report", help="agreement per axis, or 'uncalibrated'")
+    cr.add_argument("--items", type=Path, default=Path("golden/judge_calibration/items.jsonl"))
+    cr.add_argument("--out", type=Path, default=Path("golden/judge_calibration/agreement.json"))
+    cr.set_defaults(fn=cmd_calibration_report)
+
+    dt = sub.add_parser("determinism", help="compare two eval runs field by field")
+    dt.add_argument("--left", type=Path, required=True)
+    dt.add_argument("--right", type=Path, required=True)
+    dt.add_argument("--arms", nargs="+", default=["supervisor"])
+    dt.add_argument("--gated", default="supervisor", help="the arm whose verdict is the exit code")
+    dt.add_argument("--out", type=Path, default=Path("results/day8/determinism.json"))
+    dt.set_defaults(fn=cmd_determinism)
 
     b = sub.add_parser("bench", help="sweep retrieval configurations over the golden set")
     b.add_argument("--index", type=Path, required=True)
