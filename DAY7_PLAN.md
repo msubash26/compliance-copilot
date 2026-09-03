@@ -241,10 +241,10 @@ is the piece most likely to be bolted on badly if it is left until last.
 - [x] Measure **three shapes** (problem 1): all-LLM (re-confirming research 1's 1.01× *inside the
       graph*, not just against the raw API), mixed LLM + retrieval, and all-LLM with
       `OLLAMA_NUM_PARALLEL` raised. Record the 2.53× ceiling next to each.
-- [ ] `results/day7/fanout.json`, and a renderer that reads it. **Nothing hand-edited** — Day 6
+- [x] `results/day7/fanout.json`, and a renderer that reads it. **Nothing hand-edited** — Day 6
       Phase 1 found a generated document carrying `122` as a literal, and that lesson cost 45
       minutes.
-- [ ] An ADR that says what the numbers decided: fan-out kept for context-window isolation, or
+- [x] An ADR that says what the numbers decided: fan-out kept for context-window isolation, or
       removed. If it is kept for a reason that is not wall-clock, the ADR says which reason and
       concedes the wall-clock case.
 
@@ -257,7 +257,7 @@ is the piece most likely to be bolted on badly if it is left until last.
 - [x] CLI: `--thread <id>`, `--resume`, `--approve` / `--reject <reason>`. A rejection routes back
       to `gap_analyst` with the reason in state, which is the only version of HITL that is worth
       more than a confirmation dialog.
-- [ ] **F13** in `FAILURE_MODES.md`, four fields as always: trigger (the probe), symptom (2 of 2),
+- [x] **F13** in `FAILURE_MODES.md`, four fields as always: trigger (the probe), symptom (2 of 2),
       mitigation (interrupt-first node placement), cost (one extra node and one extra checkpoint
       write per approval).
 
@@ -265,30 +265,30 @@ is the piece most likely to be bolted on badly if it is left until last.
 
 This is the prep plan's own descope item 4. It survives here only because it costs one node.
 
-- [ ] Plan-and-execute as a **variant of the same graph** — plan once up front, execute the steps —
+- [x] Plan-and-execute as a **variant of the same graph** — plan once up front, execute the steps —
       rather than a second implementation. The router already produces a plan-shaped artefact; the
       variant stops re-consulting it.
-- [ ] Run three architectures on the same set: **Day 6's single agent**, the supervisor, and
+- [x] Run three architectures on the same set: **Day 6's single agent**, the supervisor, and
       plan-and-execute. Six golden questions (where the single agent should win) plus three
       gap-analysis tasks (where it should fail).
-- [ ] The table: task completion, steps, tool calls, wall-clock p50, tokens, `$`-equivalent. Lines
+- [x] The table: task completion, steps, tool calls, wall-clock p50, tokens, `$`-equivalent. Lines
       of code reported and explicitly **not** treated as quality — ADR-027's rule, applied again.
-- [ ] Write the paragraph the prep plan actually asks for, and write it against the day's own
+- [x] Write the paragraph the prep plan actually asks for, and write it against the day's own
       numbers rather than from the blog-post version: where the single agent wins, by how much, and
       the two conditions under which that reverses.
 
 ## Phase 6 — Tests, ADRs, write-up · 60 min
 
-- [ ] ADRs: the supervisor is hand-rolled (or not); the budget is denominated in three currencies
+- [x] ADRs: the supervisor is hand-rolled (or not); the budget is denominated in three currencies
       and converted once; fan-out's verdict from Phase 3; `interrupt()` node placement.
-- [ ] `FAILURE_MODES.md`: F13, plus **honest status changes to F5 and F7** — closed by the graph,
+- [x] `FAILURE_MODES.md`: F13, plus **honest status changes to F5 and F7** — closed by the graph,
       or still open with the reason. Day 6 assigned them here; leaving them silently open is worse
       than leaving them open loudly.
-- [ ] `README.md` — Day 7 section, the architecture table, the status line, the test count.
-- [ ] `results/day7/` committed: `fanout.json`, `architectures.json`, the resume transcript.
-- [ ] `/home/subash/regops/initial-setup.md` — Days 0–7, and the new gotchas (the interrupt replay,
+- [x] `README.md` — Day 7 section, the architecture table, the status line, the test count.
+- [x] `results/day7/` committed: `fanout.json`, `architectures.json`, the resume transcript.
+- [x] `/home/subash/regops/initial-setup.md` — Days 0–7, and the new gotchas (the interrupt replay,
       `dict_row` on the checkpointer connection, `CHECKPOINTER_DSN` living in `.env`).
-- [ ] `## Outcome` appended here. Green CI.
+- [x] `## Outcome` appended here. Green CI.
 
 ---
 
@@ -360,3 +360,122 @@ third fan-out shape (raised `OLLAMA_NUM_PARALLEL`) → layer 3 in `citation_chec
 **Never cut:** the ceiling returning a partial result, the two-process resume proof, and the fan-out
 measurement. The first is the prep plan's explicit wording, the second is the only claim here that
 a restart cannot fake, and the third is the day's finding.
+
+---
+
+## Outcome
+
+All six phases complete. 239 tests green in this workspace (1 skipped, 2 `slow` deselected) and
+96 in `regdocs-mcp`, ruff clean, both repos pushed. Five ADRs here, one in `regdocs-mcp`.
+`FAILURE_MODES.md` is fifteen entries, and the three open ones Day 6 handed forward are closed.
+
+The day's sentence, and it is the negative one the prep plan asked for:
+
+> **Parallel fan-out bought 1.00× against a 3.12× ceiling, because 95% of a branch is time spent
+> queueing at one model server. What multi-agent actually bought was citations that resolve —
+> 12 of 12 against the single agent's 48 of 63 — and three failure modes a sequential agent
+> could not have found.**
+
+### What the plan got right
+
+**Measuring before planning changed the design twice.** Research 4 — the node body before
+`interrupt()` runs twice — is not a thing that would have been noticed after the fact; the symptom
+is a doubled token count and nothing else. It became a design rule (ADR-030), a test, and F13,
+before a line of the graph was written. Research 2's install-and-import check is the same habit
+applied to F12's lesson, and it passed.
+
+**Leading with the negative number was right and it cost nothing.** Publishing the ceiling next to
+the speedup is what makes it readable: *a perfect orchestrator could have won 3.12×; we captured
+−0.1%*. That is a different statement from "the fan-out did not work", and the difference is the
+ceiling.
+
+**Problem 2's insistence on running the single agent was the best decision of the day.** Without
+it the day produces a working supervisor and no argument. With it, the supervisor's win on lookup
+is visibly *small* — 7% slower, 38% cheaper, 12 resolvable citations against 4 — and the sentence
+that comes out of the table is honest in both directions: if the task is one clause and nobody
+will check the citation, a single agent is the right architecture and this graph is overhead.
+
+**The three-currency budget was worth the extra machinery.** The comparison's most damning column
+is tokens — the single agent spent 188,798 against 37,661 on the coverage set — and a step-only
+ceiling would not have produced it. The `$` conversion is the least interesting part and is
+correctly labelled an assumption.
+
+### Where the plan was wrong, and what replaced it
+
+- **The supervisor was expected to lose on lookup. It did not.** The plan said "the supervisor is
+  expected to lose here and the interesting question is by how much". It is 7% slower on p50 and
+  wins on every other column, including 38% fewer tokens — because the single agent re-reads its
+  own tool output through a context window on every step, and the graph does not.
+- **F1 and F7's fix is blunter than "constrain the plan".** The plan described a `citation_checker`
+  that resolves identifiers before the synthesiser sees them. That exists, but the actual fix is
+  upstream and cruder: **the model never supplies an identifier at all.** The honest description
+  is that the capability was removed, not that the model improved, and ADR-028 says so.
+- **Layer 3 was deferred again, and for a better reason than last time.** The plan assigned
+  Day 5's judge to `citation_checker`. Layer 2 turned out to do the whole job on this evidence —
+  0 unresolvable citations on the coverage set, 1 of 13 on lookup — so a judge would have been
+  measuring a rate that is already at its ceiling. Day 8's task set is where a support judge has
+  something to disagree with.
+- **LangFuse was not wired.** Decision 3 recommended it, minimally, and it lost to Phase 5. The
+  fan-out measurement turned out to need per-branch timings rather than a span waterfall, and
+  `fanout.py` produces those directly. It remains Day 8's bullet and is now genuinely undone
+  rather than half-done.
+- **Three bugs were found that the plan had no line for**, all of them by building the fan-out:
+  a shared DuckDB connection in `regdocs-mcp` returning one caller's rows to another (F15), Day 6's
+  truncation cap silently breaking a JSON parser (F14), and a coverage sweep built on a global
+  top-k giving different documents different amounts of evidence. The third is the subtlest: every
+  branch judged its own evidence correctly and the sweep was still wrong.
+
+### Findings worth carrying forward
+
+- **Adding concurrency in front of a queue does not shorten it.** The generalisable form of the
+  fan-out result is the 95/5 split between queued model time and uncontended tool time, not the
+  1.00×. On an endpoint with real concurrency the 3.12× ceiling becomes reachable, and the
+  measurement is reported as a property of this deployment rather than of fan-out.
+- **The reroute fired and bought nothing.** Plan-and-execute — the same graph minus one edge —
+  produced identical citation counts for 16% fewer tokens. A recovery path earns its keep only
+  when it fires *and* fixes something, and this is the second time this project has measured a
+  retry loop to zero (F11 was the first).
+- **The worst failures invert rather than error.** F15 returns an authoritative "no such document"
+  for a document it just returned the id of; F14 reports a silent corpus because a cap cut JSON in
+  half. Neither raises. Both were found by a wrong *answer* three layers downstream.
+- **A mitigation is written against a consumer.** Day 6's 12,000-character cap is correct for a
+  model and fatal for a parser. The general rule — a policy about how much a consumer can hold is
+  not a property of the tool — is worth more than the parameter that fixes it.
+- **Breadth and verifiability trade against each other, and the trade is measurable.** The single
+  agent named 21 documents to the supervisor's 4 on the coverage set, with 24% of its identifiers
+  invented. Either number alone is a misleading answer to "which is better at coverage".
+- **`interrupt()` replays its node.** Anything expensive above that call is billed twice with no
+  error and no log line.
+
+### Deliberately deferred
+
+**LangFuse tracing**, as above — Day 8's bullet, untouched rather than half-done.
+
+**The fan-out width is 4 and the corpus matched 18 documents.** A coverage sweep that stops at
+four documents is answering a narrower question than the one asked. Widening it is a straight
+trade against the fan-out measurement: each branch is a queued model call, so width scales wall
+clock linearly on this hardware. Named, and left at 4 with the reason recorded rather than
+widened silently.
+
+**The supervisor cannot reach `diff_versions`.** ADR-028's rule — no model-supplied identifiers —
+removes it from the graph's reach entirely. Given `regdocs-mcp` ADR-004 records that this corpus
+has no genuine multi-version document, that costs nothing today and would cost something on a
+corpus that did.
+
+**Two simultaneous HTTP sessions against `regdocs-mcp` are untested.** F15's fix addresses
+concurrency within one process; the Streamable HTTP transport serves multiple clients, and that is
+the same mechanism and the same fix, unproven.
+
+### End-to-end proof
+
+```
+uv run regops-supervisor --persist --thread t1 "Which documents ... politically exposed persons?"
+uv run regops-supervisor --resume t1 --reject "you missed the trust companies and VCC notices"
+uv run regops-supervisor --resume t1 --approve
+```
+
+Three processes, nothing shared but Postgres. The rejection put the reviewer's words back into the
+search text and the second sweep returned TCA-N03 and VCC-N01, neither of which the first found;
+the run then synthesised an answer citing four verified clauses, at 12 steps and 14,270 tokens.
+Every number in `results/day7/day7.md` is generated from the JSON beside it by
+`python -m regops_agents.report`, and nothing in it is hand-edited.

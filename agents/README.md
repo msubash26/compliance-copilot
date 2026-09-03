@@ -1,16 +1,42 @@
 # regops-agents
 
-A LangGraph ReAct agent over [`regdocs-mcp`](https://github.com/msubash26/regdocs-mcp), and the
-twelve ways it fails.
+Two agents over [`regdocs-mcp`](https://github.com/msubash26/regdocs-mcp) — a LangGraph ReAct
+agent (Day 6) and a supervisor graph (Day 7) — and the fifteen ways they fail.
 
-The working demo is the easy half. The deliverable is
-[`FAILURE_MODES.md`](../FAILURE_MODES.md): twelve failures, each with a trigger that reproduces
-it, a symptom measured with an `n`, a mitigation, and what that mitigation cost.
+The working demo is the easy half. The deliverables are
+[`FAILURE_MODES.md`](../FAILURE_MODES.md) — fifteen failures, each with a trigger that reproduces
+it, a symptom measured with an `n`, a mitigation, and what that mitigation cost — and
+[`results/day7/day7.md`](../results/day7/day7.md), which puts the two architectures in the same
+table and lets the single agent win where it wins.
 
 ```bash
 uv run regops-agents "What must a bank do to identify the beneficial owner of a customer?"
 uv run regops-agents "..." --local          # also offer search_local (C4); loads 1.33 GB
+
+uv run regops-supervisor "Which documents state an obligation about politically exposed persons?"
+uv run regops-supervisor "..." --persist --thread t1   # stop for human approval
+uv run regops-supervisor --resume t1 --approve         # in a different process
 ```
+
+## The supervisor
+
+`router → {retrieve, obligation-extract, gap-analyst fan-out, citation-check} → synthesise`.
+
+| module | what it owns |
+|---|---|
+| `supervisor.py` | the graph, the ceilings, the two nodes that can reroute |
+| `workers.py` | the five workers; the model writes the query, the graph supplies every id |
+| `budget.py` | steps / seconds / tokens, one shared spend, one declared dollar conversion |
+| `checkpoint.py` | `AsyncPostgresSaver`, in-memory when there is no DSN |
+| `fanout.py` | did parallel fan-out buy anything (no: 1.00× against a 3.12× ceiling) |
+| `architectures.py` | single agent vs supervisor vs plan-and-execute, two task sets |
+| `report.py` | `results/day7/day7.md`, generated — nothing hand-edited |
+
+**The model is not allowed to supply an identifier.** Day 6's finding was that tool selection was
+always right and argument grounding was the defect, so `retrieve` calls `search_notices` with a
+query the model wrote and reads sections with `doc_id`s that came out of the results. F1 and F7
+cannot occur here because the capability that produces them is gone — the same cost as F1's
+prompt fix, paid structurally (ADR-028).
 
 ## The two tool surfaces
 

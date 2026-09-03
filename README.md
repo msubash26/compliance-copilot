@@ -3,8 +3,11 @@
 RAG + multi-agent system over MAS / SGX regulatory corpora, running fully local on an
 RTX 3090 (air-gapped path), with a Bedrock parity path for cost/quality comparison.
 
-**Status:** Day 6 — a single agent over the MCP server, and `FAILURE_MODES.md`: twelve
-reproducible failures, four of which belong to the frameworks rather than the model.
+**Status:** Day 7 — a supervisor over the same MCP server, with a Postgres checkpointer, a
+human-in-the-loop interrupt and a three-currency cost ceiling. Its headline number is negative:
+**parallel fan-out bought 1.00× against a 3.12× ceiling.** `FAILURE_MODES.md` is fifteen
+reproducible failures; three of them could only have been found by the architecture that bought
+no time.
 
 ## Layout
 
@@ -271,14 +274,14 @@ about determinism.** The second bug was found only by running the benchmark thre
 diffing the headline numbers. `hit@k` is a set test and survived both, which is why Day 4's
 baseline was never wrong. See ADR-022.
 
-## The agent, and the twelve ways it fails
+## The single agent, and the ways it fails
 
 ```bash
 uv run regops-agents "What must a bank do to identify the beneficial owner of a customer?"
 ```
 
 A LangGraph ReAct agent over `regdocs-mcp`'s four tools, plus `search_local` backed by C4. The
-working demo is the easy half; the deliverable is [`FAILURE_MODES.md`](FAILURE_MODES.md) — **12
+working demo is the easy half; the deliverable is [`FAILURE_MODES.md`](FAILURE_MODES.md) — **15
 failures, each with a trigger that reproduces it, a symptom measured with an `n`, a mitigation,
 and what that mitigation cost.** A failure with no reproduction is a story; a mitigation with no
 cost is a sales pitch.
@@ -286,7 +289,8 @@ cost is a sales pitch.
 **Every failure the model owns is the same failure.** It invents filters nobody asked for (F1),
 ignores a recovery path a tool explicitly handed it (F5), and calls `diff_versions` with a
 `doc_id` of a shape this corpus does not use (F7). Tool *selection* was correct in every single
-provocation. Routing is not the hard part; argument grounding is.
+provocation. Routing is not the hard part; argument grounding is. All three were closed on Day 7
+by taking the decision away from the model rather than by asking it better — see below.
 
 **One sentence of prompt bought what a 2.6× larger model bought.** Given only the server's tool
 schemas, `qwen3.5:9b` set an unasked-for filter on 5 of 29 calls and one of them removed the gold
@@ -347,9 +351,78 @@ tools and the tradeoff is published rather than chosen silently (ADR-025). But a
 14/30 against 19/30, entirely through the model declining to cite. Citation compliance is not a
 retrieval property.
 
+## The supervisor, and the case against it
+
+```bash
+uv run regops-supervisor "Which documents state an obligation about politically exposed persons?"
+uv run regops-supervisor "..." --persist --thread t1     # stop for human approval
+uv run regops-supervisor --resume t1 --approve           # in a different process
+uv run regops-supervisor --resume t1 --reject "you missed the trust companies"
+```
+
+`router → {retrieve, obligation-extract, gap-analyst fan-out, citation-check} → synthesise`,
+hand-rolled over `StateGraph`, checkpointed to Postgres, with one budget shared by every worker
+and a partial result returned at every ceiling. Full numbers:
+[`results/day7/day7.md`](results/day7/day7.md), generated from the JSON that measured them.
+
+**Parallel fan-out bought nothing, and that is the finding.** Four independent sub-agents over
+four documents, measured inside the graph, arms alternating, median of five rounds:
+
+| | |
+|---|---|
+| sequential | 3.69s |
+| parallel | 3.69s |
+| **speedup** | **1.00×** |
+| ceiling, `sum / max` | 3.12× |
+
+The explanation is the number that transfers to other hardware: **one branch is 95% queued model
+time and 5% uncontended tool work.** The branches are not competing for the orchestrator, they
+are queueing at one model server, and concurrency in front of a queue does not shorten it. The
+fan-out is kept anyway — for one context window per document, which is the prep plan's *other*
+condition and the one that does hold here (ADR-031).
+
+**Three architectures, two task sets.** On six lookup questions the supervisor is 7% slower on
+p50, uses 38% fewer tokens, and produces 12 resolvable citations against the single agent's 4.
+That margin is small, and it is reported as small: *if the task is one clause and nobody will
+check the citation, a single agent is the right architecture and this graph is overhead.*
+
+On three coverage tasks the single agent does not merely lose, it fails differently — 1 of 3 runs
+hit the step ceiling, it spent 5× the tokens, and **15 of the 63 identifiers it cited do not
+exist**. It names 21 documents to the supervisor's 4 because it pastes search results back at
+you. Breadth against verifiability, 24% of the breadth invented.
+
+**Plan-and-execute is the supervisor minus one edge, and it is cheaper** — 16% fewer tokens for
+identical citation counts. The supervisor's reroute fired and changed no outcome on this set. A
+recovery path earns its keep only when it fires *and* fixes something.
+
+**Human review that changes the answer.** `interrupt()` pauses before a coverage report is
+finalised; the run survives the process. Rejecting with *"you missed the trust companies and VCC
+notices"* put the reason back into the search text and re-ran the sweep, which returned TCA-N03
+and VCC-N01 — neither of which the first sweep found. A rejection that only annotates the answer
+is a confirmation dialog with extra steps.
+
+**Three failure modes only this shape could find.** F13 (an interrupting node's body runs twice
+and bills twice), F14 (Day 6's truncation cap silently broke a JSON parser two layers away) and
+F15 (parallel tool calls on one MCP session read each other's results, so a valid `doc_id` came
+back as *no such document* — fixed in `regdocs-mcp`, ADR-009). None needs a better model; all
+three need a run that pauses, a consumer that parses rather than reads, or two calls in flight.
+
 ## Decisions
 
-[`DECISIONS.md`](DECISIONS.md) — 27 ADRs. The Day 6 ones:
+[`DECISIONS.md`](DECISIONS.md) — 32 ADRs. The Day 7 ones:
+
+- **ADR-028** The supervisor is hand-rolled, `langgraph-supervisor` was available and rejected,
+  and the model is not allowed to supply an identifier — which closes F1 and F7 by removing the
+  capability rather than by improving the model
+- **ADR-029** The budget is steps, seconds and tokens with one declared conversion to dollars;
+  limits are configuration, spend is state, and the reducer adds
+- **ADR-030** `interrupt()` is the first statement of its node, because the body above it runs
+  twice — measured 2/2 — and is billed twice, silently
+- **ADR-031** Fan-out kept for context isolation, having been measured to buy no wall-clock time
+- **ADR-032** A truncation cap belongs to the caller: Day 6's model-sized cap silently broke a
+  parser two layers away
+
+The Day 6 ones:
 
 - **ADR-025** Two tool surfaces, the portable one's cost measured, and why better retrieval did
   not buy better-grounded answers
