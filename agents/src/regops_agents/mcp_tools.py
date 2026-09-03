@@ -47,21 +47,39 @@ SERVER_DIR = Path(__file__).resolve().parents[4] / "regdocs-mcp"
 # and the question with it before it touches the tool output.
 MAX_RESULT_CHARS = 12_000
 
+# The same cap, for a consumer that is not a context window.
+#
+# Day 6 put the truncation here because the only consumer was a model, and for a
+# model it is right: the result goes straight into a prompt. Day 7's supervisor
+# is a second consumer with the opposite requirement -- it *parses* these results
+# and compacts them itself, so a result cut mid-JSON is not a shortened answer,
+# it is no answer. `search_notices` crosses 12,000 characters at top_k 20 on this
+# corpus and `list_obligations` crosses it on its first page, and in both cases
+# the graph saw zero results and no error. That is F14, and the fix is that the
+# **cap belongs to the caller**: a truncation policy written for one consumer is
+# not a property of the tool. Programmatic callers pass this instead.
+PARSER_RESULT_CHARS = 400_000
 
-def _render(result) -> str:
-    """One tool result as text the model can read, bounded and honest about it."""
+
+def _render(result, limit: int = MAX_RESULT_CHARS) -> str:
+    """One tool result as text, bounded by whatever the caller can hold."""
     parts = [c.text for c in (result.content or []) if getattr(c, "text", None)]
     body = "\n".join(parts) if parts else str(result.structured_content or "")
-    if len(body) > MAX_RESULT_CHARS:
+    if len(body) > limit:
         return (
-            body[:MAX_RESULT_CHARS] + f"\n\n[truncated: {len(body):,} characters returned, "
-            f"{MAX_RESULT_CHARS:,} shown. Narrow the query or page with the cursor.]"
+            body[:limit] + f"\n\n[truncated: {len(body):,} characters returned, "
+            f"{limit:,} shown. Narrow the query or page with the cursor.]"
         )
     return body
 
 
 @asynccontextmanager
-async def mcp_tools(index: Path, *, server_dir: Path = SERVER_DIR) -> AsyncIterator[list]:
+async def mcp_tools(
+    index: Path,
+    *,
+    server_dir: Path = SERVER_DIR,
+    max_result_chars: int = MAX_RESULT_CHARS,
+) -> AsyncIterator[list]:
     """The server's four tools, as LangChain tools, for the life of the session.
 
     stdio, because it needs no running process -- the same transport the Day 1
@@ -88,8 +106,8 @@ async def mcp_tools(index: Path, *, server_dir: Path = SERVER_DIR) -> AsyncItera
                     # raising. Handing the text back to the model is deliberate:
                     # these messages carry the recovery path (ADR-005 rule 3),
                     # and F5 measures whether the model uses it.
-                    return f"TOOL ERROR from {name}: {_render(res)}"
-                return _render(res)
+                    return f"TOOL ERROR from {name}: {_render(res, max_result_chars)}"
+                return _render(res, max_result_chars)
 
             return StructuredTool.from_function(
                 coroutine=call,

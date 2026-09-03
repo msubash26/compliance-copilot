@@ -12,12 +12,14 @@ dependencies = [
     "httpx>=0.28.1",
     "langchain-ollama>=1.1,<2",
     "langgraph>=1.2,<2",
+    "langgraph-checkpoint-postgres>=3.1.2",
     "pydantic-ai>=2,<3",
     "regdocs-mcp>=0.1.0",
 ]
 
 [project.scripts]
 regops-agents = "regops_agents.cli:main"
+regops-supervisor = "regops_agents.supervisor_cli:main"
 
 [build-system]
 requires = ["uv_build>=0.11.2,<0.12.0"]
