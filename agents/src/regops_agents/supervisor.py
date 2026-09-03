@@ -12,12 +12,14 @@ Three things this graph does that Day 6's agent could not.
 `workers.py`. It is the structural answer to F1 and F7, which Day 6 left open
 with a note saying the fix belonged here.
 
-**A failed citation is routed, not surrendered.** `check` is mechanical -- a
-dictionary lookup, no model -- and when it finds an unresolvable citation it
-sends the run back to `retrieve` once rather than back to the user. F5's finding
-was that the single agent, handed a tool error naming its own recovery path,
-stopped and asked the human. A supervisor can take the recovery path on its
-behalf, and that is the clearest thing the extra machinery buys.
+**A failure is routed, not surrendered.** Two nodes can send a run backwards.
+`check` is mechanical -- a dictionary lookup, no model -- and when it finds an
+unresolvable citation it returns to `retrieve` once rather than to the user. F5's
+finding was that the single agent, handed a tool error naming its own recovery
+path, stopped and asked the human; a supervisor can take the path on its behalf,
+and that is the clearest thing the extra machinery buys. `approve` does the same
+with a *human's* rejection: the reason is a retrieval instruction, so it goes
+back into the query rather than into a footnote on the answer.
 
 **Every ceiling lands in the same place.** `_ceiling` is checked at the top of
 each node and, when it fires, the run jumps straight to `synthesise` with
@@ -45,7 +47,14 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.types import Command, Send, interrupt
 from regops_retrieval.index import Index
 
-from regops_agents.budget import Budget, merge_spend, new_spend, spent, summary
+from regops_agents.budget import (
+    Budget,
+    merge_findings,
+    merge_spend,
+    new_spend,
+    spent,
+    summary,
+)
 from regops_agents.checkpoint import checkpointer
 from regops_agents.llm import MODEL
 from regops_agents.mcp_tools import PARSER_RESULT_CHARS, mcp_tools
@@ -87,7 +96,7 @@ class SupervisorState(TypedDict, total=False):
     sufficient: bool
     citations: list[dict]
     violations: list[str]
-    findings: Annotated[list[dict], add]
+    findings: Annotated[list[dict], merge_findings]
     approved: bool
     rejected_because: str
     retries: int
@@ -183,7 +192,7 @@ async def node_extract(state: SupervisorState, config) -> Command:
 
 
 async def node_check(state: SupervisorState, config) -> Command:
-    """Layer 2, free, and the only node that can send the run backwards."""
+    """Layer 2: free, mechanical, and one of the two nodes that can reroute."""
     box, budget, t0, _ = _cfg(config)
 
     from regops_agents.structured import Answer, Citation
@@ -307,12 +316,38 @@ def node_approve(state: SupervisorState, config) -> Command:
         }
     )
     ok = str(decision).strip().lower() in {"approve", "approved", "yes", "y"}
+    if ok:
+        return Command(
+            goto="synthesise",
+            update={"approved": True, "notes": ["approve: approved"]},
+        )
+
+    # A rejection that only annotates the answer is a confirmation dialog with
+    # extra steps. The reason is a *retrieval* instruction -- "you missed the
+    # trust companies notice" is a query -- so it goes back into the sweep once,
+    # appended to the search text. Bounded by the same retry counter as the
+    # citation check, because a reviewer who keeps rejecting is a conversation,
+    # not a loop the graph should run on its own.
+    retries = state.get("retries", 0)
+    reason = str(decision)
+    if retries < MAX_RETRIES:
+        return Command(
+            goto="retrieve",
+            update={
+                "approved": False,
+                "rejected_because": reason,
+                "retries": retries + 1,
+                "query": f"{state.get('query', state['question'])} {reason}",
+                "findings": None,
+                "notes": [f"approve: rejected — {reason}; re-running the sweep"],
+            },
+        )
     return Command(
         goto="synthesise",
         update={
-            "approved": ok,
-            "rejected_because": "" if ok else str(decision),
-            "notes": [f"approve: {'approved' if ok else 'rejected — ' + str(decision)}"],
+            "approved": False,
+            "rejected_because": reason,
+            "notes": [f"approve: rejected again — {reason}; answering with what there is"],
         },
     )
 
@@ -376,7 +411,7 @@ def build(*, plan_and_execute: bool = False):
     )
     g.add_node("fan_out", node_fan_out, destinations=("inspect", "synthesise"))
     g.add_node("inspect", node_inspect)
-    g.add_node("approve", node_approve, destinations=("synthesise",))
+    g.add_node("approve", node_approve, destinations=("retrieve", "synthesise"))
     g.add_node("synthesise", node_synthesise)
 
     g.add_edge(START, "router")

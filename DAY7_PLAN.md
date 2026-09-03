@@ -236,9 +236,9 @@ is the piece most likely to be bolted on badly if it is left until last.
 
 ## Phase 3 — Fan-out, and what it actually bought · 60 min
 
-- [ ] `Send` for the fan-out; the independent subtasks are per-document extraction inside
+- [x] `Send` for the fan-out; the independent subtasks are per-document extraction inside
       `gap_analyst`, which is the only place in this graph where independence is real.
-- [ ] Measure **three shapes** (problem 1): all-LLM (re-confirming research 1's 1.01× *inside the
+- [x] Measure **three shapes** (problem 1): all-LLM (re-confirming research 1's 1.01× *inside the
       graph*, not just against the raw API), mixed LLM + retrieval, and all-LLM with
       `OLLAMA_NUM_PARALLEL` raised. Record the 2.53× ceiling next to each.
 - [ ] `results/day7/fanout.json`, and a renderer that reads it. **Nothing hand-edited** — Day 6
@@ -250,11 +250,11 @@ is the piece most likely to be bolted on badly if it is left until last.
 
 ## Phase 4 — The interrupt, and the double-execution rule · 45 min
 
-- [ ] `approve_report` with `interrupt()` as its **first statement**; `gap_analyst` immediately
+- [x] `approve_report` with `interrupt()` as its **first statement**; `gap_analyst` immediately
       before it. Research 4 is the reason and the ADR says so.
-- [ ] The regression guard: a test that counts executions of the interrupting node's body across a
+- [x] The regression guard: a test that counts executions of the interrupting node's body across a
       resume and asserts **1**. Without it, the arrangement is a comment.
-- [ ] CLI: `--thread <id>`, `--resume`, `--approve` / `--reject <reason>`. A rejection routes back
+- [x] CLI: `--thread <id>`, `--resume`, `--approve` / `--reject <reason>`. A rejection routes back
       to `gap_analyst` with the reason in state, which is the only version of HITL that is worth
       more than a confirmation dialog.
 - [ ] **F13** in `FAILURE_MODES.md`, four fields as always: trigger (the probe), symptom (2 of 2),

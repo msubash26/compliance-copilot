@@ -405,7 +405,9 @@ async def clauses_of(topic: str, doc: dict, box: Toolbox) -> str:
     return "\n\n".join(parts)[:BRANCH_CHARS]
 
 
-async def inspect_one(topic: str, doc: dict, box: Toolbox) -> tuple[Finding | None, dict]:
+async def inspect_one(
+    topic: str, doc: dict, box: Toolbox, *, prefetched: str | None = None
+) -> tuple[Finding | None, dict]:
     """One fan-out branch: one document, its matching clauses, one verdict.
 
     This is the only place in the graph where the subtasks are genuinely
@@ -424,7 +426,12 @@ async def inspect_one(topic: str, doc: dict, box: Toolbox) -> tuple[Finding | No
     branch at a time *in the orchestrator*, hiding the real bottleneck behind a
     self-inflicted one and reporting a speedup of 1.0 for the wrong reason.
     """
-    text = await clauses_of(topic, doc, box) or doc.get("excerpt", "")
+    # `prefetched` lets the fan-out measurement time the read and the model call
+    # separately without doing the read twice, which would put a second copy of
+    # the uncontended half into the number the contended half is being judged by.
+    text = (prefetched if prefetched is not None else await clauses_of(topic, doc, box)) or doc.get(
+        "excerpt", ""
+    )
 
     reply = await asyncio.to_thread(
         chat,

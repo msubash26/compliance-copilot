@@ -26,6 +26,20 @@ from regops_agents.llm import MODEL
 from regops_agents.supervisor import ask, running
 
 
+def _pending(out: dict, thread: str) -> bool:
+    """Did this call stop at an interrupt rather than finish?
+
+    A rejection re-runs the sweep and asks again, so a resume can end in another
+    interrupt. Reporting that as a finished run would print an empty answer and
+    look like the graph had quietly given up.
+    """
+    if not out.get("__interrupt__"):
+        return False
+    print(json.dumps(out["__interrupt__"][0].value, indent=2)[:1200])
+    print(f"\ninterrupted. resume with:\n  uv run regops-supervisor --resume {thread} --approve")
+    return True
+
+
 def _show(out: dict) -> None:
     for note in out.get("notes", []):
         print(f"  · {note}")
@@ -70,21 +84,20 @@ async def _run(a) -> int:
                     print(json.dumps(itr.value, indent=2)[:1200])
             decision = "approve" if a.approve else (a.reject or "rejected")
             out = await app.ainvoke(Command(resume=decision), cfg)
+            for note in out.get("notes", []):
+                print(f"  · {note}")
+            if _pending(out, a.resume):
+                return 0
             # The cost of the *whole* run, not of the resume. `spend` came back
             # out of the checkpoint carrying what the first process paid, which
             # is the only reading of "what did this run cost" that is true.
             out["cost"] = summary(out.get("spend") or new_spend(), budget)
+            out["notes"] = []
             _show(out)
             return 0
 
         out = await ask(app, config, a.question, thread=a.thread)
-        if out.get("__interrupt__"):
-            payload = out["__interrupt__"][0].value
-            print(json.dumps(payload, indent=2)[:1200])
-            print(
-                f"\ninterrupted. resume with:\n"
-                f"  uv run regops-supervisor --resume {out['thread_id']} --approve"
-            )
+        if _pending(out, out["thread_id"]):
             return 0
         _show(out)
         return 0

@@ -162,3 +162,23 @@ def summary(spend: dict, budget: Budget) -> dict:
         },
         "remaining": budget.remaining(spend),
     }
+
+
+def merge_findings(left: list | None, right: list | None) -> list:
+    """The fan-out's own reducer: append, dedupe by document, `None` resets.
+
+    Three requirements meet here and none of the stock reducers has all three.
+    The branches write concurrently, so it has to merge rather than replace.
+    A re-run after a rejected report must *replace* a document's verdict rather
+    than sit a second one next to it. And the re-run has to be able to clear the
+    first sweep, which `operator.add` cannot express -- appending `[]` is a no-op,
+    so a node that means "start again" has no way to say so. `None` is that
+    sentinel, and it is a sentinel rather than a flag in state because a reducer
+    only ever sees the update.
+    """
+    if right is None:
+        return []
+    out = {f.get("doc_id"): f for f in (left or [])}
+    for f in right:
+        out[f.get("doc_id")] = f
+    return list(out.values())

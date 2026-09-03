@@ -11,10 +11,10 @@ from __future__ import annotations
 import json
 
 import pytest
-from regops_agents.budget import Budget, merge_spend, new_spend, spent
+from regops_agents.budget import Budget, merge_findings, merge_spend, new_spend, spent
 from regops_agents.llm import Reply
 from regops_agents.structured import Answer, Citation
-from regops_agents.supervisor import build, node_check, node_fan_out
+from regops_agents.supervisor import build, node_approve, node_check, node_fan_out
 from regops_agents.workers import (
     TRUNCATED,
     Toolbox,
@@ -290,3 +290,70 @@ def test_a_reply_converts_itself_into_a_state_update():
     """The budget is only honest if every call debits it."""
     r = Reply(content="x", seconds=1.25, in_tokens=10, out_tokens=3)
     assert r.spend() == {"steps": 1, "seconds": 1.25, "in_tokens": 10, "out_tokens": 3}
+
+
+# -- human in the loop ------------------------------------------------------
+
+
+def _gated_cfg():
+    """`_check_cfg` closes the approval gate; these tests are about it being open."""
+    cfg = _check_cfg(set())
+    cfg["configurable"]["approve"] = True
+    return cfg
+
+
+class TestApproval:
+    def _state(self, **kw):
+        base = {
+            "question": "which documents cover X?",
+            "query": "X obligation",
+            "findings": [{"doc_id": "a", "title": "A", "covered": True, "section_path": "8.2"}],
+            "retries": 0,
+        }
+        return base | kw
+
+    def test_approval_goes_forward(self, monkeypatch):
+        monkeypatch.setattr("regops_agents.supervisor.interrupt", lambda _: "approve")
+        cmd = node_approve(self._state(), _gated_cfg())
+        assert cmd.goto == "synthesise" and cmd.update["approved"] is True
+
+    def test_a_rejection_puts_its_reason_into_the_query_and_re_runs(self, monkeypatch):
+        """A rejection that only annotates the answer is a confirmation dialog.
+
+        Measured end to end: rejecting with *"you missed the trust companies and
+        VCC notices"* re-ran the sweep and returned TCA-N03 and VCC-N01, neither
+        of which the first sweep had found.
+        """
+        monkeypatch.setattr("regops_agents.supervisor.interrupt", lambda _: "you missed the VCCs")
+        cmd = node_approve(self._state(), _gated_cfg())
+        assert cmd.goto == "retrieve"
+        assert cmd.update["query"] == "X obligation you missed the VCCs"
+        assert cmd.update["findings"] is None  # the reset sentinel, not an append
+        assert cmd.update["retries"] == 1
+
+    def test_a_second_rejection_answers_rather_than_looping(self, monkeypatch):
+        """A reviewer who keeps rejecting is a conversation, not a graph loop."""
+        monkeypatch.setattr("regops_agents.supervisor.interrupt", lambda _: "still wrong")
+        cmd = node_approve(self._state(retries=1), _gated_cfg())
+        assert cmd.goto == "synthesise" and cmd.update["approved"] is False
+
+    def test_the_gate_can_be_closed_for_unattended_runs(self):
+        """The comparison harness must not block on a human."""
+        cfg = _check_cfg(set())
+        cfg["configurable"]["approve"] = False
+        cmd = node_approve(self._state(), cfg)
+        assert cmd.goto == "synthesise" and "skipped" in cmd.update["notes"][0]
+
+
+class TestFindingsReducer:
+    def test_branches_merge_and_a_rerun_replaces_rather_than_duplicates(self):
+        first = [{"doc_id": "a", "covered": False}, {"doc_id": "b", "covered": True}]
+        second = [{"doc_id": "a", "covered": True}]
+        assert merge_findings(first, second) == [
+            {"doc_id": "a", "covered": True},
+            {"doc_id": "b", "covered": True},
+        ]
+
+    def test_none_clears(self):
+        """`operator.add` cannot express 'start again' -- appending [] is a no-op."""
+        assert merge_findings([{"doc_id": "a"}], None) == []
